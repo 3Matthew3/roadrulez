@@ -1,0 +1,110 @@
+[
+    {
+        "names": {
+            "en": "Japan",
+            "de": "Japan"
+        },
+        "name": "Japan",
+        "iso2": "JP",
+        "flag": "🇯🇵"
+    },
+    {
+        "names": {
+            "en": "Germany",
+            "de": "Deutschland"
+        },
+        "name": "Germany",
+        "iso2": "DE",
+        "flag": "🇩🇪"
+    },
+    {
+        "names": {
+            "en": "France",
+            "de": "Frankreich"
+        },
+        "name": "France",
+        "iso2": "FR",
+        "flag": "🇫🇷"
+    },
+    {
+        "names": {
+            "en": "United States",
+            "de": "Vereinigte Staaten"
+        },
+        "name": "United States",
+        "iso2": "US",
+        "flag": "🇺🇸"
+    },
+    {
+        "names": {
+            "en": "Italy",
+            "de": "Italien"
+        },
+        "name": "Italy",
+        "iso2": "IT",
+        "flag": "🇮🇹"
+    },
+    {
+        "names": {
+            "en": "Spain",
+            "de": "Spanien"
+        },
+        "name": "Spain",
+        "iso2": "ES",
+        "flag": "🇪🇸"
+    },
+    {
+        "names": {
+            "en": "Thailand",
+            "de": "Thailand"
+        },
+        "name": "Thailand",
+        "iso2": "TH",
+        "flag": "🇹🇭"
+    },
+    {
+        "names": {
+            "en": "South Korea",
+            "de": "Südkorea"
+        },
+        "name": "South Korea",
+        "iso2": "KR",
+        "flag": "🇰🇷"
+    },
+    {
+        "names": {
+            "en": "Canada",
+            "de": "Kanada"
+        },
+        "name": "Canada",
+        "iso2": "CA",
+        "flag": "🇨🇦"
+    },
+    {
+        "names": {
+            "en": "Australia",
+            "de": "Australien"
+        },
+        "name": "Australia",
+        "iso2": "AU",
+        "flag": "🇦🇺"
+    },
+    {
+        "names": {
+            "en": "United Arab Emirates",
+            "de": "Vereinigte Arabische Emirate"
+        },
+        "name": "United Arab Emirates",
+        "iso2": "AE",
+        "flag": "🇦🇪"
+    },
+    {
+        "names": {
+            "en": "South Africa",
+            "de": "Südafrika"
+        },
+        "name": "South Africa",
+        "iso2": "ZA",
+        "flag": "🇿🇦"
+    }
+]

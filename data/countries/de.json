@@ -1,0 +1,72 @@
+{
+    "name_en": "Germany",
+    "name_local": "Deutschland",
+    "iso2": "DE",
+    "iso3": "DEU",
+    "continent": "Europe",
+    "flag": "🇩🇪",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 100,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "130 km/h is the recommended limit (Richtgeschwindigkeit) on Autobahns. No limit only where indicated by white circular sign with diagonal lines."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Strict 0.00% for drivers under 21 or with license held <2 years."
+        },
+        "seatbelt_rules": "Mandatory for all passengers. Fine: €30+.",
+        "child_seat_rules": "Required for children <12 years or <150cm.",
+        "phone_usage_rules": "Handheld strictly prohibited. Engine must be off to touch phone (Start-Stop doesn't count).",
+        "headlights_rules": "Required in tunnels, rain, fog. Daylight running lights are standard.",
+        "priority_rules": "'Rechts vor Links' (Right before Left) at all unmarked intersections. Priority roads marked by yellow diamond.",
+        "tolls": {
+            "required": false,
+            "type": "none",
+            "notes": "Passenger cars are toll-free on Autobahns. Some Alpine tunnels/passes have fees."
+        },
+        "parking_rules": "Parking disc (Parkscheibe) required in blue zones. Strictly enforced. Do not park against traffic flow.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "First aid kit (DIN 13164)",
+            "Reflective vest (per passenger recommended)"
+        ],
+        "winter_rules": "Winter or All-season tires (Alpine symbol) mandatory in winter conditions (ice, snow, slush).",
+        "emergency_numbers": [
+            "112 (European Emergency)",
+            "110 (Police)"
+        ]
+    },
+    "summary": "Germany is famous for its efficient Autobahns, but rules are strictly enforced. Right-before-left is the golden rule in residential areas. Stick to the right lane on highways unless passing.",
+    "common_traps": [
+        "Speed cameras are everywhere (hidden & fixed).",
+        "Tailgating (Drängeln) is a serious offense/criminal act.",
+        "Running out of gas on the Autobahn is illegal.",
+        "Right before Left priority violations."
+    ],
+    "rental_and_idp_notes": "Valid domestic license usually accepted. IDP recommended for non-EU/EEA licenses.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Berlin",
+            "differences": {},
+            "notes": "Environmental Zone (Umweltzone) requires Green Sticker for entry. Heavy traffic and scarce parking."
+        },
+        {
+            "region_type": "city",
+            "region_name": "Munich",
+            "differences": {},
+            "notes": "Very strict parking enforcement. Mittlerer Ring often congested."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "verified",
+    "sources": [
+        "ADAC",
+        "BMDV (Ministry of Transport)"
+    ]
+}

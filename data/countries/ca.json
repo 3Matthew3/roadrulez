@@ -1,0 +1,63 @@
+{
+    "name_en": "Canada",
+    "name_local": "Canada",
+    "iso2": "CA",
+    "iso3": "CAN",
+    "continent": "North America",
+    "flag": "🇨🇦",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 80,
+            "motorway": 100,
+            "units": "km/h",
+            "notes": "Varies by province. Trans-Canada Highway can be 90-110 km/h."
+        },
+        "alcohol_limit": {
+            "value": 0.5,
+            "unit": "BAC",
+            "notes": "0.05% warns/suspension in many provinces (e.g., BC, Ontario). 0.08% is criminal offense."
+        },
+        "seatbelt_rules": "Mandatory.",
+        "child_seat_rules": "Mandatory, laws vary by province (age/weight).",
+        "phone_usage_rules": "Hands-free only.",
+        "headlights_rules": "Daytime running lights required.",
+        "priority_rules": "Right of way to vehicles already in roundabout.",
+        "tolls": {
+            "required": false,
+            "type": "electronic",
+            "notes": "Few toll roads (e.g., 407 ETR in Ontario is electronic only)."
+        },
+        "parking_rules": "Winter parking bans common for snow removal.",
+        "mandatory_equipment": [
+            "Driving Licence",
+            "Registration",
+            "Insurance"
+        ],
+        "winter_rules": "Winter tires mandatory in Quebec (Dec 1 - Mar 15) and recommended elsewhere.",
+        "emergency_numbers": [
+            "911"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Mandatory (DOT/Snell/ECE approved).",
+            "lane_splitting_rules": "Illegal.",
+            "motorway_access": "Allowed."
+        }
+    },
+    "summary": "Driving in Canada is similar to the US, but with metric units (km/h). Winter driving conditions can be severe. Right turn on red allowed unless posted (except Island of Montreal).",
+    "common_traps": [
+        "Right turn on red is prohibited on the entire Island of Montreal.",
+        "School bus flashing lights: traffic both ways must stop.",
+        "Move Over Law: slow down/move over for emergency vehicles."
+    ],
+    "rental_and_idp_notes": "Most licenses accepted for short visits. IDP recommended if not in English/French.",
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "high",
+    "sources": [
+        "Transport Canada"
+    ]
+}

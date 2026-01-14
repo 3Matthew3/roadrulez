@@ -1,0 +1,60 @@
+{
+    "name_en": "United Arab Emirates",
+    "name_local": "Al-Imarat",
+    "iso2": "AE",
+    "iso3": "ARE",
+    "continent": "Asia",
+    "flag": "🇦🇪",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 60,
+            "rural": 100,
+            "motorway": 140,
+            "units": "km/h",
+            "notes": "Buffer speed limits exist in Dubai (usually +20km/h grace), but NOT in Abu Dhabi (strict limit)."
+        },
+        "alcohol_limit": {
+            "value": 0.0,
+            "unit": "BAC",
+            "notes": "Zero tolerance."
+        },
+        "seatbelt_rules": "Mandatory.",
+        "child_seat_rules": "Mandatory for children under 4.",
+        "phone_usage_rules": "Hands-free only.",
+        "headlights_rules": "At night.",
+        "priority_rules": "Yield to left in roundabouts.",
+        "tolls": {
+            "required": true,
+            "type": "electronic",
+            "notes": "Salik (Dubai) and Darb (Abu Dhabi) are automated systems."
+        },
+        "parking_rules": "Paid parking in most urban areas.",
+        "mandatory_equipment": [
+            "Triangle",
+            "Fire extinguisher (recommended)"
+        ],
+        "winter_rules": "N/A",
+        "emergency_numbers": [
+            "999 (Police)"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Mandatory.",
+            "lane_splitting_rules": "Illegal and dangerous.",
+            "motorway_access": "Allowed but risky due to high speeds."
+        }
+    },
+    "summary": "Modern highways, very high speeds. Aggressive driving is common. Be aware of the strict zero alcohol tolerance.",
+    "common_traps": [
+        "Speed cameras are everywhere.",
+        "Abu Dhabi speed limits are absolute (no buffer).",
+        "Flash floods in wadis during rain."
+    ],
+    "rental_and_idp_notes": "IDP required for many nationalities.",
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "medium",
+    "sources": []
+}

@@ -1,0 +1,62 @@
+{
+    "name_en": "South Africa",
+    "name_local": "South Africa",
+    "iso2": "ZA",
+    "iso3": "ZAF",
+    "continent": "Africa",
+    "flag": "🇿🇦",
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 60,
+            "rural": 100,
+            "motorway": 120,
+            "units": "km/h",
+            "notes": "Enforced by cameras and traps."
+        },
+        "alcohol_limit": {
+            "value": 0.5,
+            "unit": "BAC",
+            "notes": "Strictly enforced."
+        },
+        "seatbelt_rules": "Mandatory.",
+        "child_seat_rules": "Mandatory for children under 3.",
+        "phone_usage_rules": "Hands-free only.",
+        "headlights_rules": "Recommended daytime.",
+        "priority_rules": "4-way stops are common: first to arrive, first to leave.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "e-Tolls in Gauteng (controversial but present), main highways often have booths."
+        },
+        "parking_rules": "'Car guards' often watch cars for a tip.",
+        "mandatory_equipment": [
+            "Triangle"
+        ],
+        "winter_rules": "N/A",
+        "emergency_numbers": [
+            "10111 (Police)",
+            "10177 (Ambulance)"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Mandatory.",
+            "lane_splitting_rules": "Allowed below 20km/h over other traffic speed (filtering).",
+            "motorway_access": "Allowed."
+        }
+    },
+    "summary": "Left-hand traffic. Minibus taxis can be unpredictable. 4-way stops are very common.",
+    "common_traps": [
+        "Animals on rural roads.",
+        "Minibus taxis driving on yellow shoulder.",
+        "Robots (traffic lights) out of order - treat as 4-way stop."
+    ],
+    "rental_and_idp_notes": "English license valid.",
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "high",
+    "sources": [
+        "Arrive Alive"
+    ]
+}

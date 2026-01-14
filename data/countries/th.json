@@ -1,0 +1,70 @@
+{
+    "name_en": "Thailand",
+    "name_local": "ประเทศไทย",
+    "iso2": "TH",
+    "iso3": "THA",
+    "continent": "Asia",
+    "flag": "🇹🇭",
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 120,
+            "units": "km/h",
+            "notes": "Speed limits vary significantly by road condition. Follow signs strictly."
+        },
+        "alcohol_limit": {
+            "value": 0.5,
+            "unit": "‰",
+            "notes": "Zero tolerance (0.00%) for drivers helding a licence for less than 5 years."
+        },
+        "seatbelt_rules": "Mandatory for driver and all passengers.",
+        "child_seat_rules": "Children under 6 years or 135cm must use a child restraint system.",
+        "phone_usage_rules": "Hand-held usage is prohibited. Hands-free is allowed.",
+        "headlights_rules": "Must be on if visibility is poor.",
+        "priority_rules": "Yield to vehicles on main roads. Vehicles on the left generally have priority at uncontrolled intersections, but caution is advised.",
+        "tolls": {
+            "required": true,
+            "type": "toll booth",
+            "notes": "Many motorways around Bangkok require cash or 'Easy Pass'."
+        },
+        "parking_rules": "Do not park on red/white curbs (no parking anytime) or yellow/white curbs (temporary parking).",
+        "mandatory_equipment": [
+            "Driving Licence",
+            "Vehicle Registration",
+            "Insurance"
+        ],
+        "winter_rules": "N/A",
+        "emergency_numbers": [
+            "191 (Police)",
+            "1669 (Ambulance)"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Mandatory for rider and passenger.",
+            "lane_splitting_rules": "Common practice and generally tolerated, but exercise extreme caution.",
+            "motorway_access": "Prohibited on most expressways and tollways.",
+            "licensing_notes": "International Driving Permit (IDP) with motorcycle endorsement is strictly required for tourists."
+        },
+        "moped": {
+            "helmet_rules": "Mandatory.",
+            "motorway_access": "Prohibited."
+        }
+    },
+    "summary": "Driving in Thailand can be chaotic. Traffic rules are often loosely observed by locals. Be extremely vigilant for motorbikes weaving in traffic. Left-hand traffic applies.",
+    "common_traps": [
+        "Police checkpoints checking for International Driving Permits (IDP).",
+        "Riding motorbikes shirtless is illegal.",
+        "Songthaews (shared taxis) stopping unexpectedly."
+    ],
+    "rental_and_idp_notes": "IDP (1949 Convention) is mandatory. Rental shops may keep your passport as deposit (avoid if possible).",
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "high",
+    "sources": [
+        "Department of Land Transport",
+        "Tourist Police Bureau"
+    ]
+}

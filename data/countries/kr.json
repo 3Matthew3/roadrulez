@@ -1,0 +1,64 @@
+{
+    "name_en": "South Korea",
+    "name_local": "대한민국",
+    "iso2": "KR",
+    "iso3": "KOR",
+    "continent": "Asia",
+    "flag": "🇰🇷",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 80,
+            "motorway": 100,
+            "units": "km/h",
+            "notes": "Safe Speed 5030 policy: 50 km/h on main roads, 30 km/h in school zones/residential areas."
+        },
+        "alcohol_limit": {
+            "value": 0.3,
+            "unit": "‰",
+            "notes": "Strict penalties. 0.03% to 0.08% results in license suspension."
+        },
+        "seatbelt_rules": "Mandatory for all passengers.",
+        "child_seat_rules": "Mandatory for children under 6 years.",
+        "phone_usage_rules": "Prohibited while driving.",
+        "headlights_rules": "Must be on in tunnels and at night.",
+        "priority_rules": "Vehicles inside the roundabout have priority.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Hi-Pass (electronic) lanes are blue. Cash lanes are common."
+        },
+        "parking_rules": "Strictly enforced. Look for designated parking lots.",
+        "mandatory_equipment": [
+            "Warning Triangle",
+            "Driving Licence"
+        ],
+        "winter_rules": "Winter tires recommended in winter.",
+        "emergency_numbers": [
+            "112 (Police)",
+            "119 (Ambulance/Fire)"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Mandatory.",
+            "lane_splitting_rules": "Technically illegal but common.",
+            "motorway_access": "Prohibited on highways/expressways (Motorways).",
+            "licensing_notes": "IDP required."
+        }
+    },
+    "summary": "South Korea has modern infrastructure but high traffic density. A unique rule is that motorcycles are mostly banned from highways. Left turns allowed only on green arrow signals.",
+    "common_traps": [
+        "Unprotected left turns are rare; look for arrows.",
+        "Speed cameras are everywhere (and navigation apps warn you).",
+        "Bus-only lanes (blue lines) in cities."
+    ],
+    "rental_and_idp_notes": "IDP is required. Credit card usually needed.",
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "high",
+    "sources": [
+        "KoROAD"
+    ]
+}

@@ -1,0 +1,84 @@
+{
+    "name_en": "United States",
+    "name_local": "Vereinigte Staaten",
+    "iso2": "US",
+    "iso3": "USA",
+    "continent": "North America",
+    "flag": "🇺🇸",
+    "header_images": [
+        "https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 25,
+            "rural": 55,
+            "motorway": 70,
+            "units": "mph",
+            "notes": "Variiert stark je nach Staat. Highways meist 65-85 mph. Schilder beachten."
+        },
+        "alcohol_limit": {
+            "value": 0.08,
+            "unit": "BAC",
+            "notes": "Strenger (0.04% oder weniger) für gewerbliche Fahrer. Strenge Gesetze gegen offene Alkoholbehälter."
+        },
+        "seatbelt_rules": "Pflicht in fast allen Staaten (Click it or Ticket).",
+        "child_seat_rules": "Gesetze variieren, meist <8 Jahre/Sitzerhöhung erforderlich.",
+        "phone_usage_rules": "SMS schreiben in 48 Staaten verboten. Freisprechgesetze unterschiedlich (oft Handy-Halteverbot).",
+        "headlights_rules": "Sonnenunter- bis Sonnenaufgang. Scheibenwischer an = Licht an (in den meisten Staaten).",
+        "priority_rules": "4-Way Stop (All-Way Stop): Wer zuerst steht, fährt zuerst. Bei Unklarheit: Rechts vor Links. Gelb blinkender Schulbus = STOPP.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Turnpikes im Osten/Mittleren Westen. Brücken/Tunnel in NYC/SF. Oft Kennzeichen-Erfassung oder E-ZPass."
+        },
+        "parking_rules": "Roter Bordstein = Feuerwehrzone. Farbige Bordsteine beachten. Immer in Fahrtrichtung parken.",
+        "mandatory_equipment": [],
+        "winter_rules": "Schneeketten in den Rockies/Sierra Nevada bei Sturm erforderlich.",
+        "emergency_numbers": [
+            "911"
+        ]
+    },
+    "summary": "Regeln sind sache der Bundesstaaten, aber meist einheitlich. 'Rechts abbiegen bei Rot' ist Standard (erst stoppen), außer wenn verboten. Stoppschilder wörtlich nehmen. Niemals anhaltende Schulbusse überholen.",
+    "common_traps": [
+        "Schulbus mit blinkenden Lichtern überholen (Schwere Straftat).",
+        "Move Over Law: Spur wechseln für haltende Notfall-/Servicefahrzeuge.",
+        "Geschwindigkeitsfallen in kleinen Städten.",
+        "Jaywalking (illegales Überqueren) in Städten."
+    ],
+    "rental_and_idp_notes": "Kreditkarte meist Pflicht. Gebühr für Fahrer unter 25. Internationaler Führerschein empfohlen.",
+    "regional_variations": [
+        {
+            "region_type": "state",
+            "region_name": "Kalifornien",
+            "region_code": "CA",
+            "differences": {
+                "phone_usage_rules": "Strenge Freisprechpflicht. Handy muss montiert sein."
+            },
+            "notes": "Lane Splitting für Motorräder legal. Enormer Verkehr in LA/SF."
+        },
+        {
+            "region_type": "city",
+            "region_name": "New York City",
+            "differences": {
+                "priority_rules": "Rechts abbiegen bei Rot in NYC verboten, außer Schild erlaubt es."
+            },
+            "notes": "Vermeide Manhattan mit dem Auto. Teure Maut und Parken."
+        },
+        {
+            "region_type": "state",
+            "region_name": "Florida",
+            "differences": {},
+            "notes": "Lichtpflicht bei Regen. Move Over Law streng kontrolliert."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "sample",
+    "sources": [
+        "State DMVs"
+    ]
+}

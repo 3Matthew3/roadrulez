@@ -1,0 +1,72 @@
+{
+    "name_en": "Spain",
+    "name_local": "España",
+    "iso2": "ES",
+    "iso3": "ESP",
+    "continent": "Europe",
+    "flag": "🇪🇸",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 120,
+            "units": "km/h",
+            "notes": "Urban limit often 30 km/h on single-lane one-way streets. No buffer on speed limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "0.03% for novice drivers (<2 years) and professionals."
+        },
+        "seatbelt_rules": "Mandatory. Dogs must be restrained/separated.",
+        "child_seat_rules": "Children <135cm must be in rear seats with approved system.",
+        "phone_usage_rules": "Handling phone is a serious offense (€200+). Using navigation while moving is banned.",
+        "headlights_rules": "In tunnels and low visibility.",
+        "priority_rules": "Give way to right. Roundabouts: Outside lane has priority to exit.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Many 'Autopistas' (AP) are tolls. 'Autovias' (A) are generally free."
+        },
+        "parking_rules": "Blue lines (Zona Azul) = Pay. Green lines = Residents usually. Yellow zig-zag = Tow away zone.",
+        "mandatory_equipment": [
+            "2 Warning triangles (or 1 V-16 light)",
+            "Reflective vest",
+            "Spare wheel/kit"
+        ],
+        "winter_rules": "Chains used in mountain areas when signed.",
+        "emergency_numbers": [
+            "112 (General)",
+            "091 (National Police)",
+            "061 (Medical)"
+        ]
+    },
+    "summary": "Spain has excellent highways. Speed limits are strictly enforced by helicopters and drones. Be careful with parking zones in cities. Warning: Driving flip-flops or shirtless can be fined.",
+    "common_traps": [
+        "Speeding (very strict, no tolerance).",
+        "Driving with flip-flops/sandals (considered unsafe control).",
+        "Looking at GPS while moving.",
+        "Items on back shelf blocking view."
+    ],
+    "rental_and_idp_notes": "IDP highly recommended for non-EU. Credit card mandatory for rentals.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Madrid",
+            "differences": {},
+            "notes": "'Madrid Central' (Zone of Low Emissions) - strict access bans for non-residents."
+        },
+        {
+            "region_type": "city",
+            "region_name": "Barcelona",
+            "differences": {},
+            "notes": "ZBE (Low Emission Zone) covers the whole city. Registration required for foreign cars."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "verified",
+    "sources": [
+        "DGT (Dirección General de Tráfico)"
+    ]
+}

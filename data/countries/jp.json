@@ -1,0 +1,130 @@
+{
+    "name_en": "Japan",
+    "name_local": "Nihon",
+    "iso2": "JP",
+    "iso3": "JPN",
+    "continent": "Asia",
+    "flag": "🇯🇵",
+    "header_images": [
+        "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 40,
+            "rural": 60,
+            "motorway": 100,
+            "units": "km/h",
+            "notes": "Signposted limits override defaults. Variable speed limits on expressways are common."
+        },
+        "alcohol_limit": {
+            "value": 0.03,
+            "unit": "BAC",
+            "notes": "Strict Zero Tolerance in practice. Penalties are severe for both driver and passengers."
+        },
+        "seatbelt_rules": "Mandatory for all passengers.",
+        "child_seat_rules": "Required for children under 6 years old.",
+        "phone_usage_rules": "Handheld usage prohibited. Hands-free allowed but restricted.",
+        "headlights_rules": "Must be on at night and in tunnels. High beams recommended on unlit roads.",
+        "priority_rules": "Pedestrians have right of way. Stop for school buses.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Most expressways are toll roads. ETC card recommended for rentals."
+        },
+        "parking_rules": "Strictly enforced. Use designated parking lots (Coin Parking). Street parking often prohibited.",
+        "mandatory_equipment": [
+            "Warning triangle (for highway stops)",
+            "Spare tire or repair kit"
+        ],
+        "winter_rules": "Winter tires mandatory in snowy regions (Hokkaido, Tohoku, etc.)",
+        "emergency_numbers": [
+            "110 (Police)",
+            "119 (Ambulance/Fire)"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Usage of helmets is mandatory for both rider and passenger.",
+            "lane_splitting_rules": "Lane splitting (filtering) is technically not illegal if done safely, but police may ticket for crossing lines. Exercise caution.",
+            "motorway_access": "Allowed for motorcycles over 125cc. Tandem riding on highways requires >1 year license + >20 years old.",
+            "parking_rules": "Must use designated motorcycle parking. Car spots often prohibited."
+        },
+        "moped": {
+            "speed_limits": {
+                "urban": 30,
+                "rural": 30,
+                "motorway": 0,
+                "units": "km/h",
+                "notes": "Strict 30km/h limit everywhere for <50cc. Two-step right turn required at large intersections."
+            },
+            "helmet_rules": "Mandatory.",
+            "motorway_access": "Prohibited for <125cc.",
+            "licensing_notes": "Car license usually includes 50cc moped privileges."
+        }
+    },
+    "summary": "Drive on the Left. Right turns feel 'easy', left turns need attention. Speed limits are generally lower than many countries and strictly enforced. Expect toll roads on established expressways. Keep an eye out for railway crossings (must stop before crossing) and pedestrian priority.",
+    "common_traps": [
+        "Stop completely before railway crossings.",
+        "No turn on red.",
+        "Cycling laws are strict; watch for cyclists.",
+        "zero tolerance for alcohol."
+    ],
+    "rental_and_idp_notes": "International Driving Permit (1949 Convention) required. Some licenses (Swiss, German, French, etc.) need a translation.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Tokyo",
+            "differences": {},
+            "notes": "Parking is extremely expensive and strict. Use public transport where possible. 'Shuto Expressway' is complex and narrow."
+        },
+        {
+            "region_type": "city",
+            "region_name": "Osaka",
+            "differences": {},
+            "notes": "Drivers are known to be more aggressive than in Tokyo. Running yellow lights is common locally (Osaka-bashiri)."
+        },
+        {
+            "region_type": "province",
+            "region_name": "Hokkaido",
+            "differences": {
+                "speed_limits": {
+                    "urban": 50,
+                    "rural": 60,
+                    "motorway": 80,
+                    "units": "km/h",
+                    "notes": "Wide roads often lead to speeding, but enforcement is high. Winter tires mandatory Oct-Apr."
+                }
+            },
+            "notes": "Roads are wider and straighter. Watch for wildlife (deer/foxes). severe winter conditions."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "sample",
+    "data_coverage": "high",
+    "road_signs": [
+        {
+            "title": "Stop",
+            "description": "Triangle pointing down. Text: 止まれ (Tomare). Must stop completely.",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Japan_road_sign_330.svg"
+        },
+        {
+            "title": "No Entry",
+            "description": "Red circle with white horizontal bar.",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Japan_road_sign_302.svg"
+        },
+        {
+            "title": "Slow Down",
+            "description": "Triangle pointing down. Text: 徐行 (Jokō). Drive slowly (immediately stoppable).",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Japan_road_sign_329-A.svg"
+        }
+    ],
+    "sources": [
+        "JAF (Japan Automobile Federation)",
+        "MoFA Japan"
+    ]
+}

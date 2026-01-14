@@ -1,0 +1,84 @@
+{
+    "name_en": "United States",
+    "name_local": "United States",
+    "iso2": "US",
+    "iso3": "USA",
+    "continent": "North America",
+    "flag": "🇺🇸",
+    "header_images": [
+        "https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 25,
+            "rural": 55,
+            "motorway": 70,
+            "units": "mph",
+            "notes": "Varies wildly by state. Freeway limits range from 65 to 85 mph. Watch signs."
+        },
+        "alcohol_limit": {
+            "value": 0.08,
+            "unit": "BAC",
+            "notes": "Stricter (0.04% or less) for commercial drivers. Open container laws are strict."
+        },
+        "seatbelt_rules": "Mandatory in almost all states (Click it or Ticket).",
+        "child_seat_rules": "State laws vary but generally <8 years/booster seat required.",
+        "phone_usage_rules": "Texting banned in 48 states. Hands-free laws vary (many states ban holding phone).",
+        "headlights_rules": "Sunset to Sunrise. Wipers On = Lights On (in most states).",
+        "priority_rules": "4-Way Stop: First to stop = First to go. If unclear, yield to right. Yellow school bus flashing = STOP.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Turnpikes in East/Midwest. Bridges/Tunnels in NYC/SF. Plate readers or E-ZPass often used."
+        },
+        "parking_rules": "Red curb = Fire lane. Colored curbs mean restrictions. Park in direction of travel.",
+        "mandatory_equipment": [],
+        "winter_rules": "Tire chains required in Rockies/Sierra Nevada passes during storms.",
+        "emergency_numbers": [
+            "911"
+        ]
+    },
+    "summary": "Rules are state-based but generally consistent. 'Right on Red' is standard (stop first) unless signed otherwise. Stop signs are meant literally. Do not pass stopped school buses.",
+    "common_traps": [
+        "Passing a school bus with lights flashing (Critical offense).",
+        "Move Over Law: You must change lanes for stopped emergency/service vehicles.",
+        "Speed traps in small towns.",
+        "Jaywalking (illegal crossing) in cities."
+    ],
+    "rental_and_idp_notes": "Credit card usually mandatory. Under 25 fee applies. IDP recommended for non-English licenses.",
+    "regional_variations": [
+        {
+            "region_type": "state",
+            "region_name": "California",
+            "region_code": "CA",
+            "differences": {
+                "phone_usage_rules": "Strict hands-free. Phone must be mounted."
+            },
+            "notes": "Lane splitting by motorcycles is legal. immense traffic in LA/SF."
+        },
+        {
+            "region_type": "city",
+            "region_name": "New York City",
+            "differences": {
+                "priority_rules": "NO Right on Red in NYC limits unless sign permits."
+            },
+            "notes": "Don't drive in Manhattan if you can avoid it. Expensive tolls and parking."
+        },
+        {
+            "region_type": "state",
+            "region_name": "Florida",
+            "differences": {},
+            "notes": "Headlights must be on if it is raining. Move Over law strictly enforced."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "sample",
+    "sources": [
+        "State DMVs"
+    ]
+}

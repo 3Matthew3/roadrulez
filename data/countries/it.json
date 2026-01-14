@@ -1,0 +1,71 @@
+{
+    "name_en": "Italy",
+    "name_local": "Italia",
+    "iso2": "IT",
+    "iso3": "ITA",
+    "continent": "Europe",
+    "flag": "🇮🇹",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "110 km/h on motorways in rain."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "0.00% for novice drivers (<3 years) and professionals."
+        },
+        "seatbelt_rules": "Mandatory front and rear.",
+        "child_seat_rules": "Children <150cm require appropriate restraint showing ECE compliance.",
+        "phone_usage_rules": "Handheld prohibited. Fines are steep.",
+        "headlights_rules": "Dipped headlights mandatory on highways/dual carriageways even during day.",
+        "priority_rules": "Right has priority. Roundabouts: Give way to traffic inside (usually).",
+        "tolls": {
+            "required": true,
+            "type": "toll booth",
+            "notes": "Autostrada (Green signs) are tolls. Take ticket on entry, pay on exit. 'Telepass' lanes are reserved."
+        },
+        "parking_rules": "Blue lines = Paid. White lines = Free (check signs). Yellow = Residents/Disabled only.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tires or chains carried on board mandatory in many regions (Nov 15 - Apr 15).",
+        "emergency_numbers": [
+            "112 (Carabiniere/General)",
+            "113 (Police)",
+            "118 (Medical)"
+        ]
+    },
+    "summary": "Driving in Italy requires confidence. Traffic can be chaotic in cities but follows an unspoken flow. Be terrified of 'ZTL' (Limited Traffic Zones) in historic centers—cameras will fine you automatically.",
+    "common_traps": [
+        "ZTL Zones (Zona Traffico Limitato) - Huge fines for entering historic centers.",
+        "Speed cameras (Autovelox) & Average Speed Control (Tutor).",
+        "Bus lanes usage is strictly fined.",
+        "Aggressive tailgating is common."
+    ],
+    "rental_and_idp_notes": "IDP strictly required for non-EU license holders by law (rarely asked, but legally needed).",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Rome",
+            "differences": {},
+            "notes": "Chaotic traffic. Scooters everywhere. Do not enter ZTL Trident or Centro Storico."
+        },
+        {
+            "region_type": "city",
+            "region_name": "Milan",
+            "differences": {},
+            "notes": "Area C congestion charge zone. Area B pollution zone."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "verified",
+    "sources": [
+        "ACI (Automobile Club d'Italia)"
+    ]
+}

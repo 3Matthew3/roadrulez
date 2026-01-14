@@ -1,0 +1,61 @@
+{
+    "name_en": "Australia",
+    "name_local": "Australia",
+    "iso2": "AU",
+    "iso3": "AUS",
+    "continent": "Oceania",
+    "flag": "🇦🇺",
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 100,
+            "motorway": 110,
+            "units": "km/h",
+            "notes": "Strictly enforced. School zones often 40 km/h."
+        },
+        "alcohol_limit": {
+            "value": 0.5,
+            "unit": "BAC",
+            "notes": "0.00 for learners and provisional drivers."
+        },
+        "seatbelt_rules": "Mandatory.",
+        "child_seat_rules": "Strict standards (AS/NZS). Children under 7 detailed rules.",
+        "phone_usage_rules": "Prohibited holding phone. Smart cameras detect usage.",
+        "headlights_rules": "Recommended.",
+        "priority_rules": "Give way to right at unmarked intersections (rare). Roundabouts: give way to vehicles in roundabout.",
+        "tolls": {
+            "required": true,
+            "type": "electronic",
+            "notes": "No cash booths. Must pay online or via tag within 3 days."
+        },
+        "parking_rules": "Parallel parking must be in direction of travel.",
+        "mandatory_equipment": [
+            "Licence"
+        ],
+        "winter_rules": "N/A",
+        "emergency_numbers": [
+            "000"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Mandatory (AS 1698 or ECE 22.05).",
+            "lane_splitting_rules": "Lane filtering allowed in most states at speeds < 30km/h (stopped traffic).",
+            "motorway_access": "Allowed."
+        }
+    },
+    "summary": "Vast distances. Watch for wildlife (kangaroos) at dawn/dusk. Strict speed enforcement.",
+    "common_traps": [
+        "Hook turns in Melbourne.",
+        "School zone speed limits.",
+        "Mobile phone detection cameras."
+    ],
+    "rental_and_idp_notes": "English license accepted. Others need translation/IDP.",
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "high",
+    "sources": [
+        "State Government Transport Departs"
+    ]
+}

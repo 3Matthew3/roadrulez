@@ -1,0 +1,130 @@
+{
+    "name_en": "Japan",
+    "name_local": "Nihon",
+    "iso2": "JP",
+    "iso3": "JPN",
+    "continent": "Asia",
+    "flag": "🇯🇵",
+    "header_images": [
+        "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 40,
+            "rural": 60,
+            "motorway": 100,
+            "units": "km/h",
+            "notes": "Ausgeschilderte Limits haben Vorrang. Variable Geschwindigkeitsbegrenzungen auf Autobahnen sind üblich."
+        },
+        "alcohol_limit": {
+            "value": 0.03,
+            "unit": "BAC",
+            "notes": "Praktisch Null-Toleranz. Strafen sind sehr streng, auch für Beifahrer."
+        },
+        "seatbelt_rules": "Pflicht für alle Insassen.",
+        "child_seat_rules": "Erforderlich für Kinder unter 6 Jahren.",
+        "phone_usage_rules": "Nutzung am Steuer verboten. Freisprechanlage erlaubt, aber eingeschränkt.",
+        "headlights_rules": "Müssen nachts und in Tunneln eingeschaltet sein. Fernlicht auf unbeleuchteten Straßen empfohlen.",
+        "priority_rules": "Fußgänger haben Vorrang. Stoppen für Schulbusse.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Die meisten Autobahnen sind mautpflichtig. ETC-Karte wird für Mietwagen empfohlen."
+        },
+        "parking_rules": "Streng kontrolliert. Nur ausgewiesene Parkplätze (Coin Parking) nutzen. Parken auf der Straße oft verboten.",
+        "mandatory_equipment": [
+            "Warndreieck (für Autobahnstopps)",
+            "Ersatzreifen oder Reparaturset"
+        ],
+        "winter_rules": "Winterreifen in schneereichen Regionen (Hokkaido, Tohoku, etc.) obligatorisch.",
+        "emergency_numbers": [
+            "110 (Polizei)",
+            "119 (Krankenwagen/Feuerwehr)"
+        ]
+    },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "Helmpflicht für Fahrer und Beifahrer.",
+            "lane_splitting_rules": "Durchschlängeln ist technisch nicht illegal, wenn sicher, aber Polizei kann für Überfahren von Linien strafen. Vorsicht geboten.",
+            "motorway_access": "Erlaubt für Motorräder über 125ccm. Tandemfahrten auf Autobahnen erfordern >1 Jahr Führerschein + >20 Jahre alt.",
+            "parking_rules": "Müssen ausgewiesene Motorradparkplätze nutzen. Autoparkplätze oft verboten."
+        },
+        "moped": {
+            "speed_limits": {
+                "urban": 30,
+                "rural": 30,
+                "motorway": 0,
+                "units": "km/h",
+                "notes": "Striktes 30 km/h Limit überall für <50ccm. Zweistufiges Rechtsabbiegen an großen Kreuzungen erforderlich."
+            },
+            "helmet_rules": "Pflicht.",
+            "motorway_access": "Verboten für <125ccm.",
+            "licensing_notes": "Autoführerschein beinhaltet normalerweise 50ccm Moped-Berechtigung."
+        }
+    },
+    "summary": "Linksverkehr. Rechtsabbiegen fühlt sich 'leicht' an, Linksabbiegen erfordert Aufmerksamkeit. Geschwindigkeitsbegrenzungen sind generell niedriger als in vielen Ländern und werden streng kontrolliert. Erwarten Sie Mautstraßen auf Autobahnen. Achten Sie auf Bahnübergänge (müssen vor dem Überqueren stoppen) und Fußgängervorrang.",
+    "common_traps": [
+        "Vollständiges Stoppen vor Bahnübergängen.",
+        "Kein Abbiegen bei Rot.",
+        "Strenge Fahrradgesetze; auf Radfahrer achten.",
+        "Null-Toleranz bei Alkohol."
+    ],
+    "rental_and_idp_notes": "Internationaler Führerschein (Abkommen von 1949) erforderlich. Einige Führerscheine (Schweiz, Deutschland, Frankreich etc.) benötigen eine Übersetzung.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Tokio",
+            "differences": {},
+            "notes": "Parken ist extrem teuer und streng. Nutzen Sie öffentliche Verkehrsmittel. 'Shuto Expressway' ist komplex und eng."
+        },
+        {
+            "region_type": "city",
+            "region_name": "Osaka",
+            "differences": {},
+            "notes": "Fahrer gelten als aggressiver als in Tokio. Das Überfahren von gelben Ampeln ist lokal üblich (Osaka-bashiri)."
+        },
+        {
+            "region_type": "province",
+            "region_name": "Hokkaido",
+            "differences": {
+                "speed_limits": {
+                    "urban": 50,
+                    "rural": 60,
+                    "motorway": 80,
+                    "units": "km/h",
+                    "notes": "Breite Straßen verleiten zum Rasen, aber hohe Kontrolldichte. Winterreifen Pflicht Okt-Apr."
+                }
+            },
+            "notes": "Straßen sind breiter und gerader. Vorsicht vor Wildtieren (Rehe/Füchse). Strenge Winterbedingungen."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "sample",
+    "data_coverage": "high",
+    "road_signs": [
+        {
+            "title": "Stopp",
+            "description": "Dreieck zeigt nach unten. Text: 止まれ (Tomare). Vollständig anhalten.",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Japan_road_sign_330.svg"
+        },
+        {
+            "title": "Einfahrt verboten",
+            "description": "Roter Kreis mit weißem horizontalen Balken.",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Japan_road_sign_302.svg"
+        },
+        {
+            "title": "Langsam fahren",
+            "description": "Dreieck zeigt nach unten. Text: 徐行 (Jokō). Langsam fahren (sofort bremsbereit).",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Japan_road_sign_329-A.svg"
+        }
+    ],
+    "sources": [
+        "JAF (Japan Automobile Federation)",
+        "MoFA Japan"
+    ]
+}

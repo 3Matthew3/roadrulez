@@ -1,0 +1,74 @@
+{
+    "name_en": "France",
+    "name_local": "France",
+    "iso2": "FR",
+    "iso3": "FRA",
+    "continent": "Europe",
+    "flag": "🇫🇷",
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 80,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Motorway limit drops to 110 km/h in rain. Rural roads often 80 km/h (reduced from 90)."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "0.02% for bus drivers/new drivers. Self-test breathalyzer kit recommended but fine dropped."
+        },
+        "seatbelt_rules": "Mandatory for everyone.",
+        "child_seat_rules": "Children <10 years must be in rear seats with appropriate restraint.",
+        "phone_usage_rules": "Handheld prohibited. Headsets/earphones also illegal while driving.",
+        "headlights_rules": "Must carry spare bulbs. Use in poor visibility.",
+        "priority_rules": "'Priorité à droite' (Priority to the right) applies by default unless signed otherwise (Yellow Diamond).",
+        "tolls": {
+            "required": true,
+            "type": "toll booth",
+            "notes": "Autoroutes (Blue signs) are expensive toll roads ('Péage'). Payment by card/cash/telepeage."
+        },
+        "parking_rules": "Pay attention to 'Stationnement' signs. Yellow curbs = no parking.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest (reachable from seat)"
+        ],
+        "winter_rules": "Mountain Law: Winter tires or chains required Nov-Mar in designated mountain zones (Alps, Pyrenees).",
+        "emergency_numbers": [
+            "112 (European Emergency)",
+            "15 (Medical)",
+            "17 (Police)"
+        ]
+    },
+    "summary": "France has an extensive toll network. Watch out for 'Priorité à droite' in rural towns—traffic from the right has priority even if you are on the main-looking road unless you see a 'Priority Road' sign.",
+    "common_traps": [
+        "Priorité à droite (Right of way) - biggest cause of accidents for tourists.",
+        "Speed cameras hidden in unmarked cars.",
+        "Radar detectors are illegal (huge fines).",
+        "Crit'Air sticker needed for Paris/Lyon."
+    ],
+    "rental_and_idp_notes": "US licenses generally valid for short stays. IDP recommended.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Paris",
+            "differences": {
+                "speed_limits": {
+                    "urban": 30,
+                    "rural": 70,
+                    "motorway": 70,
+                    "units": "km/h",
+                    "notes": "City-wide 30 km/h limit. Peripherique (Ring Road) is 70 km/h."
+                }
+            },
+            "notes": "Crit'Air sticker mandatory. Don't drive in Paris if you can avoid it. Gridlock is standard."
+        }
+    ],
+    "last_verified": "2026-01-11",
+    "status": "verified",
+    "sources": [
+        "Securite Routiere",
+        "Service-Public.fr"
+    ]
+}
