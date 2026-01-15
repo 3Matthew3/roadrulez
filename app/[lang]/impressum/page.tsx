@@ -15,7 +15,7 @@ export default async function ImpressumPage({ params }: { params: { lang: string
                         {isDe ? "Angaben gemäß § 5 TMG" : "Information according to § 5 TMG"}
                     </h2>
                     <div className="space-y-4 font-mono text-sm bg-black/20 p-4 rounded-lg border border-zinc-800/50">
-                        <p className="text-amber-500 mb-2">// {isDe ? "BITTE ERSETZEN SIE DIESE PLATZHALTER" : "PLEASE REPLACE THESE PLACEHOLDERS"}</p>
+                        <p className="text-amber-500 mb-2"> {/* {isDe ? "BITTE ERSETZEN SIE DIESE PLATZHALTER" : "PLEASE REPLACE THESE PLACEHOLDERS"}*/}</p>
                         <p>
                             [Company Name / Legal Entity]<br />
                             [Street Address]<br />
