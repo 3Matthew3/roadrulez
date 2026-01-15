@@ -13,6 +13,7 @@
     },
     "home": {
         "hero_title_1": "Driving rules,",
+        "search_placeholder": "Search a country...",
         "hero_title_2": "everywhere in the world.",
         "hero_subtitle": "Check traffic laws, speed limits, and road rules before you travel. Avoid fines and drive safely with our comprehensive global guide.",
         "cta_map": "Open World Map",
