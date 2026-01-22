@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520">
+  <path d="M 300,510 10,10 590,10 z" fill="#fff" stroke="#003399" stroke-width="40"/>
+  <text x="300" y="180" font-family="sans-serif" font-weight="bold" font-size="120" fill="#003399" text-anchor="middle">徐行</text>
+  <text x="300" y="300" font-family="sans-serif" font-weight="bold" font-size="80" fill="#003399" text-anchor="middle">SLOW</text>
+</svg>

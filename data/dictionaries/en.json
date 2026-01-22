@@ -9,7 +9,9 @@
         "disclaimer": "Rules may change. Always verify with official sources.",
         "summary": "Summary",
         "right": "Right",
-        "left": "Left"
+        "left": "Left",
+        "yes": "Yes",
+        "no": "No"
     },
     "home": {
         "hero_title_1": "Driving rules,",
@@ -67,7 +69,10 @@
         "child_seats": "Child Seats",
         "priority": "Priority",
         "headlights": "Headlights",
-        "parking": "Parking"
+        "parking": "Parking",
+        "required": "Required",
+        "type": "Type",
+        "tip": "Tip"
     },
     "extra": {
         "road_signs": "Common Road Signs",

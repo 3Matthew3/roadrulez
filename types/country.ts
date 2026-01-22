@@ -70,6 +70,7 @@ export interface CountryData {
     // Notes
     summary: string
     common_traps: string[]
+    idp_requirement?: string
     rental_and_idp_notes: string
 
     // Regional

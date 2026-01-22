@@ -23,7 +23,7 @@
         },
         "alcohol_limit": {
             "value": 0.03,
-            "unit": "BAC",
+            "unit": "‰",
             "notes": "Praktisch Null-Toleranz. Strafen sind sehr streng, auch für Beifahrer."
         },
         "seatbelt_rules": "Pflicht für alle Insassen.",
@@ -34,9 +34,9 @@
         "tolls": {
             "required": true,
             "type": "mixed",
-            "notes": "Die meisten Autobahnen sind mautpflichtig. ETC-Karte wird für Mietwagen empfohlen."
+            "notes": "Autobahnen fast immer mautpflichtig. Zahlen Sie bar (Kasse 'General'), Kreditkarte (teils möglich) oder mieten Sie eine ETC-Karte mit dem Auto (empfohlen für Rabatte und einfache Durchfahrt)."
         },
-        "parking_rules": "Streng kontrolliert. Nur ausgewiesene Parkplätze (Coin Parking) nutzen. Parken auf der Straße oft verboten.",
+        "parking_rules": "Parken auf der Straße ist fast überall verboten. Nutzen Sie 'Coin Parking' (Parkplätze mit Bügel/Schranke). Auto muss beim Kauf nachgewiesen werden (Shako-shomei).",
         "mandatory_equipment": [
             "Warndreieck (für Autobahnstopps)",
             "Ersatzreifen oder Reparaturset"
@@ -67,26 +67,27 @@
             "licensing_notes": "Autoführerschein beinhaltet normalerweise 50ccm Moped-Berechtigung."
         }
     },
-    "summary": "Linksverkehr. Rechtsabbiegen fühlt sich 'leicht' an, Linksabbiegen erfordert Aufmerksamkeit. Geschwindigkeitsbegrenzungen sind generell niedriger als in vielen Ländern und werden streng kontrolliert. Erwarten Sie Mautstraßen auf Autobahnen. Achten Sie auf Bahnübergänge (müssen vor dem Überqueren stoppen) und Fußgängervorrang.",
+    "summary": "Linksverkehr. Japan hat eine sehr höfliche, aber regelkonforme Fahrkultur. 'Stopp' bedeutet wirklich Stopp (Räder müssen ruhen). Alkohol am Steuer wird nicht toleriert (0.0%). Mautstraßen sind teuer und allgegenwärtig. Parken ist nur auf ausgewiesenen Plätzen erlaubt.",
     "common_traps": [
-        "Vollständiges Stoppen vor Bahnübergängen.",
-        "Kein Abbiegen bei Rot.",
-        "Strenge Fahrradgesetze; auf Radfahrer achten.",
-        "Null-Toleranz bei Alkohol."
+        "Vollständiges Stoppen vor Bahnübergängen ist Pflicht.",
+        "Kein 'Rechtsabbiegen bei Rot' (auch kein Linksabbiegen bei Rot).",
+        "Ampeln schalten oft gleichzeitig Rot für alle, bevor Grün kommt.",
+        "Radfahrer fahren oft auf dem Gehweg oder gegen die Richtung."
     ],
-    "rental_and_idp_notes": "Internationaler Führerschein (Abkommen von 1949) erforderlich. Einige Führerscheine (Schweiz, Deutschland, Frankreich etc.) benötigen eine Übersetzung.",
+    "idp_requirement": "Genfer Abkommen von 1949",
+    "rental_and_idp_notes": "Zwingend erforderlich: Internationaler Führerschein nach dem Genfer Abkommen von 1949. Das Wiener Abkommen (1968), das in Europa üblich ist, wird NICHT akzeptiert! Fahrer aus der Schweiz, Deutschland und Frankreich benötigen eine offizielle japanische Übersetzung (JAF), kein IDP.",
     "regional_variations": [
         {
             "region_type": "city",
             "region_name": "Tokio",
             "differences": {},
-            "notes": "Parken ist extrem teuer und streng. Nutzen Sie öffentliche Verkehrsmittel. 'Shuto Expressway' ist komplex und eng."
+            "notes": "Vermeiden Sie das Auto in den zentralen Bezirken (Shinjuku, Shibuya). Parken kostet oft >10€/Stunde. Der 'Shuto Expressway' ist eng, kurvig und hat viele Ausfahrten auf der 'falschen' Seite."
         },
         {
             "region_type": "city",
             "region_name": "Osaka",
             "differences": {},
-            "notes": "Fahrer gelten als aggressiver als in Tokio. Das Überfahren von gelben Ampeln ist lokal üblich (Osaka-bashiri)."
+            "notes": "Lokale Fahrweise ist direkter und aggressiver als in Tokio. Hupen ist häufiger. Achten Sie auf spontane Spurwechsel."
         },
         {
             "region_type": "province",
@@ -97,34 +98,35 @@
                     "rural": 60,
                     "motorway": 80,
                     "units": "km/h",
-                    "notes": "Breite Straßen verleiten zum Rasen, aber hohe Kontrolldichte. Winterreifen Pflicht Okt-Apr."
+                    "notes": "Im Winter oft reduziert. 'Whiteout'-Gefahr bei Schnee."
                 }
             },
-            "notes": "Straßen sind breiter und gerader. Vorsicht vor Wildtieren (Rehe/Füchse). Strenge Winterbedingungen."
+            "notes": "Weite, gerade Straßen verleiten zum Rasen (Blitzer!). Im Winter sind Winterreifen Pflicht. Vorsicht vor Wildwechsel (Ezo-Hirsche)."
         }
     ],
-    "last_verified": "2026-01-11",
-    "status": "sample",
+    "last_verified": "2026-01-21",
+    "status": "verified",
     "data_coverage": "high",
     "road_signs": [
         {
             "title": "Stopp",
-            "description": "Dreieck zeigt nach unten. Text: 止まれ (Tomare). Vollständig anhalten.",
-            "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Japan_road_sign_330.svg"
+            "description": "Dreieck auf der Spitze. Rot. Text: 止まれ (Tomare).",
+            "image_url": "/images/signs/jp/stop.svg"
         },
         {
             "title": "Einfahrt verboten",
-            "description": "Roter Kreis mit weißem horizontalen Balken.",
-            "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Japan_road_sign_302.svg"
+            "description": "Roter Kreis mit horizontalem Balken.",
+            "image_url": "/images/signs/jp/no_entry.svg"
         },
         {
             "title": "Langsam fahren",
-            "description": "Dreieck zeigt nach unten. Text: 徐行 (Jokō). Langsam fahren (sofort bremsbereit).",
-            "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Japan_road_sign_329-A.svg"
+            "description": "Dreieck auf der Spitze. Blau/Weiß. Text: 徐行 (Jokō).",
+            "image_url": "/images/signs/jp/slow_down.svg"
         }
     ],
     "sources": [
         "JAF (Japan Automobile Federation)",
-        "MoFA Japan"
+        "Metropolitan Police Department (Tokyo)",
+        "MOFA Japan"
     ]
 }

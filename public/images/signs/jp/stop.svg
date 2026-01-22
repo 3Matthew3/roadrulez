@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520">
+  <path d="M 300,510 10,10 590,10 z" fill="#c00" stroke="#fff" stroke-width="20"/>
+  <text x="300" y="180" font-family="sans-serif" font-weight="bold" font-size="120" fill="white" text-anchor="middle">止まれ</text>
+  <text x="300" y="300" font-family="sans-serif" font-weight="bold" font-size="80" fill="white" text-anchor="middle">STOP</text>
+</svg>

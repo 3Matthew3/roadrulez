@@ -9,7 +9,9 @@
         "disclaimer": "Regeln können sich ändern. Bitte immer bei offiziellen Stellen prüfen.",
         "summary": "Zusammenfassung",
         "right": "Rechts",
-        "left": "Links"
+        "left": "Links",
+        "yes": "Ja",
+        "no": "Nein"
     },
     "home": {
         "hero_title_1": "Verkehrsregeln,",
@@ -67,7 +69,10 @@
         "child_seats": "Kindersitze",
         "priority": "Vorfahrt",
         "headlights": "Lichtpflicht",
-        "parking": "Parken"
+        "parking": "Parken",
+        "required": "Erforderlich",
+        "type": "Typ",
+        "tip": "Tipp"
     },
     "extra": {
         "road_signs": "Wichtige Verkehrszeichen",
