@@ -80,6 +80,7 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                 },
                 center: [0, 20],
                 zoom: 2,
+                renderWorldCopies: false,
                 // maxBounds: [[-180, -85], [180, 85]] // Removed to prevent potential bounds error during init
             })
         } catch (e) {
@@ -97,6 +98,9 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                 console.error("Failed to load country data", e)
                 return
             }
+
+            // FILTER: Remove Antarctica
+            data.features = data.features.filter((f: any) => f.id !== 'ATA' && f.properties.name !== 'Antarctica');
 
             // 2. Inject Color Index (0-4) into properties
             data.features = data.features.map((f: any, i: number) => ({
