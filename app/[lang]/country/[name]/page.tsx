@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import { ComingSoonCountry } from "@/components/coming-soon-country"
 import { getCountryByName, getAllCountries } from "@/lib/countries"
 import RegionSelector from "@/components/country/region-selector"
 import VehicleSpecificsCard from "@/components/country/vehicle-specifics-card"
@@ -43,7 +44,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     ])
 
     if (!data) {
-        return notFound()
+        return <ComingSoonCountry />
     }
 
     // Find localized name from index
