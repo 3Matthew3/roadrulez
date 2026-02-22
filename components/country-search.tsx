@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2, Search } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 interface Country {
@@ -59,31 +60,11 @@ export function CountrySearch() {
             })
     }, [debouncedQuery])
 
-    const handleSelect = (countryName: string) => {
-        // Router push needs scope.
-        // Ideally we redirect to /[lang]/country/[EnglishName] because our files are key-based (mostly English keys or ISO).
-        // The API returns the localized name in 'common'. But we need the ISO or fixed english name for the URL route `getCountryByName` logic?
-        // Actually `getCountryByName` in lib checks ISO too.
-        // Let's pass the raw name, but if it is localized, `getCountryByName` might fail if it only checks `name` field in index (which is English).
-        // FIX: The backend `getCountryByName` checks `name` (EN) and `iso2`.
-        // So we should navigate using the English name or ISO.
-        // Let's rely on the search API returning a distinct identifier.
-        // I will update the API to return cca2 (ISO) and use that for navigation?
-        // Or navigation should be pretty name?
-        // Let's use name.common for display, but filter returns objects.
-        // I'll assume for now navigation by name works if the lib supports it, or I strictly use English name?
-        // The API response I designed returns `name: { common: ... }` which IS localized.
-        // This is risky for routing.
-        // I should update the API to return the "route key" (English name) as well.
-        // Let's assume for this step I navigate by the name displayed, which is Localized.
-        // `getCountryByName` in lib only checks `index.find(p => p.name.toLowerCase() === query)`.
-        // `p.name` in index.json IS English.
-        // So if I search "Deutschland" -> API returns "Deutschland", I navigate to /country/Deutschland.
-        // `getCountryByName` will check if "Deutschland" == "Germany" (No).
-        // It will fail.
-        // I need to change navigation to use English name or ISO code.
-        router.push(window.location.pathname.split('/').slice(0, 2).join('/') + `/country/${countryName}`)
+    const handleSelect = (iso2: string) => {
+        const langPrefix = window.location.pathname.split('/').slice(0, 2).join('/')
+        router.push(`${langPrefix}/country/${iso2.toUpperCase()}`)
     }
+
     // ...
 
     return (
@@ -114,10 +95,12 @@ export function CountrySearch() {
                             onClick={() => handleSelect(country.routeKey)}
                         >
                             <div className="relative h-6 w-10 overflow-hidden rounded shadow-sm border">
-                                <img
+                                <Image
                                     src={country.flags.svg}
                                     alt={country.flags.alt || `Flag of ${country.name.common}`}
-                                    className="h-full w-full object-cover"
+                                    fill
+                                    className="object-cover"
+                                    unoptimized
                                 />
                             </div>
                             <span className="font-medium">{country.name.common}</span>

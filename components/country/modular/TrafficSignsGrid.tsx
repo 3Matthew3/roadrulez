@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { CountryData } from "@/types/country"
 
 interface TrafficSignsGridProps {
@@ -15,7 +16,7 @@ export default function TrafficSignsGrid({ data, dict }: TrafficSignsGridProps) 
                 {data.road_signs.map((sign, i) => (
                     <div key={i} className="group relative rounded-xl bg-slate-900/50 border border-slate-800 p-4 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors">
                         <div className="h-24 w-24 mb-3 relative">
-                            <img src={sign.image_url} alt={sign.title} className="h-full w-full object-contain" />
+                            <Image src={sign.image_url} alt={sign.title} fill className="object-contain" unoptimized />
                         </div>
                         <span className="font-medium text-white mb-1">{sign.title}</span>
                         <span className="text-xs text-slate-500 leading-tight">{sign.description}</span>
