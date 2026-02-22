@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { getDictionary } from "@/lib/dictionaries"
+import { Suspense } from "react"
+import { PlausibleProvider } from "@/components/plausible-provider"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,10 +15,6 @@ export const metadata: Metadata = {
     title: "RoadRulez - Drive Safe, Everywhere",
     description: "Your ultimate guide to traffic rules and driving etiquette around the world.",
 };
-
-import { getDictionary } from "@/lib/dictionaries"
-
-// ... imports
 
 export default async function RootLayout({
     children,
@@ -29,9 +28,13 @@ export default async function RootLayout({
     return (
         <html lang={params.lang}>
             <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
+                {/* Plausible tracker — must be in Suspense because it uses useSearchParams */}
+                <Suspense fallback={null}>
+                    <PlausibleProvider />
+                </Suspense>
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="dark" // Force dark mode as default per design preference
+                    defaultTheme="dark"
                     enableSystem={false}
                     disableTransitionOnChange
                 >
