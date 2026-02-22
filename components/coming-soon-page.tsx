@@ -10,12 +10,12 @@ export function ComingSoonPage() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
-        if (password === "1234") {
+        const correctPassword = process.env.NEXT_PUBLIC_BETA_PASSWORD ?? "1234"
+        if (password === correctPassword) {
             setIsAuthenticated(true)
             setError(false)
         } else {
             setError(true)
-            // Shake effect or clear could go here
         }
     }
 
