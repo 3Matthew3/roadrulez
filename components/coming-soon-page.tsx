@@ -1,12 +1,26 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 
 export function ComingSoonPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [password, setPassword] = useState("")
     const [error, setError] = useState(false)
+
+    // Deterministic streak values — avoids hydration mismatch from Math.random() in render
+    const streaks = useMemo(() => {
+        const sr = (seed: number) => { const x = Math.sin(seed + 1) * 10000; return x - Math.floor(x) }
+        return Array.from({ length: 20 }, (_, i) => ({
+            isRed: i % 2 === 0,
+            height: sr(i * 6) * 200 + 100,
+            width: sr(i * 6 + 1) * 2 + 1,
+            duration: sr(i * 6 + 2) * 2 + 3,
+            delay: sr(i * 6 + 3) * 5,
+            top: sr(i * 6 + 4) * 100,
+            opacity: sr(i * 6 + 5) * 0.3 + 0.1,
+        }))
+    }, [])
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
@@ -55,38 +69,28 @@ export function ComingSoonPage() {
                 {/* Slanted Container for dynamic angle */}
                 <div className="absolute inset-0 transform -skew-y-12 scale-150 origin-center">
                     {/* Light Streaks */}
-                    {Array.from({ length: 20 }).map((_, i) => {
-                        const isRed = i % 2 === 0; // Alternate between "Heads" (White/Blue) and "Tails" (Red)
-                        const color = isRed ? "bg-red-500" : "bg-cyan-100";
-                        const height = Math.random() * 200 + 100; // Random length
-                        const width = Math.random() * 2 + 1; // Random thickness
-                        const duration = Math.random() * 2 + 3; // Random speed
-                        const delay = Math.random() * 5;
-                        const top = Math.random() * 100;
-                        const opacity = Math.random() * 0.3 + 0.1;
-
+                    {streaks.map((s, i) => {
+                        const color = s.isRed ? "bg-red-500" : "bg-cyan-100";
                         return (
                             <motion.div
                                 key={i}
                                 className={`absolute ${color} rounded-full blur-[1px]`}
                                 style={{
-                                    height: `${width}px`,
-                                    width: `${height}px`,
-                                    top: `${top}%`,
-                                    left: "-20%", // Start off screen
-                                    opacity: opacity,
-                                    boxShadow: isRed
+                                    height: `${s.width}px`,
+                                    width: `${s.height}px`,
+                                    top: `${s.top}%`,
+                                    left: "-20%",
+                                    opacity: s.opacity,
+                                    boxShadow: s.isRed
                                         ? "0 0 10px 1px rgba(239, 68, 68, 0.5)"
                                         : "0 0 10px 1px rgba(207, 250, 254, 0.5)"
                                 }}
-                                animate={{
-                                    x: ["0vw", "150vw"], // Use viewport width units for consistent travel
-                                }}
+                                animate={{ x: ["0vw", "150vw"] }}
                                 transition={{
-                                    duration: duration,
+                                    duration: s.duration,
                                     repeat: Infinity,
                                     ease: "linear",
-                                    delay: delay,
+                                    delay: s.delay,
                                 }}
                             />
                         )
