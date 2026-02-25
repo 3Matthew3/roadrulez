@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
 import fs from "fs/promises";
 import path from "path";
 
@@ -14,11 +13,15 @@ export type AuditAction =
     | "login_failure"
     | "lockout";
 
+type JsonPrimitive = string | number | boolean | null;
+type JsonValue = JsonPrimitive | JsonObject | JsonValue[];
+type JsonObject = { [key: string]: JsonValue };
+
 /**
  * Log audit events to a fallback file if database is unavailable.
  * Used when primary audit logging fails.
  */
-async function writeFallbackAuditLog(data: any): Promise<void> {
+async function writeFallbackAuditLog(data: Record<string, unknown>): Promise<void> {
     try {
         const logDir = path.join(process.cwd(), ".audit-logs");
         await fs.mkdir(logDir, { recursive: true });
@@ -43,8 +46,8 @@ export async function createAuditLog({
     entityType: string;
     entityId: string;
     action: AuditAction;
-    beforeValue?: Record<string, unknown>;
-    afterValue?: Record<string, unknown>;
+    beforeValue?: JsonObject;
+    afterValue?: JsonObject;
     note?: string;
 }) {
     try {
@@ -54,8 +57,8 @@ export async function createAuditLog({
                 entityType,
                 entityId,
                 action,
-                beforeValue: (beforeValue ?? undefined) as Prisma.JsonObject | undefined,
-                afterValue: (afterValue ?? undefined) as Prisma.JsonObject | undefined,
+                beforeValue: beforeValue ?? undefined,
+                afterValue: afterValue ?? undefined,
                 note,
             },
         });

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { Suspense } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useForm } from "react-hook-form"
@@ -15,7 +16,7 @@ const loginSchema = z.object({
 })
 type LoginForm = z.infer<typeof loginSchema>
 
-export default function AdminLoginPage() {
+function AdminLoginPageContent() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const callbackUrl = searchParams.get("callbackUrl") ?? "/admin"
@@ -425,5 +426,13 @@ export default function AdminLoginPage() {
                 }
             `}</style>
         </div>
+    )
+}
+
+export default function AdminLoginPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-black" />}>
+            <AdminLoginPageContent />
+        </Suspense>
     )
 }
