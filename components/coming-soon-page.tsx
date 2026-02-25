@@ -13,6 +13,7 @@ interface Streak {
     opacity: number;
 }
 
+export function ComingSoonPage() {
     const [mounted, setMounted] = useState(false)
 
     // Only render animations client-side to avoid hydration mismatch

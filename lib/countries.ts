@@ -51,8 +51,8 @@ function dbToCountryData(
     // ── Regional variations from Region rows ─────────────────────────────────
     // Filter out any null/undefined regions and use type guard
     const regional_variations: RegionalVariation[] = (country.regions ?? [])
-        .filter((region): region is NonNullable<typeof region> => Boolean(region))
-        .map((region) => {
+        .filter((region: any): region is NonNullable<typeof region> => Boolean(region))
+        .map((region: any) => {
             const diffs: Partial<TrafficRules> = buildRulesFromRows(
                 region.ruleOverrides ?? []
             )

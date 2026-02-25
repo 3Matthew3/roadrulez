@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from "@/lib/constants";
+import { SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/constants";
 
 const locales = SUPPORTED_LOCALES;
 const defaultLocale = DEFAULT_LOCALE;
@@ -67,8 +67,8 @@ export async function middleware(request: NextRequest) {
     if (pathnameIsMissingLocale) {
         const localeCookie = request.cookies.get("NEXT_LOCALE")?.value;
 
-        let locale = defaultLocale;
-        if (localeCookie && locales.includes(localeCookie)) {
+        let locale: Locale = defaultLocale;
+        if (localeCookie && isValidLocale(localeCookie)) {
             locale = localeCookie;
         } else {
             const acceptLanguage = request.headers.get("Accept-Language");
