@@ -1,4 +1,4 @@
-import { PrismaClient, UserRole, CountryStatus, DrivingSide, IssuePriority } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import * as fs from "fs";
 import * as path from "path";
@@ -57,7 +57,7 @@ async function main() {
             email: "admin@roadrulez.com",
             name: "Admin User",
             passwordHash: await bcrypt.hash(ADMIN_PASSWORD!, 12),
-            role: UserRole.ADMIN,
+            role: "ADMIN",
         },
     });
 
@@ -68,7 +68,7 @@ async function main() {
             email: "editor@roadrulez.com",
             name: "Editor User",
             passwordHash: await bcrypt.hash(EDITOR_PASSWORD!, 12),
-            role: UserRole.EDITOR,
+            role: "EDITOR",
         },
     });
 
@@ -165,7 +165,7 @@ async function main() {
             nameLocal: "Deutschland",
             continent: "Europe",
             flag: "🇩🇪",
-            drivingSide: DrivingSide.RIGHT,
+            drivingSide: "RIGHT",
             summary:
                 "Germany has some of Europe's most structured traffic rules. The famous Autobahn has no general speed limit, though advisory limits of 130 km/h apply. Strict drink-driving laws with 0.5‰ BAC limit (0.0‰ for new drivers). Winter tyres required in wintry conditions.",
             commonTraps: [
@@ -190,7 +190,7 @@ async function main() {
                         "EU-Führerschein ausreichend. Für Nicht-EU-Führerscheine wird ein internationaler Führerschein empfohlen.",
                 },
             },
-            status: CountryStatus.VERIFIED,
+            status: "VERIFIED",
             verifiedStatus: "Manually verified against ADAC and German traffic law",
             lastVerifiedAt: new Date("2025-01-15"),
             updatedById: adminUser.id,
@@ -209,7 +209,7 @@ async function main() {
             nameLocal: "日本",
             continent: "Asia",
             flag: "🇯🇵",
-            drivingSide: DrivingSide.LEFT,
+            drivingSide: "LEFT",
             summary:
                 "Japan has strict traffic laws, left-side driving, and unique road signs. Speed limits are lower than in Europe. Alcohol limit is 0.0‰. Winter tyres required in snowy regions.",
             commonTraps: [
@@ -235,7 +235,7 @@ async function main() {
                         "外国人運転者には国際運転免許証が必要です。",
                 },
             },
-            status: CountryStatus.VERIFIED,
+            status: "VERIFIED",
             verifiedStatus: "Manually verified against JAF and Japanese traffic law",
             lastVerifiedAt: new Date("2025-01-15"),
             updatedById: adminUser.id,
@@ -254,7 +254,7 @@ async function main() {
             nameLocal: "United States",
             continent: "North America",
             flag: "🇺🇸",
-            drivingSide: DrivingSide.RIGHT,
+            drivingSide: "RIGHT",
             summary:
                 "The USA has state-specific traffic laws, right-side driving, and generally higher speed limits. Alcohol limits vary by state. Winter tyres are not mandatory except in some regions.",
             commonTraps: [
@@ -266,7 +266,7 @@ async function main() {
             rentalAndIdpNotes: "IDP recommended for foreign drivers. State laws may differ.",
             dataCoverage: "medium",
             localeContent: {},
-            status: CountryStatus.VERIFIED,
+            status: "VERIFIED",
             verifiedStatus: "Manually verified against DMV and state traffic law",
             lastVerifiedAt: new Date("2025-01-15"),
             updatedById: adminUser.id,
@@ -285,7 +285,7 @@ async function main() {
             nameLocal: "France",
             continent: "Europe",
             flag: "🇫🇷",
-            drivingSide: DrivingSide.RIGHT,
+            drivingSide: "RIGHT",
             summary:
                 "France has strict traffic laws, right-side driving, and mandatory equipment. Alcohol limit is 0.5‰. Speed limits are enforced by cameras. Winter tyres required in mountain regions.",
             commonTraps: [
@@ -311,7 +311,7 @@ async function main() {
                         "IDP recommandé pour les conducteurs non-UE. Équipement obligatoire.",
                 },
             },
-            status: CountryStatus.VERIFIED,
+            status: "VERIFIED",
             verifiedStatus: "Manually verified against French traffic law",
             lastVerifiedAt: new Date("2025-01-15"),
             updatedById: adminUser.id,
@@ -330,7 +330,7 @@ async function main() {
             nameLocal: "España",
             continent: "Europe",
             flag: "🇪🇸",
-            drivingSide: DrivingSide.RIGHT,
+            drivingSide: "RIGHT",
             summary:
                 "Spain has strict traffic laws, right-side driving, and mandatory equipment. Alcohol limit is 0.5‰. Speed limits are enforced by cameras. Winter tyres required in mountain regions.",
             commonTraps: [
@@ -356,7 +356,7 @@ async function main() {
                         "IDP recomendado para conductores no UE. Equipamiento obligatorio.",
                 },
             },
-            status: CountryStatus.VERIFIED,
+            status: "VERIFIED",
             verifiedStatus: "Manually verified against Spanish traffic law",
             lastVerifiedAt: new Date("2025-01-15"),
             updatedById: adminUser.id,
@@ -478,7 +478,7 @@ async function main() {
             message: "The motorway speed limit section is misleading. Some Autobahn sections have mandatory 120 km/h limits near cities.",
             contact: "user@example.com",
             status: "OPEN",
-            priority: IssuePriority.MEDIUM,
+            priority: "MEDIUM",
             tags: ["speed", "motorway", "accuracy"],
         },
     });
