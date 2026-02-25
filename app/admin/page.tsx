@@ -142,7 +142,7 @@ export default async function AdminDashboard() {
                             {data.recentActivity.length === 0 && (
                                 <p className="text-sm text-muted-foreground">No recent activity</p>
                             )}
-                            {data.recentActivity.map((log) => (
+                            {data.recentActivity.map((log: (typeof data.recentActivity)[number]) => (
                                 <div key={log.id} className="flex items-start gap-3 text-sm">
                                     <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-primary" />
                                     <div className="flex-1 min-w-0">
@@ -181,7 +181,7 @@ export default async function AdminDashboard() {
                             {data.recentIssues.length === 0 && (
                                 <p className="text-sm text-muted-foreground">No open issues 🎉</p>
                             )}
-                            {data.recentIssues.map((issue) => (
+                            {data.recentIssues.map((issue: (typeof data.recentIssues)[number]) => (
                                 <div key={issue.id} className="flex items-start justify-between gap-2 text-sm">
                                     <div className="flex-1 min-w-0">
                                         <p className="font-medium truncate">{issue.message.slice(0, 60)}...</p>
