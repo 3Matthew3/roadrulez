@@ -398,7 +398,7 @@ export default function CountryDetailPage() {
                                                     by {log.actorUser?.name ?? log.actorUser?.email ?? "System"}
                                                 </p>
                                                 {log.note && (
-                                                    <p className="text-sm italic text-muted-foreground">"{log.note}"</p>
+                                                    <p className="text-sm italic text-muted-foreground">&quot;{log.note}&quot;</p>
                                                 )}
                                                 {log.afterValue && (
                                                     <details className="mt-1">

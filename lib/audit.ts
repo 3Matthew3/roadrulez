@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import fs from "fs/promises";
 import path from "path";
 
@@ -53,10 +54,8 @@ export async function createAuditLog({
                 entityType,
                 entityId,
                 action,
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                beforeValue: (beforeValue ?? undefined) as any,
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                afterValue: (afterValue ?? undefined) as any,
+                beforeValue: (beforeValue ?? undefined) as Prisma.InputJsonValue,
+                afterValue: (afterValue ?? undefined) as Prisma.InputJsonValue,
                 note,
             },
         });
