@@ -2,7 +2,6 @@ import { getServerSession as nextAuthGetServerSession, NextAuthOptions } from "n
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
-import { UserRole } from "@prisma/client";
 import { NextResponse } from "next/server";
 import {
     checkLoginAllowed,
@@ -11,6 +10,11 @@ import {
     extractClientIp,
 } from "@/lib/rate-limit";
 import { createAuditLog } from "@/lib/audit";
+
+const USER_ROLE = {
+    ADMIN: "ADMIN",
+    EDITOR: "EDITOR",
+} as const;
 
 export const authOptions: NextAuthOptions = {
     session: {
@@ -145,7 +149,7 @@ export async function requireAuth() {
 export async function requireAdmin() {
     const session = await getServerSession();
     const role = (session?.user as any)?.role;
-    if (!session?.user || role !== UserRole.ADMIN) {
+    if (!session?.user || role !== USER_ROLE.ADMIN) {
         return null;
     }
     return session;
@@ -154,7 +158,7 @@ export async function requireAdmin() {
 export async function requireEditor() {
     const session = await getServerSession();
     const role = (session?.user as any)?.role;
-    if (!session?.user || (role !== UserRole.ADMIN && role !== UserRole.EDITOR)) {
+    if (!session?.user || (role !== USER_ROLE.ADMIN && role !== USER_ROLE.EDITOR)) {
         return null;
     }
     return session;
