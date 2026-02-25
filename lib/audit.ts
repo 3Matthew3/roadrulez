@@ -54,8 +54,8 @@ export async function createAuditLog({
                 entityType,
                 entityId,
                 action,
-                beforeValue: (beforeValue ?? undefined) as Prisma.InputJsonValue,
-                afterValue: (afterValue ?? undefined) as Prisma.InputJsonValue,
+                beforeValue: (beforeValue ?? undefined) as Prisma.JsonObject | undefined,
+                afterValue: (afterValue ?? undefined) as Prisma.JsonObject | undefined,
                 note,
             },
         });
