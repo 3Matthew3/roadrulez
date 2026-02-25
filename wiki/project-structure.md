@@ -1,31 +1,12 @@
-# Project Overview: RoadRules Worldwide
+# Project Overview
 
-## Introduction
-RoadRules Worldwide is a Next.js web application designed to help travelers understand driving rules in different countries. It features an interactive 3D map, a country search, and detailed rule pages.
-
-## Key Directories
-
-### `/app`
-Contains the Next.js App Router pages and layouts.
-- `page.tsx`: The Homepage.
-- `layout.tsx`: Global layout (Header/Footer).
-- `map/page.tsx`: The interactive map view.
-- `country/[name]/page.tsx`: The dynamic details page for each country.
-
-### `/components`
-React components.
-- `map/`: Contains the MapLibre interactive map logic.
-- `country/`: Specific components for the country detail page (e.g., `region-selector.tsx`).
-- `ui/`: Reusable UI elements (Buttons, Accordions, Badges).
-
-### `/data`
-File-based database.
-- `countries/`: JSON files storing the actual rule data (e.g., `jp.json`, `de.json`).
-
-### `/lib`
-Utility functions.
-- `countries.ts`: Logic to read and parse the JSON data files.
-
-### `/types`
-TypeScript definitions.
-- `country.ts`: Defines the strict schema for what a "Country" object looks like (rules, speed limits, etc.).
+> This file has been replaced by the comprehensive wiki.
+> See **[01-overview.md](./01-overview.md)** for the full project overview.
+>
+> **Full Wiki Index:**
+> - [01 — Overview & Tech Stack](./01-overview.md)
+> - [02 — Routing & URLs](./02-routing.md)
+> - [03 — Data System](./03-data-system.md)
+> - [04 — Country Pages](./04-country-pages.md)
+> - [05 — Admin Panel](./05-admin-panel.md)
+> - [06 — How-To Guides](./06-how-to.md)

@@ -34,6 +34,7 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toast": "^1.2.15",
+    "@sentry/nextjs": "^10.39.0",
     "@tanstack/react-table": "^8.21.3",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
@@ -52,6 +53,15 @@
     "recharts": "^3.7.0",
     "tailwind-merge": "^2.2.0",
     "zod": "^4.3.6"
+  },
+  "dependenciesMeta": {
+    "@sentry/nextjs": {
+      "optional": true
+    }
+  },
+  "recommendedDevSetup": {
+    "installSentry": "npm install --save @sentry/nextjs",
+    "sentryWizard": "npx @sentry/wizard -i nextjs -p next"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

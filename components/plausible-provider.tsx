@@ -11,6 +11,8 @@ import { usePathname, useSearchParams } from "next/navigation"
 
 const SITE_ID = process.env.NEXT_PUBLIC_PLAUSIBLE_SITE_ID ?? "roadrulez.com"
 
+let plausibleInitialized = false;
+
 export function PlausibleProvider() {
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -20,12 +22,15 @@ export function PlausibleProvider() {
 
         import("@plausible-analytics/tracker").then((mod) => {
             tracker = mod
-            mod.init({
-                domain: SITE_ID,
-                autoCapturePageviews: false, // we fire manually so we control timing
-                outboundLinks: true,
-                captureOnLocalhost: false,
-            })
+            if (!plausibleInitialized) {
+                mod.init({
+                    domain: SITE_ID,
+                    autoCapturePageviews: false, // we fire manually so we control timing
+                    outboundLinks: true,
+                    captureOnLocalhost: false,
+                })
+                plausibleInitialized = true;
+            }
         })
 
         return () => {

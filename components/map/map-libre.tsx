@@ -191,9 +191,13 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             m.on('click', 'countries-fill', (e) => {
                 if (e.features && e.features[0]) {
                     const feature = e.features[0]
-                    const name = feature.properties.name
-                    m.flyTo({ center: e.lngLat, zoom: 5 })
-                    router.push(`/country/${encodeURIComponent(name)}`)
+                    const iso2 = feature.properties.ISO_A2 || feature.properties.iso_a2 || feature.properties.ADM0_A3?.slice(0, 2)
+                    const langPrefix = window.location.pathname.split('/').slice(0, 2).join('/')
+                    if (iso2 && iso2 !== '-99') {
+                        m.flyTo({ center: e.lngLat, zoom: 5 })
+                        router.push(`${langPrefix}/country/${iso2.toUpperCase()}`)
+                    }
+
                 }
             })
 

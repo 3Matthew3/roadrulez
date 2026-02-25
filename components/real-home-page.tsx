@@ -78,7 +78,8 @@ export async function RealHomePage({ lang }: RealHomePageProps) {
                         {popularCountries.map((country: any) => (
                             <Link
                                 key={country.iso2}
-                                href={`/${lang}/country/${country.name}`}
+                                href={`/${lang}/country/${country.iso2}`}
+
                                 className="group grid grid-cols-[3rem_1fr] items-center gap-4 p-4 pl-8 rounded-xl bg-zinc-800/40 border border-zinc-700/50 hover:bg-zinc-800/80 hover:border-blue-500/50 transition-all duration-300"
                             >
                                 <div className="relative h-8 w-12 overflow-hidden rounded shadow-sm">

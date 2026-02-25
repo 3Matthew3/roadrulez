@@ -1,31 +1,72 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
+import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from "@/lib/constants";
 
-const locales = ["en", "de"];
-const defaultLocale = "en";
+const locales = SUPPORTED_LOCALES;
+const defaultLocale = DEFAULT_LOCALE;
 
-export function middleware(request: NextRequest) {
+/** RBAC roles allowed to access admin panel */
+const ADMIN_ROLES = ["ADMIN", "EDITOR"] as const;
+
+export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
-    // Check if there is any supported locale in the pathname
-    const pathnameIsMissingLocale = locales.every(
-        (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-    );
+    // ── Admin route protection (/admin/* and /api/admin/*) ──────────────────
+    const isAdminPage = pathname.startsWith("/admin");
+    const isAdminApi = pathname.startsWith("/api/admin");
 
-    // Exclude static resources and api routes
+    if (isAdminPage || isAdminApi) {
+        // Allow login page and NextAuth API routes (no auth needed)
+        if (pathname === "/admin/login" || pathname.startsWith("/api/auth")) {
+            return NextResponse.next();
+        }
+
+        const token = await getToken({
+            req: request,
+            secret: process.env.NEXTAUTH_SECRET,
+        });
+
+        // No token → redirect pages to login, return 401 for API
+        if (!token) {
+            if (isAdminApi) {
+                return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+            }
+            const loginUrl = new URL("/admin/login", request.url);
+            loginUrl.searchParams.set("callbackUrl", pathname);
+            return NextResponse.redirect(loginUrl);
+        }
+
+        // Token present but role not recognised → 403
+        const tokenRole = token.role as string | undefined;
+        if (!tokenRole || !ADMIN_ROLES.includes(tokenRole as (typeof ADMIN_ROLES)[number])) {
+            if (isAdminApi) {
+                return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+            }
+            return NextResponse.redirect(new URL("/admin/login", request.url));
+        }
+
+        return NextResponse.next();
+    }
+
+    // ── Locale routing for public site ─────────────────────────────────────
+    // Exclude static resources and API routes
     if (
         pathname.startsWith("/_next") ||
-        pathname.includes(".") || // files with extensions (images, etc)
+        pathname.includes(".") ||
         pathname.startsWith("/api")
     ) {
         return;
     }
 
+    const pathnameIsMissingLocale = locales.every(
+        (locale) =>
+            !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    );
+
     if (pathnameIsMissingLocale) {
-        // 1. Check for cookie
         const localeCookie = request.cookies.get("NEXT_LOCALE")?.value;
 
-        // 2. Check for Accept-Language header if cookie is missing
         let locale = defaultLocale;
         if (localeCookie && locales.includes(localeCookie)) {
             locale = localeCookie;
@@ -36,16 +77,15 @@ export function middleware(request: NextRequest) {
             }
         }
 
-        // Redirect
         return NextResponse.redirect(
-            new URL(`/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`, request.url)
+            new URL(
+                `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+                request.url
+            )
         );
     }
 }
 
 export const config = {
-    matcher: [
-        // Skip all internal paths (_next)
-        "/((?!_next|favicon.ico).*)",
-    ],
+    matcher: ["/((?!_next|favicon.ico).*)"],
 };

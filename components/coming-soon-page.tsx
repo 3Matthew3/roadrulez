@@ -1,15 +1,27 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState, useMemo } from "react"
+import { useState, useEffect, useMemo } from "react"
 
-export function ComingSoonPage() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState(false)
+interface Streak {
+    isRed: boolean;
+    height: number;
+    width: number;
+    duration: number;
+    delay: number;
+    top: number;
+    opacity: number;
+}
+
+    const [mounted, setMounted] = useState(false)
+
+    // Only render animations client-side to avoid hydration mismatch
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     // Deterministic streak values — avoids hydration mismatch from Math.random() in render
-    const streaks = useMemo(() => {
+    const streaks: Streak[] = useMemo(() => {
         const sr = (seed: number) => { const x = Math.sin(seed + 1) * 10000; return x - Math.floor(x) }
         return Array.from({ length: 20 }, (_, i) => ({
             isRed: i % 2 === 0,
@@ -22,41 +34,7 @@ export function ComingSoonPage() {
         }))
     }, [])
 
-    const handleLogin = (e: React.FormEvent) => {
-        e.preventDefault()
-        const correctPassword = process.env.NEXT_PUBLIC_BETA_PASSWORD ?? "1234"
-        if (password === correctPassword) {
-            setIsAuthenticated(true)
-            setError(false)
-        } else {
-            setError(true)
-        }
-    }
 
-    if (!isAuthenticated) {
-        return (
-            <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#050505] text-white font-sans">
-                <form onSubmit={handleLogin} className="flex flex-col items-center gap-4 w-full max-w-xs px-4">
-                    <h1 className="text-2xl font-light tracking-widest uppercase text-zinc-400">Restricted Access</h1>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter Password"
-                        className="w-full px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-md text-center tracking-widest focus:outline-none focus:border-cyan-500 transition-colors"
-                        autoFocus
-                    />
-                    <button
-                        type="submit"
-                        className="w-full px-4 py-2 bg-white text-black font-bold uppercase tracking-widest rounded-md hover:bg-zinc-200 transition-colors"
-                    >
-                        Enter
-                    </button>
-                    {error && <p className="text-red-500 text-xs tracking-widest uppercase animate-pulse">Incorrect Password</p>}
-                </form>
-            </div>
-        )
-    }
 
     return (
         // z-[200] covers the site header
@@ -67,14 +45,13 @@ export function ComingSoonPage() {
                 <div className="absolute inset-0 bg-[#020203] opacity-90" /> {/* Dark Base */}
 
                 {/* Slanted Container for dynamic angle */}
-                <div className="absolute inset-0 transform -skew-y-12 scale-150 origin-center">
-                    {/* Light Streaks */}
-                    {streaks.map((s, i) => {
-                        const color = s.isRed ? "bg-red-500" : "bg-cyan-100";
-                        return (
+                {/* Render streaks only on client to avoid hydration mismatch */}
+                {mounted && (
+                    <div className="absolute inset-0 transform -skew-y-12 scale-150 origin-center">
+                        {streaks.map((s, i) => (
                             <motion.div
                                 key={i}
-                                className={`absolute ${color} rounded-full blur-[1px]`}
+                                className={`absolute ${s.isRed ? "bg-red-500" : "bg-cyan-100"} rounded-full blur-[1px]`}
                                 style={{
                                     height: `${s.width}px`,
                                     width: `${s.height}px`,
@@ -86,16 +63,11 @@ export function ComingSoonPage() {
                                         : "0 0 10px 1px rgba(207, 250, 254, 0.5)"
                                 }}
                                 animate={{ x: ["0vw", "150vw"] }}
-                                transition={{
-                                    duration: s.duration,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                    delay: s.delay,
-                                }}
+                                transition={{ duration: s.duration, repeat: Infinity, ease: "linear", delay: s.delay }}
                             />
-                        )
-                    })}
-                </div>
+                        ))}
+                    </div>
+                )}
 
                 {/* Vignette & Noise */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000000_100%)] opacity-80" />

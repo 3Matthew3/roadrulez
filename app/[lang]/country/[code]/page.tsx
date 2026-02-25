@@ -1,12 +1,12 @@
-import { notFound } from "next/navigation"
 import { ComingSoonCountry } from "@/components/coming-soon-country"
-import { getCountryByName, getAllCountries } from "@/lib/countries"
+import { getCountryData, getAllCountries } from "@/lib/countries"
 import RegionSelector from "@/components/country/region-selector"
 import VehicleSpecificsCard from "@/components/country/vehicle-specifics-card"
 import FeedbackForm from "@/components/country/feedback-form"
 import { getDictionary } from "@/lib/dictionaries"
 import { VehicleRules, TrafficRules } from "@/types/country"
 import { Triangle } from "lucide-react"
+import { CountryViewTracker } from "@/components/country-view-tracker"
 
 // Modular Components
 import CountryHero from "@/components/country/modular/CountryHero"
@@ -23,7 +23,7 @@ import TrafficSignsGrid from "@/components/country/modular/TrafficSignsGrid"
 
 interface PageProps {
     params: {
-        name: string
+        code: string   // ISO2 code, e.g. "DE", "JP"
         lang: string
     }
     searchParams: {
@@ -32,13 +32,14 @@ interface PageProps {
 }
 
 export default async function CountryPage({ params, searchParams }: PageProps) {
-    const countryName = decodeURIComponent(params.name)
+    // Normalise to uppercase — URL may come in as /country/de or /country/DE
+    const iso2 = params.code.toUpperCase()
     const rawVehicle = searchParams.vehicle as string | undefined
     const vehicleType = (rawVehicle === "motorcycle" || rawVehicle === "moped") ? rawVehicle : "car"
 
-    // Parallel data loading
+    // Parallel data loading — direct ISO2 lookup, no name resolution needed
     const [data, dict, countryIndex] = await Promise.all([
-        getCountryByName(countryName, params.lang),
+        getCountryData(iso2, params.lang),
         getDictionary(params.lang),
         getAllCountries()
     ])
@@ -51,7 +52,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const indexEntry = countryIndex.find(c => c.iso2 === data.iso2)
     const localizedName = indexEntry?.names?.[params.lang] || data.name_en
 
-    // Merge logic
+    // Merge vehicle-specific rules on top of the national defaults
     const vehicleOverrides = data.vehicles?.[vehicleType] || {}
     const rules: TrafficRules & Partial<VehicleRules> = {
         ...data.rules,
@@ -64,6 +65,8 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
 
     return (
         <div className="min-h-screen bg-[#0a0e17] text-slate-200">
+            {/* Fire country_view event to Plausible */}
+            <CountryViewTracker iso2={data.iso2} />
             <CountryHero
                 data={data}
                 localizedName={localizedName}
