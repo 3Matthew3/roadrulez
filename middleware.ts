@@ -27,6 +27,10 @@ export async function middleware(request: NextRequest) {
             secret: process.env.NEXTAUTH_SECRET,
         });
 
+        console.log("MW pathname:", pathname);
+        console.log("MW has cookie:", !!request.headers.get("cookie"));
+        console.log("MW token:", token);
+
         // No token → redirect pages to login, return 401 for API
         if (!token) {
             if (isAdminApi) {
