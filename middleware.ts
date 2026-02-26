@@ -50,14 +50,15 @@ export async function middleware(request: NextRequest) {
     }
 
     // ── Locale routing for public site ─────────────────────────────────────
-    // Exclude static resources and API routes
-    if (
-        pathname.startsWith("/_next") ||
-        pathname.includes(".") ||
-        pathname.startsWith("/api")
-    ) {
-        return;
-    }
+    // Exclude static resources, API routes, and admin routes from locale handling
+if (
+  pathname.startsWith("/_next") ||
+  pathname.includes(".") ||
+  pathname.startsWith("/api") ||
+  pathname.startsWith("/admin")
+) {
+  return;
+}
 
     const pathnameIsMissingLocale = locales.every(
         (locale) =>
