@@ -18,7 +18,6 @@ const USER_ROLE = {
 
 export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
-     trustHost: true,
     session: {
         strategy: "jwt",
         maxAge: 4 * 60 * 60, // 4 hours — short admin session
