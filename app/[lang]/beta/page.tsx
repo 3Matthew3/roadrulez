@@ -2,7 +2,7 @@ import { RealHomePage } from "@/components/real-home-page"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "RoadRulez App (Beta)",
+    title: "RoadRulez App",
     robots: {
         index: false,
         follow: false,
