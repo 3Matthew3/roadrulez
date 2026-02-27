@@ -13,7 +13,7 @@ export function AccessGate({ children }: AccessGateProps) {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    const correctPassword = process.env.NEXT_PUBLIC_BETA_PASSWORD ?? "1234"
+    const correctPassword = process.env.NEXT_PUBLIC_BETA_PASSWORD ?? "2002"
     if (password === correctPassword) {
       setIsAuthenticated(true)
       setError(false)
