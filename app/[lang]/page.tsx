@@ -1,14 +1,14 @@
 import { RealHomePage } from "@/components/real-home-page"
-import { ComingSoonPage } from "@/components/coming-soon-page"
-import { AccessGate } from "@/components/access-gate"
+import { Metadata } from "next"
 
-export default function Home({ params }: { params: { lang: string } }) {
-    // Check for environment variable
-    const isLive = process.env.ROADRULEZ_LAUNCH_MODE === "LIVE"
+export const metadata: Metadata = {
+    title: "RoadRulez App",
+    robots: {
+        index: false,
+        follow: false,
+    },
+}
 
-    return (
-        <AccessGate>
-            {isLive ? <RealHomePage lang={params.lang} /> : <ComingSoonPage />}
-        </AccessGate>
-    )
+export default function BetaPage({ params }: { params: { lang: string } }) {
+    return <RealHomePage lang={params.lang} />
 }
