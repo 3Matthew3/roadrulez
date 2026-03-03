@@ -1,4 +1,8 @@
-import NextAuth, { type NextAuthConfig } from "next-auth";
+/**
+ * Full auth config — Node.js runtime only (bcrypt, prisma, rate-limit, audit)
+ * NOT imported by middleware.
+ */
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
@@ -10,21 +14,15 @@ import {
     extractClientIp,
 } from "@/lib/rate-limit";
 import { createAuditLog } from "@/lib/audit";
+import { authConfig } from "@/auth.config";
 
 const USER_ROLE = {
     ADMIN: "ADMIN",
     EDITOR: "EDITOR",
 } as const;
 
-export const authConfig: NextAuthConfig = {
-    secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
-    session: {
-        strategy: "jwt",
-        maxAge: 4 * 60 * 60, // 4 hours — short admin session
-    },
-    pages: {
-        signIn: "/admin/login",
-    },
+export const { auth, handlers, signIn, signOut } = NextAuth({
+    ...authConfig,
     providers: [
         CredentialsProvider({
             name: "credentials",
@@ -106,25 +104,7 @@ export const authConfig: NextAuthConfig = {
             },
         }),
     ],
-    callbacks: {
-        async jwt({ token, user }) {
-            if (user) {
-                token.id = user.id as string;
-                token.role = (user as any).role;
-            }
-            return token;
-        },
-        async session({ session, token }) {
-            if (session.user) {
-                session.user.id = token.id as string;
-                (session.user as any).role = token.role;
-            }
-            return session;
-        },
-    },
-};
-
-export const { auth, handlers, signIn, signOut } = NextAuth(authConfig);
+});
 
 // ── Convenience helpers (same API as before for server components) ────────────
 

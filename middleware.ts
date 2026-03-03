@@ -1,7 +1,14 @@
+/**
+ * Middleware — Edge Runtime compatible.
+ * Imports only from auth.config.ts (no Node.js modules).
+ */
+import NextAuth from "next-auth";
+import { authConfig } from "@/auth.config";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "@/lib/auth";
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/constants";
+
+const { auth } = NextAuth(authConfig);
 
 const locales = SUPPORTED_LOCALES;
 const defaultLocale = DEFAULT_LOCALE;
@@ -22,8 +29,7 @@ export async function middleware(request: NextRequest) {
             return NextResponse.next();
         }
 
-        // Auth.js v5: use auth() to get the session token
-        const session = await auth();
+        const session = await auth(request as any);
         const token = session?.user;
 
         // No token → redirect pages to login, return 401 for API
