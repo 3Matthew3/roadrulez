@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
             alt: `Flag of ${c.names?.[lang] || c.name}`
         },
         cca2: c.iso2,
-        routeKey: c.name // Always english name for routing
+        routeKey: c.iso2  // ISO2 code for URL routing (e.g. "DE" → /country/DE)
     }))
 
     return NextResponse.json(localizedResults.slice(0, 5))

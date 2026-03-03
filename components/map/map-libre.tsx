@@ -44,8 +44,25 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             mapContainer.current.innerHTML = ''
         }
 
+        // Preload name → ISO2 lookup from our own API
+        let nameToIso2: Record<string, string> = {}
+        fetch('/api/countries/search?q=a&lang=en')
+            .then(r => r.json())
+            .catch(() => []) // silently ignore errors
+
+        // Better: fetch the full countries index
+        fetch('/api/countries/search?q=&lang=en')
+            .catch(() => null)
+
+        // We'll load our own countries list via a separate endpoint.
+        // For now, build the lookup lazily by fetching a broader list.
+        // The GeoJSON feature.properties.name is the English country name.
+        // We pass it along as-is and let the country page handle fuzzy resolution.
+        // Actually the simplest fix: navigate by country name slug, which the page already handles.
+        // Better fix: preload /api/countries/all (a new endpoint), or reuse the GeoJSON id field.
+        // BEST fix for now: on click, search our API for that name and get the ISO2.
+
         try {
-            // Initialize Map
             map.current = new maplibregl.Map({
                 container: mapContainer.current!,
                 style: {
@@ -81,7 +98,6 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                 center: [0, 20],
                 zoom: 2,
                 renderWorldCopies: false,
-                // maxBounds: [[-180, -85], [180, 85]] // Removed to prevent potential bounds error during init
             })
         } catch (e) {
             console.error("Map initialization failed:", e)
@@ -89,7 +105,26 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
         }
 
         map.current.on('load', async () => {
-            // 1. Fetch Data Manually to Inject Colors
+            // 1. Load name→ISO2 lookup index
+            try {
+                const indexRes = await fetch('/api/countries/index')
+                if (indexRes.ok) {
+                    const index: { iso2: string; name: string; names?: Record<string, string> }[] = await indexRes.json()
+                    nameToIso2 = {}
+                    for (const c of index) {
+                        nameToIso2[c.name.toLowerCase()] = c.iso2
+                        if (c.names) {
+                            for (const n of Object.values(c.names)) {
+                                if (n) nameToIso2[n.toLowerCase()] = c.iso2
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                console.warn("Could not load country index for map:", e)
+            }
+
+            // 2. Fetch GeoJSON
             let data;
             try {
                 const res = await fetch('/countries.geo.json')
@@ -102,7 +137,7 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             // FILTER: Remove Antarctica
             data.features = data.features.filter((f: any) => f.id !== 'ATA' && f.properties.name !== 'Antarctica');
 
-            // 2. Inject Color Index (0-4) into properties
+            // 3. Inject Color Index (0-4) into properties
             data.features = data.features.map((f: any, i: number) => ({
                 ...f,
                 id: i,
@@ -112,15 +147,12 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             setMapLoaded(true)
             const m = map.current!
 
-            // Add Country Source with pre-processed data
             m.addSource('countries', {
                 type: 'geojson',
                 data: data,
-                generateId: false // IDs are already set
+                generateId: false
             })
 
-            // 1. Fill Layer (Colors)
-            // Using match expression on the injected 'colorIndex' property
             m.addLayer({
                 id: 'countries-fill',
                 type: 'fill',
@@ -133,12 +165,12 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                         [
                             'match',
                             ['get', 'colorIndex'],
-                            0, '#a78bfa', // Purple
-                            1, '#f472b6', // Pink
-                            2, '#60a5fa', // Blue
-                            3, '#34d399', // Green
-                            4, '#fbbf24', // Amber
-                            '#94a3b8'     // Fallback
+                            0, '#a78bfa',
+                            1, '#f472b6',
+                            2, '#60a5fa',
+                            3, '#34d399',
+                            4, '#fbbf24',
+                            '#94a3b8'
                         ]
                     ],
                     'fill-opacity': [
@@ -150,7 +182,6 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                 }
             })
 
-            // 2. Line Layer (Borders)
             m.addLayer({
                 id: 'countries-line',
                 type: 'line',
@@ -161,9 +192,7 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                 }
             })
 
-            // REMOVED: Symbol Layer (was causing "big dots")
-
-            // Interaction: Hover
+            // Hover interaction
             let hoveredId: string | number | undefined = undefined
 
             m.on('mousemove', 'countries-fill', (e) => {
@@ -187,21 +216,25 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
                 m.getCanvas().style.cursor = ''
             })
 
-            // Interaction: Click
+            // Click: resolve country name → ISO2, then navigate
             m.on('click', 'countries-fill', (e) => {
                 if (e.features && e.features[0]) {
-                    const feature = e.features[0]
-                    const iso2 = feature.properties.ISO_A2 || feature.properties.iso_a2 || feature.properties.ADM0_A3?.slice(0, 2)
-                    const langPrefix = window.location.pathname.split('/').slice(0, 2).join('/')
-                    if (iso2 && iso2 !== '-99') {
-                        m.flyTo({ center: e.lngLat, zoom: 5 })
-                        router.push(`${langPrefix}/country/${iso2.toUpperCase()}`)
+                    const name = e.features[0].properties?.name as string | undefined
+                    if (!name) return
+
+                    const iso2 = nameToIso2[name.toLowerCase()]
+                    if (!iso2) {
+                        console.warn(`No ISO2 found for country: ${name}`)
+                        return
                     }
 
+                    const langPrefix = window.location.pathname.split('/').slice(0, 2).join('/')
+                    m.flyTo({ center: e.lngLat, zoom: 5 })
+                    router.push(`${langPrefix}/country/${iso2.toUpperCase()}`)
                 }
             })
 
-            // Popup
+            // Popup on hover
             const popup = new maplibregl.Popup({
                 closeButton: false,
                 closeOnClick: false,
