@@ -22,25 +22,26 @@ import ChecklistCard from "@/components/country/modular/ChecklistCard"
 import TrafficSignsGrid from "@/components/country/modular/TrafficSignsGrid"
 
 interface PageProps {
-    params: {
+    params: Promise<{
         code: string   // ISO2 code, e.g. "DE", "JP"
         lang: string
-    }
-    searchParams: {
+    }>
+    searchParams: Promise<{
         vehicle?: string
-    }
+    }>
 }
 
 export default async function CountryPage({ params, searchParams }: PageProps) {
+    const { code, lang } = await params;
+    const { vehicle: rawVehicle } = await searchParams;
     // Normalise to uppercase — URL may come in as /country/de or /country/DE
-    const iso2 = params.code.toUpperCase()
-    const rawVehicle = searchParams.vehicle as string | undefined
+    const iso2 = code.toUpperCase()
     const vehicleType = (rawVehicle === "motorcycle" || rawVehicle === "moped") ? rawVehicle : "car"
 
     // Parallel data loading — direct ISO2 lookup, no name resolution needed
     const [data, dict, countryIndex] = await Promise.all([
-        getCountryData(iso2, params.lang),
-        getDictionary(params.lang),
+        getCountryData(iso2, lang),
+        getDictionary(lang),
         getAllCountries()
     ])
 
@@ -50,7 +51,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
 
     // Find localized name from index
     const indexEntry = countryIndex.find(c => c.iso2 === data.iso2)
-    const localizedName = indexEntry?.names?.[params.lang] || data.name_en
+    const localizedName = indexEntry?.names?.[lang] || data.name_en
 
     // Merge vehicle-specific rules on top of the national defaults
     const vehicleOverrides = data.vehicles?.[vehicleType] || {}

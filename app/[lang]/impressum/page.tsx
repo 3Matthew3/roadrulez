@@ -1,9 +1,10 @@
 import { Badge } from "@/components/ui/badge"
 import { getDictionary } from "@/lib/dictionaries"
 
-export default async function ImpressumPage({ params }: { params: { lang: string } }) {
-    const dict = await getDictionary(params.lang)
-    const isDe = params.lang === 'de'
+export default async function ImpressumPage({ params }: { params: Promise<{ lang: string }> }) {
+    const { lang } = await params;
+    const dict = await getDictionary(lang)
+    const isDe = lang === 'de'
 
     return (
         <div className="container px-4 py-12 md:py-20 md:px-6 max-w-3xl text-zinc-300">

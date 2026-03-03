@@ -23,12 +23,13 @@ export default async function RootLayout({
     params,
 }: Readonly<{
     children: React.ReactNode;
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }>) {
-    const dict = await getDictionary(params.lang)
+    const { lang } = await params;
+    const dict = await getDictionary(lang)
 
     return (
-        <html lang={params.lang}>
+        <html lang={lang}>
             <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
                 {/* Plausible tracker — must be in Suspense because it uses useSearchParams */}
                 <Suspense fallback={null}>
@@ -41,9 +42,9 @@ export default async function RootLayout({
                     disableTransitionOnChange
                 >
                     <div className="relative flex min-h-screen flex-col">
-                        <SiteHeader lang={params.lang} />
+                        <SiteHeader lang={lang} />
                         <div className="flex-1">{children}</div>
-                        <SiteFooter dict={dict} lang={params.lang} />
+                        <SiteFooter dict={dict} lang={lang} />
                     </div>
                 </ThemeProvider>
                 <Analytics />

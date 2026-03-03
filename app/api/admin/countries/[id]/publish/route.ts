@@ -30,8 +30,9 @@ function validateForPublish(country: any): { valid: boolean; errors: string[] } 
 
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params;
     return withEditorAuth(async (session) => {
         const body = await request.json().catch(() => ({}))
         const parsed = publishSchema.safeParse(body)
@@ -39,7 +40,7 @@ export async function POST(
 
         // Load country with sources for validation
         const country = await prisma.country.findUnique({
-            where: { id: params.id },
+            where: { id },
             include: { sources: true },
         })
 
@@ -64,7 +65,7 @@ export async function POST(
 
         // Transition to PUBLISHED
         const updated = await prisma.country.update({
-            where: { id: params.id },
+            where: { id },
             data: {
                 status: "PUBLISHED",
                 lastVerifiedAt: new Date(),
@@ -76,7 +77,7 @@ export async function POST(
         await createAuditLog({
             actorUserId: userId,
             entityType: "country",
-            entityId: params.id,
+            entityId: id,
             action: "publish",
             beforeValue: { status: country.status } as any,
             afterValue: { status: "PUBLISHED" } as any,

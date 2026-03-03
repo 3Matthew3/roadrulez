@@ -15,11 +15,12 @@ const updateCountrySchema = z.object({
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params;
     return withEditorAuth(async () => {
         const country = await prisma.country.findUnique({
-            where: { id: params.id },
+            where: { id },
             include: {
                 updatedBy: { select: { id: true, name: true, email: true } },
                 verifiedBy: { select: { id: true, name: true, email: true } },
@@ -52,8 +53,9 @@ export async function GET(
 
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params;
     return withEditorAuth(async (session) => {
         const body = await request.json()
         const parsed = updateCountrySchema.safeParse(body)
@@ -61,13 +63,13 @@ export async function PATCH(
             return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
         }
 
-        const before = await prisma.country.findUnique({ where: { id: params.id } })
+        const before = await prisma.country.findUnique({ where: { id } })
         if (!before) {
             return NextResponse.json({ error: "Country not found" }, { status: 404 })
         }
 
         const country = await prisma.country.update({
-            where: { id: params.id },
+            where: { id },
             data: {
                 ...parsed.data,
                 updatedById: (session.user as any).id,
@@ -77,7 +79,7 @@ export async function PATCH(
         await createAuditLog({
             actorUserId: (session.user as any).id,
             entityType: "country",
-            entityId: params.id,
+            entityId: id,
             action: "update",
             beforeValue: before as any,
             afterValue: parsed.data as any,
@@ -89,20 +91,21 @@ export async function PATCH(
 
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params;
     return withAdminAuth(async (session) => {
-        const before = await prisma.country.findUnique({ where: { id: params.id } })
+        const before = await prisma.country.findUnique({ where: { id } })
         if (!before) {
             return NextResponse.json({ error: "Country not found" }, { status: 404 })
         }
 
-        await prisma.country.delete({ where: { id: params.id } })
+        await prisma.country.delete({ where: { id } })
 
         await createAuditLog({
             actorUserId: (session.user as any).id,
             entityType: "country",
-            entityId: params.id,
+            entityId: id,
             action: "delete",
             beforeValue: before as any,
         })

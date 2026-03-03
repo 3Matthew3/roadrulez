@@ -1,5 +1,5 @@
 /**
- * Extend NextAuth session types with custom user properties
+ * Extend NextAuth/Auth.js session types with custom user properties
  */
 import type { DefaultSession } from "next-auth";
 
@@ -18,11 +18,12 @@ declare module "next-auth" {
   }
 }
 
-declare module "next-auth/jwt" {
+// Auth.js v5 JWT types live in @auth/core/jwt
+declare module "@auth/core/jwt" {
   interface JWT {
     id: string;
     role: UserRole;
   }
 }
 
-export {};
+export { };

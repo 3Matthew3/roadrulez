@@ -10,10 +10,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Home({ params }: { params: { lang: string } }) {
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   return (
     <AccessGate>
-      <RealHomePage lang={params.lang} />
+      <RealHomePage lang={lang} />
     </AccessGate>
   )
 }

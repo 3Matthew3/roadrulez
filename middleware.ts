@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { auth } from "@/lib/auth";
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/constants";
 
 const locales = SUPPORTED_LOCALES;
@@ -17,20 +17,14 @@ export async function middleware(request: NextRequest) {
     const isAdminApi = pathname.startsWith("/api/admin");
 
     if (isAdminPage || isAdminApi) {
-        // Allow login page and NextAuth API routes (no auth needed)
+        // Allow login page and Auth.js API routes (no auth needed)
         if (pathname === "/admin/login" || pathname.startsWith("/api/auth")) {
             return NextResponse.next();
         }
 
-        const token = await getToken({
-          req: request,
-          secret: process.env.NEXTAUTH_SECRET,
-          secureCookie: true, // 🔥 DAS ist der Schlüssel
-        });
-
-        console.log("MW pathname:", pathname);
-        console.log("MW has cookie:", !!request.headers.get("cookie"));
-        console.log("MW token:", token);
+        // Auth.js v5: use auth() to get the session token
+        const session = await auth();
+        const token = session?.user;
 
         // No token → redirect pages to login, return 401 for API
         if (!token) {
@@ -43,7 +37,7 @@ export async function middleware(request: NextRequest) {
         }
 
         // Token present but role not recognised → 403
-        const tokenRole = token.role as string | undefined;
+        const tokenRole = (token as any).role as string | undefined;
         if (!tokenRole || !ADMIN_ROLES.includes(tokenRole as (typeof ADMIN_ROLES)[number])) {
             if (isAdminApi) {
                 return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -55,15 +49,14 @@ export async function middleware(request: NextRequest) {
     }
 
     // ── Locale routing for public site ─────────────────────────────────────
-    // Exclude static resources, API routes, and admin routes from locale handling
-if (
-  pathname.startsWith("/_next") ||
-  pathname.includes(".") ||
-  pathname.startsWith("/api") ||
-  pathname.startsWith("/admin")
-) {
-  return;
-}
+    if (
+        pathname.startsWith("/_next") ||
+        pathname.includes(".") ||
+        pathname.startsWith("/api") ||
+        pathname.startsWith("/admin")
+    ) {
+        return;
+    }
 
     const pathnameIsMissingLocale = locales.every(
         (locale) =>
