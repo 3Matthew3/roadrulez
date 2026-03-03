@@ -1,6 +1,7 @@
 /**
  * Middleware — Edge Runtime compatible.
- * Imports only from auth.config.ts (no Node.js modules).
+ * Auth.js v5: export `auth` as the default middleware, using `authorized`
+ * callback for admin RBAC, plus locale redirect logic.
  */
 import NextAuth from "next-auth";
 import { authConfig } from "@/auth.config";
@@ -8,47 +9,36 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/constants";
 
-const { auth } = NextAuth(authConfig);
-
 const locales = SUPPORTED_LOCALES;
 const defaultLocale = DEFAULT_LOCALE;
 
-/** RBAC roles allowed to access admin panel */
 const ADMIN_ROLES = ["ADMIN", "EDITOR"] as const;
 
-export async function middleware(request: NextRequest) {
-    const pathname = request.nextUrl.pathname;
+const { auth } = NextAuth(authConfig);
 
-    // ── Admin route protection (/admin/* and /api/admin/*) ──────────────────
+export default auth(function middleware(req) {
+    const pathname = req.nextUrl.pathname;
+    const session = req.auth;
+
+    // ── Admin route protection ──────────────────────────────────────────────
     const isAdminPage = pathname.startsWith("/admin");
     const isAdminApi = pathname.startsWith("/api/admin");
 
     if (isAdminPage || isAdminApi) {
-        // Allow login page and Auth.js API routes (no auth needed)
         if (pathname === "/admin/login" || pathname.startsWith("/api/auth")) {
             return NextResponse.next();
         }
 
-        const session = await auth(request as any);
-        const token = session?.user;
+        const role = (session?.user as any)?.role as string | undefined;
+        const hasAccess = !!session?.user && !!role && ADMIN_ROLES.includes(role as (typeof ADMIN_ROLES)[number]);
 
-        // No token → redirect pages to login, return 401 for API
-        if (!token) {
+        if (!hasAccess) {
             if (isAdminApi) {
                 return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
             }
-            const loginUrl = new URL("/admin/login", request.url);
-            loginUrl.searchParams.set("callbackUrl", pathname);
-            return NextResponse.redirect(loginUrl);
-        }
-
-        // Token present but role not recognised → 403
-        const tokenRole = (token as any).role as string | undefined;
-        if (!tokenRole || !ADMIN_ROLES.includes(tokenRole as (typeof ADMIN_ROLES)[number])) {
-            if (isAdminApi) {
-                return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-            }
-            return NextResponse.redirect(new URL("/admin/login", request.url));
+            return NextResponse.redirect(
+                new URL(`/admin/login?callbackUrl=${encodeURIComponent(pathname)}`, req.url)
+            );
         }
 
         return NextResponse.next();
@@ -61,35 +51,31 @@ export async function middleware(request: NextRequest) {
         pathname.startsWith("/api") ||
         pathname.startsWith("/admin")
     ) {
-        return;
+        return NextResponse.next();
     }
 
     const pathnameIsMissingLocale = locales.every(
-        (locale) =>
-            !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+        (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
 
     if (pathnameIsMissingLocale) {
-        const localeCookie = request.cookies.get("NEXT_LOCALE")?.value;
-
+        const localeCookie = req.cookies.get("NEXT_LOCALE")?.value;
         let locale: Locale = defaultLocale;
+
         if (localeCookie && isValidLocale(localeCookie)) {
             locale = localeCookie;
         } else {
-            const acceptLanguage = request.headers.get("Accept-Language");
+            const acceptLanguage = req.headers.get("Accept-Language");
             if (acceptLanguage?.includes("de")) {
                 locale = "de";
             }
         }
 
         return NextResponse.redirect(
-            new URL(
-                `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-                request.url
-            )
+            new URL(`/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`, req.url)
         );
     }
-}
+});
 
 export const config = {
     matcher: ["/((?!_next|favicon.ico).*)"],
