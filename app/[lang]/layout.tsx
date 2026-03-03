@@ -8,6 +8,8 @@ import { SiteFooter } from "@/components/site-footer"
 import { getDictionary } from "@/lib/dictionaries"
 import { Suspense } from "react"
 import { PlausibleProvider } from "@/components/plausible-provider"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,6 +46,8 @@ export default async function RootLayout({
                         <SiteFooter dict={dict} lang={params.lang} />
                     </div>
                 </ThemeProvider>
+                <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );

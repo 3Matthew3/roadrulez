@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils"
 import { AdminSessionProvider } from "@/app/admin/session-provider"
 import { AdminSidebarWrapper } from "@/components/admin/admin-sidebar-wrapper"
 import { Toaster } from "@/components/ui/toaster"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,6 +30,8 @@ export default function AdminLayout({
                     </AdminSidebarWrapper>
                     <Toaster />
                 </AdminSessionProvider>
+                <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     )
