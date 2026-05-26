@@ -1,0 +1,100 @@
+{
+    "common": {
+        "loading": "読み込み中...",
+        "error": "エラーが発生しました",
+        "not_found": "国が見つかりません",
+        "search_placeholder": "国を検索...",
+        "last_verified": "最終確認",
+        "vehicle_type": "車両タイプ",
+        "disclaimer": "ルールは変更される場合があります。必ず公式情報で確認してください。",
+        "summary": "概要",
+        "right": "右",
+        "left": "左",
+        "yes": "はい",
+        "no": "いいえ"
+    },
+    "home": {
+        "hero_title_1": "交通ルールを、",
+        "search_placeholder": "国を検索...",
+        "hero_title_2": "世界中どこでも。",
+        "hero_subtitle": "旅行前に交通法規、速度制限、道路ルールを確認しましょう。罰金を避け、安全に運転するためのグローバルガイドです。",
+        "cta_map": "世界地図を開く",
+        "popular_destinations": "人気の目的地",
+        "more_countries": "さらに国を見る",
+        "how_it_works": "使い方",
+        "step_1_title": "国を選ぶ",
+        "step_1_desc": "インタラクティブな地図または検索から目的地をすぐに見つけられます。",
+        "step_2_title": "運転ルールを見る",
+        "step_2_desc": "速度制限、飲酒運転の基準、必須装備、現地の運転マナーを簡潔に確認できます。",
+        "step_3_title": "準備して出発",
+        "step_3_desc": "情報を把握して、ロードトリップ中の罰金や予期せぬトラブルを避けましょう。どこでも現地のように運転できます。",
+        "features": {
+            "global": "世界対応",
+            "traveler": "旅行者向け",
+            "mobile": "モバイル対応",
+            "updated": "定期更新",
+            "map_preview": "インタラクティブ地図プレビュー"
+        }
+    },
+    "vehicle": {
+        "car": "車",
+        "motorcycle": "バイク",
+        "moped": "原付/スクーター"
+    },
+    "vehicle_specifics": {
+        "helmet": "ヘルメット",
+        "lane_splitting": "すり抜け",
+        "motorway": "高速道路利用",
+        "licensing": "免許"
+    },
+    "rules": {
+        "speed_limits": "速度制限",
+        "alcohol_limit": "アルコール制限",
+        "emergency": "緊急連絡先",
+        "tolls": "通行料金",
+        "detailed_rules": "詳細ルール",
+        "driving_basics": "運転の基本",
+        "phone_distractions": "携帯電話と注意散漫",
+        "lights_parking": "ライトと駐車",
+        "checklist": "チェックリスト",
+        "mandatory_equipment": "必須装備",
+        "sources": "情報源",
+        "urban": "市街地",
+        "rural": "郊外",
+        "motorway": "高速道路"
+    },
+    "props": {
+        "drive_side": "通行側",
+        "seatbelts": "シートベルト",
+        "child_seats": "チャイルドシート",
+        "priority": "優先ルール",
+        "headlights": "ライト",
+        "parking": "駐車",
+        "required": "必須",
+        "type": "種類",
+        "tip": "ヒント"
+    },
+    "extra": {
+        "road_signs": "主な道路標識",
+        "data_coverage": "データ網羅度",
+        "feedback_title": "問題を報告、または更新を提案",
+        "feedback_type": "問題の種類",
+        "feedback_message": "メッセージ",
+        "feedback_email": "メールアドレス（任意）",
+        "feedback_submit": "送信",
+        "issue_types": {
+            "incorrect": "情報が正しくない",
+            "outdated": "情報が古い",
+            "missing": "情報が不足している",
+            "other": "その他"
+        },
+        "footer": {
+            "about": "概要",
+            "sources": "情報源",
+            "contact": "お問い合わせ",
+            "legal": "法的表示 / Impressum",
+            "privacy": "プライバシー",
+            "terms": "利用規約"
+        }
+    }
+}

@@ -9,16 +9,24 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { isValidLocale, SUPPORTED_LOCALES, type Locale } from "@/lib/constants"
+
+const LOCALE_LABELS: Record<Locale, string> = {
+    en: "English",
+    de: "Deutsch",
+    es: "Español",
+    ja: "日本語",
+}
 
 export function LanguageSwitcher() {
     const router = useRouter()
     const pathname = usePathname()
 
-    const switchLocale = (locale: string) => {
-        // Pathname usually starts with /en or /de. 
+    const switchLocale = (locale: Locale) => {
+        // Pathname usually starts with a supported locale.
         // We need to replace the first segment.
         const segments = pathname.split('/')
-        if (segments.length > 1 && (segments[1] === 'en' || segments[1] === 'de')) {
+        if (segments.length > 1 && isValidLocale(segments[1])) {
             segments[1] = locale
             const newPath = segments.join('/')
             // Set cookie for persistence
@@ -41,12 +49,11 @@ export function LanguageSwitcher() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => switchLocale("en")}>
-                    English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => switchLocale("de")}>
-                    Deutsch
-                </DropdownMenuItem>
+                {SUPPORTED_LOCALES.map((locale) => (
+                    <DropdownMenuItem key={locale} onClick={() => switchLocale(locale)}>
+                        {LOCALE_LABELS[locale]}
+                    </DropdownMenuItem>
+                ))}
             </DropdownMenuContent>
         </DropdownMenu>
     )

@@ -1,0 +1,112 @@
+{
+    "name_en": "Japan",
+    "name_local": "日本",
+    "iso2": "JP",
+    "iso3": "JPN",
+    "continent": "Asia",
+    "flag": "🇯🇵",
+    "header_images": [
+        "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 40,
+            "rural": 60,
+            "motorway": 100,
+            "units": "km/h",
+            "notes": "標識で示された制限速度が優先されます。高速道路では可変速度制限も一般的です。"
+        },
+        "alcohol_limit": {
+            "value": 0.03,
+            "unit": "‰",
+            "notes": "実質的にゼロ容認です。運転者だけでなく同乗者にも厳しい罰則があります。"
+        },
+        "seatbelt_rules": "全ての乗員にシートベルト着用義務があります。",
+        "child_seat_rules": "6歳未満の子どもにはチャイルドシートが必要です。",
+        "phone_usage_rules": "運転中の手持ち携帯電話の使用は禁止です。ハンズフリーも注意して使用してください。",
+        "headlights_rules": "夜間とトンネル内ではライトを点灯してください。街灯の少ない道路ではハイビームが推奨されます。",
+        "priority_rules": "歩行者優先です。スクールバスにも注意してください。",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "多くの高速道路は有料です。レンタカーではETCカードの利用が便利です。"
+        },
+        "parking_rules": "駐車違反は厳しく取り締まられます。指定駐車場やコインパーキングを利用してください。",
+        "mandatory_equipment": [
+            "停止表示器材（三角表示板、高速道路での停止時）",
+            "スペアタイヤまたは修理キット"
+        ],
+        "winter_rules": "北海道や東北などの積雪地域では冬用タイヤが必要です。",
+        "emergency_numbers": [
+            "110（警察）",
+            "119（救急/消防）"
+        ]
+    },
+    "summary": "日本は左側通行で、交通ルールの遵守が非常に重視されます。一時停止では完全に停止する必要があります。飲酒運転は許されず、高速道路は有料区間が多いです。",
+    "common_traps": [
+        "踏切の前では必ず完全に停止してください。",
+        "赤信号での右左折はできません。",
+        "横断歩道では歩行者が優先です。",
+        "駐車ルールは複雑で、取り締まりも厳格です。"
+    ],
+    "idp_requirement": "1949年ジュネーブ条約の国際運転免許証",
+    "rental_and_idp_notes": "多くの外国人運転者には1949年ジュネーブ条約に基づく国際運転免許証が必要です。一部の国の免許証では公式な日本語翻訳が必要です。",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "東京",
+            "differences": {},
+            "notes": "都心部では駐車料金が高く、首都高速は狭く複雑な区間があります。公共交通機関の利用も検討してください。"
+        },
+        {
+            "region_type": "city",
+            "region_name": "大阪",
+            "differences": {},
+            "notes": "東京より運転が直接的に感じられる場合があります。急な車線変更に注意してください。"
+        },
+        {
+            "region_type": "province",
+            "region_name": "北海道",
+            "differences": {
+                "speed_limits": {
+                    "urban": 50,
+                    "rural": 60,
+                    "motorway": 80,
+                    "units": "km/h",
+                    "notes": "冬は速度制限が下がることがあります。ホワイトアウトにも注意が必要です。"
+                }
+            },
+            "notes": "広く直線的な道路が多い一方、速度違反や野生動物、厳しい冬道に注意してください。"
+        }
+    ],
+    "last_verified": "2026-01-21",
+    "status": "verified",
+    "data_coverage": "high",
+    "road_signs": [
+        {
+            "title": "止まれ",
+            "description": "赤い逆三角形の標識です。必ず完全に停止してください。",
+            "image_url": "/images/signs/jp/stop.svg"
+        },
+        {
+            "title": "車両進入禁止",
+            "description": "赤い円に白い横棒の標識です。",
+            "image_url": "/images/signs/jp/no_entry.svg"
+        },
+        {
+            "title": "徐行",
+            "description": "青/白の逆三角形の標識です。すぐ停止できる速度で進みます。",
+            "image_url": "/images/signs/jp/slow_down.svg"
+        }
+    ],
+    "sources": [
+        "JAF（日本自動車連盟）",
+        "警視庁",
+        "外務省"
+    ]
+}

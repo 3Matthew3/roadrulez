@@ -2,7 +2,7 @@
  * Global application constants
  */
 
-export const SUPPORTED_LOCALES = ["en", "de"] as const;
+export const SUPPORTED_LOCALES = ["en", "de", "es", "ja"] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "en";

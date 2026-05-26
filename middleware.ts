@@ -9,6 +9,18 @@ const defaultLocale = DEFAULT_LOCALE;
 /** RBAC roles allowed to access admin panel */
 const ADMIN_ROLES = ["ADMIN", "EDITOR"] as const;
 
+function detectPreferredLocale(acceptLanguage: string | null): Locale | undefined {
+    if (!acceptLanguage) return undefined;
+
+    const requestedLocales = acceptLanguage
+        .toLowerCase()
+        .split(",")
+        .map((part) => part.split(";")[0]?.trim().split("-")[0])
+        .filter(Boolean);
+
+    return requestedLocales.find((locale): locale is Locale => isValidLocale(locale));
+}
+
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
@@ -78,8 +90,9 @@ if (
             locale = localeCookie;
         } else {
             const acceptLanguage = request.headers.get("Accept-Language");
-            if (acceptLanguage?.includes("de")) {
-                locale = "de";
+            const preferredLocale = detectPreferredLocale(acceptLanguage);
+            if (preferredLocale) {
+                locale = preferredLocale;
             }
         }
 
