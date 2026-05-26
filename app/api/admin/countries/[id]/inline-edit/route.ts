@@ -15,7 +15,7 @@ const inlineEditRequestSchema = z.object({
 
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { code: string } }
+    { params }: { params: { id: string } }
 ) {
     const session = await requireAuth()
 
@@ -45,7 +45,7 @@ export async function PATCH(
     }
 
     const result = await updateCountryInlineField({
-        iso2: params.code,
+        iso2: params.id,
         field: parsedBody.data.field,
         value: parsedValue.value,
         actorUserId: session.user.id,

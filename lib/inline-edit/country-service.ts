@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client"
 import { createAuditLog } from "@/lib/audit"
 import { prisma } from "@/lib/prisma"
 import {
@@ -11,6 +12,8 @@ type RuleModuleMetadata = {
     description: string
     schemaHint: Record<string, string>
 }
+
+type InlineRuleTarget = Extract<(typeof COUNTRY_INLINE_EDIT_FIELDS)[CountryInlineEditField]["target"], { type: "rule" }>
 
 const RULE_MODULE_METADATA: Record<string, RuleModuleMetadata> = {
     speed_limits: {
@@ -116,6 +119,10 @@ function valuesEqual(a: CountryInlineEditValue, b: CountryInlineEditValue): bool
     return JSON.stringify(a) === JSON.stringify(b)
 }
 
+function getVehicleType(target: InlineRuleTarget): "car" | undefined {
+    return "vehicleType" in target ? target.vehicleType : undefined
+}
+
 async function ensureRuleModule(moduleKey: string) {
     const metadata = RULE_MODULE_METADATA[moduleKey] ?? {
         name: moduleKey.replace(/_/g, " "),
@@ -203,7 +210,8 @@ export async function updateCountryInlineField({
     } else {
         await ensureRuleModule(config.target.moduleKey)
 
-        const rule = await findEditableRule(country.id, config.target.moduleKey, config.target.vehicleType)
+        const vehicleType = getVehicleType(config.target)
+        const rule = await findEditableRule(country.id, config.target.moduleKey, vehicleType)
         const structuredValue = toJsonObject(rule?.structuredValue)
         oldValue =
             config.target.storage === "textNotes"
@@ -221,7 +229,7 @@ export async function updateCountryInlineField({
                     data: {
                         countryId: country.id,
                         moduleKey: config.target.moduleKey,
-                        vehicleType: config.target.vehicleType ?? null,
+                        vehicleType: vehicleType ?? null,
                         ...buildRuleUpdateData(config.target, {}, value),
                     },
                 })
@@ -266,7 +274,7 @@ export async function updateCountryInlineField({
 }
 
 function buildRuleUpdateData(
-    target: Extract<(typeof COUNTRY_INLINE_EDIT_FIELDS)[CountryInlineEditField]["target"], { type: "rule" }>,
+    target: InlineRuleTarget,
     currentStructuredValue: Record<string, unknown>,
     value: CountryInlineEditValue
 ) {
@@ -279,5 +287,5 @@ function buildRuleUpdateData(
         setPathValue(nextStructuredValue, target.path, value)
     }
 
-    return { structuredValue: nextStructuredValue }
+    return { structuredValue: nextStructuredValue as Prisma.InputJsonObject }
 }
