@@ -7,6 +7,8 @@ import { getDictionary } from "@/lib/dictionaries"
 import { VehicleRules, TrafficRules } from "@/types/country"
 import { Triangle } from "lucide-react"
 import { CountryViewTracker } from "@/components/country-view-tracker"
+import { getServerSession } from "@/lib/auth"
+import { canInlineEditCountry } from "@/lib/inline-edit/country-fields"
 
 // Modular Components
 import CountryHero from "@/components/country/modular/CountryHero"
@@ -38,10 +40,11 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const vehicleType = (rawVehicle === "motorcycle" || rawVehicle === "moped") ? rawVehicle : "car"
 
     // Parallel data loading — direct ISO2 lookup, no name resolution needed
-    const [data, dict, countryIndex] = await Promise.all([
+    const [data, dict, countryIndex, session] = await Promise.all([
         getCountryData(iso2, params.lang),
         getDictionary(params.lang),
-        getAllCountries()
+        getAllCountries(),
+        getServerSession()
     ])
 
     if (!data) {
@@ -51,6 +54,10 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     // Find localized name from index
     const indexEntry = countryIndex.find(c => c.iso2 === data.iso2)
     const localizedName = indexEntry?.names?.[params.lang] || data.name_en
+    const inlineEdit = {
+        enabled: canInlineEditCountry(session?.user?.role) && vehicleType === "car",
+        countryCode: data.iso2,
+    }
 
     // Merge vehicle-specific rules on top of the national defaults
     const vehicleOverrides = data.vehicles?.[vehicleType] || {}
@@ -85,8 +92,8 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
                     />
                 )}
 
-                <QuickSummary data={data} dict={dict} />
-                <RequirementsCard data={data} dict={dict} />
+                <QuickSummary data={data} dict={dict} inlineEdit={inlineEdit} />
+                <RequirementsCard data={data} dict={dict} inlineEdit={inlineEdit} />
 
                 <div className="flex items-center gap-2 text-slate-500 text-sm bg-slate-900/50 p-3 rounded-lg border border-slate-800">
                     <Triangle className="h-4 w-4" />
@@ -95,17 +102,17 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
 
                 {/* Rules Grid */}
                 <div className="grid md:grid-cols-2 gap-6">
-                    <SpeedLimitsCard rules={rules} status={data.status} dict={dict} />
-                    <AlcoholLimitCard rules={rules} dict={dict} />
-                    <EmergencyCard rules={rules} dict={dict} />
-                    <TollsCard rules={rules} dict={dict} />
+                    <SpeedLimitsCard rules={rules} status={data.status} dict={dict} inlineEdit={inlineEdit} />
+                    <AlcoholLimitCard rules={rules} dict={dict} inlineEdit={inlineEdit} />
+                    <EmergencyCard rules={rules} dict={dict} inlineEdit={inlineEdit} />
+                    <TollsCard rules={rules} dict={dict} inlineEdit={inlineEdit} />
                 </div>
 
-                <DrivingBasics data={data} rules={rules} dict={dict} />
+                <DrivingBasics data={data} rules={rules} dict={dict} inlineEdit={inlineEdit} />
 
                 <div className="grid md:grid-cols-2 gap-8">
-                    <DetailedRulesAccordion rules={rules} dict={dict} />
-                    <ChecklistCard data={data} rules={rules} dict={dict} />
+                    <DetailedRulesAccordion rules={rules} dict={dict} inlineEdit={inlineEdit} />
+                    <ChecklistCard data={data} rules={rules} dict={dict} inlineEdit={inlineEdit} />
                 </div>
 
                 <TrafficSignsGrid data={data} dict={dict} />

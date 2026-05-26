@@ -100,3 +100,8 @@ export interface CountryIndexItem {
     iso2: string
     flag: string
 }
+
+export interface CountryInlineEditContext {
+    enabled: boolean
+    countryCode: string
+}

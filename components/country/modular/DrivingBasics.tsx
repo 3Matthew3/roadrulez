@@ -1,12 +1,16 @@
-import { CountryData, TrafficRules } from "@/types/country"
+import { CountryData, CountryInlineEditContext, TrafficRules } from "@/types/country"
+import { InlineEdit } from "@/components/inline-edit"
 
 interface DrivingBasicsProps {
     data: CountryData
     rules: TrafficRules
     dict: any
+    inlineEdit?: CountryInlineEditContext
 }
 
-export default function DrivingBasics({ data, rules, dict }: DrivingBasicsProps) {
+export default function DrivingBasics({ data, rules, dict, inlineEdit }: DrivingBasicsProps) {
+    const editable = inlineEdit?.enabled ? inlineEdit : null
+
     return (
         <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">{dict.rules.driving_basics}</h3>
@@ -19,15 +23,48 @@ export default function DrivingBasics({ data, rules, dict }: DrivingBasicsProps)
                 </div>
                 <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
                     <h4 className="text-slate-400 text-sm uppercase mb-1">{dict.props.priority}</h4>
-                    <p className="text-white font-medium">{rules.priority_rules}</p>
+                    {editable ? (
+                        <InlineEdit
+                            countryCode={editable.countryCode}
+                            field="priority_rules"
+                            value={rules.priority_rules}
+                            renderValue={(value) => (
+                                <p className="text-white font-medium">{String(value)}</p>
+                            )}
+                        />
+                    ) : (
+                        <p className="text-white font-medium">{rules.priority_rules}</p>
+                    )}
                 </div>
                 <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
                     <h4 className="text-slate-400 text-sm uppercase mb-1">{dict.props.seatbelts}</h4>
-                    <p className="text-slate-300 text-sm">{rules.seatbelt_rules}</p>
+                    {editable ? (
+                        <InlineEdit
+                            countryCode={editable.countryCode}
+                            field="seatbelt_rules"
+                            value={rules.seatbelt_rules}
+                            renderValue={(value) => (
+                                <p className="text-slate-300 text-sm">{String(value)}</p>
+                            )}
+                        />
+                    ) : (
+                        <p className="text-slate-300 text-sm">{rules.seatbelt_rules}</p>
+                    )}
                 </div>
                 <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
                     <h4 className="text-slate-400 text-sm uppercase mb-1">{dict.props.child_seats}</h4>
-                    <p className="text-slate-300 text-sm">{rules.child_seat_rules}</p>
+                    {editable ? (
+                        <InlineEdit
+                            countryCode={editable.countryCode}
+                            field="child_seat_rules"
+                            value={rules.child_seat_rules}
+                            renderValue={(value) => (
+                                <p className="text-slate-300 text-sm">{String(value)}</p>
+                            )}
+                        />
+                    ) : (
+                        <p className="text-slate-300 text-sm">{rules.child_seat_rules}</p>
+                    )}
                 </div>
             </div>
         </div>

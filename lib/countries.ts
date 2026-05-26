@@ -138,12 +138,14 @@ function buildRulesFromRows(rows: any[]): Partial<TrafficRules> {
                 if (note) result.mandatory_equipment_notes = note
                 break
             case "emergency_numbers":
-                result.emergency_numbers = [
-                    val.general,
-                    val.police,
-                    val.ambulance,
-                    val.fire,
-                ]
+                result.emergency_numbers = (Array.isArray(val.numbers)
+                    ? val.numbers
+                    : [
+                        val.general,
+                        val.police,
+                        val.ambulance,
+                        val.fire,
+                    ])
                     .filter(Boolean)
                     .filter((v: string, i: number, a: string[]) => a.indexOf(v) === i)
                 break
@@ -177,7 +179,9 @@ function buildRulesFromRows(rows: any[]): Partial<TrafficRules> {
             case "parking":
                 result.parking_rules = note ?? val.notes ?? ""
                 break
-            // priority_rules has no dedicated module yet — will remain empty string
+            case "priority_rules":
+                result.priority_rules = note ?? val.notes ?? ""
+                break
         }
     }
 
