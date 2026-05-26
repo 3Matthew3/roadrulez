@@ -11,7 +11,8 @@
         "right": "Right",
         "left": "Left",
         "yes": "Yes",
-        "no": "No"
+        "no": "No",
+        "requirements": "Before You Go"
     },
     "home": {
         "hero_title_1": "Driving rules,",
@@ -96,5 +97,114 @@
             "privacy": "Privacy Policy",
             "terms": "Terms of Service"
         }
+    },
+    "nav": {
+        "map": "Map",
+        "search": "Search",
+        "logo_alt": "RoadRulez Logo"
+    },
+    "a11y": {
+        "theme_toggle": "Toggle theme",
+        "world_map_background": "World Map Background"
+    },
+    "access_gate": {
+        "title": "Restricted Access",
+        "password_placeholder": "Enter Password",
+        "submit": "Enter",
+        "error": "Incorrect Password"
+    },
+    "search": {
+        "title": "Where are you driving next?",
+        "description": "Search for your destination to discover essential traffic rules and driving etiquette.",
+        "country_placeholder": "Search for a country (e.g., 'Germany', 'Japan')...",
+        "no_results": "No countries found for \"{query}\".",
+        "flag_alt": "Flag of {country}"
+    },
+    "coming_soon": {
+        "title": "Coming Soon",
+        "tagline": "Global Traffic Rules. Simplified.",
+        "impressum_legal": "Impressum / Legal",
+        "country": {
+            "title_prefix": "NO",
+            "title_highlight": "DATA",
+            "title_suffix": "YET",
+            "message": "We are working on this country",
+            "go_to_map": "Go to Map",
+            "back_home": "Back Home"
+        }
+    },
+    "legal": {
+        "title": "Legal Notice (Impressum)",
+        "provider_info": "Information according to § 5 TMG",
+        "company_placeholder": "[Company Name / Legal Entity]",
+        "street_placeholder": "[Street Address]",
+        "postal_city_placeholder": "[Zip Code] [City]",
+        "country_placeholder": "[Country]",
+        "represented_by": "Represented by:",
+        "managing_director_placeholder": "[Managing Director Name]",
+        "contact": "Contact",
+        "phone": "Phone:",
+        "phone_placeholder": "[Phone Number]",
+        "email": "Email:",
+        "email_placeholder": "[Email Address]",
+        "register_entry": "Register Entry",
+        "commercial_register_entry": "Entry in the commercial register.",
+        "register_court": "Register Court:",
+        "court_placeholder": "[Court Name]",
+        "registration_number": "Registration Number:",
+        "registration_number_placeholder": "[HRB Number]",
+        "vat_id": "VAT ID:",
+        "vat_id_description": "Sales tax identification number according to §27 a sales tax law:",
+        "vat_id_placeholder": "[DE 123 456 789]",
+        "dispute_resolution": "Dispute Resolution",
+        "odr_platform": "The European Commission provides a platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr",
+        "consumer_arbitration": "We are not willing or obliged to participate in dispute settlement procedures before a consumer arbitration board."
+    },
+    "country": {
+        "feedback_success": "Thank you! Your feedback has been recorded.",
+        "no_specific_equipment": "No specific equipment listed.",
+        "official_highway_code": "Official Highway Code",
+        "idp_requirement": "IDP Requirement",
+        "notes": "Notes",
+        "region": {
+            "title": "Regional & City Differences",
+            "description": "Some rules may vary by prefecture or city. Select a region below to see specific overrides.",
+            "nationwide_default": "Nationwide (Default)",
+            "notes_heading": "{region} Notes",
+            "specific_overrides": "Specific Overrides",
+            "speed_limits": "Speed Limits:",
+            "urban": "Urban",
+            "rural": "Rural",
+            "select_prompt": "Select a region above to view specific local rules."
+        }
+    },
+    "dashboard": {
+        "regions": "Regions",
+        "filter_by_continent": "Filter map by continent",
+        "pro_title": "RoadRulez Pro",
+        "pro_description": "Access detailed driving guides for 195+ countries.",
+        "continents": {
+            "All": "All",
+            "Europe": "Europe",
+            "Asia": "Asia",
+            "North America": "North America",
+            "South America": "South America",
+            "Africa": "Africa",
+            "Oceania": "Oceania"
+        }
+    },
+    "options": {
+        "coming_soon": "Coming Soon",
+        "impressum_legal": "Impressum / Legal",
+        "worldwide": "WORLDWIDE",
+        "coming_soon_195": "Coming Soon to 195 Countries",
+        "drive": "DRIVE",
+        "safe": "SAFE",
+        "road_rules_by_country": "Road Rules by Country",
+        "notify_me": "Notify Me"
+    },
+    "metadata": {
+        "title": "RoadRulez - Drive Safe, Everywhere",
+        "description": "Your ultimate guide to traffic rules and driving etiquette around the world."
     }
 }

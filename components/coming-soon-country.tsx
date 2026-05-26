@@ -67,7 +67,19 @@ function AnimatedStreaks() {
     )
 }
 
-export function ComingSoonCountry() {
+interface ComingSoonCountryProps {
+    lang: string
+    labels: {
+        title_prefix: string
+        title_highlight: string
+        title_suffix: string
+        message: string
+        go_to_map: string
+        back_home: string
+    }
+}
+
+export function ComingSoonCountry({ lang, labels }: ComingSoonCountryProps) {
     return (
         <div className="fixed inset-0 z-[50] flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden font-sans">
 
@@ -93,7 +105,7 @@ export function ComingSoonCountry() {
                     transition={{ duration: 1.2, ease: "easeOut" }}
                 >
                     <h1 className="text-4xl md:text-7xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/40 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-                        NO <span className="text-cyan-400">DATA</span> YET
+                        {labels.title_prefix} <span className="text-cyan-400">{labels.title_highlight}</span> {labels.title_suffix}
                     </h1>
                 </motion.div>
 
@@ -103,7 +115,7 @@ export function ComingSoonCountry() {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     className="text-lg md:text-2xl font-light tracking-[0.4em] text-cyan-100/70 uppercase max-w-2xl"
                 >
-                    We are working on this country
+                    {labels.message}
                 </motion.h2>
 
                 <motion.div
@@ -112,14 +124,14 @@ export function ComingSoonCountry() {
                     transition={{ delay: 1 }}
                     className="pt-8 flex flex-col sm:flex-row gap-4 w-full justify-center"
                 >
-                    <Link href="/map" className="group relative px-8 py-3 bg-cyan-900/20 hover:bg-cyan-900/40 border border-cyan-500/30 rounded-full text-cyan-100 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                    <Link href={`/${lang}/map`} className="group relative px-8 py-3 bg-cyan-900/20 hover:bg-cyan-900/40 border border-cyan-500/30 rounded-full text-cyan-100 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
                         <Map className="w-4 h-4" />
-                        <span>Go to Map</span>
+                        <span>{labels.go_to_map}</span>
                     </Link>
 
-                    <Link href="/" className="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-zinc-300 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-white/30 hover:text-white">
+                    <Link href={`/${lang}`} className="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-zinc-300 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-white/30 hover:text-white">
                         <ArrowLeft className="w-4 h-4" />
-                        <span>Back Home</span>
+                        <span>{labels.back_home}</span>
                     </Link>
                 </motion.div>
             </div>

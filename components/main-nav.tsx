@@ -2,7 +2,6 @@ import * as React from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 
 interface MainNavProps {
     items?: {
@@ -12,9 +11,14 @@ interface MainNavProps {
     }[]
     children?: React.ReactNode
     lang: string
+    labels: {
+        map: string
+        search: string
+        logo_alt: string
+    }
 }
 
-export function MainNav({ items, children, lang }: MainNavProps) {
+export function MainNav({ lang, labels }: MainNavProps) {
     return (
         <div className="mr-4 hidden md:flex">
             <Link href={`/${lang}`} className="mr-6 flex items-center space-x-2">
@@ -22,7 +26,7 @@ export function MainNav({ items, children, lang }: MainNavProps) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src="/logo.png"
-                    alt="RoadRulez Logo"
+                    alt={labels.logo_alt}
                     className="h-8 md:h-10 w-auto object-contain"
                 />
             </Link>
@@ -31,10 +35,9 @@ export function MainNav({ items, children, lang }: MainNavProps) {
                     href={`/${lang}/map`}
                     className={cn(
                         "transition-colors hover:text-white",
-                        // pathname === "/docs" ? "text-foreground" : "text-foreground/60"
                     )}
                 >
-                    Map
+                    {labels.map}
                 </Link>
                 <Link
                     href={`/${lang}/search`}
@@ -42,26 +45,9 @@ export function MainNav({ items, children, lang }: MainNavProps) {
                         "transition-colors hover:text-white",
                     )}
                 >
-                    Search
+                    {labels.search}
                 </Link>
-                {/* <Link
-                    href={`/${lang}/rules`}
-                    className={cn(
-                        "transition-colors hover:text-white",
-                    )}
-                >
-                    All Rules
-                </Link> */}
-                {/* <Link
-                    href={`/${lang}/about`}
-                    className={cn(
-                        "transition-colors hover:text-white",
-                    )}
-                >
-                    About
-                </Link> */}
             </nav>
         </div>
     )
 }
-

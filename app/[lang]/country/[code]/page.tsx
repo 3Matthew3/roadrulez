@@ -45,7 +45,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     ])
 
     if (!data) {
-        return <ComingSoonCountry />
+        return <ComingSoonCountry lang={params.lang} labels={dict.coming_soon.country} />
     }
 
     // Find localized name from index
@@ -113,13 +113,13 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
                 {/* Regional Logic */}
                 {
                     data.regional_variations && data.regional_variations.length > 0 && (
-                        <RegionSelector variations={data.regional_variations} />
+                        <RegionSelector variations={data.regional_variations} labels={dict.country.region} />
                     )
                 }
 
                 {/* Feedback Form */}
                 <div className="pt-8 border-t border-slate-800">
-                    <FeedbackForm labels={dict.extra} countryName={data.name_en} />
+                    <FeedbackForm labels={{ ...dict.extra, feedback_success: dict.country.feedback_success }} countryName={data.name_en} />
                 </div>
 
             </div >

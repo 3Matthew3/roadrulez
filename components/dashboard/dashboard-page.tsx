@@ -8,7 +8,18 @@ import { DashboardSidebar, Continent } from "@/components/dashboard/sidebar"
 import MapWrapper from "@/components/map/map-wrapper"
 import { CountrySearch } from "@/components/country-search"
 
-export default function DashboardPage() {
+interface DashboardPageProps {
+    labels: {
+        dashboard: any
+        search: {
+            country_placeholder: string
+            no_results: string
+            flag_alt: string
+        }
+    }
+}
+
+export default function DashboardPage({ labels }: DashboardPageProps) {
     const [selectedContinent, setSelectedContinent] = useState<Continent>("All")
 
     return (
@@ -16,13 +27,14 @@ export default function DashboardPage() {
             <DashboardSidebar
                 selectedContinent={selectedContinent}
                 onSelectContinent={setSelectedContinent}
+                labels={labels.dashboard}
             />
 
             <div className="flex-1 relative bg-background">
                 {/* Floating Search Bar */}
                 <div className="absolute top-4 left-4 right-4 z-[400] max-w-md mx-auto pointer-events-none">
                     <div className="pointer-events-auto shadow-2xl rounded-xl overflow-hidden bg-background/80 backdrop-blur-md border">
-                        <CountrySearch />
+                        <CountrySearch labels={labels.search} />
                     </div>
                 </div>
 

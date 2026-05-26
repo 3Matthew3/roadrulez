@@ -13,7 +13,14 @@ interface Streak {
     opacity: number;
 }
 
-export function ComingSoonPage() {
+interface ComingSoonPageProps {
+    labels: {
+        title: string
+        tagline: string
+    }
+}
+
+export function ComingSoonPage({ labels }: ComingSoonPageProps) {
     const [mounted, setMounted] = useState(false)
 
     // Only render animations client-side to avoid hydration mismatch
@@ -93,7 +100,7 @@ export function ComingSoonPage() {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     className="text-xl md:text-3xl font-light tracking-[0.6em] text-cyan-100/70 uppercase"
                 >
-                    Coming Soon
+                    {labels.title}
                 </motion.h2>
 
                 <motion.div
@@ -103,7 +110,7 @@ export function ComingSoonPage() {
                     className="pt-12"
                 >
                     <div className="px-6 py-2 border border-white/10 rounded-full bg-white/5 backdrop-blur-md text-sm text-zinc-400 uppercase tracking-widest shadow-xl">
-                        Global Traffic Rules. Simplified.
+                        {labels.tagline}
                     </div>
                 </motion.div>
             </div>

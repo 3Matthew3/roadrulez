@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { getClientDictionary } from "@/lib/client-dictionaries"
 
 const CarIcon = ({ className }: { className?: string }) => (
     <svg viewBox="0 0 512 512" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +10,9 @@ const CarIcon = ({ className }: { className?: string }) => (
     </svg>
 )
 
-export default function GlobeDrivePage() {
+export default function GlobeDrivePage({ params }: { params: { lang: string } }) {
+    const dict = getClientDictionary(params.lang)
+
     return (
         // z-[200] covers header
         <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#080808] text-white overflow-hidden font-mono perspective-1000">
@@ -79,19 +82,19 @@ export default function GlobeDrivePage() {
             <div className="relative z-20 flex flex-col items-center space-y-4">
                 <div className="text-center space-y-2">
                     <h1 className="text-4xl md:text-7xl font-bold tracking-tighter text-white">
-                        WORLDWIDE
+                        {dict.options.worldwide}
                     </h1>
                     <div className="flex items-center justify-center gap-2 text-blue-400 text-sm font-bold tracking-[0.3em] uppercase">
                         <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                        Coming Soon to 195 Countries
+                        {dict.options.coming_soon_195}
                     </div>
                 </div>
             </div>
 
             {/* Footer / Impressum - Centered, Original Style */}
             <div className="absolute bottom-6 z-30 w-full flex justify-center">
-                <Link href="/de/impressum" className="text-zinc-700 text-sm hover:text-zinc-500 transition-colors">
-                    Impressum / Legal
+                <Link href={`/${params.lang}/impressum`} className="text-zinc-700 text-sm hover:text-zinc-500 transition-colors">
+                    {dict.options.impressum_legal}
                 </Link>
             </div>
         </div>

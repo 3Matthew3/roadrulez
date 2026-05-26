@@ -11,7 +11,8 @@
         "right": "Rechts",
         "left": "Links",
         "yes": "Ja",
-        "no": "Nein"
+        "no": "Nein",
+        "requirements": "Vor der Fahrt"
     },
     "home": {
         "hero_title_1": "Verkehrsregeln,",
@@ -96,5 +97,114 @@
             "privacy": "Datenschutz",
             "terms": "AGB"
         }
+    },
+    "nav": {
+        "map": "Karte",
+        "search": "Suche",
+        "logo_alt": "RoadRulez Logo"
+    },
+    "a11y": {
+        "theme_toggle": "Design umschalten",
+        "world_map_background": "Weltkarten-Hintergrund"
+    },
+    "access_gate": {
+        "title": "Eingeschränkter Zugang",
+        "password_placeholder": "Passwort eingeben",
+        "submit": "Einloggen",
+        "error": "Falsches Passwort"
+    },
+    "search": {
+        "title": "Wohin fährst du als Nächstes?",
+        "description": "Suche dein Reiseziel, um wichtige Verkehrsregeln und lokale Fahrgewohnheiten zu entdecken.",
+        "country_placeholder": "Suche nach einem Land (z. B. 'Deutschland', 'Japan')...",
+        "no_results": "Keine Länder für \"{query}\" gefunden.",
+        "flag_alt": "Flagge von {country}"
+    },
+    "coming_soon": {
+        "title": "Demnächst verfügbar",
+        "tagline": "Globale Verkehrsregeln. Einfach erklärt.",
+        "impressum_legal": "Impressum / Rechtliches",
+        "country": {
+            "title_prefix": "NOCH",
+            "title_highlight": "KEINE",
+            "title_suffix": "DATEN",
+            "message": "Wir arbeiten an diesem Land",
+            "go_to_map": "Zur Karte",
+            "back_home": "Zur Startseite"
+        }
+    },
+    "legal": {
+        "title": "Impressum",
+        "provider_info": "Angaben gemäß § 5 TMG",
+        "company_placeholder": "[Firmenname / Rechtsträger]",
+        "street_placeholder": "[Straße und Hausnummer]",
+        "postal_city_placeholder": "[PLZ] [Ort]",
+        "country_placeholder": "[Land]",
+        "represented_by": "Vertreten durch:",
+        "managing_director_placeholder": "[Name der Geschäftsführung]",
+        "contact": "Kontakt",
+        "phone": "Telefon:",
+        "phone_placeholder": "[Telefonnummer]",
+        "email": "E-Mail:",
+        "email_placeholder": "[E-Mail-Adresse]",
+        "register_entry": "Registereintrag",
+        "commercial_register_entry": "Eintragung im Handelsregister.",
+        "register_court": "Registergericht:",
+        "court_placeholder": "[Registergericht]",
+        "registration_number": "Registernummer:",
+        "registration_number_placeholder": "[HRB-Nummer]",
+        "vat_id": "Umsatzsteuer-ID:",
+        "vat_id_description": "Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:",
+        "vat_id_placeholder": "[DE 123 456 789]",
+        "dispute_resolution": "Streitschlichtung",
+        "odr_platform": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr",
+        "consumer_arbitration": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+    },
+    "country": {
+        "feedback_success": "Danke! Dein Feedback wurde erfasst.",
+        "no_specific_equipment": "Keine spezielle Ausstattung aufgeführt.",
+        "official_highway_code": "Offizielle Straßenverkehrsordnung",
+        "idp_requirement": "Internationaler Führerschein",
+        "notes": "Hinweise",
+        "region": {
+            "title": "Regionale und städtische Unterschiede",
+            "description": "Einige Regeln können je nach Region oder Stadt abweichen. Wähle unten eine Region aus, um spezifische Ausnahmen zu sehen.",
+            "nationwide_default": "Landesweit (Standard)",
+            "notes_heading": "Hinweise zu {region}",
+            "specific_overrides": "Spezifische Abweichungen",
+            "speed_limits": "Tempolimits:",
+            "urban": "Innerorts",
+            "rural": "Außerorts",
+            "select_prompt": "Wähle oben eine Region aus, um lokale Regeln zu sehen."
+        }
+    },
+    "dashboard": {
+        "regions": "Regionen",
+        "filter_by_continent": "Karte nach Kontinent filtern",
+        "pro_title": "RoadRulez Pro",
+        "pro_description": "Detaillierte Fahrguides für über 195 Länder.",
+        "continents": {
+            "All": "Alle",
+            "Europe": "Europa",
+            "Asia": "Asien",
+            "North America": "Nordamerika",
+            "South America": "Südamerika",
+            "Africa": "Afrika",
+            "Oceania": "Ozeanien"
+        }
+    },
+    "options": {
+        "coming_soon": "Demnächst verfügbar",
+        "impressum_legal": "Impressum / Rechtliches",
+        "worldwide": "WELTWEIT",
+        "coming_soon_195": "Demnächst in 195 Ländern",
+        "drive": "FAHR",
+        "safe": "SICHER",
+        "road_rules_by_country": "Verkehrsregeln nach Land",
+        "notify_me": "Benachrichtigen"
+    },
+    "metadata": {
+        "title": "RoadRulez - Sicher fahren, überall",
+        "description": "Dein Guide für Verkehrsregeln und Fahrgewohnheiten rund um die Welt."
     }
 }

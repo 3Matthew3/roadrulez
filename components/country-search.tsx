@@ -18,7 +18,15 @@ interface Country {
     routeKey: string
 }
 
-export function CountrySearch() {
+interface CountrySearchProps {
+    labels: {
+        country_placeholder: string
+        no_results: string
+        flag_alt: string
+    }
+}
+
+export function CountrySearch({ labels }: CountrySearchProps) {
     const router = useRouter()
     const [query, setQuery] = useState("")
     const [filteredCountries, setFilteredCountries] = useState<Country[]>([])
@@ -73,7 +81,7 @@ export function CountrySearch() {
                 <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                 <input
                     type="text"
-                    placeholder="Search for a country (e.g., 'Germany', 'Japan')..."
+                    placeholder={labels.country_placeholder}
                     className="flex h-12 w-full bg-transparent px-3 py-2 pl-10 text-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -97,7 +105,7 @@ export function CountrySearch() {
                             <div className="relative h-6 w-10 overflow-hidden rounded shadow-sm border">
                                 <Image
                                     src={country.flags.svg}
-                                    alt={country.flags.alt || `Flag of ${country.name.common}`}
+                                    alt={country.flags.alt || labels.flag_alt.replace("{country}", country.name.common)}
                                     fill
                                     className="object-cover"
                                     unoptimized
@@ -111,7 +119,7 @@ export function CountrySearch() {
 
             {query && filteredCountries.length === 0 && !loading && (
                 <div className="py-6 text-center text-muted-foreground">
-                    No countries found for &quot;{query}&quot;.
+                    {labels.no_results.replace("{query}", query)}
                 </div>
             )}
         </div>

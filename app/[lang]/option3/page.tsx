@@ -1,8 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { getClientDictionary } from "@/lib/client-dictionaries"
 
-export default function CinematicBlurPage() {
+export default function CinematicBlurPage({ params }: { params: { lang: string } }) {
+    const dict = getClientDictionary(params.lang)
+
     return (
         <div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-black text-white overflow-hidden font-sans">
 
@@ -45,10 +48,10 @@ export default function CinematicBlurPage() {
                     className="flex flex-col items-center"
                 >
                     <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mix-blend-overlay">
-                        DRIVE
+                        {dict.options.drive}
                     </h1>
                     <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white/90">
-                        SAFE
+                        {dict.options.safe}
                     </h1>
                 </motion.div>
 
@@ -60,7 +63,7 @@ export default function CinematicBlurPage() {
                     transition={{ delay: 1, duration: 1 }}
                     className="text-white/60 text-sm font-light tracking-[0.3em] uppercase"
                 >
-                    Road Rules by Country
+                    {dict.options.road_rules_by_country}
                 </motion.p>
 
                 <motion.button
@@ -68,7 +71,7 @@ export default function CinematicBlurPage() {
                     whileTap={{ scale: 0.95 }}
                     className="px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-zinc-200 transition-colors"
                 >
-                    Notify Me
+                    {dict.options.notify_me}
                 </motion.button>
             </div>
         </div>

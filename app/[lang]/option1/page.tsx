@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { getClientDictionary } from "@/lib/client-dictionaries"
 
 const CarIcon = ({ className }: { className?: string }) => (
     <svg viewBox="0 0 512 512" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +10,9 @@ const CarIcon = ({ className }: { className?: string }) => (
     </svg>
 )
 
-export default function NightDrivePage() {
+export default function NightDrivePage({ params }: { params: { lang: string } }) {
+    const dict = getClientDictionary(params.lang)
+
     return (
         // z-[200] covers the site header
         <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black text-white overflow-hidden font-sans perspective-[1000px]">
@@ -106,7 +109,7 @@ export default function NightDrivePage() {
                 </h1>
 
                 <h2 className="text-2xl md:text-4xl font-light tracking-[0.5em] text-fuchsia-200 uppercase">
-                    Coming Soon
+                    {dict.options.coming_soon}
                 </h2>
             </div>
 
@@ -115,8 +118,8 @@ export default function NightDrivePage() {
 
             {/* Footer / Impressum - Centered, Original Style */}
             <div className="absolute bottom-6 z-30 w-full flex justify-center">
-                <Link href="/de/impressum" className="text-zinc-700 text-sm hover:text-zinc-500 transition-colors">
-                    Impressum / Legal
+                <Link href={`/${params.lang}/impressum`} className="text-zinc-700 text-sm hover:text-zinc-500 transition-colors">
+                    {dict.options.impressum_legal}
                 </Link>
             </div>
         </div>

@@ -23,7 +23,7 @@ export default function ChecklistCard({ data, rules, dict }: ChecklistCardProps)
                         ))}
                     </ul>
                 ) : (
-                    <p className="text-slate-500 text-sm">No specific equipment listed.</p>
+                    <p className="text-slate-500 text-sm">{dict.country.no_specific_equipment}</p>
                 )}
             </div>
 
@@ -33,7 +33,7 @@ export default function ChecklistCard({ data, rules, dict }: ChecklistCardProps)
                     {data.sources.length > 0 ? data.sources.map((s, i) => (
                         <li key={i}>{s}</li>
                     )) : (
-                        <li>Official Highway Code</li>
+                        <li>{dict.country.official_highway_code}</li>
                     )}
                 </ul>
             </div>
