@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge"
 import { getDictionary } from "@/lib/dictionaries"
 
 export default async function ImpressumPage({ params }: { params: { lang: string } }) {

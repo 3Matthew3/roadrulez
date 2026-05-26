@@ -22,25 +22,25 @@ export default function VehicleSpecificsCard({ vehicleType, rules, labels }: Veh
             <div className="grid gap-4 md:grid-cols-2">
                 {rules.helmet_rules && (
                     <div className="space-y-1">
-                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.helmet || "Helmet"}</span>
+                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics.helmet}</span>
                         <p className="text-slate-300 text-sm">{rules.helmet_rules}</p>
                     </div>
                 )}
                 {rules.lane_splitting_rules && (
                     <div className="space-y-1">
-                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.lane_splitting || "Lane Splitting"}</span>
+                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics.lane_splitting}</span>
                         <p className="text-slate-300 text-sm">{rules.lane_splitting_rules}</p>
                     </div>
                 )}
                 {rules.motorway_access && (
                     <div className="space-y-1">
-                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.motorway || "Motorway Access"}</span>
+                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics.motorway}</span>
                         <p className="text-slate-300 text-sm">{rules.motorway_access}</p>
                     </div>
                 )}
                 {rules.licensing_notes && (
                     <div className="space-y-1">
-                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.licensing || "Licensing"}</span>
+                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics.licensing}</span>
                         <p className="text-slate-300 text-sm">{rules.licensing_notes}</p>
                     </div>
                 )}

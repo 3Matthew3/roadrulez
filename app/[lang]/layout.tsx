@@ -13,10 +13,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-    title: "RoadRulez - Drive Safe, Everywhere",
-    description: "Your ultimate guide to traffic rules and driving etiquette around the world.",
-};
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+    const dict = await getDictionary(params.lang)
+
+    return {
+        title: dict.metadata.title,
+        description: dict.metadata.description,
+    };
+}
 
 export default async function RootLayout({
     children,
@@ -41,7 +45,7 @@ export default async function RootLayout({
                     disableTransitionOnChange
                 >
                     <div className="relative flex min-h-screen flex-col">
-                        <SiteHeader lang={params.lang} />
+                        <SiteHeader lang={params.lang} labels={{ nav: dict.nav, a11y: dict.a11y }} />
                         <div className="flex-1">{children}</div>
                         <SiteFooter dict={dict} lang={params.lang} />
                     </div>

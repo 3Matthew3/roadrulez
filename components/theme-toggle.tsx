@@ -6,7 +6,11 @@ import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+    label: string
+}
+
+export function ThemeToggle({ label }: ThemeToggleProps) {
     const { setTheme, theme } = useTheme()
 
     return (
@@ -17,7 +21,7 @@ export function ThemeToggle() {
         >
             <Icons.sun className="h-[1.5rem] w-[1.3rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Icons.moon className="absolute h-[1.5rem] w-[1.3rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <span className="sr-only">Toggle theme</span>
+            <span className="sr-only">{label}</span>
         </Button>
     )
 }

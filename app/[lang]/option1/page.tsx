@@ -115,7 +115,7 @@ export default function NightDrivePage() {
 
             {/* Footer / Impressum - Centered, Original Style */}
             <div className="absolute bottom-6 z-30 w-full flex justify-center">
-                <Link href="/de/impressum" className="text-zinc-700 text-sm hover:text-zinc-500 transition-colors">
+                <Link href={`/${params.lang}/impressum`} className="text-zinc-700 text-sm hover:text-zinc-500 transition-colors">
                     Impressum / Legal
                 </Link>
             </div>

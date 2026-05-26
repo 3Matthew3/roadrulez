@@ -37,7 +37,7 @@ export async function RealHomePage({ lang }: RealHomePageProps) {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src="/hero-globe.png"
-                        alt="World Map Background"
+                        alt={dict.a11y.world_map_background}
                         className="w-full h-full object-cover object-right opacity-90"
                     />
                 </div>

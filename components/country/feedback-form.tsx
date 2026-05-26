@@ -25,7 +25,7 @@ export default function FeedbackForm({ labels, countryName }: FeedbackFormProps)
     if (status === "success") {
         return (
             <div className="p-6 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-                <p className="text-green-400 font-medium">Thank you! Your feedback has been recorded.</p>
+                <p className="text-green-400 font-medium">{labels.feedback_success}</p>
             </div>
         )
     }
