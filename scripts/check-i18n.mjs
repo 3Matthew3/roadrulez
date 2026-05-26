@@ -116,6 +116,16 @@ function shouldIgnoreString(value) {
     return true;
   }
 
+  const tokens = normalized.split(/\s+/);
+  const looksLikeUtilityClasses =
+    tokens.length > 1 &&
+    tokens.every((token) => /^[A-Za-z0-9_:/[\].#%(),"!'-]+$/.test(token)) &&
+    tokens.some((token) => /[-0-9:[\]#]/.test(token));
+
+  if (looksLikeUtilityClasses) {
+    return true;
+  }
+
   return false;
 }
 
