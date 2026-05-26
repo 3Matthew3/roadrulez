@@ -32,6 +32,9 @@ const ignoredStringPatterns = [
   /^mailto:/i,
   /^#[0-9a-f]{3,8}$/i,
   /^\/[a-z0-9/_-]+$/i,
+  /\b(?:return|const|let|if|else|function)\b/,
+  /\b(?:linear-gradient|rgba|url\(|easeOut)\b/i,
+  /\b(?:bg|border|bottom|center|duration|font|from|grid|hover|justify|rounded|shadow|text|to|transition)-/i,
   /^[A-Z0-9_]+$/,
   /^[a-z0-9_-]+$/,
   /^[a-z]+:[a-z-]+$/i,
@@ -149,9 +152,24 @@ function findHardcodedText(filePath) {
     addCandidate(candidates, filePath, searchable, match.index, `attr:${match[1]}`, match[2]);
   }
 
-  const expressionStringPattern = /\{\s*[^{}]*(?:\?|:|\|\|)\s*["`]([^"`{}]*[A-Za-z][^"`{}]*)["`][^{}]*\}/g;
-  for (const match of searchable.matchAll(expressionStringPattern)) {
-    addCandidate(candidates, filePath, searchable, match.index + match[0].indexOf(match[1]), "expression-string", match[1]);
+  const expressionPattern = /\{([^{}]*)\}/gs;
+  for (const expressionMatch of searchable.matchAll(expressionPattern)) {
+    const expression = expressionMatch[1];
+    if (!expression.includes("?") && !expression.includes("||")) {
+      continue;
+    }
+
+    const stringPattern = /["`]([^"`{}]*[A-Za-z][^"`{}]*)["`]/g;
+    for (const stringMatch of expression.matchAll(stringPattern)) {
+      addCandidate(
+        candidates,
+        filePath,
+        searchable,
+        expressionMatch.index + expressionMatch[0].indexOf(stringMatch[0]),
+        "expression-string",
+        stringMatch[1],
+      );
+    }
   }
 
   return candidates;
