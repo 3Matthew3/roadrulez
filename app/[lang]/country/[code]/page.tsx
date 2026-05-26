@@ -55,7 +55,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const indexEntry = countryIndex.find(c => c.iso2 === data.iso2)
     const localizedName = indexEntry?.names?.[params.lang] || data.name_en
     const inlineEdit = {
-        enabled: canInlineEditCountry(session?.user?.role) && vehicleType === "car",
+        enabled: canInlineEditCountry(session?.user?.role) && vehicleType === "car" && params.lang === "en",
         countryCode: data.iso2,
     }
 

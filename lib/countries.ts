@@ -37,7 +37,8 @@ async function getPrisma() {
  */
 function dbToCountryData(
     country: any,
-    locale: string = "en"
+    locale: string = "en",
+    fallback?: CountryData | null
 ): CountryData {
     // ── Locale overrides (stored in localeContent JSON column) ────────────────
     const localeOverrides: any =
@@ -46,7 +47,10 @@ function dbToCountryData(
             : {}
 
     // ── Build rules from CountryRule rows ─────────────────────────────────────
-    const rules = buildRulesFromRows(country.rules ?? []) as TrafficRules
+    const rules = mergeTrafficRules(
+        fallback?.rules,
+        buildRulesFromRows(country.rules ?? [], false)
+    )
 
     // ── Regional variations from Region rows ─────────────────────────────────
     // Filter out any null/undefined regions and use type guard
@@ -65,27 +69,33 @@ function dbToCountryData(
             }
         })
 
+    const hasDbRegions = regional_variations.length > 0
+    const sources = (country.sources ?? []).map((s: any) => s.url ?? s.title)
+    const preferLocalizedFallback = locale !== "en"
+
     return {
         name_en: country.name,
-        name_local: country.nameLocal ?? country.name,
+        name_local: country.nameLocal ?? fallback?.name_local ?? country.name,
         iso2: country.iso2,
-        iso3: country.iso3 ?? "",
-        continent: country.continent ?? "",
-        flag: country.flag ?? "",
+        iso3: country.iso3 ?? fallback?.iso3 ?? "",
+        continent: country.continent ?? fallback?.continent ?? "",
+        flag: country.flag ?? fallback?.flag ?? "",
+        header_images: fallback?.header_images,
         drive_side: country.drivingSide === "LEFT" ? "left" : "right",
         rules,
-        summary: localeOverrides.summary ?? country.summary ?? "",
-        common_traps: localeOverrides.commonTraps ?? country.commonTraps ?? [],
+        summary: localeOverrides.summary ?? (preferLocalizedFallback ? fallback?.summary : country.summary) ?? country.summary ?? "",
+        common_traps: localeOverrides.commonTraps ?? (preferLocalizedFallback ? fallback?.common_traps : country.commonTraps) ?? country.commonTraps ?? [],
         rental_and_idp_notes:
-            localeOverrides.rentalAndIdpNotes ?? country.rentalAndIdpNotes ?? "",
-        idp_requirement: country.idpRequirement ?? undefined,
-        regional_variations,
+            localeOverrides.rentalAndIdpNotes ?? (preferLocalizedFallback ? fallback?.rental_and_idp_notes : country.rentalAndIdpNotes) ?? country.rentalAndIdpNotes ?? "",
+        idp_requirement: country.idpRequirement ?? fallback?.idp_requirement ?? undefined,
+        regional_variations: hasDbRegions ? regional_variations : fallback?.regional_variations,
         last_verified: country.lastVerifiedAt
             ? country.lastVerifiedAt.toISOString().split("T")[0]
-            : "",
+            : fallback?.last_verified ?? "",
         status: mapDbStatus(country.status),
         data_coverage: (country.dataCoverage as any) ?? undefined,
-        sources: (country.sources ?? []).map((s: any) => s.url ?? s.title),
+        sources: sources.length > 0 ? sources : fallback?.sources ?? [],
+        road_signs: fallback?.road_signs,
     }
 }
 
@@ -102,7 +112,7 @@ function mapDbStatus(
  * Converts an array of CountryRule / RegionRuleOverride rows into a
  * (partial) TrafficRules object. Each row has a moduleKey + structuredValue JSON.
  */
-function buildRulesFromRows(rows: any[]): Partial<TrafficRules> {
+function buildRulesFromRows(rows: any[], includeDefaults = true): Partial<TrafficRules> {
     const result: any = {}
 
     for (const row of rows) {
@@ -185,7 +195,8 @@ function buildRulesFromRows(rows: any[]): Partial<TrafficRules> {
         }
     }
 
-    // Sensible fallbacks so the UI never crashes on missing data
+    if (!includeDefaults) return result
+
     return {
         speed_limits: { urban: 50, rural: 90, motorway: 130, units: "km/h" },
         alcohol_limit: { value: 0.5, unit: "‰" },
@@ -200,6 +211,40 @@ function buildRulesFromRows(rows: any[]): Partial<TrafficRules> {
         winter_rules: "",
         emergency_numbers: [],
         ...result,
+    }
+}
+
+function mergeTrafficRules(
+    fallbackRules: TrafficRules | undefined,
+    dbRules: Partial<TrafficRules>
+): TrafficRules {
+    const defaults = buildRulesFromRows([]) as TrafficRules
+
+    return {
+        speed_limits: {
+            ...defaults.speed_limits,
+            ...fallbackRules?.speed_limits,
+            ...dbRules.speed_limits,
+        },
+        alcohol_limit: {
+            ...defaults.alcohol_limit,
+            ...fallbackRules?.alcohol_limit,
+            ...dbRules.alcohol_limit,
+        },
+        seatbelt_rules: dbRules.seatbelt_rules ?? fallbackRules?.seatbelt_rules ?? defaults.seatbelt_rules,
+        child_seat_rules: dbRules.child_seat_rules ?? fallbackRules?.child_seat_rules ?? defaults.child_seat_rules,
+        phone_usage_rules: dbRules.phone_usage_rules ?? fallbackRules?.phone_usage_rules ?? defaults.phone_usage_rules,
+        headlights_rules: dbRules.headlights_rules ?? fallbackRules?.headlights_rules ?? defaults.headlights_rules,
+        priority_rules: dbRules.priority_rules ?? fallbackRules?.priority_rules ?? defaults.priority_rules,
+        tolls: {
+            ...defaults.tolls,
+            ...fallbackRules?.tolls,
+            ...dbRules.tolls,
+        },
+        parking_rules: dbRules.parking_rules ?? fallbackRules?.parking_rules ?? defaults.parking_rules,
+        mandatory_equipment: dbRules.mandatory_equipment ?? fallbackRules?.mandatory_equipment ?? defaults.mandatory_equipment,
+        winter_rules: dbRules.winter_rules ?? fallbackRules?.winter_rules ?? defaults.winter_rules,
+        emergency_numbers: dbRules.emergency_numbers ?? fallbackRules?.emergency_numbers ?? defaults.emergency_numbers,
     }
 }
 
@@ -319,7 +364,8 @@ export async function getCountryData(
             })
 
             if (country) {
-                return dbToCountryData(country, locale)
+                const jsonFallback = await getJsonCountryData(iso2, locale)
+                return dbToCountryData(country, locale, jsonFallback)
             }
         } catch (e) {
             console.warn(`[countries] DB query failed for ${iso2}, falling back to JSON:`, e)
