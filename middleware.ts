@@ -23,6 +23,13 @@ function detectPreferredLocale(acceptLanguage: string | null): Locale | undefine
 
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
+    const segments = pathname.split("/").filter(Boolean);
+
+    if (segments.length >= 2 && isValidLocale(segments[0]) && isValidLocale(segments[1])) {
+        const normalizedUrl = request.nextUrl.clone();
+        normalizedUrl.pathname = `/${segments[1]}${segments.length > 2 ? `/${segments.slice(2).join("/")}` : ""}`;
+        return NextResponse.redirect(normalizedUrl);
+    }
 
     // ── Admin route protection (/admin/* and /api/admin/*) ──────────────────
     const isAdminPage = pathname.startsWith("/admin");
