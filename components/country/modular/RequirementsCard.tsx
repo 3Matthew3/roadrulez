@@ -1,31 +1,56 @@
 import { AlertCircle } from "lucide-react"
-import { CountryData } from "@/types/country"
+import { CountryData, CountryInlineEditContext } from "@/types/country"
+import { InlineEdit } from "@/components/inline-edit"
 
 interface RequirementsCardProps {
     data: CountryData
     dict: any
+    inlineEdit?: CountryInlineEditContext
 }
 
-export default function RequirementsCard({ data, dict }: RequirementsCardProps) {
+export default function RequirementsCard({ data, dict, inlineEdit }: RequirementsCardProps) {
     if (!data.idp_requirement && !data.rental_and_idp_notes) return null
+    const editable = inlineEdit?.enabled ? inlineEdit : null
 
     return (
         <div className="rounded-2xl bg-amber-500/10 border border-amber-500/20 p-6 md:p-8">
             <h2 className="text-xl font-semibold text-amber-200 mb-4 flex items-center gap-2">
                 <AlertCircle className="h-5 w-5" />
-                {dict.common.requirements || "Before You Go"}
+                {dict.common.requirements}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
                 {data.idp_requirement && (
                     <div>
-                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">IDP Requirement</h4>
-                        <p className="text-xl font-bold text-white">{data.idp_requirement}</p>
+                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">{dict.common.idp_requirement}</h4>
+                        {editable ? (
+                            <InlineEdit
+                                countryCode={editable.countryCode}
+                                field="idp_requirement"
+                                value={data.idp_requirement}
+                                renderValue={(value) => (
+                                    <p className="text-xl font-bold text-white">{String(value)}</p>
+                                )}
+                            />
+                        ) : (
+                            <p className="text-xl font-bold text-white">{data.idp_requirement}</p>
+                        )}
                     </div>
                 )}
                 {data.rental_and_idp_notes && (
                     <div>
-                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">Notes</h4>
-                        <p className="text-slate-300 text-sm leading-relaxed">{data.rental_and_idp_notes}</p>
+                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">{dict.common.notes}</h4>
+                        {editable ? (
+                            <InlineEdit
+                                countryCode={editable.countryCode}
+                                field="rental_and_idp_notes"
+                                value={data.rental_and_idp_notes}
+                                renderValue={(value) => (
+                                    <p className="text-slate-300 text-sm leading-relaxed">{String(value)}</p>
+                                )}
+                            />
+                        ) : (
+                            <p className="text-slate-300 text-sm leading-relaxed">{data.rental_and_idp_notes}</p>
+                        )}
                     </div>
                 )}
             </div>

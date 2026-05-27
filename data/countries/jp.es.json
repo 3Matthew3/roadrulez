@@ -1,0 +1,112 @@
+{
+    "name_en": "Japan",
+    "name_local": "Japón",
+    "iso2": "JP",
+    "iso3": "JPN",
+    "continent": "Asia",
+    "flag": "🇯🇵",
+    "header_images": [
+        "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 40,
+            "rural": 60,
+            "motorway": 100,
+            "units": "km/h",
+            "notes": "Los límites señalizados tienen prioridad. Los límites variables en autopistas son habituales."
+        },
+        "alcohol_limit": {
+            "value": 0.03,
+            "unit": "‰",
+            "notes": "En la práctica hay tolerancia cero. Las sanciones son severas para conductores y pasajeros."
+        },
+        "seatbelt_rules": "Obligatorio para todos los ocupantes.",
+        "child_seat_rules": "Obligatorio para niños menores de 6 años.",
+        "phone_usage_rules": "Está prohibido usar el teléfono en la mano. El manos libres está permitido, pero con restricciones.",
+        "headlights_rules": "Deben encenderse de noche y en túneles. Se recomienda usar luces largas en carreteras sin iluminación.",
+        "priority_rules": "Los peatones tienen prioridad. Detente ante autobuses escolares.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "La mayoría de las autopistas son de peaje. Se recomienda alquilar una tarjeta ETC con el coche."
+        },
+        "parking_rules": "El aparcamiento está muy controlado. Usa aparcamientos designados; estacionar en la calle suele estar prohibido.",
+        "mandatory_equipment": [
+            "Triángulo de emergencia (para paradas en autopista)",
+            "Rueda de repuesto o kit de reparación"
+        ],
+        "winter_rules": "Los neumáticos de invierno son obligatorios en regiones con nieve como Hokkaido y Tohoku.",
+        "emergency_numbers": [
+            "110 (Policía)",
+            "119 (Ambulancia/Bomberos)"
+        ]
+    },
+    "summary": "Se conduce por la izquierda. Japón tiene una cultura de conducción muy educada y estricta con las normas. Detenerse significa parar por completo. El alcohol al volante no se tolera y las autopistas de peaje son frecuentes.",
+    "common_traps": [
+        "Detente completamente antes de los pasos a nivel.",
+        "No se permite girar con el semáforo en rojo.",
+        "Los peatones tienen prioridad en los pasos señalizados.",
+        "Las normas de aparcamiento son complejas y se aplican estrictamente."
+    ],
+    "idp_requirement": "Convenio de Ginebra de 1949",
+    "rental_and_idp_notes": "Permiso internacional de conducir del Convenio de Ginebra de 1949 requerido para la mayoría de conductores extranjeros. Algunas licencias europeas necesitan una traducción oficial japonesa.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Tokio",
+            "differences": {},
+            "notes": "Evita conducir en los distritos céntricos si es posible. El aparcamiento es caro y la autopista Shuto puede ser estrecha y compleja."
+        },
+        {
+            "region_type": "city",
+            "region_name": "Osaka",
+            "differences": {},
+            "notes": "El estilo de conducción local puede ser más directo que en Tokio. Presta atención a los cambios de carril."
+        },
+        {
+            "region_type": "province",
+            "region_name": "Hokkaido",
+            "differences": {
+                "speed_limits": {
+                    "urban": 50,
+                    "rural": 60,
+                    "motorway": 80,
+                    "units": "km/h",
+                    "notes": "En invierno los límites pueden reducirse. Hay riesgo de ventiscas y mala visibilidad."
+                }
+            },
+            "notes": "Carreteras amplias y rectas pueden invitar a correr. Cuidado con animales salvajes y condiciones severas en invierno."
+        }
+    ],
+    "last_verified": "2026-01-21",
+    "status": "verified",
+    "data_coverage": "high",
+    "road_signs": [
+        {
+            "title": "Stop",
+            "description": "Triángulo invertido rojo. Texto: 止まれ (Tomare). Debes detenerte por completo.",
+            "image_url": "/images/signs/jp/stop.svg"
+        },
+        {
+            "title": "Entrada prohibida",
+            "description": "Círculo rojo con barra horizontal blanca.",
+            "image_url": "/images/signs/jp/no_entry.svg"
+        },
+        {
+            "title": "Reducir velocidad",
+            "description": "Triángulo invertido azul/blanco. Texto: 徐行 (Jokō).",
+            "image_url": "/images/signs/jp/slow_down.svg"
+        }
+    ],
+    "sources": [
+        "JAF (Japan Automobile Federation)",
+        "Metropolitan Police Department (Tokyo)",
+        "MOFA Japan"
+    ]
+}

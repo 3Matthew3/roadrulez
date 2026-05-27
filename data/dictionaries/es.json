@@ -1,0 +1,105 @@
+{
+    "common": {
+        "loading": "Cargando...",
+        "error": "Se ha producido un error",
+        "not_found": "País no encontrado",
+        "search_placeholder": "Busca un país...",
+        "last_verified": "Última verificación",
+        "vehicle_type": "Tipo de vehículo",
+        "disclaimer": "Las normas pueden cambiar. Verifica siempre con fuentes oficiales.",
+        "summary": "Resumen",
+        "requirements": "Antes de salir",
+        "idp_requirement": "Permiso internacional",
+        "notes": "Notas",
+        "no_specific_equipment": "No se indica equipo específico.",
+        "official_highway_code": "Código de circulación oficial",
+        "right": "Derecha",
+        "left": "Izquierda",
+        "yes": "Sí",
+        "no": "No"
+    },
+    "home": {
+        "hero_title_1": "Normas de tráfico,",
+        "search_placeholder": "Buscar un país...",
+        "hero_title_2": "en todo el mundo.",
+        "hero_subtitle": "Consulta leyes de tráfico, límites de velocidad y normas de conducción antes de viajar. Evita multas y conduce con seguridad con nuestra guía global.",
+        "cta_map": "Abrir mapa mundial",
+        "popular_destinations": "Destinos populares",
+        "more_countries": "Más países",
+        "how_it_works": "Cómo funciona",
+        "step_1_title": "Elige un país",
+        "step_1_desc": "Selecciona un país en el mapa interactivo o usa la búsqueda para encontrar tu destino al instante.",
+        "step_2_title": "Consulta las normas",
+        "step_2_desc": "Obtén información clara sobre límites de velocidad, alcohol permitido, equipo obligatorio y costumbres locales.",
+        "step_3_title": "Viaja preparado",
+        "step_3_desc": "Mantente informado y evita multas o sorpresas durante tu viaje por carretera. Conduce como un local, en cualquier lugar.",
+        "features": {
+            "global": "Cobertura global",
+            "traveler": "Pensado para viajeros",
+            "mobile": "Optimizado para móvil",
+            "updated": "Actualizado regularmente",
+            "map_preview": "Vista previa del mapa interactivo"
+        }
+    },
+    "vehicle": {
+        "car": "Coche",
+        "motorcycle": "Motocicleta",
+        "moped": "Ciclomotor/Scooter"
+    },
+    "vehicle_specifics": {
+        "helmet": "Casco",
+        "lane_splitting": "Filtrado entre carriles",
+        "motorway": "Acceso a autopista",
+        "licensing": "Permiso de conducir"
+    },
+    "rules": {
+        "speed_limits": "Límites de velocidad",
+        "alcohol_limit": "Límite de alcohol",
+        "emergency": "Emergencias",
+        "tolls": "Peajes",
+        "detailed_rules": "Normas detalladas",
+        "driving_basics": "Conceptos básicos",
+        "phone_distractions": "Teléfono y distracciones",
+        "lights_parking": "Luces y aparcamiento",
+        "checklist": "Lista de comprobación",
+        "mandatory_equipment": "Equipo obligatorio",
+        "sources": "Fuentes",
+        "urban": "Urbano",
+        "rural": "Carretera",
+        "motorway": "Autopista"
+    },
+    "props": {
+        "drive_side": "Se conduce por la",
+        "seatbelts": "Cinturones",
+        "child_seats": "Sillas infantiles",
+        "priority": "Prioridad",
+        "headlights": "Luces",
+        "parking": "Aparcamiento",
+        "required": "Obligatorio",
+        "type": "Tipo",
+        "tip": "Consejo"
+    },
+    "extra": {
+        "road_signs": "Señales de tráfico comunes",
+        "data_coverage": "Cobertura de datos",
+        "feedback_title": "Informa de un problema o sugiere una actualización",
+        "feedback_type": "Tipo de problema",
+        "feedback_message": "Mensaje",
+        "feedback_email": "Correo electrónico (opcional)",
+        "feedback_submit": "Enviar comentario",
+        "issue_types": {
+            "incorrect": "Información incorrecta",
+            "outdated": "Desactualizado",
+            "missing": "Información faltante",
+            "other": "Otro"
+        },
+        "footer": {
+            "about": "Acerca de",
+            "sources": "Fuentes",
+            "contact": "Contacto",
+            "legal": "Aviso legal / Impressum",
+            "privacy": "Privacidad",
+            "terms": "Términos del servicio"
+        }
+    }
+}

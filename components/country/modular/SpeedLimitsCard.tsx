@@ -1,10 +1,13 @@
 import { Car } from "lucide-react"
-import { TrafficRules } from "@/types/country"
+import { CountryInlineEditContext, TrafficRules } from "@/types/country"
+import { InlineEdit } from "@/components/inline-edit"
+import { CountryInlineEditField, CountryInlineEditValue } from "@/lib/inline-edit/country-fields"
 
 interface SpeedLimitsCardProps {
     rules: TrafficRules
     status: string
     dict: any
+    inlineEdit?: CountryInlineEditContext
 }
 
 function convertSpeed(value: number, unit: "km/h" | "mph"): string {
@@ -17,7 +20,33 @@ function convertSpeed(value: number, unit: "km/h" | "mph"): string {
     }
 }
 
-export default function SpeedLimitsCard({ rules, status, dict }: SpeedLimitsCardProps) {
+export default function SpeedLimitsCard({ rules, status, dict, inlineEdit }: SpeedLimitsCardProps) {
+    const editable = inlineEdit?.enabled ? inlineEdit : null
+
+    const renderSpeed = (value: CountryInlineEditValue) => {
+        const speed = Number(value)
+        return (
+            <span className="font-bold text-white">
+                {speed} <span className="text-sm font-normal text-slate-500">{rules.speed_limits.units}</span>
+                <span className="text-xs text-slate-500 ml-1 font-normal">
+                    ({convertSpeed(speed, rules.speed_limits.units)})
+                </span>
+            </span>
+        )
+    }
+
+    const speedValue = (field: CountryInlineEditField, value: number) => (
+        editable ? (
+            <InlineEdit
+                countryCode={editable.countryCode}
+                field={field}
+                value={value}
+                className="text-right"
+                renderValue={renderSpeed}
+            />
+        ) : renderSpeed(value)
+    )
+
     return (
         <div className="rounded-xl bg-slate-900/50 border border-slate-800 p-6">
             <h3 className="text-lg font-semibold text-blue-200 mb-4 flex items-center gap-2">
@@ -26,36 +55,35 @@ export default function SpeedLimitsCard({ rules, status, dict }: SpeedLimitsCard
             <ul className="space-y-3 text-slate-300">
                 <li className="flex justify-between border-b border-slate-800 pb-2">
                     <span>{dict.rules.urban}</span>
-                    <span className="font-bold text-white">
-                        {rules.speed_limits.urban} <span className="text-sm font-normal text-slate-500">{rules.speed_limits.units}</span>
-                        <span className="text-xs text-slate-500 ml-1 font-normal">
-                            ({convertSpeed(rules.speed_limits.urban, rules.speed_limits.units)})
-                        </span>
-                    </span>
+                    {speedValue("speed_limits.urban", rules.speed_limits.urban)}
                 </li>
                 <li className="flex justify-between border-b border-slate-800 pb-2">
                     <span>{dict.rules.rural}</span>
-                    <span className="font-bold text-white">
-                        {rules.speed_limits.rural} <span className="text-sm font-normal text-slate-500">{rules.speed_limits.units}</span>
-                        <span className="text-xs text-slate-500 ml-1 font-normal">
-                            ({convertSpeed(rules.speed_limits.rural, rules.speed_limits.units)})
-                        </span>
-                    </span>
+                    {speedValue("speed_limits.rural", rules.speed_limits.rural)}
                 </li>
                 <li className="flex justify-between">
                     <span>{dict.rules.motorway}</span>
-                    <span className="font-bold text-white">
-                        {rules.speed_limits.motorway} <span className="text-sm font-normal text-slate-500">{rules.speed_limits.units}</span>
-                        <span className="text-xs text-slate-500 ml-1 font-normal">
-                            ({convertSpeed(rules.speed_limits.motorway, rules.speed_limits.units)})
-                        </span>
-                    </span>
+                    {speedValue("speed_limits.motorway", rules.speed_limits.motorway)}
                 </li>
             </ul>
             {rules.speed_limits.notes && (
-                <p className="text-xs text-slate-500 mt-4 italic">
-                    {rules.speed_limits.notes}
-                </p>
+                editable ? (
+                    <InlineEdit
+                        countryCode={editable.countryCode}
+                        field="speed_limits.notes"
+                        value={rules.speed_limits.notes}
+                        className="mt-4"
+                        renderValue={(value) => (
+                            <p className="text-xs text-slate-500 italic">
+                                {String(value)}
+                            </p>
+                        )}
+                    />
+                ) : (
+                    <p className="text-xs text-slate-500 mt-4 italic">
+                        {rules.speed_limits.notes}
+                    </p>
+                )
             )}
         </div>
     )

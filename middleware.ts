@@ -9,8 +9,27 @@ const defaultLocale = DEFAULT_LOCALE;
 /** RBAC roles allowed to access admin panel */
 const ADMIN_ROLES = ["ADMIN", "EDITOR"] as const;
 
+function detectPreferredLocale(acceptLanguage: string | null): Locale | undefined {
+    if (!acceptLanguage) return undefined;
+
+    const requestedLocales = acceptLanguage
+        .toLowerCase()
+        .split(",")
+        .map((part) => part.split(";")[0]?.trim().split("-")[0])
+        .filter(Boolean);
+
+    return requestedLocales.find((locale): locale is Locale => isValidLocale(locale));
+}
+
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
+    const segments = pathname.split("/").filter(Boolean);
+
+    if (segments.length >= 2 && isValidLocale(segments[0]) && isValidLocale(segments[1])) {
+        const normalizedUrl = request.nextUrl.clone();
+        normalizedUrl.pathname = `/${segments[1]}${segments.length > 2 ? `/${segments.slice(2).join("/")}` : ""}`;
+        return NextResponse.redirect(normalizedUrl);
+    }
 
     // ── Admin route protection (/admin/* and /api/admin/*) ──────────────────
     const isAdminPage = pathname.startsWith("/admin");
@@ -78,8 +97,9 @@ if (
             locale = localeCookie;
         } else {
             const acceptLanguage = request.headers.get("Accept-Language");
-            if (acceptLanguage?.includes("de")) {
-                locale = "de";
+            const preferredLocale = detectPreferredLocale(acceptLanguage);
+            if (preferredLocale) {
+                locale = preferredLocale;
             }
         }
 
