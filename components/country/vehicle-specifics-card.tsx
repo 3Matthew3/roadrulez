@@ -8,7 +8,14 @@ interface VehicleSpecificsCardProps {
 }
 
 export default function VehicleSpecificsCard({ vehicleType, rules, labels }: VehicleSpecificsCardProps) {
-    if (!rules.helmet_rules && !rules.lane_splitting_rules && !rules.motorway_access) {
+    if (
+        !rules.helmet_rules &&
+        !rules.lane_splitting_rules &&
+        !rules.overtaking_rules &&
+        !rules.city_traffic_rules &&
+        !rules.motorway_access &&
+        !rules.licensing_notes
+    ) {
         return null
     }
 
@@ -30,6 +37,18 @@ export default function VehicleSpecificsCard({ vehicleType, rules, labels }: Veh
                     <div className="space-y-1">
                         <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.lane_splitting || "Lane Splitting"}</span>
                         <p className="text-slate-300 text-sm">{rules.lane_splitting_rules}</p>
+                    </div>
+                )}
+                {rules.overtaking_rules && (
+                    <div className="space-y-1">
+                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.overtaking || "Overtaking"}</span>
+                        <p className="text-slate-300 text-sm">{rules.overtaking_rules}</p>
+                    </div>
+                )}
+                {rules.city_traffic_rules && (
+                    <div className="space-y-1">
+                        <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">{labels.vehicle_specifics?.city_traffic || "City Traffic"}</span>
+                        <p className="text-slate-300 text-sm">{rules.city_traffic_rules}</p>
                     </div>
                 )}
                 {rules.motorway_access && (

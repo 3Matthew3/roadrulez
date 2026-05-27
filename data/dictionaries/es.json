@@ -49,6 +49,8 @@
     "vehicle_specifics": {
         "helmet": "Casco",
         "lane_splitting": "Filtrado entre carriles",
+        "overtaking": "Adelantamiento",
+        "city_traffic": "Tráfico urbano",
         "motorway": "Acceso a autopista",
         "licensing": "Permiso de conducir"
     },
@@ -66,7 +68,8 @@
         "sources": "Fuentes",
         "urban": "Urbano",
         "rural": "Carretera",
-        "motorway": "Autopista"
+        "motorway": "Autopista",
+        "not_allowed": "No permitido"
     },
     "props": {
         "drive_side": "Se conduce por la",

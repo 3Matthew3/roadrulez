@@ -44,6 +44,8 @@ export interface TrafficRules {
 export interface VehicleRules extends Partial<TrafficRules> {
     helmet_rules?: string
     lane_splitting_rules?: string
+    overtaking_rules?: string
+    city_traffic_rules?: string
     motorway_access?: string
     licensing_notes?: string
 }

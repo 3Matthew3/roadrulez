@@ -51,18 +51,23 @@
         "motorcycle": {
             "helmet_rules": "Usage of helmets is mandatory for both rider and passenger.",
             "lane_splitting_rules": "Lane splitting (filtering) is technically not illegal if done safely, but police may ticket for crossing lines. Exercise caution.",
+            "overtaking_rules": "Overtake only where lane markings and visibility allow it. Do not pass in intersections, near crossings, or where stopping/priority rules apply.",
+            "city_traffic_rules": "Urban traffic is dense and pedestrian priority is strict. Watch for bicycles, taxis, buses, and narrow lanes.",
             "motorway_access": "Allowed for motorcycles over 125cc. Tandem riding on highways requires >1 year license + >20 years old.",
             "parking_rules": "Must use designated motorcycle parking. Car spots often prohibited."
         },
         "moped": {
             "speed_limits": {
                 "urban": 30,
-                "rural": 30,
+                "rural": 50,
                 "motorway": 0,
                 "units": "km/h",
-                "notes": "Strict 30km/h limit everywhere for <50cc. Two-step right turn required at large intersections."
+                "notes": "No motorway access. Small mopeds are slower than cars; local class limits can be as low as 30 km/h and posted limits may be lower."
             },
             "helmet_rules": "Mandatory.",
+            "lane_splitting_rules": "Filtering is risky and can be ticketed if it involves unsafe lane crossing or obstruction.",
+            "overtaking_rules": "Keep left and overtake only when clearly permitted and safe. Do not use expressways.",
+            "city_traffic_rules": "Two-step right turns may be required at large intersections. Watch bicycle lanes and narrow urban streets.",
             "motorway_access": "Prohibited for <125cc.",
             "licensing_notes": "Car license usually includes 50cc moped privileges."
         }

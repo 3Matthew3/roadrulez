@@ -47,6 +47,31 @@
             "119 (Ambulancia/Bomberos)"
         ]
     },
+    "vehicles": {
+        "motorcycle": {
+            "helmet_rules": "El casco es obligatorio para conductor y pasajero.",
+            "lane_splitting_rules": "Filtrar entre carriles no es necesariamente ilegal si se hace con seguridad, pero la policía puede sancionar cruces de línea peligrosos.",
+            "overtaking_rules": "Adelanta solo donde las marcas viales y la visibilidad lo permitan. No adelantes en cruces, pasos de peatones o zonas de prioridad dudosa.",
+            "city_traffic_rules": "El tráfico urbano es denso y la prioridad peatonal se aplica estrictamente. Vigila bicicletas, taxis, autobuses y carriles estrechos.",
+            "motorway_access": "Permitido para motocicletas de más de 125 cc. Circular con pasajero en autopista exige licencia suficiente y edad mínima.",
+            "parking_rules": "Usa aparcamientos designados para motocicletas; las plazas de coche suelen estar prohibidas."
+        },
+        "moped": {
+            "speed_limits": {
+                "urban": 30,
+                "rural": 50,
+                "motorway": 0,
+                "units": "km/h",
+                "notes": "Sin acceso a autopistas. Los ciclomotores son más lentos que los coches; según la clase, algunos límites locales pueden ser de 30 km/h."
+            },
+            "helmet_rules": "Obligatorio.",
+            "lane_splitting_rules": "Filtrar entre carriles es arriesgado y puede ser sancionado si se cruzan líneas de forma insegura o se obstaculiza el tráfico.",
+            "overtaking_rules": "Mantente a la izquierda y adelanta solo cuando sea claramente seguro y permitido. No uses autopistas.",
+            "city_traffic_rules": "En cruces grandes puede exigirse el giro a la derecha en dos fases. Presta atención a carriles bici y calles urbanas estrechas.",
+            "motorway_access": "Prohibido para menos de 125 cc.",
+            "licensing_notes": "El permiso de coche suele incluir privilegios para ciclomotores de 50 cc."
+        }
+    },
     "summary": "Se conduce por la izquierda. Japón tiene una cultura de conducción muy educada y estricta con las normas. Detenerse significa parar por completo. El alcohol al volante no se tolera y las autopistas de peaje son frecuentes.",
     "common_traps": [
         "Detente completamente antes de los pasos a nivel.",

@@ -51,18 +51,23 @@
         "motorcycle": {
             "helmet_rules": "Helmpflicht für Fahrer und Beifahrer.",
             "lane_splitting_rules": "Durchschlängeln ist technisch nicht illegal, wenn sicher, aber Polizei kann für Überfahren von Linien strafen. Vorsicht geboten.",
+            "overtaking_rules": "Überholen nur dort, wo Markierungen und Sicht es erlauben. Nicht an Kreuzungen, Übergängen oder bei unklarer Vorfahrt überholen.",
+            "city_traffic_rules": "Stadtverkehr ist dicht und Fußgänger haben strikten Vorrang. Achte auf Fahrräder, Taxis, Busse und enge Spuren.",
             "motorway_access": "Erlaubt für Motorräder über 125ccm. Tandemfahrten auf Autobahnen erfordern >1 Jahr Führerschein + >20 Jahre alt.",
             "parking_rules": "Müssen ausgewiesene Motorradparkplätze nutzen. Autoparkplätze oft verboten."
         },
         "moped": {
             "speed_limits": {
                 "urban": 30,
-                "rural": 30,
+                "rural": 50,
                 "motorway": 0,
                 "units": "km/h",
-                "notes": "Striktes 30 km/h Limit überall für <50ccm. Zweistufiges Rechtsabbiegen an großen Kreuzungen erforderlich."
+                "notes": "Keine Autobahn-/Expressway-Nutzung. Kleine Mopeds sind langsamer als Autos; je nach Klasse können lokale Limits bis 30 km/h gelten und ausgeschilderte Limits haben Vorrang."
             },
             "helmet_rules": "Pflicht.",
+            "lane_splitting_rules": "Durchschlängeln ist riskant und kann geahndet werden, wenn Linien unsicher überfahren oder andere behindert werden.",
+            "overtaking_rules": "Links halten und nur überholen, wenn es eindeutig erlaubt und sicher ist. Expressways sind tabu.",
+            "city_traffic_rules": "An großen Kreuzungen kann zweistufiges Rechtsabbiegen vorgeschrieben sein. Achte auf Radspuren und enge Stadtstraßen.",
             "motorway_access": "Verboten für <125ccm.",
             "licensing_notes": "Autoführerschein beinhaltet normalerweise 50ccm Moped-Berechtigung."
         }
