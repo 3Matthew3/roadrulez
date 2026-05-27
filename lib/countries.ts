@@ -284,12 +284,25 @@ async function getJsonCountryData(
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 
+async function getJsonCountryIndex(): Promise<CountryIndexItem[]> {
+    try {
+        const filePath = path.join(dataDirectory, "index.json")
+        const content = await fs.promises.readFile(filePath, "utf8")
+        return JSON.parse(content)
+    } catch {
+        return []
+    }
+}
+
 /**
  * Returns the index list used by the homepage/search.
- * Tries DB first (PUBLISHED + VERIFIED countries), falls back to index.json.
+ * Tries DB first (PUBLISHED + VERIFIED countries), enriched with JSON names,
+ * then falls back to index.json.
  */
 export async function getAllCountries(): Promise<CountryIndexItem[]> {
     const db = await getPrisma()
+    const jsonIndex = await getJsonCountryIndex()
+    const jsonByIso2 = new Map(jsonIndex.map((country) => [country.iso2, country]))
 
     if (db) {
         try {
@@ -308,7 +321,11 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
             if (countries.length > 0) {
                 return countries.map((c: { name: string; iso2: string; flag: string | null; nameLocal: string | null; localeContent: unknown }) => {
                     const locale = c.localeContent as Record<string, any> | null
-                    const names: Record<string, string> = { en: c.name }
+                    const jsonCountry = jsonByIso2.get(c.iso2)
+                    const names: Record<string, string> = {
+                        ...(jsonCountry?.names ?? {}),
+                        en: c.name,
+                    }
                     if (locale) {
                         for (const [lang, data] of Object.entries(locale)) {
                             if (data?.name) names[lang] = data.name
@@ -321,7 +338,7 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
                         name: c.name,
                         names,
                         iso2: c.iso2,
-                        flag: c.flag ?? "",
+                        flag: c.flag ?? jsonCountry?.flag ?? "",
                     } satisfies CountryIndexItem
                 })
             }
@@ -330,14 +347,7 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
         }
     }
 
-    // JSON fallback
-    try {
-        const filePath = path.join(dataDirectory, "index.json")
-        const content = await fs.promises.readFile(filePath, "utf8")
-        return JSON.parse(content)
-    } catch {
-        return []
-    }
+    return jsonIndex
 }
 
 /**

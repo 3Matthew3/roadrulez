@@ -16,12 +16,12 @@ export default function RequirementsCard({ data, dict, inlineEdit }: Requirement
         <div className="rounded-2xl bg-amber-500/10 border border-amber-500/20 p-6 md:p-8">
             <h2 className="text-xl font-semibold text-amber-200 mb-4 flex items-center gap-2">
                 <AlertCircle className="h-5 w-5" />
-                {dict.common.requirements || "Before You Go"}
+                {dict.common.requirements}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
                 {data.idp_requirement && (
                     <div>
-                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">IDP Requirement</h4>
+                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">{dict.common.idp_requirement}</h4>
                         {editable ? (
                             <InlineEdit
                                 countryCode={editable.countryCode}
@@ -38,7 +38,7 @@ export default function RequirementsCard({ data, dict, inlineEdit }: Requirement
                 )}
                 {data.rental_and_idp_notes && (
                     <div>
-                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">Notes</h4>
+                        <h4 className="text-sm uppercase tracking-wider text-amber-500/80 mb-1">{dict.common.notes}</h4>
                         {editable ? (
                             <InlineEdit
                                 countryCode={editable.countryCode}

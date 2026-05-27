@@ -2,7 +2,9 @@
     {
         "names": {
             "en": "Japan",
-            "de": "Japan"
+            "de": "Japan",
+            "es": "Japón",
+            "ja": "日本"
         },
         "name": "Japan",
         "iso2": "JP",
@@ -11,7 +13,9 @@
     {
         "names": {
             "en": "Germany",
-            "de": "Deutschland"
+            "de": "Deutschland",
+            "es": "Alemania",
+            "ja": "ドイツ"
         },
         "name": "Germany",
         "iso2": "DE",
@@ -20,7 +24,9 @@
     {
         "names": {
             "en": "France",
-            "de": "Frankreich"
+            "de": "Frankreich",
+            "es": "Francia",
+            "ja": "フランス"
         },
         "name": "France",
         "iso2": "FR",
@@ -29,7 +35,9 @@
     {
         "names": {
             "en": "United States",
-            "de": "Vereinigte Staaten"
+            "de": "Vereinigte Staaten",
+            "es": "Estados Unidos",
+            "ja": "アメリカ合衆国"
         },
         "name": "United States",
         "iso2": "US",
@@ -38,7 +46,9 @@
     {
         "names": {
             "en": "Italy",
-            "de": "Italien"
+            "de": "Italien",
+            "es": "Italia",
+            "ja": "イタリア"
         },
         "name": "Italy",
         "iso2": "IT",
@@ -47,7 +57,9 @@
     {
         "names": {
             "en": "Spain",
-            "de": "Spanien"
+            "de": "Spanien",
+            "es": "España",
+            "ja": "スペイン"
         },
         "name": "Spain",
         "iso2": "ES",
@@ -56,7 +68,9 @@
     {
         "names": {
             "en": "Thailand",
-            "de": "Thailand"
+            "de": "Thailand",
+            "es": "Tailandia",
+            "ja": "タイ"
         },
         "name": "Thailand",
         "iso2": "TH",
@@ -65,7 +79,9 @@
     {
         "names": {
             "en": "South Korea",
-            "de": "Südkorea"
+            "de": "Südkorea",
+            "es": "Corea del Sur",
+            "ja": "韓国"
         },
         "name": "South Korea",
         "iso2": "KR",
@@ -74,7 +90,9 @@
     {
         "names": {
             "en": "Canada",
-            "de": "Kanada"
+            "de": "Kanada",
+            "es": "Canadá",
+            "ja": "カナダ"
         },
         "name": "Canada",
         "iso2": "CA",
@@ -83,7 +101,9 @@
     {
         "names": {
             "en": "Australia",
-            "de": "Australien"
+            "de": "Australien",
+            "es": "Australia",
+            "ja": "オーストラリア"
         },
         "name": "Australia",
         "iso2": "AU",
@@ -92,7 +112,9 @@
     {
         "names": {
             "en": "United Arab Emirates",
-            "de": "Vereinigte Arabische Emirate"
+            "de": "Vereinigte Arabische Emirate",
+            "es": "Emiratos Árabes Unidos",
+            "ja": "アラブ首長国連邦"
         },
         "name": "United Arab Emirates",
         "iso2": "AE",
@@ -101,7 +123,9 @@
     {
         "names": {
             "en": "South Africa",
-            "de": "Südafrika"
+            "de": "Südafrika",
+            "es": "Sudáfrica",
+            "ja": "南アフリカ"
         },
         "name": "South Africa",
         "iso2": "ZA",

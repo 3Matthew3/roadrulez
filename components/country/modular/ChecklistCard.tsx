@@ -24,7 +24,7 @@ export default function ChecklistCard({ data, rules, dict, inlineEdit }: Checkli
                 ))}
             </ul>
         ) : (
-            <p className="text-slate-500 text-sm">No specific equipment listed.</p>
+            <p className="text-slate-500 text-sm">{dict.common.no_specific_equipment}</p>
         )
     }
 
@@ -49,7 +49,7 @@ export default function ChecklistCard({ data, rules, dict, inlineEdit }: Checkli
                     {data.sources.length > 0 ? data.sources.map((s, i) => (
                         <li key={i}>{s}</li>
                     )) : (
-                        <li>Official Highway Code</li>
+                        <li>{dict.common.official_highway_code}</li>
                     )}
                 </ul>
             </div>
