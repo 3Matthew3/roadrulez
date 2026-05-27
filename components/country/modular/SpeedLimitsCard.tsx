@@ -25,6 +25,15 @@ export default function SpeedLimitsCard({ rules, status, dict, inlineEdit }: Spe
 
     const renderSpeed = (value: CountryInlineEditValue) => {
         const speed = Number(value)
+
+        if (speed <= 0) {
+            return (
+                <span className="font-bold text-amber-300">
+                    {dict.rules.not_allowed || "Not allowed"}
+                </span>
+            )
+        }
+
         return (
             <span className="font-bold text-white">
                 {speed} <span className="text-sm font-normal text-slate-500">{rules.speed_limits.units}</span>

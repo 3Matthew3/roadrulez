@@ -49,6 +49,8 @@
     "vehicle_specifics": {
         "helmet": "Helmpflicht",
         "lane_splitting": "Durchschlängeln",
+        "overtaking": "Überholen",
+        "city_traffic": "Stadtverkehr",
         "motorway": "Autobahnzugang",
         "licensing": "Führerschein"
     },
@@ -66,7 +68,8 @@
         "sources": "Quellen",
         "urban": "Innerorts",
         "rural": "Außerorts",
-        "motorway": "Autobahn"
+        "motorway": "Autobahn",
+        "not_allowed": "Nicht erlaubt"
     },
     "props": {
         "drive_side": "Links-/Rechtsverkehr",

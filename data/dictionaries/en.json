@@ -49,6 +49,8 @@
     "vehicle_specifics": {
         "helmet": "Helmet",
         "lane_splitting": "Lane Splitting",
+        "overtaking": "Overtaking",
+        "city_traffic": "City Traffic",
         "motorway": "Motorway Access",
         "licensing": "Licensing"
     },
@@ -66,7 +68,8 @@
         "sources": "Sources",
         "urban": "Urban",
         "rural": "Rural",
-        "motorway": "Motorway"
+        "motorway": "Motorway",
+        "not_allowed": "Not allowed"
     },
     "props": {
         "drive_side": "Drives on the",

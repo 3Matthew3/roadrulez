@@ -49,6 +49,8 @@
     "vehicle_specifics": {
         "helmet": "ヘルメット",
         "lane_splitting": "すり抜け",
+        "overtaking": "追い越し",
+        "city_traffic": "市街地での走行",
         "motorway": "高速道路利用",
         "licensing": "免許"
     },
@@ -66,7 +68,8 @@
         "sources": "情報源",
         "urban": "市街地",
         "rural": "郊外",
-        "motorway": "高速道路"
+        "motorway": "高速道路",
+        "not_allowed": "通行不可"
     },
     "props": {
         "drive_side": "通行側",

@@ -96,6 +96,7 @@ function dbToCountryData(
         data_coverage: (country.dataCoverage as any) ?? undefined,
         sources: sources.length > 0 ? sources : fallback?.sources ?? [],
         road_signs: fallback?.road_signs,
+        vehicles: fallback?.vehicles,
     }
 }
 
