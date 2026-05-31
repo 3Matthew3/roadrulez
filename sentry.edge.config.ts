@@ -4,9 +4,13 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
+import { resolveSentryDsn } from "@/lib/sentry-dsn";
 
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+const dsn = resolveSentryDsn(process.env.SENTRY_DSN);
+
+if (dsn) {
+  Sentry.init({
+    dsn,
 
   // Define how likely traces are sampled. Tune via env in production.
   tracesSampleRate: Number(process.env.SENTRY_TRACES_SAMPLE_RATE ?? 0.05),
@@ -16,4 +20,5 @@ Sentry.init({
 
   // Enable sending user PII only if explicitly configured
   sendDefaultPii: process.env.SENTRY_SEND_PII === "true",
-});
+  });
+}

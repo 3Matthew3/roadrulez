@@ -48,7 +48,7 @@ export function LanguageSwitcher() {
                     <span className="sr-only">Toggle language</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="start">
                 {SUPPORTED_LOCALES.map((locale) => (
                     <DropdownMenuItem key={locale} onClick={() => switchLocale(locale)}>
                         {LOCALE_LABELS[locale]}

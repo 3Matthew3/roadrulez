@@ -80,5 +80,10 @@ export async function getAllPublicSources(): Promise<PublicSourceListItem[]> {
 export async function getOpenSourceReviewCount(): Promise<number> {
     const db = await getDb()
     if (!db) return 0
-    return db.sourceReview.count({ where: { status: "OPEN" } })
+    try {
+        return await db.sourceReview.count({ where: { status: "OPEN" } })
+    } catch (error) {
+        console.warn("[sources] source review count failed:", error)
+        return 0
+    }
 }
