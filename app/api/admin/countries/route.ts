@@ -61,21 +61,32 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
         }
 
-        const country = await prisma.country.create({
-            data: {
-                ...parsed.data,
-                updatedById: (session.user as any).id,
-            },
-        })
+        try {
+            const country = await prisma.country.create({
+                data: {
+                    ...parsed.data,
+                    iso2: parsed.data.iso2.toUpperCase(),
+                    updatedById: (session.user as any).id,
+                },
+            })
 
-        await createAuditLog({
-            actorUserId: (session.user as any).id,
-            entityType: "country",
-            entityId: country.id,
-            action: "create",
-            afterValue: parsed.data as any,
-        })
+            await createAuditLog({
+                actorUserId: (session.user as any).id,
+                entityType: "country",
+                entityId: country.id,
+                action: "create",
+                afterValue: parsed.data as any,
+            })
 
-        return NextResponse.json(country, { status: 201 })
+            return NextResponse.json(country, { status: 201 })
+        } catch (error: any) {
+            if (error?.code === "P2002") {
+                return NextResponse.json(
+                    { error: "A country with this ISO2 code already exists." },
+                    { status: 409 }
+                )
+            }
+            throw error
+        }
     })
 }
