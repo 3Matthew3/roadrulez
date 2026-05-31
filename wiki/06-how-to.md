@@ -132,13 +132,15 @@ The language switcher component is in `components/main-nav.tsx`. Add `{ code: "f
    - `NEXTAUTH_SECRET`
    - `NEXTAUTH_URL` (set to your Vercel domain, e.g. `https://roadrulez.vercel.app`)
    - `ROADRULEZ_LAUNCH_MODE` = `LIVE`
+   - `CRON_SECRET` (for daily source monitoring — see below)
    - `PLAUSIBLE_API_TOKEN` (optional)
    - `PLAUSIBLE_SITE_ID` (optional)
 4. Deploy.
-5. After deploy, run migrations from your local machine:
+5. After deploy, run migrations:
    ```bash
    npx prisma migrate deploy
    ```
+6. Confirm cron job appears under Vercel → Settings → Cron Jobs (`/api/cron/source-check`).
 
 ### Subsequent Deploys
 
@@ -171,6 +173,9 @@ npm test
 Two test files:
 - `__tests__/rbac.test.ts` — tests that ADMIN/EDITOR/REVIEWER roles get correct access
 - `__tests__/publish-validation.test.ts` — tests that publish blocks correctly when fields are missing
+- `__tests__/source-check.test.ts` — source hash normalization + pattern extraction
+- `__tests__/country-inline-edit-fields.test.ts` — inline edit field config
+- `__tests__/rate-limit.test.ts` — login rate limiting
 
 ---
 
@@ -240,3 +245,27 @@ window.plausible?.("country_view", { props: { country_code: "DE" } })
 ```
 
 The admin analytics page filters Plausible events for `country_view` to populate the country views chart.
+
+---
+
+## How to Add and Monitor a Source
+
+1. Log in as ADMIN or EDITOR.
+2. Go to **Admin → Countries → [country] → Sources tab**.
+3. Click **Add source** — fill title, URL, source type, trust level, optional module.
+4. Enable **Active monitoring** so the daily cron includes this URL.
+5. Publish the country when ready (≥1 source required).
+
+When the cron detects a content change, a review appears at **Admin → Source Reviews**. Approve to apply parser suggestions to country rules, or reject to acknowledge without changes.
+
+Full details: **[13-source-monitoring.md](./13-source-monitoring.md)**
+
+### Cron setup (production)
+
+1. Set `CRON_SECRET` in Vercel env vars (same value locally in `.env.local` for manual tests).
+2. `vercel.json` already defines the schedule (`0 3 * * *`).
+3. Test manually:
+   ```bash
+   curl -H "Authorization: Bearer YOUR_CRON_SECRET" \
+     https://your-domain.com/api/cron/source-check
+   ```

@@ -22,11 +22,15 @@ Default accounts after seeding (`npx prisma db seed`):
 ## Authentication
 
 - **Provider:** NextAuth.js v4, Credentials (email + bcrypt password)
-- **Session type:** JWT cookie (7-day lifetime)
+- **Session type:** JWT cookie (4-hour lifetime)
 - **Login page:** `app/admin/login/page.tsx`
 - **Config:** `lib/auth.ts` (`authOptions`)
 
+After login from `/admin/login`, users are redirected to the **public homepage** (`/en` by default). Protected admin URLs still use `callbackUrl` to return to the intended page.
+
 The middleware reads the JWT on every request to `/admin/*`. If missing → redirect to `/admin/login?callbackUrl=...`.
+
+**Public site:** Logged-in ADMIN/EDITOR users see a header avatar menu (`components/admin-session-indicator.tsx`) with links to the dashboard and source reviews.
 
 ---
 
@@ -68,7 +72,15 @@ Quick overview of the content state:
 - **4 stat cards:** Total countries, needs attention, open issues, published coverage %
 - **Recent activity:** Last 8 audit log entries (who changed what and when)
 - **Open issues:** Top 5 highest-priority unresolved reports
-- **Quick links:** Shortcuts to Countries, Issues, Analytics
+- **Quick links:** Countries, Source Reviews (with open count), Issues, Analytics
+
+### Sources (`/admin/sources`)
+Global list of all sources with monitoring status (active, checkStatus, trust level, last checked). Links to country detail and source reviews.
+
+### Source Reviews (`/admin/source-reviews`)
+Queue of detected source changes. Admins can **Approve & apply** (writes parser suggestions to country rules) or **Reject** (acknowledge without rule change). See **[13-source-monitoring.md](./13-source-monitoring.md)**.
+
+Sidebar shows a badge with the open review count.
 
 ### Countries List (`/admin/countries`)
 Searchable, filterable table of all countries in the database.
@@ -85,8 +97,10 @@ Searchable, filterable table of all countries in the database.
 | **Overview** | Name, flag emoji, driving side, status, summary text |
 | **Rules** | Read-only view of structured rule JSON per module |
 | **Regions** | Regions with their national-overriding rules (OVERRIDES NATIONAL badge) |
-| **Sources** | Official sources linked to the country (required before publishing) |
+| **Sources** | Add/edit/delete sources; set type, trust level, active monitoring |
 | **Changelog** | Full audit log for this country — every save, publish, status change |
+
+Use **Add source** on the Sources tab before publishing. At least one source is required.
 
 **Publish button:** Validates the country before making it live (see Workflow below).
 
@@ -129,6 +143,24 @@ Updates country fields. Body is partial — only include fields you want to chan
 
 ### `POST /api/admin/countries/[id]/publish`
 Runs publish validation. Returns `422` with `details[]` if validation fails. On success, sets `status = PUBLISHED`, records audit log.
+
+### `PATCH /api/admin/countries/[id]/inline-edit`
+Inline field updates from the public country page (ADMIN, EN, car view).
+
+### `GET/POST /api/admin/sources`
+List all sources / create a new source (link to country, set monitoring fields).
+
+### `PATCH/DELETE /api/admin/sources/[id]`
+Update or delete one source.
+
+### `GET /api/admin/source-reviews`
+List reviews. Query: `status=OPEN|ALL`.
+
+### `GET /api/admin/source-reviews/count`
+Returns `{ count }` of open reviews (sidebar + header badge).
+
+### `PATCH /api/admin/source-reviews/[id]`
+Body: `{ action: "approve" | "reject", adminNote? }`. On approve, applies structured suggestions when available.
 
 **Publish checklist:**
 - ✅ Name not empty
@@ -189,17 +221,16 @@ await createAuditLog({
 
 ## Database Setup
 
-Database credentials go in `.env.local`. Connection URL is passed to Prisma in `lib/prisma.ts` (Prisma v7 requirement — not in schema.prisma):
-
-```ts
-new PrismaClient({
-  datasources: { db: { url: process.env.DATABASE_URL! } }
-})
-```
+Connection via `DATABASE_URL` in `.env.local` / Vercel env vars.
 
 Commands:
 ```bash
 npm run db:migrate     # create/update tables (run after schema changes)
 npm run db:seed        # insert initial data
 npm run db:studio      # visual DB browser at localhost:5555
+```
+
+After deploying schema changes to production:
+```bash
+npx prisma migrate deploy
 ```

@@ -16,6 +16,7 @@ This wiki is your complete reference. Read it top to bottom once, then use it as
 | **[04-country-pages.md](./04-country-pages.md)** | Country detail page — all 11 modular components |
 | **[05-admin-panel.md](./05-admin-panel.md)** | Admin panel — auth, RBAC, pages, API routes, workflow |
 | **[06-how-to.md](./06-how-to.md)** | Step-by-step: add a country, add a language, deploy |
+| **[13-source-monitoring.md](./13-source-monitoring.md)** | Source URLs, cron checks, admin reviews, public source pages |
 
 ---
 
@@ -26,8 +27,8 @@ This wiki is your complete reference. Read it top to bottom once, then use it as
 | Framework | Next.js 14 (App Router, SSR) |
 | Language | TypeScript |
 | Styling | Tailwind CSS + shadcn/ui components |
-| Database (admin) | PostgreSQL via Neon (Prisma v7 ORM) |
-| Auth (admin) | NextAuth.js v4, Credentials Provider, JWT sessions |
+| Database (admin) | PostgreSQL via Neon (Prisma ORM) |
+| Auth (admin) | NextAuth.js v4, Credentials Provider, JWT sessions (4h) |
 | Map | MapLibre GL JS (public transport tile layer) |
 | Analytics | Plausible (server-side proxy, token never in browser) |
 | Deployment | Vercel |
@@ -54,6 +55,9 @@ NEXTAUTH_URL=http://localhost:3000   # change to production URL when deployed
 # ──── Analytics (optional) ───────────────────────────────
 PLAUSIBLE_API_TOKEN=your-token
 PLAUSIBLE_SITE_ID=roadrulez.com
+
+# ──── Vercel Cron — source monitoring ───────────────────
+CRON_SECRET=your-random-secret    # openssl rand -hex 32
 ```
 
 ---
@@ -70,5 +74,6 @@ npm run dev
 ```
 
 Then open:
-- Public site: `http://localhost:3000`
+- Public site: `http://localhost:3000/en`
+- Admin login: `http://localhost:3000/admin/login` (redirects to homepage after login; use header menu for dashboard)
 - Admin panel: `http://localhost:3000/admin`

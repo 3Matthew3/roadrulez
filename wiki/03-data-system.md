@@ -1,9 +1,11 @@
 # Data System
 
-RoadRulez uses **two separate data systems** that work together:
+RoadRulez uses **two data layers** that work together:
 
-1. **JSON files** in `data/countries/` — the actual driving rules for the public site (no database needed)
-2. **PostgreSQL database** (via Prisma) — used only by the admin panel for content management
+1. **PostgreSQL (Prisma)** — source of truth for countries managed in the admin panel (rules, sources, reviews)
+2. **JSON files** in `data/countries/` — fallback for countries not yet in the DB, plus locale variants
+
+`lib/countries.ts` tries the database first, then falls back to JSON.
 
 ---
 
@@ -31,7 +33,9 @@ data/
 │   └── za.json          ← South Africa
 └── dictionaries/
     ├── en.json          ← UI labels (English)
-    └── de.json          ← UI labels (German)
+    ├── de.json          ← UI labels (German)
+    ├── es.json          ← UI labels (Spanish)
+    └── ja.json          ← UI labels (Japanese)
 ```
 
 ### How Locale Variants Work
@@ -98,7 +102,8 @@ interface CountryData {
   last_verified: string          // "2024-01-15"
   status:        "sample" | "verified" | "needs_review"
   data_coverage?: "high" | "medium" | "low"
-  sources:       string[]        // URLs to official sources
+  sources:       string[]        // URLs/titles (legacy JSON + fallback)
+  source_entries?: CountrySourceEntry[]  // Rich sources from DB (see types/source.ts)
 
   // ── Visuals ────────────────────────────────────────────
   road_signs?: RoadSign[]
@@ -170,9 +175,7 @@ The merged `rules` object is then passed down to all modular components.
 
 ---
 
-## Part 3: Database Schema (Admin Panel Only)
-
-The PostgreSQL database is only used by the admin panel. The public site reads from JSON files directly. The admin panel is the **editing interface** — when changes are ready for the public, editors export/update the JSON files.
+## Part 3: Database Schema (Admin + Public when DB available)
 
 ### Models
 
@@ -184,25 +187,39 @@ The PostgreSQL database is only used by the admin panel. The public site reads f
 | `RuleModule` | Lookup table for rule categories (speed_limits, tolls, etc.) |
 | `CountryRule` | A single rule value for a country + module combination |
 | `RegionRuleOverride` | A rule override at the region level |
-| `Source` | Official sources linked to a country (required before publishing) |
+| `Source` | Official references — type, trust level, monitoring fields |
+| `SourceCheck` | Log of each automated URL check (hash, HTTP status, snippet) |
+| `SourceReview` | Human review queue when a source changes |
 | `IssueReport` | User-submitted feedback/errors |
 | `AuditLog` | Complete history of every change (who, what, when) |
+| `LoginAttempt` | Brute-force protection for admin login |
 
-See `prisma/schema.prisma` for the full column definitions.
+### `Source` (extended)
+
+Beyond title/url/publisher, sources now include:
+
+- `sourceType`, `trustLevel`, `active`
+- `contentHash`, `lastCheckedAt`, `lastChangedAt`, `checkStatus`
+- Optional links: `countryId`, `regionId`, `moduleKey`
+
+See **[13-source-monitoring.md](./13-source-monitoring.md)** for the full monitoring workflow.
+
+See `prisma/schema.prisma` for column definitions.
 
 ---
 
 ## Reading Data (lib/countries.ts)
 
 ```ts
-// Get all countries for the index/search
+// Get all countries for the index/search (DB + JSON merge)
 const countries = await getAllCountries()
-// → parses data/countries/index.json
 
-// Get one country with locale fallback
-const data = await getCountryByName("Germany", "de")
-// → tries data/countries/de.de.json, falls back to data/countries/de.json
+// Get one country — DB first, JSON fallback
+const data = await getCountryData("DE", "de")
+// → includes source_entries[] when loaded from DB
 ```
+
+Public source listing: `lib/sources.ts` (`getAllPublicSources`, `getSourcesForCountry`).
 
 ## Reading Translations (lib/dictionaries.ts)
 

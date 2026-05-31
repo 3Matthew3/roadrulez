@@ -1,22 +1,23 @@
 # Country Detail Pages
 
-Every country page lives at `/{lang}/country/{country-name}` and is built from 11 modular components stacked vertically. This page is **server-rendered** — all data is loaded at build/request time, no client-side fetching.
+Every country page lives at `/{lang}/country/{iso2}` (e.g. `/en/country/de`) and is built from modular components stacked vertically. This page is **server-rendered**.
 
 ---
 
 ## Page File
 
-`app/[lang]/country/[name]/page.tsx`
+`app/[lang]/country/[code]/page.tsx`
 
 ### What It Does
 
 ```
-1. Decode the country name from the URL
+1. Normalise ISO2 from URL (e.g. "de" → "DE")
 2. Read ?vehicle=car|motorcycle|moped from search params
-3. Parallel load: country JSON + dictionary + country index
-4. If no country JSON found → show <ComingSoonCountry />
+3. Parallel load: country data + dictionary + country index + session
+4. If no data found → show <ComingSoonCountry />
 5. Merge vehicle overrides onto national rules
-6. Render the component stack below
+6. Enable inline edit for ADMIN on EN + car view
+7. Render the component stack below
 ```
 
 ### Coming Soon Country
@@ -85,11 +86,17 @@ All live in `components/country/modular/`. They all receive `data`, `rules`, and
 - Good for rules that need longer explanations
 
 ### 11. `ChecklistCard`
-**Pre-trip checklist.**
-- Auto-generated from mandatory equipment + boolean rules
-- Useful as a compact printable reference
+**Pre-trip checklist + sources preview.**
+- Mandatory equipment list (inline-editable for ADMIN)
+- Embeds `SourcesCard` — linked sources with trust badges + link to full sources page
 
-### 12. `TrafficSignsGrid`
+### 12. `SourcesCard`
+**Official sources (in ChecklistCard or standalone).**
+- Renders `data.source_entries[]` from DB with external links
+- Falls back to plain `data.sources[]` strings from JSON
+- Link: `/{lang}/country/{iso2}/sources`
+
+### 13. `TrafficSignsGrid`
 **Road signs visual guide.**
 - Displays `data.road_signs[]` as a grid of image + title + description
 - Only renders if the country has `road_signs` data
@@ -115,18 +122,25 @@ A simple form at the bottom of every country page that submits to `/api/feedback
 ## Data Flow Summary
 
 ```
-URL: /de/country/germany?vehicle=motorcycle
+URL: /de/country/de?vehicle=motorcycle
          ↓
-page.tsx: getCountryByName("germany", "de")
+page.tsx: getCountryData("DE", "de")
          ↓
-lib/countries.ts: try data/countries/de.de.json → fallback data/countries/de.json
+lib/countries.ts: DB (Prisma) → fallback data/countries/de.json
          ↓
 Merge: data.rules + data.vehicles.motorcycle = rules
          ↓
-Props flow down to all 11 modular components
+Props flow down to modular components (+ inlineEdit for ADMIN)
          ↓
 Server-rendered HTML → hydrated in browser
 ```
+
+---
+
+## Related Pages
+
+- **Country sources:** `/{lang}/country/{iso2}/sources` — full source list with type/trust metadata
+- **Global sources:** `/{lang}/sources` — all published country sources
 
 ---
 
