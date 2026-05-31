@@ -1,5 +1,5 @@
 import { ComingSoonCountry } from "@/components/coming-soon-country"
-import { getCountryData, getSearchCountries } from "@/lib/countries"
+import { getCountryData, getAllCountries } from "@/lib/countries"
 import RegionSelector from "@/components/country/region-selector"
 import VehicleSpecificsCard from "@/components/country/vehicle-specifics-card"
 import FeedbackForm from "@/components/country/feedback-form"
@@ -44,7 +44,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const [data, dict, countryIndex, session] = await Promise.all([
         getCountryData(iso2, params.lang),
         getDictionary(params.lang),
-        getSearchCountries(),
+        getAllCountries(),
         getServerSession()
     ])
 

@@ -29,7 +29,11 @@ const searchLocales = {
     es: esLocale,
     ja: jaLocale,
 } as const
+const SEARCH_COUNTRIES_CACHE_MS = 5 * 60 * 1000
 let searchLocalesRegistered = false
+let worldwideCountryIndexCache: CountryIndexItem[] | null = null
+let searchCountriesCache: { expiresAt: number; countries: CountryIndexItem[] } | null = null
+let searchCountriesPromise: Promise<CountryIndexItem[]> | null = null
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -325,6 +329,8 @@ async function getJsonCountryIndex(): Promise<CountryIndexItem[]> {
 }
 
 function getWorldwideCountryIndex(): CountryIndexItem[] {
+    if (worldwideCountryIndexCache) return worldwideCountryIndexCache
+
     if (!searchLocalesRegistered) {
         for (const localeData of Object.values(searchLocales)) {
             countries.registerLocale(localeData)
@@ -334,7 +340,7 @@ function getWorldwideCountryIndex(): CountryIndexItem[] {
 
     const englishNames = countries.getNames("en", { select: "official" })
 
-    return Object.entries(englishNames).map(([iso2, name]) => {
+    worldwideCountryIndexCache = Object.entries(englishNames).map(([iso2, name]) => {
         const names = Object.keys(searchLocales).reduce<Record<string, string>>((localizedNames, locale) => {
             localizedNames[locale] = countries.getName(iso2, locale, { select: "official" }) || name
             return localizedNames
@@ -347,6 +353,8 @@ function getWorldwideCountryIndex(): CountryIndexItem[] {
             flag: "",
         } satisfies CountryIndexItem
     })
+
+    return worldwideCountryIndexCache
 }
 
 function mergeCountryIndexes(baseCountries: CountryIndexItem[], preferredCountries: CountryIndexItem[]) {
@@ -435,10 +443,30 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
  * from the ISO country registry and naturally fall through to the Coming Soon page.
  */
 export async function getSearchCountries(): Promise<CountryIndexItem[]> {
-    const contentCountries = await getAllCountries()
-    const worldwideCountries = getWorldwideCountryIndex()
+    const now = Date.now()
 
-    return mergeCountryIndexes(worldwideCountries, contentCountries)
+    if (searchCountriesCache && searchCountriesCache.expiresAt > now) {
+        return searchCountriesCache.countries
+    }
+
+    if (searchCountriesPromise) return searchCountriesPromise
+
+    searchCountriesPromise = (async () => {
+        const contentCountries = await getAllCountries()
+        const worldwideCountries = getWorldwideCountryIndex()
+        const mergedCountries = mergeCountryIndexes(worldwideCountries, contentCountries)
+
+        searchCountriesCache = {
+            expiresAt: Date.now() + SEARCH_COUNTRIES_CACHE_MS,
+            countries: mergedCountries,
+        }
+
+        return mergedCountries
+    })().finally(() => {
+        searchCountriesPromise = null
+    })
+
+    return searchCountriesPromise
 }
 
 /**

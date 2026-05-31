@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { useRouter } from 'next/navigation'
-import countries from 'i18n-iso-countries'
+import { ISO3_TO_ISO2 } from '@/lib/iso3-to-iso2'
 import { Continent } from '@/components/dashboard/sidebar'
 
 // Helper for colors
@@ -106,7 +106,7 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             // 2. Inject Color Index (0-4) into properties
             data.features = data.features.map((f: any, i: number) => {
                 const iso3 = typeof f.id === 'string' ? f.id : f.properties.ADM0_A3
-                const iso2 = iso3 ? countries.alpha3ToAlpha2(iso3) : undefined
+                const iso2 = iso3 ? ISO3_TO_ISO2[iso3] : undefined
 
                 return {
                     ...f,
