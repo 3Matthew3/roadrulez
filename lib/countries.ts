@@ -14,10 +14,22 @@
 
 import fs from "fs"
 import path from "path"
+import countries from "i18n-iso-countries"
+import deLocale from "i18n-iso-countries/langs/de.json"
+import enLocale from "i18n-iso-countries/langs/en.json"
+import esLocale from "i18n-iso-countries/langs/es.json"
+import jaLocale from "i18n-iso-countries/langs/ja.json"
 import { CountryData, CountryIndexItem, TrafficRules, RegionalVariation } from "@/types/country"
 import type { CountrySourceEntry } from "@/types/source"
 
 const dataDirectory = path.join(process.cwd(), "data/countries")
+const searchLocales = {
+    en: enLocale,
+    de: deLocale,
+    es: esLocale,
+    ja: jaLocale,
+} as const
+let searchLocalesRegistered = false
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -423,10 +435,8 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
  * from the ISO country registry and naturally fall through to the Coming Soon page.
  */
 export async function getSearchCountries(): Promise<CountryIndexItem[]> {
-    const [contentCountries, worldwideCountries] = await Promise.all([
-        getAllCountries(),
-        Promise.resolve(getWorldwideCountryIndex()),
-    ])
+    const contentCountries = await getAllCountries()
+    const worldwideCountries = getWorldwideCountryIndex()
 
     return mergeCountryIndexes(worldwideCountries, contentCountries)
 }
