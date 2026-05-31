@@ -112,7 +112,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
 
                 <div className="grid md:grid-cols-2 gap-8">
                     <DetailedRulesAccordion rules={rules} dict={dict} inlineEdit={inlineEdit} />
-                    <ChecklistCard data={data} rules={rules} dict={dict} inlineEdit={inlineEdit} />
+                    <ChecklistCard data={data} rules={rules} dict={dict} lang={params.lang} inlineEdit={inlineEdit} />
                 </div>
 
                 <TrafficSignsGrid data={data} dict={dict} />

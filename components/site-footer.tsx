@@ -32,7 +32,9 @@ export function SiteFooter({ dict, lang }: SiteFooterProps) {
                     </a>
                     {/* Placeholders for future pages */}
                     <span className="opacity-50 cursor-not-allowed text-zinc-600">{dict.extra.footer.about}</span>
-                    <span className="opacity-50 cursor-not-allowed text-zinc-600">{dict.extra.footer.sources}</span>
+                    <Link href={`/${lang}/sources`} className="hover:text-zinc-300 transition-colors">
+                        {dict.extra.footer.sources}
+                    </Link>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <p>&copy; {new Date().getFullYear()} RoadRulez.</p>

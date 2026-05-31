@@ -24,6 +24,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useToast } from "@/components/ui/use-toast"
+import { CountrySourcesManager, type SourceRecord } from "@/components/admin/source-form-dialog"
 
 const overviewSchema = z.object({
     name: z.string().min(1, "Required"),
@@ -329,15 +330,11 @@ export default function CountryDetailPage() {
 
                 {/* ── Sources ── */}
                 <TabsContent value="sources">
-                    <div className="space-y-3">
-                        {country.sources?.length === 0 && (
-                            <Card>
-                                <CardContent className="py-12 text-center text-muted-foreground">
-                                    No sources added. Add at least one source before publishing.
-                                </CardContent>
-                            </Card>
-                        )}
-                        {country.sources?.map((source: any) => (
+                    <CountrySourcesManager
+                        countryId={country.id}
+                        sources={(country.sources ?? []) as SourceRecord[]}
+                        onChanged={fetchCountry}
+                        renderSourceCard={(source, actions) => (
                             <Card key={source.id}>
                                 <CardContent className="pt-4">
                                     <div className="flex items-start justify-between gap-4">
@@ -354,21 +351,28 @@ export default function CountryDetailPage() {
                                             {source.publisher && (
                                                 <p className="text-xs text-muted-foreground">
                                                     {source.publisher}
-                                                    {source.publishedDate && ` · ${format(new Date(source.publishedDate), "yyyy")}`}
                                                 </p>
                                             )}
+                                            <div className="flex flex-wrap gap-2 mt-2">
+                                                <Badge variant={source.active ? "default" : "outline"} className="text-xs">
+                                                    {source.active ? "Active" : "Inactive"}
+                                                </Badge>
+                                                {source.moduleKey && (
+                                                    <Badge variant="outline" className="text-xs">{source.moduleKey}</Badge>
+                                                )}
+                                                <Badge variant="secondary" className="text-xs">{source.sourceType}</Badge>
+                                                <Badge variant="outline" className="text-xs">{source.trustLevel}</Badge>
+                                            </div>
                                         </div>
-                                        {source.moduleKey && (
-                                            <Badge variant="outline" className="shrink-0 text-xs">{source.moduleKey}</Badge>
-                                        )}
+                                        {actions}
                                     </div>
                                     {source.notes && (
                                         <p className="mt-2 text-xs text-muted-foreground">{source.notes}</p>
                                     )}
                                 </CardContent>
                             </Card>
-                        ))}
-                    </div>
+                        )}
+                    />
                 </TabsContent>
 
                 {/* ── Changelog ── */}

@@ -71,6 +71,18 @@
         "motorway": "高速道路",
         "not_allowed": "通行不可"
     },
+    "sources_page": {
+        "view_all": "すべての情報源",
+        "index_title": "公式情報源",
+        "index_subtitle": "RoadRulez の各国ルール確認に使用する参照元です。",
+        "country_title": "{country} の情報源",
+        "country_subtitle": "この国の運転ルールに関する公式・信頼できる参照元です。",
+        "back_to_country": "{country} に戻る",
+        "open_source": "情報源を開く",
+        "view_country_sources": "国別情報源",
+        "module": "モジュール",
+        "empty": "公開されている情報源はまだありません。"
+    },
     "props": {
         "drive_side": "通行側",
         "seatbelts": "シートベルト",

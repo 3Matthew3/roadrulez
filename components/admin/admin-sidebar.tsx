@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
 import {
@@ -11,6 +12,8 @@ import {
     LogOut,
     Shield,
     ChevronRight,
+    Link2,
+    FileSearch,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Avatar } from "@/components/ui/avatar"
@@ -20,6 +23,8 @@ import { Button } from "@/components/ui/button"
 const navItems = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
     { href: "/admin/countries", label: "Countries", icon: Globe },
+    { href: "/admin/sources", label: "Sources", icon: Link2 },
+    { href: "/admin/source-reviews", label: "Source Reviews", icon: FileSearch },
     { href: "/admin/issues", label: "Issues", icon: AlertCircle },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
 ]
@@ -28,6 +33,14 @@ export function AdminSidebar() {
     const pathname = usePathname()
     const { data: session } = useSession()
     const user = session?.user
+    const [openReviewCount, setOpenReviewCount] = useState(0)
+
+    useEffect(() => {
+        fetch("/api/admin/source-reviews/count")
+            .then((res) => (res.ok ? res.json() : { count: 0 }))
+            .then((data) => setOpenReviewCount(data.count ?? 0))
+            .catch(() => setOpenReviewCount(0))
+    }, [pathname])
 
     return (
         <aside className="flex h-screen w-64 flex-col border-r border-border bg-card">
@@ -60,7 +73,12 @@ export function AdminSidebar() {
                             )}
                         >
                             <item.icon className="h-4 w-4" />
-                            {item.label}
+                            <span className="flex-1">{item.label}</span>
+                            {item.href === "/admin/source-reviews" && openReviewCount > 0 && (
+                                <Badge variant="destructive" className="ml-auto h-5 min-w-5 px-1.5 text-[10px]">
+                                    {openReviewCount}
+                                </Badge>
+                            )}
                             {isActive && <ChevronRight className="ml-auto h-3 w-3" />}
                         </Link>
                     )

@@ -1,15 +1,17 @@
 import { Square } from "lucide-react"
 import { CountryData, CountryInlineEditContext, TrafficRules } from "@/types/country"
 import { InlineEdit } from "@/components/inline-edit"
+import SourcesCard from "@/components/country/modular/SourcesCard"
 
 interface ChecklistCardProps {
     data: CountryData
     rules: TrafficRules
     dict: any
+    lang: string
     inlineEdit?: CountryInlineEditContext
 }
 
-export default function ChecklistCard({ data, rules, dict, inlineEdit }: ChecklistCardProps) {
+export default function ChecklistCard({ data, rules, dict, lang, inlineEdit }: ChecklistCardProps) {
     const editable = inlineEdit?.enabled ? inlineEdit : null
     const renderEquipment = (value: unknown) => {
         const items = Array.isArray(value) ? value : []
@@ -43,16 +45,7 @@ export default function ChecklistCard({ data, rules, dict, inlineEdit }: Checkli
                 ) : renderEquipment(rules.mandatory_equipment)}
             </div>
 
-            <div className="rounded-xl border border-slate-800 p-6">
-                <h4 className="font-medium text-white mb-2">{dict.rules.sources}</h4>
-                <ul className="space-y-1 text-sm text-slate-500">
-                    {data.sources.length > 0 ? data.sources.map((s, i) => (
-                        <li key={i}>{s}</li>
-                    )) : (
-                        <li>{dict.common.official_highway_code}</li>
-                    )}
-                </ul>
-            </div>
+            <SourcesCard data={data} dict={dict} lang={lang} compact />
         </div>
     )
 }

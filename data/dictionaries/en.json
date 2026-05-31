@@ -71,6 +71,18 @@
         "motorway": "Motorway",
         "not_allowed": "Not allowed"
     },
+    "sources_page": {
+        "view_all": "All sources",
+        "index_title": "Official sources",
+        "index_subtitle": "References used to verify driving rules across RoadRulez countries.",
+        "country_title": "Sources for {country}",
+        "country_subtitle": "Official and trusted references for this country's driving rules.",
+        "back_to_country": "Back to {country}",
+        "open_source": "Open source",
+        "view_country_sources": "Country sources",
+        "module": "Module",
+        "empty": "No published sources available yet."
+    },
     "props": {
         "drive_side": "Drives on the",
         "seatbelts": "Seatbelts",

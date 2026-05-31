@@ -9,6 +9,7 @@ import {
     Clock,
     TrendingUp,
     ArrowRight,
+    FileSearch,
 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -26,6 +27,7 @@ async function getDashboardData() {
         needsVerification,
         recentActivity,
         recentIssues,
+        openSourceReviews,
     ] = await Promise.all([
         prisma.country.count(),
         prisma.country.count({ where: { status: "PUBLISHED" } }),
@@ -51,12 +53,13 @@ async function getDashboardData() {
             orderBy: [{ priority: "desc" }, { createdAt: "desc" }],
             include: { country: { select: { name: true, iso2: true, flag: true } } },
         }),
+        prisma.sourceReview.count({ where: { status: "OPEN" } }),
     ])
 
     return {
         totalCountries, publishedCountries, draftCountries,
         openIssues, criticalIssues, needsVerification,
-        recentActivity, recentIssues,
+        recentActivity, recentIssues, openSourceReviews,
     }
 }
 
@@ -200,11 +203,17 @@ export default async function AdminDashboard() {
             </div>
 
             {/* Quick Links */}
-            <div className="grid gap-3 sm:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <Button asChild variant="outline" className="h-auto py-4 flex-col gap-2">
                     <Link href="/admin/countries">
                         <Globe className="h-5 w-5" />
                         <span>Manage Countries</span>
+                    </Link>
+                </Button>
+                <Button asChild variant="outline" className="h-auto py-4 flex-col gap-2">
+                    <Link href="/admin/source-reviews">
+                        <FileSearch className="h-5 w-5" />
+                        <span>Source Reviews{data.openSourceReviews > 0 ? ` (${data.openSourceReviews})` : ""}</span>
                     </Link>
                 </Button>
                 <Button asChild variant="outline" className="h-auto py-4 flex-col gap-2">

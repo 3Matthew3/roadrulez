@@ -1,3 +1,7 @@
+import type { CountrySourceEntry } from "@/types/source"
+
+export type { CountrySourceEntry }
+
 export interface SpeedLimits {
     urban: number
     rural: number
@@ -83,6 +87,7 @@ export interface CountryData {
     status: "sample" | "verified" | "needs_review"
     data_coverage?: "high" | "medium" | "low"
     sources: string[]
+    source_entries?: CountrySourceEntry[]
 
     // Visuals
     road_signs?: RoadSign[]

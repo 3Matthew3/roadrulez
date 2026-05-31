@@ -441,7 +441,11 @@ async function main() {
     // Sample Sources
     await prisma.source.upsert({
         where: { id: "src_adac_de" },
-        update: {},
+        update: {
+            sourceType: "AUTOMOBILE_ASSOCIATION",
+            trustLevel: "TRUSTED_SECONDARY",
+            active: true,
+        },
         create: {
             id: "src_adac_de",
             countryId: germany.id,
@@ -451,20 +455,31 @@ async function main() {
             publisher: "ADAC e.V.",
             publishedDate: new Date("2024-01-01"),
             notes: "Comprehensive guide to German traffic law",
+            sourceType: "AUTOMOBILE_ASSOCIATION",
+            trustLevel: "TRUSTED_SECONDARY",
+            active: true,
         },
     });
 
     await prisma.source.upsert({
         where: { id: "src_stvo_de" },
-        update: {},
+        update: {
+            sourceType: "GOVERNMENT",
+            trustLevel: "PRIMARY",
+            active: true,
+        },
         create: {
             id: "src_stvo_de",
             countryId: germany.id,
+            moduleKey: "speed_limits",
             title: "Straßenverkehrs-Ordnung (StVO)",
             url: "https://www.gesetze-im-internet.de/stvo_2013/",
             publisher: "German Federal Government",
             publishedDate: new Date("2013-04-26"),
             notes: "Official German Road Traffic Regulations",
+            sourceType: "GOVERNMENT",
+            trustLevel: "PRIMARY",
+            active: true,
         },
     });
 

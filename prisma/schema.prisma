@@ -38,6 +38,34 @@ enum IssuePriority {
   CRITICAL
 }
 
+enum SourceType {
+  GOVERNMENT
+  POLICE
+  MINISTRY
+  AUTOMOBILE_ASSOCIATION
+  LEGAL_DATABASE
+  SECONDARY
+}
+
+enum TrustLevel {
+  PRIMARY
+  TRUSTED_SECONDARY
+  UNVERIFIED
+}
+
+enum SourceCheckStatus {
+  OK
+  CHANGED
+  FAILED
+  NEEDS_REVIEW
+}
+
+enum SourceReviewStatus {
+  OPEN
+  APPROVED
+  REJECTED
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -47,9 +75,10 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  updatedCountries Country[]  @relation("CountryUpdatedBy")
-  verifiedCountries Country[] @relation("CountryVerifiedBy")
+  updatedCountries Country[]      @relation("CountryUpdatedBy")
+  verifiedCountries Country[]     @relation("CountryVerifiedBy")
   auditLogs        AuditLog[]
+  sourceReviews    SourceReview[] @relation("SourceReviewReviewer")
 
   @@map("users")
 }
@@ -81,9 +110,10 @@ model Country {
   verifiedBy User?    @relation("CountryVerifiedBy", fields: [verifiedById], references: [id])
   regions    Region[]
   rules      CountryRule[]
-  sources    Source[]
-  issues     IssueReport[]
-  auditLogs  AuditLog[]    @relation("CountryAuditLogs")
+  sources       Source[]
+  sourceReviews SourceReview[]
+  issues        IssueReport[]
+  auditLogs     AuditLog[]    @relation("CountryAuditLogs")
 
   @@map("countries")
 }
@@ -151,7 +181,7 @@ model RegionRuleOverride {
 }
 
 model Source {
-  id            String    @id @default(cuid())
+  id            String            @id @default(cuid())
   countryId     String?
   regionId      String?
   moduleKey     String?
@@ -159,15 +189,66 @@ model Source {
   url           String
   publisher     String?
   publishedDate DateTime?
-  notes         String?   @db.Text
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  notes         String?           @db.Text
+  sourceType    SourceType        @default(SECONDARY)
+  trustLevel    TrustLevel        @default(UNVERIFIED)
+  active        Boolean           @default(true)
+  lastCheckedAt DateTime?
+  lastChangedAt DateTime?
+  contentHash   String?
+  checkStatus   SourceCheckStatus @default(OK)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
 
-  country Country?    @relation(fields: [countryId], references: [id], onDelete: SetNull)
-  region  Region?     @relation(fields: [regionId], references: [id], onDelete: SetNull)
-  module  RuleModule? @relation(fields: [moduleKey], references: [key])
+  country Country?       @relation(fields: [countryId], references: [id], onDelete: SetNull)
+  region  Region?        @relation(fields: [regionId], references: [id], onDelete: SetNull)
+  module  RuleModule?    @relation(fields: [moduleKey], references: [key])
+  checks  SourceCheck[]
+  reviews SourceReview[]
 
   @@map("sources")
+}
+
+model SourceCheck {
+  id             String            @id @default(cuid())
+  sourceId       String
+  checkedAt      DateTime          @default(now())
+  status         SourceCheckStatus
+  oldHash        String?
+  newHash        String?
+  httpStatus     Int?
+  error          String?           @db.Text
+  contentSnippet String?           @db.Text
+  diffSummary    String?           @db.Text
+
+  source Source @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@index([sourceId, checkedAt])
+  @@map("source_checks")
+}
+
+model SourceReview {
+  id              String             @id @default(cuid())
+  sourceId        String
+  countryId       String?
+  moduleKey       String?
+  fieldName       String?
+  currentValue    String?            @db.Text
+  suggestedValue  String?            @db.Text
+  evidenceSnippet String?            @db.Text
+  status          SourceReviewStatus @default(OPEN)
+  reviewedById    String?
+  reviewedAt      DateTime?
+  adminNote       String?            @db.Text
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  source     Source   @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  country    Country? @relation(fields: [countryId], references: [id], onDelete: SetNull)
+  reviewedBy User?    @relation("SourceReviewReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@map("source_reviews")
 }
 
 model IssueReport {

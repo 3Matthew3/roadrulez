@@ -15,6 +15,7 @@
 import fs from "fs"
 import path from "path"
 import { CountryData, CountryIndexItem, TrafficRules, RegionalVariation } from "@/types/country"
+import type { CountrySourceEntry } from "@/types/source"
 
 const dataDirectory = path.join(process.cwd(), "data/countries")
 
@@ -70,7 +71,22 @@ function dbToCountryData(
         })
 
     const hasDbRegions = regional_variations.length > 0
-    const sources = (country.sources ?? []).map((s: any) => s.url ?? s.title)
+    const sourceEntries: CountrySourceEntry[] = (country.sources ?? []).map((s: any) => ({
+        id: s.id,
+        title: s.title,
+        url: s.url,
+        publisher: s.publisher,
+        publishedDate: s.publishedDate ? new Date(s.publishedDate).toISOString() : null,
+        sourceType: s.sourceType ?? "SECONDARY",
+        trustLevel: s.trustLevel ?? "UNVERIFIED",
+        moduleKey: s.moduleKey,
+        notes: s.notes,
+        checkStatus: s.checkStatus,
+        lastCheckedAt: s.lastCheckedAt ? new Date(s.lastCheckedAt).toISOString() : null,
+    }))
+    const sources = sourceEntries.length > 0
+        ? sourceEntries.map((s) => s.url ?? s.title)
+        : fallback?.sources ?? []
     const preferLocalizedFallback = locale !== "en"
 
     return {
@@ -95,6 +111,7 @@ function dbToCountryData(
         status: mapDbStatus(country.status),
         data_coverage: (country.dataCoverage as any) ?? undefined,
         sources: sources.length > 0 ? sources : fallback?.sources ?? [],
+        source_entries: sourceEntries.length > 0 ? sourceEntries : fallback?.source_entries,
         road_signs: fallback?.road_signs,
         vehicles: fallback?.vehicles,
     }

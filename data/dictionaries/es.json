@@ -71,6 +71,18 @@
         "motorway": "Autopista",
         "not_allowed": "No permitido"
     },
+    "sources_page": {
+        "view_all": "Todas las fuentes",
+        "index_title": "Fuentes oficiales",
+        "index_subtitle": "Referencias usadas para verificar las normas de conducción en RoadRulez.",
+        "country_title": "Fuentes de {country}",
+        "country_subtitle": "Referencias oficiales y fiables para las normas de este país.",
+        "back_to_country": "Volver a {country}",
+        "open_source": "Abrir fuente",
+        "view_country_sources": "Fuentes del país",
+        "module": "Módulo",
+        "empty": "Aún no hay fuentes publicadas."
+    },
     "props": {
         "drive_side": "Se conduce por la",
         "seatbelts": "Cinturones",

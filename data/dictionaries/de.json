@@ -71,6 +71,18 @@
         "motorway": "Autobahn",
         "not_allowed": "Nicht erlaubt"
     },
+    "sources_page": {
+        "view_all": "Alle Quellen",
+        "index_title": "Offizielle Quellen",
+        "index_subtitle": "Referenzen zur Verifizierung der Fahrregeln auf RoadRulez.",
+        "country_title": "Quellen für {country}",
+        "country_subtitle": "Offizielle und vertrauenswürdige Referenzen für dieses Land.",
+        "back_to_country": "Zurück zu {country}",
+        "open_source": "Quelle öffnen",
+        "view_country_sources": "Landesquellen",
+        "module": "Modul",
+        "empty": "Noch keine veröffentlichten Quellen verfügbar."
+    },
     "props": {
         "drive_side": "Links-/Rechtsverkehr",
         "seatbelts": "Gurtpflicht",

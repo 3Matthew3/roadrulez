@@ -1,14 +1,15 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Suspense } from "react"
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Shield, Loader2, Mail, Lock, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { DEFAULT_LOCALE } from "@/lib/constants"
 
 const loginSchema = z.object({
     email: z.string().email("Invalid email address"),
@@ -19,8 +20,15 @@ type LoginForm = z.infer<typeof loginSchema>
 function AdminLoginPageContent() {
     const router = useRouter()
     const searchParams = useSearchParams()
-    const callbackUrl = searchParams.get("callbackUrl") ?? "/admin"
+    const { status } = useSession()
+    const callbackUrl = searchParams.get("callbackUrl") ?? `/${DEFAULT_LOCALE}`
     const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            router.replace(callbackUrl)
+        }
+    }, [status, router, callbackUrl])
 
     // Deterministic star positions — avoids server/client hydration mismatch
     const stars = useMemo(() => {

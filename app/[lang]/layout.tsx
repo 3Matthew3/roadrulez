@@ -10,6 +10,7 @@ import { Suspense } from "react"
 import { PlausibleProvider } from "@/components/plausible-provider"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { PublicSessionProvider } from "@/components/public-session-provider"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,11 +41,13 @@ export default async function RootLayout({
                     enableSystem={false}
                     disableTransitionOnChange
                 >
-                    <div className="relative flex min-h-screen flex-col">
-                        <SiteHeader lang={params.lang} />
-                        <div className="flex-1">{children}</div>
-                        <SiteFooter dict={dict} lang={params.lang} />
-                    </div>
+                    <PublicSessionProvider>
+                        <div className="relative flex min-h-screen flex-col">
+                            <SiteHeader lang={params.lang} />
+                            <div className="flex-1">{children}</div>
+                            <SiteFooter dict={dict} lang={params.lang} />
+                        </div>
+                    </PublicSessionProvider>
                 </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />
