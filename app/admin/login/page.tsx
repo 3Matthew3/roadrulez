@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Shield, Loader2, Mail, Lock, ArrowRight } from "lucide-react"
 import Link from "next/link"
-import { DEFAULT_LOCALE } from "@/lib/constants"
+import { sanitizeAuthCallbackUrl } from "@/lib/auth-callback"
 
 const loginSchema = z.object({
     email: z.string().email("Invalid email address"),
@@ -21,7 +21,8 @@ function AdminLoginPageContent() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const { status } = useSession()
-    const callbackUrl = searchParams.get("callbackUrl") ?? `/${DEFAULT_LOCALE}`
+    const rawCallbackUrl = searchParams.get("callbackUrl")
+    const callbackUrl = sanitizeAuthCallbackUrl(rawCallbackUrl)
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {

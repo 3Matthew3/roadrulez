@@ -35,6 +35,10 @@ export async function middleware(request: NextRequest) {
     const isAdminPage = pathname.startsWith("/admin");
     const isAdminApi = pathname.startsWith("/api/admin");
 
+    if (pathname === "/admin/logon" || pathname === "/admin/signin" || pathname === "/admin/sign-in") {
+        return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+
     if (isAdminPage || isAdminApi) {
         // Allow login page and NextAuth API routes (no auth needed)
         if (pathname === "/admin/login" || pathname.startsWith("/api/auth")) {
