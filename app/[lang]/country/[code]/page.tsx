@@ -48,7 +48,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     ])
 
     if (!data) {
-        return <ComingSoonCountry />
+        return <ComingSoonCountry lang={params.lang} />
     }
 
     // Find localized name from index

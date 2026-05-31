@@ -1,6 +1,12 @@
 import { CountrySearch } from "@/components/country-search"
 
-export default function SearchPage() {
+interface SearchPageProps {
+    searchParams?: {
+        q?: string
+    }
+}
+
+export default function SearchPage({ searchParams }: SearchPageProps) {
     return (
         <div className="container py-20 flex flex-col items-center">
             <div className="text-center space-y-4 mb-10">
@@ -12,7 +18,7 @@ export default function SearchPage() {
                 </p>
             </div>
 
-            <CountrySearch />
+            <CountrySearch initialQuery={searchParams?.q || ""} />
         </div>
     )
 }
