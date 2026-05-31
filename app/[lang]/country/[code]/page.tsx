@@ -1,5 +1,5 @@
 import { ComingSoonCountry } from "@/components/coming-soon-country"
-import { getCountryData, getAllCountries } from "@/lib/countries"
+import { getCountryData, getSearchCountries } from "@/lib/countries"
 import RegionSelector from "@/components/country/region-selector"
 import VehicleSpecificsCard from "@/components/country/vehicle-specifics-card"
 import FeedbackForm from "@/components/country/feedback-form"
@@ -9,6 +9,7 @@ import { Triangle } from "lucide-react"
 import { CountryViewTracker } from "@/components/country-view-tracker"
 import { getServerSession } from "@/lib/auth"
 import { canInlineEditCountry } from "@/lib/inline-edit/country-fields"
+import AustriaDashboard from "@/components/country/austria-dashboard"
 
 // Modular Components
 import CountryHero from "@/components/country/modular/CountryHero"
@@ -43,12 +44,12 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const [data, dict, countryIndex, session] = await Promise.all([
         getCountryData(iso2, params.lang),
         getDictionary(params.lang),
-        getAllCountries(),
+        getSearchCountries(),
         getServerSession()
     ])
 
     if (!data) {
-        return <ComingSoonCountry lang={params.lang} />
+        return <ComingSoonCountry />
     }
 
     // Find localized name from index
@@ -68,6 +69,19 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
             ...data.rules.speed_limits,
             ...(vehicleOverrides.speed_limits || {})
         }
+    }
+
+    if (data.iso2 === "AT") {
+        return (
+            <AustriaDashboard
+                data={data}
+                localizedName={localizedName}
+                dict={dict}
+                lang={params.lang}
+                vehicleType={vehicleType}
+                rules={rules}
+            />
+        )
     }
 
     return (
