@@ -312,6 +312,55 @@ async function getJsonCountryIndex(): Promise<CountryIndexItem[]> {
     }
 }
 
+function getWorldwideCountryIndex(): CountryIndexItem[] {
+    if (!searchLocalesRegistered) {
+        for (const localeData of Object.values(searchLocales)) {
+            countries.registerLocale(localeData)
+        }
+        searchLocalesRegistered = true
+    }
+
+    const englishNames = countries.getNames("en", { select: "official" })
+
+    return Object.entries(englishNames).map(([iso2, name]) => {
+        const names = Object.keys(searchLocales).reduce<Record<string, string>>((localizedNames, locale) => {
+            localizedNames[locale] = countries.getName(iso2, locale, { select: "official" }) || name
+            return localizedNames
+        }, {})
+
+        return {
+            name,
+            names,
+            iso2,
+            flag: "",
+        } satisfies CountryIndexItem
+    })
+}
+
+function mergeCountryIndexes(baseCountries: CountryIndexItem[], preferredCountries: CountryIndexItem[]) {
+    const countriesByIso2 = new Map<string, CountryIndexItem>()
+
+    for (const country of baseCountries) {
+        countriesByIso2.set(country.iso2, country)
+    }
+
+    for (const country of preferredCountries) {
+        const existing = countriesByIso2.get(country.iso2)
+        countriesByIso2.set(country.iso2, {
+            name: country.name,
+            names: {
+                ...(existing?.names ?? {}),
+                ...(country.names ?? {}),
+                en: country.name,
+            },
+            iso2: country.iso2,
+            flag: country.flag || existing?.flag || "",
+        })
+    }
+
+    return Array.from(countriesByIso2.values()).sort((a, b) => a.name.localeCompare(b.name))
+}
+
 /**
  * Returns the index list used by the homepage/search.
  * Tries DB first (PUBLISHED + VERIFIED countries), enriched with JSON names,
@@ -366,6 +415,20 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
     }
 
     return jsonIndex
+}
+
+/**
+ * Returns all countries searchable by the public UI.
+ * Countries with app content keep their curated/localized names; the rest come
+ * from the ISO country registry and naturally fall through to the Coming Soon page.
+ */
+export async function getSearchCountries(): Promise<CountryIndexItem[]> {
+    const [contentCountries, worldwideCountries] = await Promise.all([
+        getAllCountries(),
+        Promise.resolve(getWorldwideCountryIndex()),
+    ])
+
+    return mergeCountryIndexes(worldwideCountries, contentCountries)
 }
 
 /**

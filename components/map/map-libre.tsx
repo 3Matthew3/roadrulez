@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { useRouter } from 'next/navigation'
+import countries from 'i18n-iso-countries'
 import { Continent } from '@/components/dashboard/sidebar'
 
 // Helper for colors
@@ -103,11 +104,16 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             data.features = data.features.filter((f: any) => f.id !== 'ATA' && f.properties.name !== 'Antarctica');
 
             // 2. Inject Color Index (0-4) into properties
-            data.features = data.features.map((f: any, i: number) => ({
-                ...f,
-                id: i,
-                properties: { ...f.properties, colorIndex: i % 5 }
-            }))
+            data.features = data.features.map((f: any, i: number) => {
+                const iso3 = typeof f.id === 'string' ? f.id : f.properties.ADM0_A3
+                const iso2 = iso3 ? countries.alpha3ToAlpha2(iso3) : undefined
+
+                return {
+                    ...f,
+                    id: i,
+                    properties: { ...f.properties, colorIndex: i % 5, iso2 }
+                }
+            })
 
             setMapLoaded(true)
             const m = map.current!
@@ -191,7 +197,7 @@ export default function MapLibreClient({ selectedContinent, className }: MapLibr
             m.on('click', 'countries-fill', (e) => {
                 if (e.features && e.features[0]) {
                     const feature = e.features[0]
-                    const iso2 = feature.properties.ISO_A2 || feature.properties.iso_a2 || feature.properties.ADM0_A3?.slice(0, 2)
+                    const iso2 = feature.properties.iso2 || feature.properties.ISO_A2 || feature.properties.iso_a2
                     const langPrefix = window.location.pathname.split('/').slice(0, 2).join('/')
                     if (iso2 && iso2 !== '-99') {
                         m.flyTo({ center: e.lngLat, zoom: 5 })
