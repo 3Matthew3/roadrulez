@@ -5,13 +5,29 @@ export type SourceSuggestion = {
     suggestedValue: string
 }
 
+function collectRegexMatches(text: string, pattern: RegExp): RegExpExecArray[] {
+    const flags = pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`
+    const regex = new RegExp(pattern.source, flags)
+    const matches: RegExpExecArray[] = []
+    let match: RegExpExecArray | null = regex.exec(text)
+
+    while (match !== null) {
+        matches.push(match)
+        match = regex.exec(text)
+    }
+
+    return matches
+}
+
 export function extractSourceSuggestions(text: string, preferredModuleKey?: string | null): SourceSuggestion[] {
     const suggestions: SourceSuggestion[] = []
     const allow = (moduleKey: string) => !preferredModuleKey || preferredModuleKey === moduleKey
 
     if (allow("speed_limits")) {
-        const speedMatches = [...text.matchAll(/(\d{2,3})\s*km\s*\/?\s*h/gi)]
-        const speeds = [...new Set(speedMatches.map((match) => Number(match[1])).filter((n) => n >= 20 && n <= 160))]
+        const speedMatches = collectRegexMatches(text, /(\d{2,3})\s*km\s*\/?\s*h/gi)
+        const speeds = Array.from(
+            new Set(speedMatches.map((match) => Number(match[1])).filter((n) => n >= 20 && n <= 160))
+        )
         if (speeds.length > 0) {
             const sorted = speeds.sort((a, b) => a - b)
             suggestions.push({
@@ -30,7 +46,7 @@ export function extractSourceSuggestions(text: string, preferredModuleKey?: stri
     }
 
     if (allow("alcohol_limit")) {
-        const alcoholMatches = [...text.matchAll(/0[.,]\d+\s?(?:‰|promille|bac|mg\/l)/gi)]
+        const alcoholMatches = collectRegexMatches(text, /0[.,]\d+\s?(?:‰|promille|bac|mg\/l)/gi)
         if (alcoholMatches.length > 0) {
             const raw = alcoholMatches[0][0].replace(",", ".")
             const value = Number.parseFloat(raw)
