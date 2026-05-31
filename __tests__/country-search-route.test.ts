@@ -22,6 +22,7 @@ const mockCountries = [
         names: {
             en: "Germany",
             de: "Deutschland",
+            es: "Alemania",
         },
         iso2: "DE",
         flag: "",
