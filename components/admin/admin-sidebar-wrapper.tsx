@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import { AdminSidebar } from "@/components/admin/admin-sidebar"
+import { AdminTopBar } from "@/components/admin/admin-top-bar"
 
 export function AdminSidebarWrapper({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
@@ -17,6 +18,7 @@ export function AdminSidebarWrapper({ children }: { children: React.ReactNode })
             <AdminSidebar />
             <main className="flex-1 overflow-y-auto">
                 <div className="container mx-auto max-w-7xl p-6">
+                    <AdminTopBar />
                     {children}
                 </div>
             </main>

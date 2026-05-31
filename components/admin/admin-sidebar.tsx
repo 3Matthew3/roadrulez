@@ -14,8 +14,10 @@ import {
     ChevronRight,
     Link2,
     FileSearch,
+    Home,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { DEFAULT_LOCALE } from "@/lib/constants"
 import { Avatar } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -86,8 +88,14 @@ export function AdminSidebar() {
             </nav>
 
             {/* User section */}
-            <div className="border-t border-border p-4">
-                <div className="flex items-center gap-3 mb-3">
+            <div className="border-t border-border p-4 space-y-2">
+                <Button variant="ghost" size="sm" className="w-full justify-start" asChild>
+                    <Link href={`/${DEFAULT_LOCALE}`}>
+                        <Home className="mr-2 h-4 w-4" />
+                        Back to website
+                    </Link>
+                </Button>
+                <div className="flex items-center gap-3 mb-1">
                     <Avatar
                         fallback={user?.name ?? user?.email ?? "?"}
                         size="sm"
