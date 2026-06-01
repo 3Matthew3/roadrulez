@@ -52,9 +52,6 @@ export function InlineEdit({
 }: InlineEditProps) {
     const router = useRouter()
     const config = COUNTRY_INLINE_EDIT_FIELDS[field]
-    if (!config) {
-        return <span className={className}>{renderValue ? renderValue(value) : String(value ?? "")}</span>
-    }
     const [currentValue, setCurrentValue] = useState<CountryInlineEditValue>(value)
     const [draft, setDraft] = useState(valueToDraft(value))
     const [isEditing, setIsEditing] = useState(false)
@@ -73,6 +70,10 @@ export function InlineEdit({
         const timeout = window.setTimeout(() => setFeedback(null), 2200)
         return () => window.clearTimeout(timeout)
     }, [feedback])
+
+    if (!config) {
+        return <span className={className}>{renderValue ? renderValue(value) : String(value ?? "")}</span>
+    }
 
     const beginEditing = () => {
         setDraft(valueToDraft(currentValue))
