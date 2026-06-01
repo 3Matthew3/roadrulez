@@ -46,7 +46,7 @@ export function AdminSessionIndicator() {
                     {role.toLowerCase()}
                 </Badge>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="start" className="w-56">
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col gap-1">
                         <span className="text-sm font-medium">{user.name ?? "Staff"}</span>

@@ -52,6 +52,9 @@ export function InlineEdit({
 }: InlineEditProps) {
     const router = useRouter()
     const config = COUNTRY_INLINE_EDIT_FIELDS[field]
+    if (!config) {
+        return <span className={className}>{renderValue ? renderValue(value) : String(value ?? "")}</span>
+    }
     const [currentValue, setCurrentValue] = useState<CountryInlineEditValue>(value)
     const [draft, setDraft] = useState(valueToDraft(value))
     const [isEditing, setIsEditing] = useState(false)

@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { CountryData } from "@/types/country"
 
 interface TrafficSignsGridProps {
@@ -15,8 +14,13 @@ export default function TrafficSignsGrid({ data, dict }: TrafficSignsGridProps) 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {data.road_signs.map((sign, i) => (
                     <div key={i} className="group relative rounded-xl bg-slate-900/50 border border-slate-800 p-4 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors">
-                        <div className="h-24 w-24 mb-3 relative">
-                            <Image src={sign.image_url} alt={sign.title} fill className="object-contain" unoptimized />
+                        <div className="h-24 w-24 mb-3 relative flex items-center justify-center">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src={sign.image_url}
+                                alt={sign.title}
+                                className="max-h-full max-w-full object-contain"
+                            />
                         </div>
                         <span className="font-medium text-white mb-1">{sign.title}</span>
                         <span className="text-xs text-slate-500 leading-tight">{sign.description}</span>

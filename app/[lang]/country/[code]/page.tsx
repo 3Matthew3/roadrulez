@@ -7,8 +7,8 @@ import { getDictionary } from "@/lib/dictionaries"
 import { VehicleRules, TrafficRules } from "@/types/country"
 import { Triangle } from "lucide-react"
 import { CountryViewTracker } from "@/components/country-view-tracker"
-import { getServerSession } from "@/lib/auth"
 import { canInlineEditCountry } from "@/lib/inline-edit/country-fields"
+import { getStaffRoleFromCookies } from "@/lib/staff-session"
 
 // Modular Components
 import CountryHero from "@/components/country/modular/CountryHero"
@@ -40,11 +40,11 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const vehicleType = (rawVehicle === "motorcycle" || rawVehicle === "moped") ? rawVehicle : "car"
 
     // Parallel data loading — direct ISO2 lookup, no name resolution needed
-    const [data, dict, countryIndex, session] = await Promise.all([
+    const [data, dict, countryIndex, staffRole] = await Promise.all([
         getCountryData(iso2, params.lang),
         getDictionary(params.lang),
         getAllCountries(),
-        getServerSession()
+        getStaffRoleFromCookies(),
     ])
 
     if (!data) {
@@ -55,7 +55,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
     const indexEntry = countryIndex.find(c => c.iso2 === data.iso2)
     const localizedName = indexEntry?.names?.[params.lang] || data.name_en
     const inlineEdit = {
-        enabled: canInlineEditCountry(session?.user?.role) && vehicleType === "car" && params.lang === "en",
+        enabled: canInlineEditCountry(staffRole) && vehicleType === "car" && params.lang === "en",
         countryCode: data.iso2,
     }
 

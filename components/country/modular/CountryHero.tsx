@@ -3,6 +3,7 @@ import VehicleSwitcher from "@/components/country/vehicle-switcher"
 import { Badge } from "@/components/ui/badge"
 import { Info } from "lucide-react"
 import { CountryData } from "@/types/country"
+import { Suspense } from "react"
 
 interface CountryHeroProps {
     data: CountryData
@@ -41,10 +42,12 @@ export default function CountryHero({ data, localizedName, dict, vehicleType }: 
                 </div>
 
                 <div className="flex flex-col md:flex-row md:items-center gap-4 text-xs text-slate-500 font-mono">
-                    <VehicleSwitcher
-                        currentVehicle={vehicleType}
-                        labels={dict.vehicle}
-                    />
+                    <Suspense fallback={<div className="h-10 w-56 rounded-lg bg-slate-800/50 animate-pulse" />}>
+                        <VehicleSwitcher
+                            currentVehicle={vehicleType}
+                            labels={dict.vehicle}
+                        />
+                    </Suspense>
                     <div className="flex items-center gap-4">
                         <span>{dict.common.last_verified}: {data.last_verified}</span>
                         <Badge variant="outline" className="text-amber-500 border-amber-500/20 bg-amber-500/10 uppercase text-[10px]">

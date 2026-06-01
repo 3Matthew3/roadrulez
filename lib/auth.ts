@@ -1,4 +1,5 @@
-import { getServerSession as nextAuthGetServerSession, NextAuthOptions } from "next-auth";
+import type { NextAuthOptions } from "next-auth";
+import { getServerSession as nextAuthGetServerSession } from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
@@ -136,7 +137,12 @@ export const authOptions: NextAuthOptions = {
 };
 
 export async function getServerSession() {
-    return nextAuthGetServerSession(authOptions);
+    try {
+        return await nextAuthGetServerSession(authOptions);
+    } catch (error) {
+        console.error("[auth] getServerSession failed:", error);
+        return null;
+    }
 }
 
 export async function requireAuth() {

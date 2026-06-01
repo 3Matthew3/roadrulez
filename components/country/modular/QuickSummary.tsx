@@ -10,6 +10,7 @@ interface QuickSummaryProps {
 
 export default function QuickSummary({ data, dict, inlineEdit }: QuickSummaryProps) {
     const editable = inlineEdit?.enabled ? inlineEdit : null
+    const commonTraps = Array.isArray(data.common_traps) ? data.common_traps : []
 
     return (
         <div className="rounded-2xl bg-slate-800/40 border border-slate-700/50 p-6 md:p-8 backdrop-blur-sm relative overflow-hidden">
@@ -41,7 +42,7 @@ export default function QuickSummary({ data, dict, inlineEdit }: QuickSummaryPro
                 <InlineEdit
                     countryCode={editable.countryCode}
                     field="common_traps"
-                    value={data.common_traps}
+                    value={commonTraps}
                     renderValue={(value) => (
                         <ul className="space-y-2">
                             {(Array.isArray(value) ? value : []).map((trap, i) => (
@@ -55,7 +56,7 @@ export default function QuickSummary({ data, dict, inlineEdit }: QuickSummaryPro
                 />
             ) : (
                 <ul className="space-y-2">
-                    {data.common_traps.map((trap, i) => (
+                    {commonTraps.map((trap, i) => (
                         <li key={i} className="flex items-start gap-2 text-slate-400">
                             <span className="text-blue-500 mt-1.5">•</span>
                             {trap}
