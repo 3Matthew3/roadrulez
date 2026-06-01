@@ -12,6 +12,17 @@
     },
     {
         "names": {
+            "en": "Austria",
+            "de": "Österreich",
+            "es": "Austria",
+            "ja": "オーストリア"
+        },
+        "name": "Austria",
+        "iso2": "AT",
+        "flag": "🇦🇹"
+    },
+    {
+        "names": {
             "en": "Germany",
             "de": "Deutschland",
             "es": "Alemania",

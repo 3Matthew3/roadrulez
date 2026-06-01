@@ -14,10 +14,26 @@
 
 import fs from "fs"
 import path from "path"
+import countries from "i18n-iso-countries"
+import deLocale from "i18n-iso-countries/langs/de.json"
+import enLocale from "i18n-iso-countries/langs/en.json"
+import esLocale from "i18n-iso-countries/langs/es.json"
+import jaLocale from "i18n-iso-countries/langs/ja.json"
 import { CountryData, CountryIndexItem, TrafficRules, RegionalVariation } from "@/types/country"
 import type { CountrySourceEntry } from "@/types/source"
 
 const dataDirectory = path.join(process.cwd(), "data/countries")
+const searchLocales = {
+    en: enLocale,
+    de: deLocale,
+    es: esLocale,
+    ja: jaLocale,
+} as const
+const SEARCH_COUNTRIES_CACHE_MS = 5 * 60 * 1000
+let searchLocalesRegistered = false
+let worldwideCountryIndexCache: CountryIndexItem[] | null = null
+let searchCountriesCache: { expiresAt: number; countries: CountryIndexItem[] } | null = null
+let searchCountriesPromise: Promise<CountryIndexItem[]> | null = null
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -312,6 +328,59 @@ async function getJsonCountryIndex(): Promise<CountryIndexItem[]> {
     }
 }
 
+function getWorldwideCountryIndex(): CountryIndexItem[] {
+    if (worldwideCountryIndexCache) return worldwideCountryIndexCache
+
+    if (!searchLocalesRegistered) {
+        for (const localeData of Object.values(searchLocales)) {
+            countries.registerLocale(localeData)
+        }
+        searchLocalesRegistered = true
+    }
+
+    const englishNames = countries.getNames("en", { select: "official" })
+
+    worldwideCountryIndexCache = Object.entries(englishNames).map(([iso2, name]) => {
+        const names = Object.keys(searchLocales).reduce<Record<string, string>>((localizedNames, locale) => {
+            localizedNames[locale] = countries.getName(iso2, locale, { select: "official" }) || name
+            return localizedNames
+        }, {})
+
+        return {
+            name,
+            names,
+            iso2,
+            flag: "",
+        } satisfies CountryIndexItem
+    })
+
+    return worldwideCountryIndexCache
+}
+
+function mergeCountryIndexes(baseCountries: CountryIndexItem[], preferredCountries: CountryIndexItem[]) {
+    const countriesByIso2 = new Map<string, CountryIndexItem>()
+
+    for (const country of baseCountries) {
+        countriesByIso2.set(country.iso2, country)
+    }
+
+    for (const country of preferredCountries) {
+        const existing = countriesByIso2.get(country.iso2)
+        countriesByIso2.set(country.iso2, {
+            name: country.name,
+            names: {
+                ...(existing?.names ?? {}),
+                ...(country.names ?? {}),
+                en: country.name,
+            },
+            iso2: country.iso2,
+            flag: country.flag || existing?.flag || "",
+        })
+    }
+
+    return Array.from(countriesByIso2.values()).sort((a, b) => a.name.localeCompare(b.name))
+}
+
 /**
  * Returns the index list used by the homepage/search.
  * Tries DB first (PUBLISHED + VERIFIED countries), enriched with JSON names,
@@ -366,6 +435,38 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
     }
 
     return jsonIndex
+}
+
+/**
+ * Returns all countries searchable by the public UI.
+ * Countries with app content keep their curated/localized names; the rest come
+ * from the ISO country registry and naturally fall through to the Coming Soon page.
+ */
+export async function getSearchCountries(): Promise<CountryIndexItem[]> {
+    const now = Date.now()
+
+    if (searchCountriesCache && searchCountriesCache.expiresAt > now) {
+        return searchCountriesCache.countries
+    }
+
+    if (searchCountriesPromise) return searchCountriesPromise
+
+    searchCountriesPromise = (async () => {
+        const contentCountries = await getAllCountries()
+        const worldwideCountries = getWorldwideCountryIndex()
+        const mergedCountries = mergeCountryIndexes(worldwideCountries, contentCountries)
+
+        searchCountriesCache = {
+            expiresAt: Date.now() + SEARCH_COUNTRIES_CACHE_MS,
+            countries: mergedCountries,
+        }
+
+        return mergedCountries
+    })().finally(() => {
+        searchCountriesPromise = null
+    })
+
+    return searchCountriesPromise
 }
 
 /**

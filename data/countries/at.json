@@ -1,0 +1,121 @@
+{
+    "name_en": "Austria",
+    "name_local": "Österreich",
+    "iso2": "AT",
+    "iso3": "AUT",
+    "continent": "Europe",
+    "flag": "🇦🇹",
+    "header_images": [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "drive_side": "right",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 100,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override defaults. Lower limits can apply in tunnels, roadworks, residential zones, and environmental speed-control areas."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "A lower 0.01% BAC limit applies to novice drivers and some professional drivers."
+        },
+        "seatbelt_rules": "Seatbelts are mandatory for all occupants.",
+        "child_seat_rules": "Children under 14 years and shorter than 135 cm need an appropriate child restraint.",
+        "phone_usage_rules": "Handheld phone use is prohibited while driving. Hands-free systems are allowed.",
+        "headlights_rules": "Use headlights at night, in tunnels, and when visibility is poor. Motorcycles must use lights during the day.",
+        "priority_rules": "Drive on the right. Right-before-left applies at unmarked intersections unless signs or road markings say otherwise.",
+        "tolls": {
+            "required": true,
+            "type": "vignette",
+            "notes": "Motorways and expressways require a valid vignette or digital toll. Some Alpine tunnels and passes have additional special tolls."
+        },
+        "parking_rules": "Short-stay parking zones are common in cities and are strictly enforced. Check local signs and digital parking rules.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "First aid kit",
+            "Reflective vest"
+        ],
+        "winter_rules": "From 1 November to 15 April, winter tyres are required in winter road conditions. Snow chains may be required where signed.",
+        "emergency_numbers": [
+            "112 (European emergency)",
+            "133 (Police)",
+            "144 (Ambulance)",
+            "122 (Fire brigade)"
+        ]
+    },
+    "summary": "Austria is generally straightforward for road trips, but motorways require a vignette and mountain weather can change driving conditions quickly. Expect strict speed, parking, and winter-equipment enforcement, especially around cities and Alpine routes.",
+    "common_traps": [
+        "Driving on motorways or expressways without a valid vignette or digital toll.",
+        "Special toll roads in Alpine tunnels and passes are separate from the normal vignette.",
+        "Winter tyres are required in winter road conditions from 1 November to 15 April.",
+        "City parking zones can be confusing and are enforced quickly."
+    ],
+    "rental_and_idp_notes": "EU/EEA licences are generally accepted. Non-EU drivers should check rental-company requirements; an International Driving Permit is recommended and may be required depending on the licence.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "Vienna",
+            "differences": {},
+            "notes": "Short-stay parking applies citywide in many areas. Use official signs, parking apps, or public transport where possible."
+        },
+        {
+            "region_type": "state",
+            "region_name": "Tyrol and Alpine routes",
+            "differences": {},
+            "notes": "Mountain passes, snow chains, seasonal closures, and special toll roads are common. Check route conditions before driving."
+        }
+    ],
+    "last_verified": "2026-05-31",
+    "status": "sample",
+    "data_coverage": "medium",
+    "sources": [
+        "https://www.oesterreich.gv.at/",
+        "https://www.asfinag.at/en/toll/vignette/",
+        "https://www.oeamtc.at/"
+    ],
+    "source_entries": [
+        {
+            "id": "at-oesterreich-driving",
+            "title": "Official Austria portal - Mobility and motor vehicles",
+            "url": "https://www.oesterreich.gv.at/",
+            "publisher": "Republic of Austria",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "notes": "Official government portal used for baseline driving and vehicle obligations.",
+            "checkStatus": "NEEDS_REVIEW",
+            "lastCheckedAt": null
+        },
+        {
+            "id": "at-asfinag-vignette",
+            "title": "Vignette and toll information",
+            "url": "https://www.asfinag.at/en/toll/vignette/",
+            "publisher": "ASFINAG",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "notes": "Official motorway and expressway toll information.",
+            "checkStatus": "NEEDS_REVIEW",
+            "lastCheckedAt": null
+        },
+        {
+            "id": "at-oeamtc-rules",
+            "title": "Driving information for Austria",
+            "url": "https://www.oeamtc.at/",
+            "publisher": "ÖAMTC",
+            "publishedDate": null,
+            "sourceType": "AUTOMOBILE_ASSOCIATION",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "requirements",
+            "notes": "Automobile club guidance for practical road-trip preparation.",
+            "checkStatus": "NEEDS_REVIEW",
+            "lastCheckedAt": null
+        }
+    ]
+}

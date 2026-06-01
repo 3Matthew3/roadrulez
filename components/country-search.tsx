@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2, Search } from "lucide-react"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
 
 interface Country {
     name: {
@@ -18,12 +17,34 @@ interface Country {
     routeKey: string
 }
 
-export function CountrySearch() {
+interface CountrySearchProps {
+    initialQuery?: string
+    placeholder?: string
+    className?: string
+    inputClassName?: string
+    resultsClassName?: string
+    emptyClassName?: string
+    showEmptyState?: boolean
+}
+
+export function CountrySearch({
+    initialQuery = "",
+    placeholder = "Search for a country (e.g., 'Germany', 'Japan')...",
+    className = "w-full",
+    inputClassName = "",
+    resultsClassName = "",
+    emptyClassName = "",
+    showEmptyState = true,
+}: CountrySearchProps) {
     const router = useRouter()
-    const [query, setQuery] = useState("")
+    const [query, setQuery] = useState(initialQuery)
     const [filteredCountries, setFilteredCountries] = useState<Country[]>([])
     const [loading, setLoading] = useState(false)
     const [debouncedQuery, setDebouncedQuery] = useState("")
+
+    useEffect(() => {
+        setQuery(initialQuery)
+    }, [initialQuery])
 
     // Simple debounce
     useEffect(() => {
@@ -34,12 +55,15 @@ export function CountrySearch() {
     }, [query])
 
     useEffect(() => {
-        if (!debouncedQuery.trim()) {
+        const trimmedQuery = debouncedQuery.trim()
+
+        if (!trimmedQuery) {
             setFilteredCountries([])
             setLoading(false)
             return
         }
 
+        const controller = new AbortController()
         setLoading(true)
         // Get language from URL or default to 'en'. For client component, we might need a prop or hook.
         // Simplified: extracting from window location or just sending 'en'/detecting on server if needed.
@@ -47,37 +71,50 @@ export function CountrySearch() {
         const pathSegments = window.location.pathname.split('/')
         const lang = pathSegments[1] && pathSegments[1].length === 2 ? pathSegments[1] : 'en'
 
-        fetch(`/api/countries/search?q=${encodeURIComponent(debouncedQuery)}&lang=${lang}`)
-            .then((res) => res.json())
+        fetch(`/api/countries/search?q=${encodeURIComponent(trimmedQuery)}&lang=${lang}`, {
+            signal: controller.signal,
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error(`Search request failed with ${res.status}`)
+                return res.json()
+            })
             .then((data) => {
                 setFilteredCountries(data)
-                setLoading(false)
             })
             .catch((err) => {
+                if (err.name === "AbortError") return
                 console.error("Failed to fetch countries", err)
                 setFilteredCountries([])
-                setLoading(false)
             })
+            .finally(() => {
+                if (!controller.signal.aborted) {
+                    setLoading(false)
+                }
+            })
+
+        return () => controller.abort()
     }, [debouncedQuery])
 
     const handleSelect = (iso2: string) => {
         const langPrefix = window.location.pathname.split('/').slice(0, 2).join('/')
-        router.push(`${langPrefix}/country/${iso2.toUpperCase()}`)
+        const countryCode = iso2.trim().toUpperCase()
+        if (countryCode) {
+            router.push(`${langPrefix}/country/${countryCode}`)
+        }
     }
 
     // ...
 
     return (
-        <div className="w-full">
+        <div className={className}>
             <div className="relative">
                 <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                 <input
                     type="text"
-                    placeholder="Search for a country (e.g., 'Germany', 'Japan')..."
-                    className="flex h-12 w-full bg-transparent px-3 py-2 pl-10 text-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder={placeholder}
+                    className={`flex h-12 w-full bg-transparent px-3 py-2 pl-10 text-sm placeholder:text-muted-foreground focus-visible:outline-none ${inputClassName}`}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    disabled={loading}
                 />
                 {loading && (
                     <div className="absolute right-3 top-3">
@@ -87,9 +124,10 @@ export function CountrySearch() {
             </div>
 
             {filteredCountries.length > 0 && (
-                <div className="rounded-lg border bg-popover text-popover-foreground shadow-md overflow-hidden animate-in fade-in slide-in-from-top-1">
+                <div className={`rounded-lg border bg-popover text-popover-foreground shadow-md overflow-hidden animate-in fade-in slide-in-from-top-1 ${resultsClassName}`}>
                     {filteredCountries.map((country) => (
                         <button
+                            type="button"
                             key={country.routeKey}
                             className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-accent hover:text-accent-foreground transition-colors border-b last:border-0"
                             onClick={() => handleSelect(country.routeKey)}
@@ -109,8 +147,8 @@ export function CountrySearch() {
                 </div>
             )}
 
-            {query && filteredCountries.length === 0 && !loading && (
-                <div className="py-6 text-center text-muted-foreground">
+            {showEmptyState && query.trim() && query.trim() === debouncedQuery.trim() && filteredCountries.length === 0 && !loading && (
+                <div className={`py-6 text-center text-muted-foreground ${emptyClassName}`}>
                     No countries found for &quot;{query}&quot;.
                 </div>
             )}

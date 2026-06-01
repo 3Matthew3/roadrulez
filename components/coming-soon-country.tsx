@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { ArrowLeft, Map } from "lucide-react"
 import { useEffect, useState } from "react"
+import { isValidLocale, type Locale } from "@/lib/constants"
 
 function AnimatedStreaks() {
     const [streaks, setStreaks] = useState<Array<{
@@ -67,7 +69,21 @@ function AnimatedStreaks() {
     )
 }
 
-export function ComingSoonCountry() {
+interface ComingSoonCountryProps {
+    lang?: string
+}
+
+export function ComingSoonCountry({ lang }: ComingSoonCountryProps) {
+    const pathname = usePathname()
+    const pathLocale = pathname.split("/")[1]
+    const locale: Locale | undefined = isValidLocale(lang)
+        ? lang
+        : isValidLocale(pathLocale)
+            ? pathLocale
+            : undefined
+    const homeHref = locale ? `/${locale}` : "/"
+    const mapHref = locale ? `/${locale}/map` : "/map"
+
     return (
         <div className="fixed inset-0 z-[50] flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden font-sans">
 
@@ -112,12 +128,12 @@ export function ComingSoonCountry() {
                     transition={{ delay: 1 }}
                     className="pt-8 flex flex-col sm:flex-row gap-4 w-full justify-center"
                 >
-                    <Link href="/map" className="group relative px-8 py-3 bg-cyan-900/20 hover:bg-cyan-900/40 border border-cyan-500/30 rounded-full text-cyan-100 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                    <Link href={mapHref} className="group relative px-8 py-3 bg-cyan-900/20 hover:bg-cyan-900/40 border border-cyan-500/30 rounded-full text-cyan-100 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
                         <Map className="w-4 h-4" />
                         <span>Go to Map</span>
                     </Link>
 
-                    <Link href="/" className="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-zinc-300 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-white/30 hover:text-white">
+                    <Link href={homeHref} className="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-zinc-300 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-white/30 hover:text-white">
                         <ArrowLeft className="w-4 h-4" />
                         <span>Back Home</span>
                     </Link>
