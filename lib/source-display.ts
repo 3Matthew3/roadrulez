@@ -19,6 +19,8 @@ export interface SourceStats {
     supplementary: number
 }
 
+export type SourceStatsFilter = "all" | "official" | "supplementary"
+
 export interface SourceGroup {
     id: SourceCategoryId
     labelKey: "group_official" | "group_automobile" | "group_other"
@@ -59,6 +61,19 @@ export function getSourceStats(sources: CountrySourceEntry[]): SourceStats {
         official,
         supplementary: sources.length - official,
     }
+}
+
+export function filterSourcesByStatsFilter(
+    sources: CountrySourceEntry[],
+    filter: SourceStatsFilter
+): CountrySourceEntry[] {
+    if (filter === "official") {
+        return sources.filter(isOfficialGovernmentSource)
+    }
+    if (filter === "supplementary") {
+        return sources.filter((source) => !isOfficialGovernmentSource(source))
+    }
+    return sources
 }
 
 export function shouldGroupSources(sources: CountrySourceEntry[]): boolean {

@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils"
 import type { CountrySourceEntry } from "@/types/source"
 import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
 import {
+    filterSourcesByStatsFilter,
     formatSourceDate,
     getSourceStats,
     getSourceTypeBadgeClass,
@@ -27,6 +28,7 @@ import {
     shouldGroupSources,
     sortSourcesForDisplay,
     type SourceGroup,
+    type SourceStatsFilter,
 } from "@/lib/source-display"
 
 interface CountrySourcesViewProps {
@@ -200,6 +202,36 @@ function SourceList({
     )
 }
 
+function StatFilterButton({
+    active,
+    count,
+    label,
+    countClassName,
+    onClick,
+}: {
+    active: boolean
+    count: number
+    label: string
+    countClassName: string
+    onClick: () => void
+}) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            aria-pressed={active}
+            className={cn(
+                "rounded-lg px-2.5 py-1.5 text-sm text-slate-400 transition-colors",
+                "hover:bg-slate-800/60 hover:text-slate-300",
+                active && "bg-slate-800 text-slate-200 ring-1 ring-blue-500/35"
+            )}
+        >
+            <span className={cn("font-semibold", active ? "text-white" : countClassName)}>{count}</span>{" "}
+            {label}
+        </button>
+    )
+}
+
 function GroupedSourceList({
     groups,
     labels,
@@ -239,15 +271,23 @@ export default function CountrySourcesView({
     labels,
 }: CountrySourcesViewProps) {
     const [query, setQuery] = useState("")
+    const [statFilter, setStatFilter] = useState<SourceStatsFilter>("all")
 
     const sortedSources = useMemo(() => sortSourcesForDisplay(sources), [sources])
     const stats = useMemo(() => getSourceStats(sortedSources), [sortedSources])
 
     const filteredSources = useMemo(() => {
+        let result = filterSourcesByStatsFilter(sortedSources, statFilter)
         const trimmed = query.trim()
-        if (!trimmed) return sortedSources
-        return sortedSources.filter((source) => matchesSourceSearch(source, trimmed))
-    }, [query, sortedSources])
+        if (trimmed) {
+            result = result.filter((source) => matchesSourceSearch(source, trimmed))
+        }
+        return result
+    }, [query, statFilter, sortedSources])
+
+    const setStatFilterToggle = (next: SourceStatsFilter) => {
+        setStatFilter((current) => (current === next ? "all" : next))
+    }
 
     const useGrouping = shouldGroupSources(filteredSources)
     const groupedSources = useMemo(() => groupSources(filteredSources), [filteredSources])
@@ -270,19 +310,28 @@ export default function CountrySourcesView({
                     <p className="mt-2 max-w-3xl text-slate-400">{labels.country_subtitle}</p>
 
                     {stats.total > 0 && (
-                        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-400">
-                            <span>
-                                <span className="font-semibold text-slate-200">{stats.total}</span>{" "}
-                                {labels.stats_total}
-                            </span>
-                            <span>
-                                <span className="font-semibold text-blue-300">{stats.official}</span>{" "}
-                                {labels.stats_official}
-                            </span>
-                            <span>
-                                <span className="font-semibold text-slate-300">{stats.supplementary}</span>{" "}
-                                {labels.stats_supplementary}
-                            </span>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                            <StatFilterButton
+                                active={statFilter === "all"}
+                                count={stats.total}
+                                label={labels.stats_total}
+                                countClassName="text-slate-200"
+                                onClick={() => setStatFilter("all")}
+                            />
+                            <StatFilterButton
+                                active={statFilter === "official"}
+                                count={stats.official}
+                                label={labels.stats_official}
+                                countClassName="text-blue-300"
+                                onClick={() => setStatFilterToggle("official")}
+                            />
+                            <StatFilterButton
+                                active={statFilter === "supplementary"}
+                                count={stats.supplementary}
+                                label={labels.stats_supplementary}
+                                countClassName="text-slate-300"
+                                onClick={() => setStatFilterToggle("supplementary")}
+                            />
                         </div>
                     )}
                 </div>

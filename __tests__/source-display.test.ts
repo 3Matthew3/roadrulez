@@ -1,5 +1,6 @@
 import {
     categorizeSource,
+    filterSourcesByStatsFilter,
     getSourceStats,
     getSourceUsageLabelKeys,
     getTrustDisplay,
@@ -71,6 +72,12 @@ describe("source-display", () => {
             "usage_vehicle_duties",
             "usage_tolls_vignette",
         ])
+    })
+
+    it("filters sources by stats category", () => {
+        expect(filterSourcesByStatsFilter([official, club], "all")).toHaveLength(2)
+        expect(filterSourcesByStatsFilter([official, club], "official")).toEqual([official])
+        expect(filterSourcesByStatsFilter([official, club], "supplementary")).toEqual([club])
     })
 
     it("filters sources by title, publisher, and notes", () => {
