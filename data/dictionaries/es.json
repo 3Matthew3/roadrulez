@@ -114,7 +114,10 @@
             "contact": "Contacto",
             "legal": "Aviso legal / Impressum",
             "privacy": "Privacidad",
-            "terms": "Términos del servicio"
+            "terms": "Términos del servicio",
+            "last_update": "Última actualización: mayo de 2026",
+            "data_source": "Fuente de datos: autoridades oficiales",
+            "feedback_welcome": "Comentarios bienvenidos"
         }
     }
 }

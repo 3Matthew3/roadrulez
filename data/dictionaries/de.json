@@ -114,7 +114,10 @@
             "contact": "Kontakt",
             "legal": "Impressum",
             "privacy": "Datenschutz",
-            "terms": "AGB"
+            "terms": "AGB",
+            "last_update": "Letztes Update: Mai 2026",
+            "data_source": "Datenquelle: Offizielle Behörden",
+            "feedback_welcome": "Feedback willkommen"
         }
     }
 }

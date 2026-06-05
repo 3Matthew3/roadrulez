@@ -13,11 +13,11 @@ export default function DetailedRulesAccordion({ rules, dict, inlineEdit }: Deta
 
     return (
         <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white">{dict.rules.detailed_rules}</h3>
+            <h3 className="text-xl font-semibold text-foreground">{dict.rules.detailed_rules}</h3>
             <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="phone" className="border-slate-800">
-                    <AccordionTrigger className="text-slate-200 hover:text-white">{dict.rules.phone_distractions}</AccordionTrigger>
-                    <AccordionContent className="text-slate-400">
+                <AccordionItem value="phone">
+                    <AccordionTrigger className="text-foreground">{dict.rules.phone_distractions}</AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">
                         {editable ? (
                             <InlineEdit
                                 countryCode={editable.countryCode}
@@ -25,14 +25,16 @@ export default function DetailedRulesAccordion({ rules, dict, inlineEdit }: Deta
                                 value={rules.phone_usage_rules}
                                 renderValue={(value) => String(value)}
                             />
-                        ) : rules.phone_usage_rules}
+                        ) : (
+                            rules.phone_usage_rules
+                        )}
                     </AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="lights" className="border-slate-800">
-                    <AccordionTrigger className="text-slate-200 hover:text-white">{dict.rules.lights_parking}</AccordionTrigger>
-                    <AccordionContent className="text-slate-400 space-y-2">
+                <AccordionItem value="lights">
+                    <AccordionTrigger className="text-foreground">{dict.rules.lights_parking}</AccordionTrigger>
+                    <AccordionContent className="space-y-2 text-muted-foreground">
                         <div>
-                            <strong className="text-slate-300">{dict.props.headlights}:</strong>{" "}
+                            <strong className="text-foreground">{dict.props.headlights}:</strong>{" "}
                             {editable ? (
                                 <InlineEdit
                                     countryCode={editable.countryCode}
@@ -45,7 +47,7 @@ export default function DetailedRulesAccordion({ rules, dict, inlineEdit }: Deta
                             )}
                         </div>
                         <div>
-                            <strong className="text-slate-300">{dict.props.parking}:</strong>{" "}
+                            <strong className="text-foreground">{dict.props.parking}:</strong>{" "}
                             {editable ? (
                                 <InlineEdit
                                     countryCode={editable.countryCode}

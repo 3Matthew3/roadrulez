@@ -138,8 +138,7 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
                     )
                 }
 
-                {/* Feedback Form */}
-                <div className="pt-8 border-t border-slate-800">
+                <div className="mt-14">
                     <FeedbackForm labels={dict.extra} countryName={data.name_en} />
                 </div>
 

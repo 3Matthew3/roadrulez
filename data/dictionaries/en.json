@@ -114,7 +114,10 @@
             "contact": "Contact",
             "legal": "Legal Notice / Impressum",
             "privacy": "Privacy Policy",
-            "terms": "Terms of Service"
+            "terms": "Terms of Service",
+            "last_update": "Last update: May 2026",
+            "data_source": "Data sources: Official authorities",
+            "feedback_welcome": "Feedback welcome"
         }
     }
 }

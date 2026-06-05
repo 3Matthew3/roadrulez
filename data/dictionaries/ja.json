@@ -114,7 +114,10 @@
             "contact": "お問い合わせ",
             "legal": "法的表示 / Impressum",
             "privacy": "プライバシー",
-            "terms": "利用規約"
+            "terms": "利用規約",
+            "last_update": "最終更新: 2026年5月",
+            "data_source": "データソース: 公式機関",
+            "feedback_welcome": "フィードバック歓迎"
         }
     }
 }

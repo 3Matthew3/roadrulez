@@ -35,22 +35,22 @@ interface AustriaDashboardProps {
     rules: TrafficRules
 }
 
-/** Light palette (default) + dark: variants for theme toggle */
+/** Unified light/dark palette */
 const S = {
-    page: "min-h-screen bg-[#F5F7FB] text-[#0F172A] dark:bg-[#0a0e17] dark:text-slate-100",
-    card: "rounded-3xl bg-white border border-[#E2E8F0] shadow-sm dark:bg-slate-900/70 dark:border-slate-800",
-    cardSm: "rounded-2xl bg-white border border-[#E2E8F0] shadow-sm dark:bg-slate-900/70 dark:border-slate-800",
+    page: "min-h-screen bg-[#F5F7FA] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]",
+    card: "rounded-3xl bg-white border border-[#E2E8F0] shadow-sm dark:bg-[#1E293B] dark:border-slate-700",
+    cardSm: "rounded-2xl bg-white border border-[#E2E8F0] shadow-sm dark:bg-[#1E293B] dark:border-slate-700",
     muted: "text-[#475569] dark:text-slate-400",
-    heading: "text-[#0F172A] dark:text-white",
-    eyebrow: "text-[#1E40AF] dark:text-sky-300",
-    accent: "text-[#2563EB] dark:text-blue-400",
-    primary: "text-[#1E40AF] dark:text-sky-300",
-    soft: "bg-[#F5F7FB] dark:bg-slate-950/50",
-    border: "border-[#E2E8F0] dark:border-slate-800",
+    heading: "text-[#0F172A] dark:text-[#F8FAFC]",
+    eyebrow: "text-[#2563EB] dark:text-[#3B82F6]",
+    accent: "text-[#2563EB] dark:text-[#3B82F6]",
+    primary: "text-[#2563EB] dark:text-[#3B82F6]",
+    soft: "bg-[#F5F7FA] dark:bg-slate-800/40",
+    border: "border-[#E2E8F0] dark:border-slate-700",
     heroGradLight:
-        "absolute inset-0 z-10 bg-gradient-to-t from-[#F5F7FB] via-[#F5F7FB]/90 to-slate-900/30 dark:hidden",
+        "absolute inset-0 z-10 bg-gradient-to-t from-[#F5F7FA] via-[#F5F7FA]/90 to-slate-900/30 dark:hidden",
     heroGradDark:
-        "absolute inset-0 z-10 hidden bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/60 to-transparent dark:block",
+        "absolute inset-0 z-10 hidden bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-transparent dark:block",
     statusBadge:
         "uppercase text-[10px] text-amber-700 border-amber-200 bg-amber-50 dark:text-amber-400 dark:border-amber-500/20 dark:bg-amber-500/10",
     trapsCard:
@@ -409,19 +409,15 @@ export default function AustriaDashboard({
                     </div>
                 </section>
 
-                <section className={cn("p-6", S.card)}>
+                <section className={cn("p-6 md:p-8", S.card)}>
                     <h2 className={cn("mb-5 text-xl font-semibold", S.heading)}>{labels.details}</h2>
                     <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="phone" className={S.border}>
-                            <AccordionTrigger className={cn("hover:no-underline", S.heading)}>
-                                {dict.rules.phone_distractions}
-                            </AccordionTrigger>
+                        <AccordionItem value="phone" className="border-[#E2E8F0] bg-[#F5F7FA] dark:border-slate-700 dark:bg-slate-800/40">
+                            <AccordionTrigger className={S.heading}>{dict.rules.phone_distractions}</AccordionTrigger>
                             <AccordionContent className={S.muted}>{rules.phone_usage_rules}</AccordionContent>
                         </AccordionItem>
-                        <AccordionItem value="lights" className={S.border}>
-                            <AccordionTrigger className={cn("hover:no-underline", S.heading)}>
-                                {dict.rules.lights_parking}
-                            </AccordionTrigger>
+                        <AccordionItem value="lights" className="border-[#E2E8F0] bg-[#F5F7FA] dark:border-slate-700 dark:bg-slate-800/40">
+                            <AccordionTrigger className={S.heading}>{dict.rules.lights_parking}</AccordionTrigger>
                             <AccordionContent className={cn("space-y-2", S.muted)}>
                                 <p>
                                     <strong className={S.heading}>{dict.props.headlights}:</strong>{" "}
@@ -436,7 +432,7 @@ export default function AustriaDashboard({
                     </Accordion>
                 </section>
 
-                <div className={cn("border-t pt-8", S.border)}>
+                <div className="mt-14">
                     <FeedbackForm labels={dict.extra} countryName={data.name_en} />
                 </div>
             </main>
