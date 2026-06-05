@@ -21,6 +21,8 @@ export interface CountrySourceEntry {
     sourceType: SourceTypeValue
     trustLevel: TrustLevelValue
     moduleKey?: string | null
+    /** Future-friendly: multiple rule modules covered by one source */
+    usageModuleKeys?: string[]
     notes?: string | null
     checkStatus?: SourceCheckStatusValue
     lastCheckedAt?: string | null

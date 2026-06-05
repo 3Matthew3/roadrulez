@@ -97,9 +97,10 @@
             "sourceType": "GOVERNMENT",
             "trustLevel": "PRIMARY",
             "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics"],
             "notes": "Official government portal used for baseline driving and vehicle obligations.",
-            "checkStatus": "NEEDS_REVIEW",
-            "lastCheckedAt": null
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-02T10:00:00.000Z"
         },
         {
             "id": "at-asfinag-vignette",
@@ -111,8 +112,36 @@
             "trustLevel": "PRIMARY",
             "moduleKey": "tolls",
             "notes": "Official motorway and expressway toll information.",
-            "checkStatus": "NEEDS_REVIEW",
-            "lastCheckedAt": null
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-02T10:00:00.000Z"
+        },
+        {
+            "id": "at-bmi-police",
+            "title": "Federal Ministry of the Interior - Road traffic",
+            "url": "https://www.bmi.gv.at/",
+            "publisher": "Federal Ministry of the Interior",
+            "publishedDate": null,
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits"],
+            "notes": "Federal authority reference for traffic enforcement and road safety rules.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-28T10:00:00.000Z"
+        },
+        {
+            "id": "at-bmk-transport",
+            "title": "Federal Ministry for Climate Action - Transport",
+            "url": "https://www.bmk.gv.at/",
+            "publisher": "Federal Ministry for Climate Action, Environment, Energy, Mobility, Innovation and Technology",
+            "publishedDate": null,
+            "sourceType": "MINISTRY",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "winter_rules",
+            "usageModuleKeys": ["winter_rules", "mandatory_equipment"],
+            "notes": "Ministry guidance on mobility policy, winter equipment, and transport regulations.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-31T10:00:00.000Z"
         },
         {
             "id": "at-oeamtc-rules",
@@ -123,9 +152,37 @@
             "sourceType": "AUTOMOBILE_ASSOCIATION",
             "trustLevel": "TRUSTED_SECONDARY",
             "moduleKey": "requirements",
+            "usageModuleKeys": ["requirements", "mandatory_equipment"],
             "notes": "Automobile club guidance for practical road-trip preparation.",
-            "checkStatus": "NEEDS_REVIEW",
-            "lastCheckedAt": null
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-30T10:00:00.000Z"
+        },
+        {
+            "id": "at-arboe-rules",
+            "title": "ARBÖ driving guidance for Austria",
+            "url": "https://www.arboe.at/",
+            "publisher": "ARBÖ",
+            "publishedDate": null,
+            "sourceType": "AUTOMOBILE_ASSOCIATION",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "requirements",
+            "notes": "Supplementary automobile club reference for travellers and rental drivers.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-29T10:00:00.000Z"
+        },
+        {
+            "id": "at-ris-stvo",
+            "title": "Austrian road traffic regulations (StVO)",
+            "url": "https://www.ris.bka.gv.at/",
+            "publisher": "Austrian Legal Information System (RIS)",
+            "publishedDate": null,
+            "sourceType": "LEGAL_DATABASE",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits", "alcohol_limit"],
+            "notes": "Legal database reference for the national road traffic act and related provisions.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
         }
     ]
 }
