@@ -16,7 +16,7 @@ interface MainNavProps {
 
 export function MainNav({ items, children, lang }: MainNavProps) {
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center">
             <Link href={`/${lang}`} className="mr-4 md:mr-6 flex items-center space-x-2">
                 {/* Logo */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}

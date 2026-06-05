@@ -116,6 +116,7 @@ function dbToCountryData(
         drive_side: country.drivingSide === "LEFT" ? "left" : "right",
         rules,
         summary: localeOverrides.summary ?? (preferLocalizedFallback ? fallback?.summary : country.summary) ?? country.summary ?? "",
+        quick_answer_bullets: fallback?.quick_answer_bullets,
         common_traps: localeOverrides.commonTraps ?? (preferLocalizedFallback ? fallback?.common_traps : country.commonTraps) ?? country.commonTraps ?? [],
         rental_and_idp_notes:
             localeOverrides.rentalAndIdpNotes ?? (preferLocalizedFallback ? fallback?.rental_and_idp_notes : country.rentalAndIdpNotes) ?? country.rentalAndIdpNotes ?? "",

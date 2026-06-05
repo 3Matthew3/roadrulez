@@ -75,6 +75,8 @@ export interface CountryData {
 
     // Notes
     summary: string
+    /** Short bullet list for dashboard-style country pages (e.g. Austria). */
+    quick_answer_bullets?: string[]
     common_traps: string[]
     idp_requirement?: string
     rental_and_idp_notes: string

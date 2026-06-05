@@ -7,7 +7,16 @@
     "flag": "🇦🇹",
     "header_images": [
         "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1920&q=80"
+        "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Vignette required on motorways",
+        "Strict speed enforcement",
+        "Winter equipment rules apply",
+        "Parking fines are common"
     ],
     "drive_side": "right",
     "rules": {
