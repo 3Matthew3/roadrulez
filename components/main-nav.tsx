@@ -26,11 +26,11 @@ export function MainNav({ items, children, lang }: MainNavProps) {
                     className="h-8 md:h-10 w-auto object-contain"
                 />
             </Link>
-            <nav className="flex items-center gap-6 text-sm font-medium text-zinc-300">
+            <nav className="flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-zinc-300">
                 <Link
                     href={`/${lang}/map`}
                     className={cn(
-                        "transition-colors hover:text-white",
+                        "transition-colors hover:text-slate-900 dark:hover:text-white",
                         // pathname === "/docs" ? "text-foreground" : "text-foreground/60"
                     )}
                 >
@@ -39,7 +39,7 @@ export function MainNav({ items, children, lang }: MainNavProps) {
                 <Link
                     href={`/${lang}/search`}
                     className={cn(
-                        "transition-colors hover:text-white",
+                        "transition-colors hover:text-slate-900 dark:hover:text-white",
                     )}
                 >
                     Search
