@@ -40,8 +40,8 @@ describe("source-display", () => {
 
     it("maps trust display for official government sources", () => {
         expect(getTrustDisplay(official)).toEqual({
-            stars: 5,
             labelKey: "trust_official_government",
+            icon: "shield",
         })
     })
 

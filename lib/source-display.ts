@@ -9,8 +9,8 @@ export const SOURCE_CATEGORY_ORDER: SourceCategoryId[] = [
 ]
 
 export interface SourceTrustDisplay {
-    stars: number
     labelKey: "trust_official_government" | "trust_primary" | "trust_trusted_secondary" | "trust_unverified"
+    icon: "shield" | "check" | "info"
 }
 
 export interface SourceStats {
@@ -91,15 +91,38 @@ export function groupSources(sources: CountrySourceEntry[]): SourceGroup[] {
 
 export function getTrustDisplay(source: CountrySourceEntry): SourceTrustDisplay {
     if (source.trustLevel === "PRIMARY" && isOfficialGovernmentSource(source)) {
-        return { stars: 5, labelKey: "trust_official_government" }
+        return { labelKey: "trust_official_government", icon: "shield" }
     }
     if (source.trustLevel === "PRIMARY") {
-        return { stars: 5, labelKey: "trust_primary" }
+        return { labelKey: "trust_primary", icon: "shield" }
     }
     if (source.trustLevel === "TRUSTED_SECONDARY") {
-        return { stars: 4, labelKey: "trust_trusted_secondary" }
+        return { labelKey: "trust_trusted_secondary", icon: "check" }
     }
-    return { stars: 2, labelKey: "trust_unverified" }
+    return { labelKey: "trust_unverified", icon: "info" }
+}
+
+const SOURCE_TYPE_BADGE_CLASS: Record<SourceTypeValue, string> = {
+    GOVERNMENT: "border-blue-500/30 bg-blue-500/10 text-blue-200",
+    POLICE: "border-cyan-500/30 bg-cyan-500/10 text-cyan-200",
+    MINISTRY: "border-indigo-500/30 bg-indigo-500/10 text-indigo-200",
+    AUTOMOBILE_ASSOCIATION: "border-violet-500/30 bg-violet-500/10 text-violet-200",
+    LEGAL_DATABASE: "border-slate-600/80 bg-slate-800/50 text-slate-300",
+    SECONDARY: "border-slate-700 bg-slate-800/40 text-slate-400",
+}
+
+const TRUST_BADGE_CLASS: Record<TrustLevelValue, string> = {
+    PRIMARY: "border-blue-500/35 bg-blue-500/12 text-blue-100",
+    TRUSTED_SECONDARY: "border-violet-500/30 bg-violet-500/10 text-violet-200",
+    UNVERIFIED: "border-slate-600 bg-slate-800/50 text-slate-400",
+}
+
+export function getSourceTypeBadgeClass(sourceType: SourceTypeValue): string {
+    return SOURCE_TYPE_BADGE_CLASS[sourceType]
+}
+
+export function getTrustBadgeClass(trustLevel: TrustLevelValue): string {
+    return TRUST_BADGE_CLASS[trustLevel]
 }
 
 export function getSourceModuleKeys(source: CountrySourceEntry): string[] {

@@ -89,7 +89,7 @@
         "stats_total": "件の情報源",
         "stats_official": "公式機関",
         "stats_supplementary": "補助参照",
-        "trust_official_government": "公式政府情報源",
+        "trust_official_government": "確認済み政府情報源",
         "trust_primary": "主要情報源",
         "trust_trusted_secondary": "信頼できる二次情報源",
         "trust_unverified": "未確認情報源",

@@ -2,14 +2,24 @@
 
 import { useMemo, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Building2, Check, ExternalLink, Search } from "lucide-react"
+import {
+    ArrowLeft,
+    Building2,
+    Check,
+    ExternalLink,
+    Info,
+    Search,
+    ShieldCheck,
+} from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { CountrySourceEntry } from "@/types/source"
 import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
 import {
     formatSourceDate,
     getSourceStats,
+    getSourceTypeBadgeClass,
     getSourceUsageLabelKeys,
+    getTrustBadgeClass,
     getTrustDisplay,
     groupSources,
     isOfficialGovernmentSource,
@@ -28,14 +38,19 @@ interface CountrySourcesViewProps {
     labels: Record<string, string>
 }
 
-function TrustStars({ count }: { count: number }) {
+function TrustIndicator({
+    icon,
+    label,
+}: {
+    icon: "shield" | "check" | "info"
+    label: string
+}) {
+    const Icon = icon === "shield" ? ShieldCheck : icon === "check" ? Check : Info
+
     return (
-        <span className="inline-flex gap-0.5 text-sm leading-none text-amber-400" aria-hidden="true">
-            {Array.from({ length: 5 }, (_, index) => (
-                <span key={index} className={index < count ? "opacity-100" : "opacity-25"}>
-                    ★
-                </span>
-            ))}
+        <span className="inline-flex items-center gap-1.5 text-sm text-slate-300">
+            <Icon className="h-4 w-4 shrink-0 text-emerald-400" aria-hidden="true" />
+            <span>{label}</span>
         </span>
     )
 }
@@ -60,31 +75,27 @@ function SourceCard({
     return (
         <article
             className={cn(
-                "rounded-xl border p-5 transition-colors",
+                "rounded-xl border p-4 transition-colors",
                 isOfficial
                     ? "border-blue-500/35 bg-blue-500/[0.06] shadow-sm shadow-blue-500/10"
                     : "border-slate-800 bg-slate-900/40"
             )}
         >
-            <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="min-w-0 flex-1 space-y-2">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
                     <div className="flex items-start gap-3">
                         {isOfficial && (
-                            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-blue-500/30 bg-blue-500/10 text-blue-300">
+                            <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-blue-500/30 bg-blue-500/10 text-blue-300">
                                 <Building2 className="h-4 w-4" />
                             </div>
                         )}
-                        <div className="min-w-0">
-                            <h2 className="text-lg font-semibold text-white">{source.title}</h2>
+                        <div className="min-w-0 space-y-1">
+                            <h2 className="text-lg font-semibold leading-snug text-white">{source.title}</h2>
                             {source.publisher && (
-                                <p className="mt-1 text-sm text-slate-400">{source.publisher}</p>
+                                <p className="text-sm text-slate-400">{source.publisher}</p>
                             )}
+                            <TrustIndicator icon={trust.icon} label={labels[trust.labelKey]} />
                         </div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2 text-sm">
-                        <TrustStars count={trust.stars} />
-                        <span className="text-slate-300">{labels[trust.labelKey]}</span>
                     </div>
                 </div>
 
@@ -92,9 +103,7 @@ function SourceCard({
                     <span
                         className={cn(
                             "rounded-full border px-2.5 py-1 text-xs font-medium",
-                            isOfficial
-                                ? "border-blue-500/40 bg-blue-500/15 text-blue-200"
-                                : "border-violet-500/30 bg-violet-500/10 text-violet-300"
+                            getTrustBadgeClass(source.trustLevel)
                         )}
                     >
                         {TRUST_LEVEL_LABELS[source.trustLevel]}
@@ -102,9 +111,7 @@ function SourceCard({
                     <span
                         className={cn(
                             "rounded-full border px-2.5 py-1 text-xs",
-                            isOfficial
-                                ? "border-blue-500/25 text-blue-200/90"
-                                : "border-slate-700 text-slate-400"
+                            getSourceTypeBadgeClass(source.sourceType)
                         )}
                     >
                         {SOURCE_TYPE_LABELS[source.sourceType]}
@@ -112,30 +119,34 @@ function SourceCard({
                 </div>
             </div>
 
-            {source.notes && <p className="mt-4 text-sm leading-relaxed text-slate-400">{source.notes}</p>}
+            {source.notes && (
+                <p className="mt-3 text-sm leading-relaxed text-slate-400">{source.notes}</p>
+            )}
 
-            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
-                {verifiedMonth && (
-                    <span>
-                        {labels.verified_on}: <span className="text-slate-300">{verifiedMonth}</span>
-                    </span>
-                )}
-                {checkedDate && (
-                    <span>
-                        {labels.last_checked}: <span className="text-slate-300">{checkedDate}</span>
-                    </span>
-                )}
-            </div>
+            {(verifiedMonth || checkedDate) && (
+                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
+                    {verifiedMonth && (
+                        <span>
+                            {labels.verified_on}: {verifiedMonth}
+                        </span>
+                    )}
+                    {checkedDate && (
+                        <span>
+                            {labels.last_checked}: {checkedDate}
+                        </span>
+                    )}
+                </div>
+            )}
 
             {usageKeys.length > 0 && (
-                <div className="mt-4 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <div className="mt-3 rounded-lg border border-slate-800 bg-slate-950/40 p-3">
+                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                         {labels.used_for}
                     </p>
-                    <ul className="space-y-1.5">
+                    <ul className="flex flex-wrap gap-x-4 gap-y-1">
                         {usageKeys.map((key) => (
-                            <li key={key} className="flex items-center gap-2 text-sm text-slate-300">
-                                <Check className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
+                            <li key={key} className="flex items-center gap-1.5 text-sm text-slate-300">
+                                <Check className="h-3 w-3 shrink-0 text-emerald-400/80" />
                                 <span>
                                     {labels[key] ??
                                         key
@@ -148,12 +159,12 @@ function SourceCard({
                 </div>
             )}
 
-            <div className="mt-4">
+            <div className="mt-4 flex justify-end">
                 <a
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300"
+                    className="inline-flex h-9 items-center gap-2 rounded-lg bg-[#2563EB] px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#3B82F6]"
                 >
                     {labels.open_source}
                     <ExternalLink className="h-4 w-4" />
@@ -175,7 +186,7 @@ function SourceList({
     lastVerified?: string
 }) {
     return (
-        <div className="grid gap-4">
+        <div className="grid gap-3">
             {sources.map((source) => (
                 <SourceCard
                     key={source.id}
@@ -204,7 +215,7 @@ function GroupedSourceList({
         <div className="space-y-8">
             {groups.map((group) => (
                 <section key={group.id}>
-                    <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
                         {labels[group.labelKey]}
                     </h2>
                     <SourceList
