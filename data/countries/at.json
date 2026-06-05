@@ -6,11 +6,12 @@
     "continent": "Europe",
     "flag": "🇦🇹",
     "header_images": [
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80"
+        "https://images.unsplash.com/photo-1582832172472-c1ce8ec9c3fb?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1520503922584-590e8f7a90d7?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1565463694786-7fa5cf426096?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1589482763339-cfd30237316a?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1603884652342-2b6992a1a9ff?auto=format&fit=crop&w=1920&q=80"
     ],
     "quick_answer_bullets": [
         "Vignette required on motorways",

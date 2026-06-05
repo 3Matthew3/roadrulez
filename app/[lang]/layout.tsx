@@ -29,7 +29,7 @@ export default async function RootLayout({
     const dict = await getDictionary(params.lang)
 
     return (
-        <html lang={params.lang}>
+        <html lang={params.lang} suppressHydrationWarning>
             <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
                 {/* Plausible tracker — must be in Suspense because it uses useSearchParams */}
                 <Suspense fallback={null}>

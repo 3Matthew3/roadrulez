@@ -15,7 +15,7 @@ export default function HeroImage({ images, name }: HeroImageProps) {
     useEffect(() => {
         if (images && images.length > 0) {
             // Check sessionStorage for last shown image to prevent back-to-back duplicates
-            const storageKey = `roardrulez_last_hero_${name.replace(/\s+/g, '_').toLowerCase()}`
+            const storageKey = `roadrulez_last_hero_v2_${name.replace(/\s+/g, '_').toLowerCase()}`
             const lastImage = sessionStorage.getItem(storageKey)
 
             // Filter out the last image if we have more than 1 option
