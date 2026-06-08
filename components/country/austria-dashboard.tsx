@@ -232,19 +232,19 @@ export default function AustriaDashboard({
     const preTripCards = [
         {
             title: labels.license,
-            text: data.rental_and_idp_notes,
+            text: data.rental_and_idp_notes ?? "",
             icon: Contact,
             tone: "blue" as const,
         },
         {
             title: labels.tollVignette,
-            text: rules.tolls.notes,
+            text: rules.tolls.notes ?? "",
             icon: CreditCard,
             tone: "red" as const,
         },
         {
             title: labels.winterGear,
-            text: rules.winter_rules,
+            text: rules.winter_rules ?? "",
             icon: Snowflake,
             tone: "green" as const,
         },
