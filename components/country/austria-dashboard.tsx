@@ -441,7 +441,7 @@ export default function AustriaDashboard({
 
                 {/* Info rows */}
                 <section className="space-y-4">
-                    <InfoRowCard title={labels.tollNeeded} text={rules.tolls.notes} icon={CreditCard} />
+                    <InfoRowCard title={labels.tollNeeded} text={rules.tolls.notes ?? ""} icon={CreditCard} />
                     <InfoRowCard
                         title={labels.mandatoryGear}
                         text={rules.mandatory_equipment.join(" · ")}
