@@ -3,7 +3,6 @@ import { Suspense } from "react"
 import {
     AlertTriangle,
     BookOpen,
-    Building2,
     Car,
     ChevronRight,
     CreditCard,
@@ -14,7 +13,6 @@ import {
     PhoneCall,
     ShieldCheck,
     Snowflake,
-    Trees,
     Wine,
     Wrench,
 } from "lucide-react"
@@ -24,11 +22,11 @@ import FeedbackForm from "@/components/country/feedback-form"
 import HeroImage from "@/components/country/hero-image"
 import VehicleSwitcher from "@/components/country/vehicle-switcher"
 import AustriaTrafficLights from "@/components/country/austria-traffic-lights"
+import { SpeedLimitIllustration, type SpeedLimitScene } from "@/components/country/speed-limit-illustrations"
 import { cn } from "@/lib/utils"
 import { CountryData, TrafficRules } from "@/types/country"
-import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
 import { formatSpeedWithConversion, type SpeedUnit } from "@/lib/speed-display"
-import { getSourceTypeBadgeClass } from "@/lib/source-display"
+import { getPublicSourceBadgeClass, getPublicSourceBadgeLabel } from "@/lib/source-display"
 
 interface AustriaDashboardProps {
     data: CountryData
@@ -43,6 +41,7 @@ const RED = "#DC2626"
 
 const S = {
     page: "min-h-screen bg-[#F5F7FA] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]",
+    content: "mx-auto w-full max-w-6xl px-4 md:px-6",
     card: "rounded-2xl border border-[#E2E8F0] bg-white shadow-sm dark:border-slate-700 dark:bg-[#1E293B]",
     muted: "text-[#64748B] dark:text-slate-400",
     heading: "text-[#0F172A] dark:text-[#F8FAFC]",
@@ -72,24 +71,26 @@ function SpeedLimitCard({
     label,
     value,
     unit,
-    icon: Icon,
+    scene,
 }: {
     label: string
     value: number
     unit: SpeedUnit
-    icon: React.ComponentType<{ className?: string }>
+    scene: SpeedLimitScene
 }) {
     const formatted = formatSpeedWithConversion(value, unit)
     return (
-        <article className={cn("flex flex-col items-center p-5 text-center", S.card)}>
-            <div className="mb-4 flex h-16 w-full items-end justify-center rounded-xl bg-[#F5F7FA] px-4 dark:bg-slate-800/60">
-                <Icon className="h-10 w-10 text-[#DC2626] dark:text-[#F87171]" />
-            </div>
+        <article className="flex min-h-[180px] flex-col items-center rounded-xl border border-[#E2E8F0] bg-[#F5F7FA] p-5 text-center dark:border-slate-700 dark:bg-slate-800/40">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#DC2626] dark:text-[#F87171]">
                 {label}
             </p>
             <p className={cn("mt-2 text-4xl font-bold", S.heading)}>{formatted.primary}</p>
             <p className={cn("mt-1 text-sm", S.muted)}>{formatted.secondary}</p>
+            <div className="mt-auto w-full pt-5">
+                <div className="flex h-14 w-full items-end justify-center rounded-xl bg-[#F5F7FA] px-3 pb-1 dark:bg-slate-800/60">
+                    <SpeedLimitIllustration scene={scene} />
+                </div>
+            </div>
         </article>
     )
 }
@@ -135,23 +136,14 @@ function InfoRowCard({
     icon: React.ComponentType<{ className?: string }>
 }) {
     return (
-        <article
-            className={cn(
-                "flex items-center justify-between gap-4 rounded-2xl border p-5 transition-colors",
-                S.card,
-                "hover:border-red-200 dark:hover:border-red-500/30"
-            )}
-        >
-            <div className="flex min-w-0 items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-[#DC2626] dark:bg-red-500/10 dark:text-[#F87171]">
-                    <Icon className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                    <h3 className={cn("font-semibold", S.heading)}>{title}</h3>
-                    <p className={cn("mt-1 text-sm leading-relaxed", S.muted)}>{text}</p>
-                </div>
+        <article className={cn("flex items-start gap-4 rounded-2xl border p-5", S.card)}>
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-[#DC2626] dark:bg-red-500/10 dark:text-[#F87171]">
+                <Icon className="h-5 w-5" />
             </div>
-            <ChevronRight className="h-5 w-5 shrink-0 text-slate-400" />
+            <div className="min-w-0">
+                <h3 className={cn("font-semibold", S.heading)}>{title}</h3>
+                <p className={cn("mt-1 text-sm leading-relaxed", S.muted)}>{text}</p>
+            </div>
         </article>
     )
 }
@@ -271,7 +263,7 @@ export default function AustriaDashboard({
                     <div className={S.heroGradDark} />
                 </div>
 
-                <div className="container relative z-20 flex h-full flex-col justify-end px-4 pb-8 md:px-6">
+                <div className={cn(S.content, "relative z-20 flex h-full flex-col justify-end pb-8")}>
                     <span
                         className="mb-3 inline-flex w-fit rounded-md px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white"
                         style={{ backgroundColor: RED }}
@@ -318,7 +310,7 @@ export default function AustriaDashboard({
 
             {/* Verification bar */}
             <div className="border-b border-[#E2E8F0] bg-white dark:border-slate-800 dark:bg-[#1E293B]">
-                <div className="container flex flex-wrap items-center gap-3 px-4 py-3 text-sm md:px-6">
+                <div className={cn(S.content, "flex flex-wrap items-center gap-3 py-3 text-sm")}>
                     <span className={S.muted}>
                         {dict.common.last_verified}:{" "}
                         <span className={cn("font-medium", S.heading)}>{verifiedLabel ?? data.last_verified}</span>
@@ -329,7 +321,7 @@ export default function AustriaDashboard({
                 </div>
             </div>
 
-            <main className="container space-y-8 px-4 py-8 md:px-6 md:py-10">
+            <main className={cn(S.content, "space-y-8 py-8 md:py-10")}>
                 {/* Quick stats row */}
                 <section className={cn("grid grid-cols-2 gap-px overflow-hidden rounded-2xl md:grid-cols-5", S.card)}>
                     {quickStats.map((stat, index) => {
@@ -412,30 +404,35 @@ export default function AustriaDashboard({
                 </section>
 
                 {/* Speed limits */}
-                <section>
-                    <h2 className={cn("mb-4 text-xl font-semibold", S.heading)}>{dict.rules.speed_limits}</h2>
-                    <div className="grid gap-4 sm:grid-cols-3">
-                        <SpeedLimitCard
-                            label={labels.city}
-                            value={rules.speed_limits.urban}
-                            unit={speedUnit}
-                            icon={Building2}
-                        />
-                        <SpeedLimitCard
-                            label={labels.countryRoad}
-                            value={rules.speed_limits.rural}
-                            unit={speedUnit}
-                            icon={Trees}
-                        />
-                        <SpeedLimitCard
-                            label={labels.motorway}
-                            value={rules.speed_limits.motorway}
-                            unit={speedUnit}
-                            icon={Car}
-                        />
+                <section className={cn("overflow-hidden", S.card)}>
+                    <div className="p-5 md:p-6">
+                        <h2 className={cn("mb-4 text-xl font-semibold", S.heading)}>{dict.rules.speed_limits}</h2>
+                        <div className="grid gap-4 sm:grid-cols-3">
+                            <SpeedLimitCard
+                                label={labels.city}
+                                value={rules.speed_limits.urban}
+                                unit={speedUnit}
+                                scene="urban"
+                            />
+                            <SpeedLimitCard
+                                label={labels.countryRoad}
+                                value={rules.speed_limits.rural}
+                                unit={speedUnit}
+                                scene="rural"
+                            />
+                            <SpeedLimitCard
+                                label={labels.motorway}
+                                value={rules.speed_limits.motorway}
+                                unit={speedUnit}
+                                scene="motorway"
+                            />
+                        </div>
                     </div>
                     {rules.speed_limits.notes && (
-                        <p className={cn("mt-4 text-sm", S.muted)}>{rules.speed_limits.notes}</p>
+                        <div className="flex gap-3 border-t border-[#E2E8F0] bg-[#F5F7FA] px-5 py-4 dark:border-slate-700 dark:bg-slate-800/50 md:px-6">
+                            <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#DC2626] dark:text-[#F87171]" />
+                            <p className={cn("text-sm leading-relaxed", S.muted)}>{rules.speed_limits.notes}</p>
+                        </div>
                     )}
                 </section>
 
@@ -484,11 +481,13 @@ export default function AustriaDashboard({
                                         <span
                                             className={cn(
                                                 "rounded-full border px-2 py-0.5 text-[10px]",
-                                                getSourceTypeBadgeClass(source.sourceType)
+                                                getPublicSourceBadgeClass(source)
                                             )}
                                         >
-                                            {SOURCE_TYPE_LABELS[source.sourceType]} ·{" "}
-                                            {TRUST_LEVEL_LABELS[source.trustLevel]}
+                                            {getPublicSourceBadgeLabel(
+                                                source,
+                                                (dict.sources_page ?? {}) as Record<string, string>
+                                            )}
                                         </span>
                                         <ExternalLink className="h-4 w-4 shrink-0 text-slate-400" />
                                     </div>

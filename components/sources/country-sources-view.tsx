@@ -13,14 +13,13 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { CountrySourceEntry } from "@/types/source"
-import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
 import {
     filterSourcesByStatsFilter,
     formatSourceDate,
+    getPublicSourceBadgeClass,
+    getPublicSourceBadgeLabel,
     getSourceStats,
-    getSourceTypeBadgeClass,
     getSourceUsageLabelKeys,
-    getTrustBadgeClass,
     getTrustDisplay,
     groupSources,
     isOfficialGovernmentSource,
@@ -101,24 +100,14 @@ function SourceCard({
                     </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                    <span
-                        className={cn(
-                            "rounded-full border px-2.5 py-1 text-xs font-medium",
-                            getTrustBadgeClass(source.trustLevel)
-                        )}
-                    >
-                        {TRUST_LEVEL_LABELS[source.trustLevel]}
-                    </span>
-                    <span
-                        className={cn(
-                            "rounded-full border px-2.5 py-1 text-xs",
-                            getSourceTypeBadgeClass(source.sourceType)
-                        )}
-                    >
-                        {SOURCE_TYPE_LABELS[source.sourceType]}
-                    </span>
-                </div>
+                <span
+                    className={cn(
+                        "shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium",
+                        getPublicSourceBadgeClass(source)
+                    )}
+                >
+                    {getPublicSourceBadgeLabel(source, labels)}
+                </span>
             </div>
 
             {source.notes && (

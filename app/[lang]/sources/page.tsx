@@ -2,7 +2,7 @@ import Link from "next/link"
 import { getAllPublicSources } from "@/lib/sources"
 import { getDictionary } from "@/lib/dictionaries"
 import { ExternalLink } from "lucide-react"
-import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
+import { getPublicSourceBadgeClass, getPublicSourceBadgeLabel } from "@/lib/source-display"
 
 interface PageProps {
     params: { lang: string }
@@ -49,14 +49,14 @@ export default async function SourcesIndexPage({ params }: PageProps) {
                                             <p className="text-sm text-slate-400 mt-1">{source.publisher}</p>
                                         )}
                                     </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className="rounded-full border border-violet-500/30 bg-violet-500/10 px-2.5 py-1 text-xs text-violet-300">
-                                            {TRUST_LEVEL_LABELS[source.trustLevel]}
-                                        </span>
-                                        <span className="rounded-full border border-slate-700 px-2.5 py-1 text-xs text-slate-400">
-                                            {SOURCE_TYPE_LABELS[source.sourceType]}
-                                        </span>
-                                    </div>
+                                    <span
+                                        className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium ${getPublicSourceBadgeClass(source)}`}
+                                    >
+                                        {getPublicSourceBadgeLabel(
+                                            source,
+                                            dict.sources_page as Record<string, string>
+                                        )}
+                                    </span>
                                 </div>
                                 <div className="mt-4">
                                     <a

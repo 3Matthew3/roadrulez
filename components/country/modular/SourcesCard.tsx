@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ExternalLink, BookOpen } from "lucide-react"
 import { CountryData } from "@/types/country"
-import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
+import { getPublicSourceBadgeClass, getPublicSourceBadgeLabel } from "@/lib/source-display"
 
 interface SourcesCardProps {
     data: CountryData
@@ -47,14 +47,18 @@ export default function SourcesCard({ data, dict, lang, compact = false }: Sourc
                                         <p className="text-xs text-slate-500 mt-1">{source.publisher}</p>
                                     )}
                                 </div>
-                                <span className="shrink-0 rounded-full border border-slate-700 px-2 py-0.5 text-[10px] uppercase tracking-wide text-slate-400">
-                                    {TRUST_LEVEL_LABELS[source.trustLevel]}
+                                <span
+                                    className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium ${getPublicSourceBadgeClass(source)}`}
+                                >
+                                    {getPublicSourceBadgeLabel(
+                                        source,
+                                        (dict.sources_page ?? {}) as Record<string, string>
+                                    )}
                                 </span>
                             </div>
-                            <p className="text-[11px] text-slate-600 mt-2">
-                                {SOURCE_TYPE_LABELS[source.sourceType]}
-                                {source.moduleKey ? ` · ${source.moduleKey}` : ""}
-                            </p>
+                            {source.moduleKey && (
+                                <p className="text-[11px] text-slate-600 mt-2">{source.moduleKey}</p>
+                            )}
                         </li>
                     ))}
                 </ul>

@@ -25,7 +25,7 @@ interface SiteFooterProps {
 export function SiteFooter({ dict, lang }: SiteFooterProps) {
     return (
         <footer className="border-t border-slate-200 bg-[#F5F7FA] py-10 text-sm text-slate-600 dark:border-slate-800 dark:bg-[#0F172A] dark:text-slate-400">
-            <div className="container mx-auto max-w-5xl px-4 text-center">
+            <div className="mx-auto w-full max-w-6xl px-4 text-center md:px-6">
                 <p className="mb-4 text-slate-700 dark:text-slate-300">{dict.common.disclaimer}</p>
 
                 <div className="mb-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-slate-500 dark:text-slate-400">

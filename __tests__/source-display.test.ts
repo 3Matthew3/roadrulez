@@ -1,6 +1,7 @@
 import {
     categorizeSource,
     filterSourcesByStatsFilter,
+    getPublicSourceBadgeKey,
     getSourceStats,
     getSourceUsageLabelKeys,
     getTrustDisplay,
@@ -44,6 +45,11 @@ describe("source-display", () => {
             labelKey: "trust_official_government",
             icon: "shield",
         })
+    })
+
+    it("maps public badge keys without internal trust labels", () => {
+        expect(getPublicSourceBadgeKey(official)).toBe("badge_official_government")
+        expect(getPublicSourceBadgeKey(club)).toBe("badge_automobile_club")
     })
 
     it("groups sources by category", () => {

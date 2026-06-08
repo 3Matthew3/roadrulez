@@ -26,7 +26,7 @@ export default function FeedbackForm({ labels, countryName }: FeedbackFormProps)
 
     if (status === "success") {
         return (
-            <div className="mx-auto max-w-[1200px] rounded-2xl border border-green-200 bg-green-50 p-8 text-center shadow-sm dark:border-green-500/20 dark:bg-green-500/10">
+            <div className="w-full rounded-2xl border border-green-200 bg-green-50 p-8 text-center shadow-sm dark:border-green-500/20 dark:bg-green-500/10">
                 <p className="font-medium text-green-700 dark:text-green-400">
                     Thank you! Your feedback has been recorded.
                 </p>
@@ -37,7 +37,7 @@ export default function FeedbackForm({ labels, countryName }: FeedbackFormProps)
     return (
         <div
             className={cn(
-                "mx-auto max-w-[1200px] rounded-2xl border border-slate-200 bg-white p-8 shadow-md md:p-10",
+                "w-full rounded-2xl border border-slate-200 bg-white p-8 shadow-md md:p-10",
                 "dark:border-slate-700 dark:bg-[#1E293B] dark:shadow-lg dark:shadow-black/20"
             )}
         >

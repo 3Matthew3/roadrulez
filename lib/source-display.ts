@@ -104,6 +104,53 @@ export function groupSources(sources: CountrySourceEntry[]): SourceGroup[] {
     })).filter((group) => group.sources.length > 0)
 }
 
+export type PublicSourceBadgeKey =
+    | "badge_official_government"
+    | "badge_official_police"
+    | "badge_official_ministry"
+    | "badge_automobile_club"
+    | "badge_legal_reference"
+    | "badge_trusted_reference"
+    | "badge_additional"
+    | "badge_unverified"
+
+export function getPublicSourceBadgeKey(source: CountrySourceEntry): PublicSourceBadgeKey {
+    if (source.trustLevel === "UNVERIFIED") return "badge_unverified"
+    if (source.sourceType === "GOVERNMENT") return "badge_official_government"
+    if (source.sourceType === "POLICE") return "badge_official_police"
+    if (source.sourceType === "MINISTRY") return "badge_official_ministry"
+    if (source.sourceType === "AUTOMOBILE_ASSOCIATION") return "badge_automobile_club"
+    if (source.sourceType === "LEGAL_DATABASE") return "badge_legal_reference"
+    if (source.trustLevel === "TRUSTED_SECONDARY") return "badge_trusted_reference"
+    return "badge_additional"
+}
+
+export function getPublicSourceBadgeLabel(
+    source: CountrySourceEntry,
+    labels: Record<string, string>
+): string {
+    const key = getPublicSourceBadgeKey(source)
+    return labels[key] ?? key
+}
+
+export function getPublicSourceBadgeClass(source: CountrySourceEntry): string {
+    if (isOfficialGovernmentSource(source)) {
+        return getSourceTypeBadgeClass(source.sourceType)
+    }
+    if (source.sourceType === "AUTOMOBILE_ASSOCIATION") {
+        return getSourceTypeBadgeClass("AUTOMOBILE_ASSOCIATION")
+    }
+    if (source.sourceType === "LEGAL_DATABASE") {
+        return getSourceTypeBadgeClass("LEGAL_DATABASE")
+    }
+    if (source.trustLevel === "UNVERIFIED") {
+        return getTrustBadgeClass("UNVERIFIED")
+    }
+    return getTrustBadgeClass(
+        source.trustLevel === "PRIMARY" ? "PRIMARY" : "TRUSTED_SECONDARY"
+    )
+}
+
 export function getTrustDisplay(source: CountrySourceEntry): SourceTrustDisplay {
     if (source.trustLevel === "PRIMARY" && isOfficialGovernmentSource(source)) {
         return { labelKey: "trust_official_government", icon: "shield" }
