@@ -8,8 +8,8 @@ import {
     ChevronRight,
     CreditCard,
     ExternalLink,
+    Contact,
     Gauge,
-    IdCard,
     Info,
     PhoneCall,
     ShieldCheck,
@@ -233,7 +233,7 @@ export default function AustriaDashboard({
         {
             title: labels.license,
             text: data.rental_and_idp_notes,
-            icon: IdCard,
+            icon: Contact,
             tone: "blue" as const,
         },
         {
