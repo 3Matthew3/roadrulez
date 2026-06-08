@@ -83,7 +83,7 @@ function SpeedLimitCard({
     return (
         <article className={cn("flex flex-col items-center p-5 text-center", S.card)}>
             <div className="mb-4 flex h-16 w-full items-end justify-center rounded-xl bg-[#F5F7FA] px-4 dark:bg-slate-800/60">
-                <Icon className="h-10 w-10 text-[#DC2626] dark:text-[#F87171]" strokeWidth={1.5} />
+                <Icon className="h-10 w-10 text-[#DC2626] dark:text-[#F87171]" />
             </div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#DC2626] dark:text-[#F87171]">
                 {label}
