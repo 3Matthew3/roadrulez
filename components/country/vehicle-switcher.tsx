@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { Car, Bike, Gem } from "lucide-react" // Gem as moped/scooter approx or use something else
+import { Car, Bike } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface VehicleSwitcherProps {
@@ -11,58 +11,62 @@ interface VehicleSwitcherProps {
         motorcycle: string
         moped: string
     }
+    variant?: "default" | "austria"
 }
 
-export default function VehicleSwitcher({ currentVehicle, labels }: VehicleSwitcherProps) {
+export default function VehicleSwitcher({
+    currentVehicle,
+    labels,
+    variant = "default",
+}: VehicleSwitcherProps) {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const isAustria = variant === "austria"
 
     const handleSwitch = (vehicle: string) => {
         const params = new URLSearchParams(searchParams.toString())
-        if (vehicle === 'car') {
-            params.delete('vehicle')
+        if (vehicle === "car") {
+            params.delete("vehicle")
         } else {
-            params.set('vehicle', vehicle)
+            params.set("vehicle", vehicle)
         }
         router.replace(`${pathname}?${params.toString()}`)
     }
 
+    const shellClass = isAustria
+        ? "flex w-fit rounded-xl border border-[#E2E8F0] bg-white/90 p-1 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/80"
+        : "flex w-fit rounded-lg border border-slate-700 bg-slate-800/50 p-1"
+
+    const activeClass = isAustria
+        ? "bg-[#DC2626] text-white shadow-sm"
+        : "bg-blue-600 text-white shadow-sm"
+
+    const inactiveClass = isAustria
+        ? "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+        : "text-slate-400 hover:text-slate-200"
+
+    const buttons = [
+        { id: "car", icon: Car, label: labels.car },
+        { id: "motorcycle", icon: Bike, label: labels.motorcycle },
+        { id: "moped", icon: Bike, label: labels.moped, scale: true },
+    ] as const
+
     return (
-        <div className="flex p-1 bg-slate-800/50 rounded-lg border border-slate-700 w-fit">
-            <button
-                onClick={() => handleSwitch('car')}
-                className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                    currentVehicle === 'car' ? "bg-blue-600 text-white shadow-sm" : "text-slate-400 hover:text-slate-200"
-                )}
-            >
-                <Car className="h-4 w-4" />
-                {labels.car}
-            </button>
-            <button
-                onClick={() => handleSwitch('motorcycle')}
-                className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                    currentVehicle === 'motorcycle' ? "bg-blue-600 text-white shadow-sm" : "text-slate-400 hover:text-slate-200"
-                )}
-            >
-                <Bike className="h-4 w-4" />
-                {labels.motorcycle}
-            </button>
-            <button
-                onClick={() => handleSwitch('moped')}
-                className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                    currentVehicle === 'moped' ? "bg-blue-600 text-white shadow-sm" : "text-slate-400 hover:text-slate-200"
-                )}
-            >
-                {/* customized icon for moped */}
-                <div className="relative">
-                    <Bike className="h-4 w-4 scale-75" />
-                </div>
-                {labels.moped}
-            </button>
+        <div className={shellClass}>
+            {buttons.map(({ id, icon: Icon, label, scale }) => (
+                <button
+                    key={id}
+                    onClick={() => handleSwitch(id)}
+                    className={cn(
+                        "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all",
+                        currentVehicle === id ? activeClass : inactiveClass
+                    )}
+                >
+                    <Icon className={cn("h-4 w-4", scale && "scale-75")} />
+                    {label}
+                </button>
+            ))}
         </div>
     )
 }
