@@ -23,6 +23,7 @@ import { CountryViewTracker } from "@/components/country-view-tracker"
 import FeedbackForm from "@/components/country/feedback-form"
 import HeroImage from "@/components/country/hero-image"
 import VehicleSwitcher from "@/components/country/vehicle-switcher"
+import AustriaTrafficLights from "@/components/country/austria-traffic-lights"
 import { cn } from "@/lib/utils"
 import { CountryData, TrafficRules } from "@/types/country"
 import { SOURCE_TYPE_LABELS, TRUST_LEVEL_LABELS } from "@/types/source"
@@ -377,6 +378,9 @@ export default function AustriaDashboard({
                         </div>
                     </div>
                 </section>
+
+                {/* Ampelsystem */}
+                <AustriaTrafficLights lang={lang} />
 
                 {/* Vor der Fahrt */}
                 <section>
