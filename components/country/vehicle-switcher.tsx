@@ -47,8 +47,8 @@ export default function VehicleSwitcher({
         : "text-slate-400 hover:text-slate-200"
 
     const buttons = [
-        { id: "car", icon: Car, label: labels.car },
-        { id: "motorcycle", icon: Bike, label: labels.motorcycle },
+        { id: "car", icon: Car, label: labels.car, scale: false },
+        { id: "motorcycle", icon: Bike, label: labels.motorcycle, scale: false },
         { id: "moped", icon: Bike, label: labels.moped, scale: true },
     ] as const
 

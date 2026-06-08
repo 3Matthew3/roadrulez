@@ -138,7 +138,6 @@ export default function AustriaTrafficLights({ lang }: AustriaTrafficLightsProps
         usNote: isGerman ? "Je nach Bundesstaat unterschiedlich." : "Varies by state.",
         usMostly: isGerman ? "Meist:" : "Usually:",
         green: isGerman ? "Grün" : "Green",
-        yellow: isGerman ? "Gelb" : "Yellow",
         redLabel: isGerman ? "Rot" : "Red",
     }
 
