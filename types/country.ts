@@ -22,12 +22,24 @@ export interface Tolls {
     notes?: string
 }
 
+export interface RegionalRuleHighlight {
+    title: string
+    description: string
+    icon?: "parking" | "environment" | "mountain" | "toll" | "winter" | "chains"
+    learnMoreUrl?: string
+}
+
 export interface RegionalVariation {
     region_type: "state" | "province" | "city"
     region_name: string
+    /** ISO 3166-2:AT code, e.g. AT-9 for Vienna */
     region_code?: string
+    /** Optional override URL for the state/city coat of arms */
+    coat_of_arms_url?: string
     differences: Partial<TrafficRules>
     notes?: string
+    /** Structured regional rules for accordion-style country pages. */
+    highlights?: RegionalRuleHighlight[]
 }
 
 export interface TrafficRules {
@@ -77,6 +89,10 @@ export interface CountryData {
     summary: string
     /** Short bullet list for dashboard-style country pages (e.g. Austria). */
     quick_answer_bullets?: string[]
+    /** Top fines shown on dashboard-style country pages. */
+    top_fines?: CountryFineEntry[]
+    /** FAQ entries shown on dashboard-style country pages. */
+    faq?: CountryFaqEntry[]
     common_traps: string[]
     idp_requirement?: string
     rental_and_idp_notes: string
@@ -99,6 +115,39 @@ export interface RoadSign {
     image_url: string
     title: string
     description: string
+}
+
+export interface CountryFineEntry {
+    title: string
+    amount: string
+}
+
+export type FaqCategoryId =
+    | "documents"
+    | "speed_limits"
+    | "vignette_tolls"
+    | "fines"
+    | "winter"
+    | "motorcycles"
+    | "rental"
+
+export interface FaqRelatedLink {
+    label: string
+    label_de?: string
+    /** Internal path (without lang prefix) or full URL */
+    href?: string
+}
+
+export interface CountryFaqEntry {
+    id?: string
+    category?: FaqCategoryId
+    question: string
+    answer: string
+    question_de?: string
+    answer_de?: string
+    relatedRules?: FaqRelatedLink[]
+    relatedFines?: FaqRelatedLink[]
+    relatedSourceIds?: string[]
 }
 
 export interface CountryIndexItem {

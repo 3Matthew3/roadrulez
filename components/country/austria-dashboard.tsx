@@ -1,31 +1,31 @@
 import Link from "next/link"
 import { Suspense } from "react"
 import {
-    AlertTriangle,
     BookOpen,
     Car,
+    Check,
     ChevronRight,
     CreditCard,
     ExternalLink,
-    Contact,
     Gauge,
+    Gavel,
     Info,
     PhoneCall,
-    ShieldCheck,
-    Snowflake,
+    Smartphone,
     Wine,
-    Wrench,
 } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CountryViewTracker } from "@/components/country-view-tracker"
 import FeedbackForm from "@/components/country/feedback-form"
 import HeroImage from "@/components/country/hero-image"
 import VehicleSwitcher from "@/components/country/vehicle-switcher"
-import AustriaTrafficLights from "@/components/country/austria-traffic-lights"
+import AustriaTrafficLightsCompact from "@/components/country/austria-traffic-lights-compact"
 import { SpeedLimitIllustration, type SpeedLimitScene } from "@/components/country/speed-limit-illustrations"
 import { cn } from "@/lib/utils"
 import { CountryData, TrafficRules } from "@/types/country"
 import { formatSpeedWithConversion, type SpeedUnit } from "@/lib/speed-display"
+import RegionalRulesAccordion from "@/components/country/regional-rules-accordion"
+import { resolveFaqText } from "@/lib/faq-display"
 import { getPublicSourceBadgeClass, getPublicSourceBadgeLabel } from "@/lib/source-display"
 
 interface AustriaDashboardProps {
@@ -40,16 +40,12 @@ interface AustriaDashboardProps {
 const RED = "#DC2626"
 
 const S = {
-    page: "min-h-screen bg-[#F5F7FA] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]",
+    page: "min-h-screen bg-[#0B1120] text-slate-100",
     content: "mx-auto w-full max-w-6xl px-4 md:px-6",
-    card: "rounded-2xl border border-[#E2E8F0] bg-white shadow-sm dark:border-slate-700 dark:bg-[#1E293B]",
-    muted: "text-[#64748B] dark:text-slate-400",
-    heading: "text-[#0F172A] dark:text-[#F8FAFC]",
-    accent: "text-[#DC2626] dark:text-[#F87171]",
-    heroGradLight:
-        "absolute inset-0 z-10 bg-gradient-to-t from-[#F5F7FA] via-[#F5F7FA]/88 to-red-900/25 dark:hidden",
-    heroGradDark:
-        "absolute inset-0 z-10 hidden bg-gradient-to-t from-[#0F172A] via-[#0F172A]/75 to-red-950/50 dark:block",
+    card: "rounded-2xl border border-slate-700 bg-[#1E293B]",
+    muted: "text-slate-400",
+    heading: "text-white",
+    accent: "text-[#F87171]",
 } as const
 
 function alcoholLabel(rules: TrafficRules) {
@@ -67,6 +63,28 @@ function formatVerifiedMonth(date: string | undefined, lang: string) {
     return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(parsed)
 }
 
+function PanelCard({
+    title,
+    action,
+    children,
+    className,
+}: {
+    title: string
+    action?: React.ReactNode
+    children: React.ReactNode
+    className?: string
+}) {
+    return (
+        <article className={cn(S.card, "p-5 md:p-6", className)}>
+            <div className="mb-4 flex items-start justify-between gap-3">
+                <h2 className={cn("text-lg font-semibold", S.heading)}>{title}</h2>
+                {action}
+            </div>
+            {children}
+        </article>
+    )
+}
+
 function SpeedLimitCard({
     label,
     value,
@@ -80,69 +98,14 @@ function SpeedLimitCard({
 }) {
     const formatted = formatSpeedWithConversion(value, unit)
     return (
-        <article className="flex min-h-[180px] flex-col items-center rounded-xl border border-[#E2E8F0] bg-[#F5F7FA] p-5 text-center dark:border-slate-700 dark:bg-slate-800/40">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#DC2626] dark:text-[#F87171]">
-                {label}
-            </p>
+        <article className="flex min-h-[180px] flex-col items-center rounded-xl border border-slate-700 bg-slate-800/40 p-5 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#F87171]">{label}</p>
             <p className={cn("mt-2 text-4xl font-bold", S.heading)}>{formatted.primary}</p>
             <p className={cn("mt-1 text-sm", S.muted)}>{formatted.secondary}</p>
             <div className="mt-auto w-full pt-5">
-                <div className="flex h-14 w-full items-end justify-center rounded-xl bg-[#F5F7FA] px-3 pb-1 dark:bg-slate-800/60">
+                <div className="flex h-14 w-full items-end justify-center rounded-xl bg-slate-900/60 px-3 pb-1">
                     <SpeedLimitIllustration scene={scene} />
                 </div>
-            </div>
-        </article>
-    )
-}
-
-function PreTripCard({
-    title,
-    text,
-    icon: Icon,
-    tone,
-}: {
-    title: string
-    text: string
-    icon: React.ComponentType<{ className?: string }>
-    tone: "blue" | "red" | "green" | "orange"
-}) {
-    const iconTone = {
-        blue: "bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300",
-        red: "bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-300",
-        green: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300",
-        orange: "bg-orange-100 text-orange-700 dark:bg-orange-500/15 dark:text-orange-300",
-    }
-
-    return (
-        <article className={cn("p-4", S.card)}>
-            <div className="mb-3 flex items-center gap-3">
-                <div className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg", iconTone[tone])}>
-                    <Icon className="h-5 w-5" />
-                </div>
-                <h3 className={cn("font-semibold", S.heading)}>{title}</h3>
-            </div>
-            <p className={cn("text-sm leading-relaxed", S.muted)}>{text}</p>
-        </article>
-    )
-}
-
-function InfoRowCard({
-    title,
-    text,
-    icon: Icon,
-}: {
-    title: string
-    text: string
-    icon: React.ComponentType<{ className?: string }>
-}) {
-    return (
-        <article className={cn("flex items-start gap-4 rounded-2xl border p-5", S.card)}>
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-[#DC2626] dark:bg-red-500/10 dark:text-[#F87171]">
-                <Icon className="h-5 w-5" />
-            </div>
-            <div className="min-w-0">
-                <h3 className={cn("font-semibold", S.heading)}>{title}</h3>
-                <p className={cn("mt-1 text-sm leading-relaxed", S.muted)}>{text}</p>
             </div>
         </article>
     )
@@ -161,30 +124,28 @@ export default function AustriaDashboard({
     const verifiedLabel = formatVerifiedMonth(data.last_verified, lang)
 
     const labels = {
-        guideTag: isGerman ? "Fahrleitfaden" : "Driving guide",
+        guideTag: isGerman ? "Fahrleitfaden" : "Country guide",
+        heroSubtitle: isGerman
+            ? "Alles Wichtige zum Fahren in Österreich."
+            : "Everything you need to know about driving in Austria.",
         quickAnswer: isGerman ? "Kurzantwort" : "Quick answer",
-        quickIntro: isGerman
-            ? "Österreich ist unkompliziert zum Fahren, aber beachte:"
-            : "Austria is easy to drive in, but remember:",
-        beforeDrive: isGerman ? "Vor der Fahrt prüfen" : "Before you drive",
-        keyRisks: isGerman ? "Worauf du achten solltest" : "What to watch",
-        details: isGerman ? "Details bei Bedarf" : "Details when needed",
-        tollNeeded: isGerman ? "Vignette nötig" : "Vignette needed",
-        license: isGerman ? "Führerschein" : "Driving licence",
-        tollVignette: isGerman ? "Maut & Vignette" : "Tolls & vignette",
-        winterGear: isGerman ? "Winterausrüstung" : "Winter equipment",
-        mandatoryGear: isGerman ? "Pflichtausstattung" : "Mandatory equipment",
+        topFines: isGerman ? "Top 3 Bußgelder" : "Top 3 fines",
+        topFaq: isGerman ? "Top 3 FAQ" : "Top 3 FAQ",
+        viewAllFines: isGerman ? "Alle Bußgelder" : "View all fines",
+        viewAllFaq: isGerman ? "Alle FAQ" : "View all FAQ",
         verified: isGerman ? "Verifiziert" : "Verified",
-        driveSide: isGerman ? "Rechtsverkehr" : "Drives right",
-        speed: isGerman ? "Tempo" : "Speed",
-        alcohol: isGerman ? "Alkohol" : "Alcohol",
-        tolls: isGerman ? "Maut" : "Tolls",
-        emergency: isGerman ? "Notruf" : "Emergency",
+        drivingSide: isGerman ? "Rechtsverkehr" : "Driving side",
+        speedLimits: isGerman ? "Tempolimits" : "Speed limits",
+        alcohol: isGerman ? "Alkohol" : "Alcohol limit",
+        vignette: isGerman ? "Vignette" : "Vignette",
+        emergency: isGerman ? "Notruf" : "Emergency number",
         city: isGerman ? "Stadt" : "Urban",
         countryRoad: isGerman ? "Landstraße" : "Rural",
         motorway: isGerman ? "Autobahn" : "Motorway",
+        details: isGerman ? "Details bei Bedarf" : "Details when needed",
         viewAllSources: dict.sources_page?.view_all ?? "All sources",
         sourcesTitle: isGerman ? "Quellen" : "Sources",
+        moreDetails: isGerman ? "Weitere Details" : "More details",
     }
 
     const quickBullets =
@@ -205,65 +166,81 @@ export default function AustriaDashboard({
 
     const speedSummary = [rules.speed_limits.urban, rules.speed_limits.rural, rules.speed_limits.motorway]
         .map((v) => formatSpeedWithConversion(v, speedUnit).primary)
-        .join(" · ")
+        .join(" – ")
 
     const quickStats = [
-        { label: labels.driveSide, value: dict.common.right, icon: Car },
-        { label: labels.speed, value: speedSummary, icon: Gauge },
+        { label: labels.drivingSide, value: dict.common.right, icon: Car },
+        { label: labels.speedLimits, value: speedSummary, icon: Gauge },
         { label: labels.alcohol, value: alcoholLabel(rules), icon: Wine },
         {
-            label: labels.tolls,
-            value: rules.tolls.required
-                ? `${dict.common.yes}${rules.tolls.type ? ` (${rules.tolls.type})` : ""}`
-                : dict.common.no,
+            label: labels.vignette,
+            value: rules.tolls.required ? dict.common.yes : dict.common.no,
             icon: CreditCard,
         },
         { label: labels.emergency, value: rules.emergency_numbers[0] ?? "112", icon: PhoneCall },
     ]
 
-    const preTripCards = [
-        {
-            title: labels.license,
-            text: data.rental_and_idp_notes ?? "",
-            icon: Contact,
-            tone: "blue" as const,
-        },
-        {
-            title: labels.tollVignette,
-            text: rules.tolls.notes ?? "",
-            icon: CreditCard,
-            tone: "red" as const,
-        },
-        {
-            title: labels.winterGear,
-            text: rules.winter_rules ?? "",
-            icon: Snowflake,
-            tone: "green" as const,
-        },
-        {
-            title: labels.mandatoryGear,
-            text: rules.mandatory_equipment.join(" · "),
-            icon: Wrench,
-            tone: "orange" as const,
-        },
-    ]
+    const topFines =
+        data.top_fines ??
+        (isGerman
+            ? [
+                  { title: "Tempo +10 km/h außerorts", amount: "ab €30" },
+                  { title: "Handy am Steuer", amount: "€50" },
+                  { title: "Keine Vignette auf Autobahn", amount: "ab €110" },
+              ]
+            : [
+                  { title: "Speeding +10 km/h outside town limits", amount: "from €30" },
+                  { title: "Using phone while driving", amount: "€50" },
+                  { title: "No vignette on motorway", amount: "from €110" },
+              ])
 
+    const faqEntries =
+        data.faq ??
+        (isGerman
+            ? [
+                  {
+                      question: "Brauche ich eine Vignette in Österreich?",
+                      answer: "Ja. Autobahnen und Schnellstraßen erfordern eine gültige Vignette oder digitale Maut, bevor du sie benutzt.",
+                  },
+                  {
+                      question: "Sind Winterreifen Pflicht?",
+                      answer: "Vom 1. November bis 15. April sind Winterreifen bei winterlichen Straßenverhältnissen Pflicht. Schneeketten können ausgeschildert sein.",
+                  },
+                  {
+                      question: "Kann ich meinen EU-Führerschein nutzen?",
+                      answer: "EU- und EWR-Führerscheine werden in der Regel akzeptiert. Nicht-EU-Fahrer sollten Mietwagen-Anforderungen prüfen.",
+                  },
+              ]
+            : [
+                  {
+                      question: "Do I need a vignette in Austria?",
+                      answer: "Yes. Motorways and expressways require a valid vignette or digital toll before you drive on them.",
+                  },
+                  {
+                      question: "Are winter tyres required?",
+                      answer: "From 1 November to 15 April, winter tyres are required whenever winter road conditions apply.",
+                  },
+                  {
+                      question: "Can I use my EU driving licence?",
+                      answer: "EU and EEA licences are generally accepted. Non-EU drivers should confirm rental requirements.",
+                  },
+              ])
+
+    const fineIcons = [Gauge, Smartphone, CreditCard]
     const sourceEntries = data.source_entries ?? []
-    const driveSideLabel = dict.common.right
 
     return (
         <div className={S.page}>
             <CountryViewTracker iso2={data.iso2} />
 
             {/* Hero */}
-            <div className="relative h-[42vh] min-h-[320px] w-full overflow-hidden">
+            <div className="relative h-[46vh] min-h-[360px] w-full overflow-hidden">
                 <div className="absolute inset-0 z-0 bg-[#111]">
                     <HeroImage name={data.name_en} images={data.header_images} />
-                    <div className={S.heroGradLight} />
-                    <div className={S.heroGradDark} />
+                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0B1120] via-[#0B1120]/60 to-black/25" />
                 </div>
 
-                <div className={cn(S.content, "relative z-20 flex h-full flex-col justify-end pb-8")}>
+                <div className={cn(S.content, "relative z-20 flex h-full flex-col justify-end pb-10")}>
                     <span
                         className="mb-3 inline-flex w-fit rounded-md px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-white"
                         style={{ backgroundColor: RED }}
@@ -271,7 +248,7 @@ export default function AustriaDashboard({
                         {labels.guideTag}
                     </span>
 
-                    <div className="mb-5 flex items-center gap-4">
+                    <div className="mb-4 flex items-center gap-4">
                         <div className="relative h-14 w-20 overflow-hidden rounded-lg border border-white/20 shadow-md md:h-16 md:w-24">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
@@ -284,19 +261,15 @@ export default function AustriaDashboard({
                             <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
                                 {localizedName}
                             </h1>
-                            <div className="mt-2 flex items-center gap-2 text-sm text-white/80">
-                                <Info className="h-4 w-4" />
-                                <span>
-                                    {dict.props.drive_side}:{" "}
-                                    <span className="font-semibold text-white">{driveSideLabel}</span>
-                                </span>
-                            </div>
+                            <p className="mt-2 max-w-2xl text-sm text-white/80 md:text-base">
+                                {labels.heroSubtitle}
+                            </p>
                         </div>
                     </div>
 
                     <Suspense
                         fallback={
-                            <div className="h-11 w-64 animate-pulse rounded-xl bg-white/20 dark:bg-slate-800/60" />
+                            <div className="h-11 w-64 animate-pulse rounded-xl bg-white/10" />
                         }
                     >
                         <VehicleSwitcher
@@ -305,40 +278,39 @@ export default function AustriaDashboard({
                             variant="austria"
                         />
                     </Suspense>
+
+                    <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-white/75">
+                        <span>
+                            {dict.common.last_verified}:{" "}
+                            <span className="font-medium text-white">{verifiedLabel ?? data.last_verified}</span>
+                        </span>
+                        <span className="rounded-full border border-[#F87171]/40 bg-[#DC2626]/20 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-[#F87171]">
+                            {labels.verified}
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            {/* Verification bar */}
-            <div className="border-b border-[#E2E8F0] bg-white dark:border-slate-800 dark:bg-[#1E293B]">
-                <div className={cn(S.content, "flex flex-wrap items-center gap-3 py-3 text-sm")}>
-                    <span className={S.muted}>
-                        {dict.common.last_verified}:{" "}
-                        <span className={cn("font-medium", S.heading)}>{verifiedLabel ?? data.last_verified}</span>
-                    </span>
-                    <span className="rounded-full border border-[#DC2626]/40 bg-[#DC2626]/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-[#DC2626] dark:text-[#F87171]">
-                        {labels.verified}
-                    </span>
-                </div>
-            </div>
-
-            <main className={cn(S.content, "space-y-8 py-8 md:py-10")}>
-                {/* Quick stats row */}
-                <section className={cn("grid grid-cols-2 gap-px overflow-hidden rounded-2xl md:grid-cols-5", S.card)}>
+            <main className={cn(S.content, "space-y-8 pb-10 pt-2 md:pb-12")}>
+                {/* Quick facts bar */}
+                <section className="-mt-10 relative z-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-700 bg-slate-800 shadow-xl md:grid-cols-5">
                     {quickStats.map((stat, index) => {
                         const Icon = stat.icon
                         return (
                             <div
                                 key={stat.label}
                                 className={cn(
-                                    "bg-white p-4 dark:bg-[#1E293B]",
-                                    index < quickStats.length - 1 && "md:border-r md:border-[#E2E8F0] dark:md:border-slate-700"
+                                    "bg-[#1E293B] p-4",
+                                    index < quickStats.length - 1 && "md:border-r md:border-slate-700"
                                 )}
                             >
                                 <div className="mb-2 flex items-center gap-2">
-                                    <Icon className="h-4 w-4 text-[#DC2626] dark:text-[#F87171]" />
+                                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-500/15 text-[#F87171]">
+                                        <Icon className="h-3.5 w-3.5" />
+                                    </div>
                                     <p className={cn("text-xs font-medium", S.muted)}>{stat.label}</p>
                                 </div>
-                                <p className={cn("text-sm font-bold leading-snug md:text-base", S.heading)}>
+                                <p className={cn("text-sm font-bold leading-snug md:text-[15px]", S.heading)}>
                                     {stat.value}
                                 </p>
                             </div>
@@ -346,200 +318,220 @@ export default function AustriaDashboard({
                     })}
                 </section>
 
-                {/* Kurzantwort */}
-                <section
-                    className={cn(
-                        "border-l-4 p-6 md:p-8",
-                        S.card,
-                        "border-l-[#DC2626] dark:border-l-[#F87171]"
-                    )}
-                >
-                    <div className="flex items-start gap-3">
-                        <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-[#DC2626] dark:text-[#F87171]" />
-                        <div className="w-full">
-                            <h2 className={cn("text-xl font-semibold", S.heading)}>{labels.quickAnswer}</h2>
-                            <p className={cn("mt-2", S.muted)}>{data.summary || labels.quickIntro}</p>
-                            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                                {quickBullets.map((item) => (
-                                    <li key={item} className={cn("flex gap-2 text-sm", S.heading)}>
-                                        <span className={S.accent}>•</span>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Ampelsystem */}
-                <AustriaTrafficLights lang={lang} />
-
-                {/* Vor der Fahrt */}
-                <section>
-                    <h2 className={cn("mb-4 text-xl font-semibold", S.heading)}>{labels.beforeDrive}</h2>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                        {preTripCards.map((card) => (
-                            <PreTripCard key={card.title} {...card} />
-                        ))}
-                    </div>
-                </section>
-
-                {/* Warnings */}
-                <section className="rounded-2xl border border-red-200 bg-red-50 p-6 dark:border-red-500/20 dark:bg-red-500/10">
-                    <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold text-red-900 dark:text-red-100">
-                        <AlertTriangle className="h-5 w-5" />
-                        {labels.keyRisks}
-                    </h2>
-                    <ul className="grid gap-2 sm:grid-cols-2">
-                        {data.common_traps.map((trap) => (
-                            <li
-                                key={trap}
-                                className="flex gap-2 text-sm leading-relaxed text-red-950/90 dark:text-red-50/90"
-                            >
-                                <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-[#DC2626] dark:text-[#F87171]" />
-                                <span>{trap}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </section>
-
-                {/* Speed limits */}
-                <section className={cn("overflow-hidden", S.card)}>
-                    <div className="p-5 md:p-6">
-                        <h2 className={cn("mb-4 text-xl font-semibold", S.heading)}>{dict.rules.speed_limits}</h2>
-                        <div className="grid gap-4 sm:grid-cols-3">
-                            <SpeedLimitCard
-                                label={labels.city}
-                                value={rules.speed_limits.urban}
-                                unit={speedUnit}
-                                scene="urban"
-                            />
-                            <SpeedLimitCard
-                                label={labels.countryRoad}
-                                value={rules.speed_limits.rural}
-                                unit={speedUnit}
-                                scene="rural"
-                            />
-                            <SpeedLimitCard
-                                label={labels.motorway}
-                                value={rules.speed_limits.motorway}
-                                unit={speedUnit}
-                                scene="motorway"
-                            />
-                        </div>
-                    </div>
-                    {rules.speed_limits.notes && (
-                        <div className="flex gap-3 border-t border-[#E2E8F0] bg-[#F5F7FA] px-5 py-4 dark:border-slate-700 dark:bg-slate-800/50 md:px-6">
-                            <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#DC2626] dark:text-[#F87171]" />
-                            <p className={cn("text-sm leading-relaxed", S.muted)}>{rules.speed_limits.notes}</p>
-                        </div>
-                    )}
-                </section>
-
-                {/* Info rows */}
-                <section className="space-y-4">
-                    <InfoRowCard title={labels.tollNeeded} text={rules.tolls.notes ?? ""} icon={CreditCard} />
-                    <InfoRowCard
-                        title={labels.mandatoryGear}
-                        text={rules.mandatory_equipment.join(" · ")}
-                        icon={Wrench}
-                    />
-                </section>
-
-                {/* Sources */}
-                <section>
-                    <div className="mb-4 flex items-center justify-between gap-3">
-                        <h2 className={cn("flex items-center gap-2 text-xl font-semibold", S.heading)}>
-                            <BookOpen className="h-5 w-5 text-[#DC2626] dark:text-[#F87171]" />
-                            {labels.sourcesTitle}
-                        </h2>
-                        <Link
-                            href={`/${lang}/country/${data.iso2.toLowerCase()}/sources`}
-                            className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] hover:underline dark:text-[#3B82F6]"
-                        >
-                            {labels.viewAllSources}
-                            <ChevronRight className="h-4 w-4" />
-                        </Link>
-                    </div>
-
-                    {sourceEntries.length > 0 ? (
-                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                            {sourceEntries.slice(0, 4).map((source) => (
-                                <article key={source.id} className={cn("flex flex-col p-4", S.card)}>
-                                    <a
-                                        href={source.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={cn("font-medium leading-snug hover:underline", S.heading)}
-                                    >
-                                        {source.title}
-                                    </a>
-                                    {source.publisher && (
-                                        <p className={cn("mt-1 text-xs", S.muted)}>{source.publisher}</p>
-                                    )}
-                                    <div className="mt-auto flex items-end justify-between gap-2 pt-4">
-                                        <span
-                                            className={cn(
-                                                "rounded-full border px-2 py-0.5 text-[10px]",
-                                                getPublicSourceBadgeClass(source)
-                                            )}
-                                        >
-                                            {getPublicSourceBadgeLabel(
-                                                source,
-                                                (dict.sources_page ?? {}) as Record<string, string>
-                                            )}
-                                        </span>
-                                        <ExternalLink className="h-4 w-4 shrink-0 text-slate-400" />
-                                    </div>
-                                </article>
-                            ))}
-                        </div>
-                    ) : (
-                        <ul className={cn("space-y-1 text-sm", S.muted)}>
-                            {data.sources.map((s, i) => (
-                                <li key={i}>{s}</li>
+                {/* Main 2×2 grid */}
+                <div className="grid gap-5 lg:grid-cols-2">
+                    <PanelCard title={labels.quickAnswer}>
+                        <p className={cn("text-sm leading-relaxed", S.muted)}>
+                            {data.summary}
+                        </p>
+                        <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                            {quickBullets.map((item) => (
+                                <li key={item} className="flex gap-2.5 text-sm text-slate-200">
+                                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/15 text-[#F87171]">
+                                        <Check className="h-3 w-3" />
+                                    </span>
+                                    <span>{item}</span>
+                                </li>
                             ))}
                         </ul>
-                    )}
-                </section>
+                    </PanelCard>
 
-                {/* Details accordion */}
-                <section className={cn("p-6", S.card)}>
-                    <h2 className={cn("mb-4 text-xl font-semibold", S.heading)}>{labels.details}</h2>
-                    <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem
-                            value="phone"
-                            className="border-[#E2E8F0] bg-[#F5F7FA] dark:border-slate-700 dark:bg-slate-800/40"
-                        >
-                            <AccordionTrigger className={S.heading}>
-                                {dict.rules.phone_distractions}
-                            </AccordionTrigger>
-                            <AccordionContent className={S.muted}>{rules.phone_usage_rules}</AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem
-                            value="lights"
-                            className="border-[#E2E8F0] bg-[#F5F7FA] dark:border-slate-700 dark:bg-slate-800/40"
-                        >
-                            <AccordionTrigger className={S.heading}>
-                                {dict.rules.lights_parking}
-                            </AccordionTrigger>
-                            <AccordionContent className={cn("space-y-2", S.muted)}>
-                                <p>
-                                    <strong className={S.heading}>{dict.props.headlights}:</strong>{" "}
-                                    {rules.headlights_rules}
-                                </p>
-                                <p>
-                                    <strong className={S.heading}>{dict.props.parking}:</strong>{" "}
-                                    {rules.parking_rules}
-                                </p>
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
-                </section>
+                    <PanelCard
+                        title={labels.topFines}
+                        action={
+                            <span className="inline-flex items-center gap-1 text-sm text-slate-500">
+                                {labels.viewAllFines}
+                                <ChevronRight className="h-4 w-4" />
+                            </span>
+                        }
+                    >
+                        <ul className="space-y-4">
+                            {topFines.slice(0, 3).map((fine, index) => {
+                                const Icon = fineIcons[index] ?? Gavel
+                                return (
+                                    <li key={fine.title} className="flex items-start justify-between gap-4">
+                                        <div className="flex min-w-0 items-start gap-3">
+                                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                                <Icon className="h-4 w-4" />
+                                            </div>
+                                            <p className="text-sm leading-snug text-slate-200">{fine.title}</p>
+                                        </div>
+                                        <span className="shrink-0 text-sm font-semibold text-[#F87171]">
+                                            {fine.amount}
+                                        </span>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </PanelCard>
 
-                <div className="mt-14">
-                    <FeedbackForm labels={dict.extra} countryName={data.name_en} />
+                    <AustriaTrafficLightsCompact lang={lang} />
+
+                    <PanelCard
+                        title={labels.topFaq}
+                        action={
+                            <Link
+                                href={`/${lang}/country/${data.iso2.toLowerCase()}/faq`}
+                                className="inline-flex items-center gap-1 text-sm text-slate-500 transition-colors hover:text-slate-300"
+                            >
+                                {labels.viewAllFaq}
+                                <ChevronRight className="h-4 w-4" />
+                            </Link>
+                        }
+                    >
+                        <Accordion type="single" collapsible className="w-full">
+                            {faqEntries.slice(0, 3).map((entry, index) => {
+                                const { question, answer } = resolveFaqText(entry, lang)
+                                return (
+                                <AccordionItem
+                                    key={entry.id ?? entry.question}
+                                    value={`faq-${index}`}
+                                    className="border-slate-700"
+                                >
+                                    <AccordionTrigger className="text-left text-sm text-slate-200 hover:no-underline">
+                                        {question}
+                                    </AccordionTrigger>
+                                    <AccordionContent className={cn("text-sm leading-relaxed", S.muted)}>
+                                        {answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                                )
+                            })}
+                        </Accordion>
+                    </PanelCard>
                 </div>
+
+                {/* Disclaimer */}
+                <div className="flex gap-3 rounded-xl border border-slate-700 bg-slate-800/50 px-4 py-3.5">
+                    <Info className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
+                    <p className={cn("text-sm leading-relaxed", S.muted)}>{dict.common.disclaimer}</p>
+                </div>
+
+                {/* More details */}
+                <section className="space-y-8 pt-2">
+                    <h2 className={cn("text-xl font-semibold", S.heading)}>{labels.moreDetails}</h2>
+
+                    <section className={cn("overflow-hidden", S.card)}>
+                        <div className="p-5 md:p-6">
+                            <h3 className={cn("mb-4 text-lg font-semibold", S.heading)}>
+                                {dict.rules.speed_limits}
+                            </h3>
+                            <div className="grid gap-4 sm:grid-cols-3">
+                                <SpeedLimitCard
+                                    label={labels.city}
+                                    value={rules.speed_limits.urban}
+                                    unit={speedUnit}
+                                    scene="urban"
+                                />
+                                <SpeedLimitCard
+                                    label={labels.countryRoad}
+                                    value={rules.speed_limits.rural}
+                                    unit={speedUnit}
+                                    scene="rural"
+                                />
+                                <SpeedLimitCard
+                                    label={labels.motorway}
+                                    value={rules.speed_limits.motorway}
+                                    unit={speedUnit}
+                                    scene="motorway"
+                                />
+                            </div>
+                        </div>
+                        {rules.speed_limits.notes && (
+                            <div className="flex gap-3 border-t border-slate-700 bg-slate-800/50 px-5 py-4 md:px-6">
+                                <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#F87171]" />
+                                <p className={cn("text-sm leading-relaxed", S.muted)}>
+                                    {rules.speed_limits.notes}
+                                </p>
+                            </div>
+                        )}
+                    </section>
+
+                    {(data.regional_variations?.length ?? 0) > 0 && (
+                        <RegionalRulesAccordion
+                            variations={data.regional_variations ?? []}
+                            lang={lang}
+                        />
+                    )}
+
+                    {sourceEntries.length > 0 && (
+                        <section>
+                            <div className="mb-4 flex items-center justify-between gap-3">
+                                <h3 className={cn("flex items-center gap-2 text-lg font-semibold", S.heading)}>
+                                    <BookOpen className="h-5 w-5 text-[#F87171]" />
+                                    {labels.sourcesTitle}
+                                </h3>
+                                <Link
+                                    href={`/${lang}/country/${data.iso2.toLowerCase()}/sources`}
+                                    className="inline-flex items-center gap-1 text-sm font-medium text-[#3B82F6] hover:underline"
+                                >
+                                    {labels.viewAllSources}
+                                    <ChevronRight className="h-4 w-4" />
+                                </Link>
+                            </div>
+                            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                                {sourceEntries.slice(0, 4).map((source) => (
+                                    <article key={source.id} className={cn("flex flex-col p-4", S.card)}>
+                                        <a
+                                            href={source.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={cn("font-medium leading-snug hover:underline", S.heading)}
+                                        >
+                                            {source.title}
+                                        </a>
+                                        {source.publisher && (
+                                            <p className={cn("mt-1 text-xs", S.muted)}>{source.publisher}</p>
+                                        )}
+                                        <div className="mt-auto flex items-end justify-between gap-2 pt-4">
+                                            <span
+                                                className={cn(
+                                                    "rounded-full border px-2 py-0.5 text-[10px]",
+                                                    getPublicSourceBadgeClass(source)
+                                                )}
+                                            >
+                                                {getPublicSourceBadgeLabel(
+                                                    source,
+                                                    (dict.sources_page ?? {}) as Record<string, string>
+                                                )}
+                                            </span>
+                                            <ExternalLink className="h-4 w-4 shrink-0 text-slate-500" />
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    <section className={cn("p-6", S.card)}>
+                        <h3 className={cn("mb-4 text-lg font-semibold", S.heading)}>{labels.details}</h3>
+                        <Accordion type="single" collapsible className="w-full">
+                            <AccordionItem value="phone" className="border-slate-700 bg-slate-800/40">
+                                <AccordionTrigger className={S.heading}>
+                                    {dict.rules.phone_distractions}
+                                </AccordionTrigger>
+                                <AccordionContent className={S.muted}>{rules.phone_usage_rules}</AccordionContent>
+                            </AccordionItem>
+                            <AccordionItem value="lights" className="border-slate-700 bg-slate-800/40">
+                                <AccordionTrigger className={S.heading}>
+                                    {dict.rules.lights_parking}
+                                </AccordionTrigger>
+                                <AccordionContent className={cn("space-y-2", S.muted)}>
+                                    <p>
+                                        <strong className={S.heading}>{dict.props.headlights}:</strong>{" "}
+                                        {rules.headlights_rules}
+                                    </p>
+                                    <p>
+                                        <strong className={S.heading}>{dict.props.parking}:</strong>{" "}
+                                        {rules.parking_rules}
+                                    </p>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
+                    </section>
+
+                    <FeedbackForm labels={dict.extra} countryName={data.name_en} />
+                </section>
             </main>
         </div>
     )
