@@ -1,0 +1,488 @@
+{
+    "name_en": "United Kingdom",
+    "name_local": "United Kingdom",
+    "iso2": "GB",
+    "iso3": "GBR",
+    "continent": "Europe",
+    "flag": "🇬🇧",
+    "header_images": [
+        "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1529655683827-aba89955d440?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1520986606216-8f211c574dc9?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1533929736458-ca588d08c91b?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Drive on the LEFT—take extra care at junctions",
+        "Speed limits posted in mph; cameras widely used",
+        "London Congestion Charge applies on weekdays",
+        "Using a handheld phone while driving is illegal"
+    ],
+    "drive_side": "left",
+    "rules": {
+        "speed_limits": {
+            "urban": 30,
+            "rural": 60,
+            "motorway": 70,
+            "units": "mph",
+            "notes": "Built-up areas default to 30 mph unless signed. Dual carriageways 70 mph; single carriageways often 60 mph. Lower limits common near schools."
+        },
+        "alcohol_limit": {
+            "value": 0.08,
+            "unit": "BAC",
+            "notes": "Scotland limit is 0.05% BAC. Penalties are severe—custody and long bans common."
+        },
+        "seatbelt_rules": "Mandatory for all occupants. Driver responsible for under-14s.",
+        "child_seat_rules": "Children must use appropriate car seat until 12 years or 135 cm.",
+        "phone_usage_rules": "Handheld phone use illegal while driving—even when stopped in traffic. Hands-free allowed if not distracting.",
+        "headlights_rules": "Use headlights at night and in poor visibility. No daytime requirement except in some conditions.",
+        "priority_rules": "Give way to the right at equal-priority junctions. Roundabouts: give way to traffic from the right already on the circle.",
+        "tolls": {
+            "required": true,
+            "type": "mixed",
+            "notes": "Most roads are free. Congestion Charge (London), Dartford Crossing, M6 Toll, and some bridges charge fees."
+        },
+        "parking_rules": "Yellow lines restrict parking. Controlled zones use pay-and-display or apps. Do not park on zig-zag lines near crossings.",
+        "mandatory_equipment": [],
+        "winter_rules": "No national winter tyre law, but snow chains may be needed in Scottish Highlands when signed.",
+        "emergency_numbers": [
+            "999 (Emergency)",
+            "112 (European Emergency)"
+        ]
+    },
+    "summary": "The UK drives on the left with mph limits and extensive speed-camera enforcement. London adds congestion and ULEZ charges. Roundabouts are common—give way to traffic from the right.",
+    "common_traps": [
+        "Driving on the wrong side after leaving roundabouts or rental-car pickup.",
+        "Speed cameras (fixed, mobile, and average-speed) on motorways and urban routes.",
+        "London Congestion Charge and ULEZ zones—cameras enforce payment.",
+        "Bus lanes and box junctions are camera-enforced in cities."
+    ],
+    "top_fines": [
+        {
+            "title": "Handheld phone while driving",
+            "amount": "£200 + 6 points"
+        },
+        {
+            "title": "Speeding +10 mph in 30 zone",
+            "amount": "from £100"
+        },
+        {
+            "title": "London Congestion Charge unpaid",
+            "amount": "from £180"
+        }
+    ],
+    "traffic_fines": {
+        "relatedSourceIds": ["gb-gov-driving", "gb-highway-code", "gb-dvla", "gb-tfl"],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Fixed, mobile, and average-speed cameras are widespread. Penalties depend on how far over the limit; court for serious cases.",
+                "summary_de": "Feste, mobile und Streckenradar-Kameras sind weit verbreitet. Strafen hängen von der Überschreitung ab; Gericht bei schweren Fällen.",
+                "maxConsequence": "Court, 6+ points & driving ban",
+                "maxConsequence_de": "Gericht, 6+ Punkte & Fahrverbot"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Mobile phone while driving",
+                "title_de": "Handy am Steuer",
+                "summary": "Any handheld phone use while driving is illegal—including at red lights. Hands-free is permitted if you stay in full control.",
+                "summary_de": "Jeder Handheld-Handygebrauch am Steuer ist illegal—auch an roten Ampeln. Freisprech ist erlaubt bei voller Kontrolle.",
+                "maxConsequence": "£200 fine & 6 licence points",
+                "maxConsequence_de": "£200 Bußgeld & 6 Punkte"
+            },
+            {
+                "id": "red-light",
+                "icon": "red_light",
+                "title": "Red light violation",
+                "title_de": "Rotlichtverstoß",
+                "summary": "Red-light cameras operate at many urban junctions. Running a light typically means 3 points and a fixed penalty.",
+                "summary_de": "Rotlichtkameras an vielen Stadt-Kreuzungen. Rotlichtverstoß bedeutet typischerweise 3 Punkte und Bußgeld.",
+                "maxConsequence": "3 points & £100 fixed penalty",
+                "maxConsequence_de": "3 Punkte & £100 Bußgeld"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol offenses",
+                "title_de": "Alkohol am Steuer",
+                "summary": "England/Wales/Northern Ireland limit 0.08% BAC; Scotland 0.05%. Drink-driving leads to arrest, court, and lengthy bans.",
+                "summary_de": "England/Wales/Nordirland 0,08 % BAC; Schottland 0,05 %. Trunkenheit am Steuer führt zu Festnahme, Gericht und langem Entzug.",
+                "maxConsequence": "Unlimited fine, ban & imprisonment",
+                "maxConsequence_de": "Unbegrenzte Geldstrafe, Entzug & Haft"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeitsüberschreitung",
+                "description": "Fixed penalty notices for minor excess; court referral for higher speeds.",
+                "description_de": "Bußgeldbescheid bei geringer Überschreitung; Gericht bei höheren Geschwindigkeiten.",
+                "rows": [
+                    {
+                        "id": "speed-10-30",
+                        "speedOver": "+10 mph (30 mph zone)",
+                        "consequences": { "fine": "£100", "fine_de": "£100", "points": "3" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "speed-20-30",
+                        "speedOver": "+20 mph (30 mph zone)",
+                        "severe": true,
+                        "consequences": { "fine": "court", "fine_de": "Gericht", "points": "6", "licenseSuspension": "possible", "licenseSuspension_de": "möglich", "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "speed-motorway",
+                        "speedOver": "+10 mph (70 mph motorway)",
+                        "consequences": { "fine": "£100", "fine_de": "£100", "points": "3" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "alcohol_drugs",
+                "title": "Alcohol & Drugs",
+                "title_de": "Alkohol & Drogen",
+                "rows": [
+                    {
+                        "id": "drink-drive-eng",
+                        "label": "Over limit (England/Wales/NI: 0.08% BAC)",
+                        "label_de": "Über Grenze (England/Wales/NI: 0,08 % BAC)",
+                        "severe": true,
+                        "consequences": { "fine": "unlimited", "fine_de": "unbegrenzt", "points": "6+", "licenseSuspension": "12+ months", "licenseSuspension_de": "12+ Monate", "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "drink-drive-scot",
+                        "label": "Over limit (Scotland: 0.05% BAC)",
+                        "label_de": "Über Grenze (Schottland: 0,05 % BAC)",
+                        "severe": true,
+                        "consequences": { "fine": "unlimited", "fine_de": "unbegrenzt", "points": "6+", "licenseSuspension": "12+ months", "licenseSuspension_de": "12+ Monate", "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "drug-drive",
+                        "label": "Drug driving (zero tolerance for many substances)",
+                        "label_de": "Drogen am Steuer (Nulltoleranz für viele Substanzen)",
+                        "severe": true,
+                        "consequences": { "fine": "unlimited", "fine_de": "unbegrenzt", "licenseSuspension": "mandatory", "licenseSuspension_de": "Pflichtentzug", "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "mobile_phone",
+                "title": "Mobile Phone Usage",
+                "title_de": "Handynutzung",
+                "rows": [
+                    {
+                        "id": "phone-handheld",
+                        "label": "Handheld phone use while driving",
+                        "label_de": "Handy am Steuer (in der Hand)",
+                        "consequences": { "fine": "£200", "fine_de": "£200", "points": "6" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "phone-supervisor",
+                        "label": "Supervising learner while using phone",
+                        "label_de": "Begleiten eines Lernfahrers mit Handy",
+                        "consequences": { "fine": "£200", "fine_de": "£200", "points": "6" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "phone-danger",
+                        "label": "Not in proper control of vehicle",
+                        "label_de": "Fahrzeug nicht unter Kontrolle",
+                        "severe": true,
+                        "consequences": { "fine": "from £1,000", "fine_de": "ab £1.000", "points": "3", "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "special_local",
+                "title": "Congestion & Local Rules",
+                "title_de": "City-Maut & lokale Regeln",
+                "description": "UK-specific charges and camera-enforced zones.",
+                "description_de": "UK-spezifische Gebühren und kamerüberwachte Zonen.",
+                "rows": [
+                    {
+                        "id": "congestion-charge",
+                        "label": "London Congestion Charge unpaid",
+                        "label_de": "London Congestion Charge unbezahlt",
+                        "consequences": { "fine": "from £180", "fine_de": "ab £180" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "ulez",
+                        "label": "ULEZ non-compliant vehicle",
+                        "label_de": "ULEZ nicht konformes Fahrzeug",
+                        "consequences": { "fine": "£180", "fine_de": "£180" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "bus-lane",
+                        "label": "Driving in bus lane",
+                        "label_de": "Fahren in Busspur",
+                        "consequences": { "fine": "£160", "fine_de": "£160" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            }
+        ]
+    },
+    "faq": [
+        {
+            "id": "drive-left",
+            "category": "documents",
+            "question": "Which side of the road do you drive on in the UK?",
+            "question_de": "Auf welcher Straßenseite fährt man in Großbritannien?",
+            "answer": "You drive on the left. Give way to the right at equal-priority junctions and on roundabouts. Take extra care after rental pickup, at one-way systems, and when turning—foreign drivers often drift to the wrong side.",
+            "answer_de": "Man fährt links. Vorfahrt dem Verkehr von rechts an gleichwertigen Kreuzungen und auf Kreisverkehren. Nach Mietwagenabholung, in Einbahnstraßen und beim Abbiegen besonders aufpassen—Ausländer geraten oft auf die falsche Seite.",
+            "relatedRules": [{ "label": "Priority rules", "label_de": "Vorfahrtsregeln", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-highway-code", "gb-gov-driving"]
+        },
+        {
+            "id": "mph-limits",
+            "category": "speed_limits",
+            "question": "What are typical speed limits in the UK?",
+            "question_de": "Was sind typische Tempolimits in Großbritannien?",
+            "answer": "Limits are in mph: 30 in built-up areas (unless signed), 60 on single carriageways, 70 on dual carriageways and motorways. Many residential areas use 20 mph zones. Always follow posted signs—they override defaults.",
+            "answer_de": "Limits in mph: 30 in geschlossenen Ortschaften (sofern nicht anders ausgeschildert), 60 auf einspurigen Straßen, 70 auf zweispurigen und Autobahnen. Viele Wohngebiete haben 20-mph-Zonen. Immer Schilder befolgen.",
+            "relatedRules": [{ "label": "Speed limits", "label_de": "Tempolimits", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-highway-code", "gb-gov-driving"]
+        },
+        {
+            "id": "speed-cameras",
+            "category": "fines",
+            "question": "How common are speed cameras in the UK?",
+            "question_de": "Wie verbreitet sind Blitzer in Großbritannien?",
+            "answer": "Very common. Fixed Gatso/HADECS cameras, mobile vans, and SPECS average-speed zones operate nationwide. Penalty points and fines arrive by post. Sat-nav camera alerts are legal but do not excuse speeding.",
+            "answer_de": "Sehr verbreitet. Feste Gatso/HADECS-Kameras, mobile Messwagen und SPECS-Streckenradar landesweit. Punkte und Bußgelder per Post. Navi-Blitzerwarnungen sind legal, entschuldigen aber nichts.",
+            "relatedFines": [{ "label": "Speeding", "label_de": "Geschwindigkeit", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-gov-driving", "gb-highway-code"]
+        },
+        {
+            "id": "congestion-charge",
+            "category": "vignette_tolls",
+            "question": "What is the London Congestion Charge?",
+            "question_de": "Was ist die London Congestion Charge?",
+            "answer": "A weekday daytime fee for driving in central London (roughly 7am–6pm). Pay online by midnight the next charging day. Cameras read plates—unpaid charges escalate to penalty notices around £180.",
+            "answer_de": "Eine werktägliche Tagessgebühr fürs Fahren in Zentrallondon (ca. 7–18 Uhr). Online bis Mitternacht am nächsten Gebührentag zahlen. Kameras lesen Kennzeichen—unbezahlt eskalieren Strafen auf ca. £180.",
+            "relatedFines": [{ "label": "Congestion Charge unpaid", "label_de": "Congestion Charge unbezahlt", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-tfl", "gb-gov-driving"]
+        },
+        {
+            "id": "ulez",
+            "category": "vignette_tolls",
+            "question": "What is the ULEZ in London?",
+            "question_de": "Was ist die ULEZ in London?",
+            "answer": "The Ultra Low Emission Zone covers most of Greater London 24/7. Non-compliant cars pay a daily charge or face penalty notices. Check your vehicle's Euro standard on Transport for London before driving in.",
+            "answer_de": "Die Ultra Low Emission Zone gilt fast ganz London 24/7. Nicht konforme Autos zahlen Tagesgebühr oder erhalten Strafzettel. Euro-Norm auf Transport for London vor der Fahrt prüfen.",
+            "relatedRules": [{ "label": "London regional rules", "label_de": "London regionale Regeln", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-tfl"]
+        },
+        {
+            "id": "roundabouts",
+            "category": "documents",
+            "question": "How do roundabouts work in the UK?",
+            "question_de": "Wie funktionieren Kreisverkehre in Großbritannien?",
+            "answer": "Give way to traffic already on the roundabout from your right. Signal left when exiting. On multi-lane roundabouts, choose your lane early and follow road markings—getting it wrong is a common tourist mistake.",
+            "answer_de": "Vorfahrt dem Verkehr von rechts, der bereits im Kreisverkehr ist. Blinker links beim Verlassen. Bei mehrspurigen Kreisverkehren früh Spur wählen und Markierungen folgen—häufiger Touristenfehler.",
+            "relatedRules": [{ "label": "Priority rules", "label_de": "Vorfahrtsregeln", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-highway-code"]
+        },
+        {
+            "id": "phone-law",
+            "category": "fines",
+            "question": "Can I use my phone at a red light in the UK?",
+            "question_de": "Darf ich in Großbritannien bei Rot am Handy sein?",
+            "answer": "No. Handheld phone use is illegal whenever the engine is running, including in traffic queues and at red lights. Penalty is £200 and 6 points. Hands-free calls are allowed if you remain in proper control.",
+            "answer_de": "Nein. Handheld-Handygebrauch ist illegal bei laufendem Motor, auch im Stau und an roten Ampeln. Strafe £200 und 6 Punkte. Freisprech ist erlaubt bei voller Kontrolle.",
+            "relatedFines": [{ "label": "Handheld phone", "label_de": "Handy in der Hand", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-gov-driving", "gb-highway-code"]
+        },
+        {
+            "id": "scotland-alcohol",
+            "category": "fines",
+            "question": "Is the drink-drive limit different in Scotland?",
+            "question_de": "Ist die Promillegrenze in Schottland anders?",
+            "answer": "Yes. Scotland's limit is 0.05% BAC versus 0.08% in England, Wales, and Northern Ireland. Even one drink can put you over the Scottish limit—plan alternative transport.",
+            "answer_de": "Ja. Schottlands Grenze ist 0,05 % BAC gegenüber 0,08 % in England, Wales und Nordirland. Schon ein Drink kann reichen—Alternative planen.",
+            "relatedFines": [{ "label": "Drink driving", "label_de": "Trunkenheit am Steuer", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-gov-scotland", "gb-gov-driving"]
+        },
+        {
+            "id": "foreign-licence",
+            "category": "documents",
+            "question": "Can I drive in the UK with a foreign licence?",
+            "question_de": "Kann ich in Großbritannien mit ausländischem Führerschein fahren?",
+            "answer": "Visitors may drive on a valid non-UK licence for up to 12 months. Carry your licence and insurance documents. Some non-Latin licences need an IDP. Check DVLA guidance for your country.",
+            "answer_de": "Besucher dürfen bis zu 12 Monate mit gültigem Nicht-UK-Führerschein fahren. Führerschein und Versicherung mitführen. Manche nicht-lateinischen Scheine brauchen IDP. DVLA-Richtlinien für dein Land prüfen.",
+            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-dvla", "gb-gov-driving"]
+        },
+        {
+            "id": "rental-car",
+            "category": "rental",
+            "question": "What should I know when renting a car in the UK?",
+            "question_de": "Was sollte ich beim Mietwagen in Großbritannien beachten?",
+            "answer": "Most rentals are manual—request automatic early. Confirm Congestion Charge/ULEZ registration. Drive on the left from the first metre. Narrow rural roads and roundabouts need extra caution.",
+            "answer_de": "Die meisten Mietwagen haben Schaltgetriebe—Automatik früh anfragen. Congestion Charge/ULEZ-Registrierung klären. Von Meter eins links fahren. Schmale Landstraßen und Kreisverkehre brauchen Vorsicht.",
+            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/gb" }],
+            "relatedSourceIds": ["gb-dvla", "gb-tfl"]
+        }
+    ],
+    "rental_and_idp_notes": "Valid licence accepted for visitors (usually 12 months). IDP recommended for non-Latin script licences. Manual transmission is default—book automatic if needed.",
+    "regional_variations": [
+        {
+            "region_type": "city",
+            "region_name": "London",
+            "region_code": "GB-LND",
+            "coat_of_arms_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Coat_of_arms_of_the_City_of_London.svg/120px-Coat_of_arms_of_the_City_of_London.svg.png",
+            "differences": {
+                "tolls": {
+                    "required": true,
+                    "type": "congestion charge",
+                    "notes": "Congestion Charge weekdays; ULEZ 24/7 across most of Greater London."
+                }
+            },
+            "notes": "Congestion Charge, ULEZ, bus lanes, and box junctions are camera-enforced. Avoid driving in the centre if possible.",
+            "highlights": [
+                {
+                    "title": "Congestion Charge zone",
+                    "description": "Weekday fee for central London driving. Pay online promptly—late payment triggers penalty charge notices.",
+                    "icon": "toll"
+                },
+                {
+                    "title": "ULEZ emissions zone",
+                    "description": "Most of Greater London requires Euro-compliant vehicles or a daily charge. Check before entering with a rental car.",
+                    "icon": "environment"
+                },
+                {
+                    "title": "Bus lanes & box junctions",
+                    "description": "Yellow box junctions and bus lanes are camera-enforced. Do not enter a box unless your exit is clear.",
+                    "icon": "parking"
+                }
+            ]
+        },
+        {
+            "region_type": "province",
+            "region_name": "Scotland",
+            "region_code": "GB-SCT",
+            "coat_of_arms_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Coat_of_arms_of_Scotland.svg/120px-Coat_of_arms_of_Scotland.svg.png",
+            "differences": {
+                "alcohol_limit": {
+                    "value": 0.05,
+                    "unit": "BAC",
+                    "notes": "Lower limit than England and Wales."
+                }
+            },
+            "notes": "Lower drink-drive limit. Single-track roads with passing places in Highlands. Winter conditions on A9 and mountain routes.",
+            "highlights": [
+                {
+                    "title": "Lower drink-drive limit",
+                    "description": "Scotland enforces 0.05% BAC—stricter than the rest of the UK. Plan taxis or designated drivers.",
+                    "icon": "environment"
+                },
+                {
+                    "title": "Highland single-track roads",
+                    "description": "Use passing places to let oncoming traffic pass. Reverse to a passing place if the other driver is closer.",
+                    "icon": "mountain"
+                },
+                {
+                    "title": "Winter driving in Highlands",
+                    "description": "Snow and ice on A9, A82, and mountain passes. Check Police Scotland travel advice before long journeys.",
+                    "icon": "winter"
+                }
+            ]
+        }
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "sources": [
+        "https://www.gov.uk/driving",
+        "https://www.gov.uk/guidance/the-highway-code",
+        "https://www.gov.uk/dvla",
+        "https://tfl.gov.uk/",
+        "https://www.transport.gov.scot/"
+    ],
+    "source_entries": [
+        {
+            "id": "gb-gov-driving",
+            "title": "GOV.UK - Driving and transport",
+            "url": "https://www.gov.uk/driving",
+            "publisher": "UK Government",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits", "alcohol_limit"],
+            "notes": "Official UK government portal for driving rules, penalties, and visitor guidance.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "gb-highway-code",
+            "title": "The Highway Code",
+            "url": "https://www.gov.uk/guidance/the-highway-code",
+            "publisher": "UK Government",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits"],
+            "notes": "Official rules of the road including signs, roundabouts, and priority.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "gb-dvla",
+            "title": "DVLA - Driver licensing",
+            "url": "https://www.gov.uk/dvla",
+            "publisher": "Driver and Vehicle Licensing Agency",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "requirements",
+            "usageModuleKeys": ["requirements"],
+            "notes": "Official licensing authority for foreign licence rules and vehicle registration.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
+        },
+        {
+            "id": "gb-tfl",
+            "title": "Transport for London - Congestion Charge & ULEZ",
+            "url": "https://tfl.gov.uk/",
+            "publisher": "Transport for London",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": ["tolls"],
+            "notes": "Official source for London Congestion Charge, ULEZ, and road charges.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "gb-gov-scotland",
+            "title": "Transport Scotland - Trunk road conditions",
+            "url": "https://www.transport.gov.scot/",
+            "publisher": "Scottish Government",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "winter_rules",
+            "usageModuleKeys": ["winter_rules", "alcohol_limit"],
+            "notes": "Scottish transport authority including drink-drive limits and trunk road travel info.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { getCountryData } from "@/lib/countries"
 import { getDictionary } from "@/lib/dictionaries"
-import CountryFaqView from "@/components/faq/country-faq-view"
+import CountryFinesView from "@/components/fines/country-fines-view"
 
 interface PageProps {
     params: { lang: string; code: string }
@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ])
 
     if (!data) {
-        return { title: "FAQ | RoadRulez" }
+        return { title: "Traffic Fines | RoadRulez" }
     }
 
-    const labels = dict.faq_page as Record<string, string>
+    const labels = dict.fines_page as Record<string, string>
     const localizedName =
         params.lang === "de" ? data.name_local || data.name_en : data.name_en
 
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 }
 
-export default async function CountryFaqPage({ params }: PageProps) {
+export default async function CountryFinesPage({ params }: PageProps) {
     const iso2 = params.code.toUpperCase()
     const [data, dict] = await Promise.all([
         getCountryData(iso2, params.lang),
@@ -43,31 +43,31 @@ export default async function CountryFaqPage({ params }: PageProps) {
         )
     }
 
-    const faqEntries = data.faq ?? []
+    const finesData = data.traffic_fines
     const localizedName =
         params.lang === "de" ? data.name_local || data.name_en : data.name_en
 
-    if (faqEntries.length === 0) {
+    if (!finesData) {
         return (
             <div className="container px-4 py-16 text-center text-slate-400">
-                {(dict.faq_page as Record<string, string>).empty ?? dict.common.not_found}
+                {(dict.fines_page as Record<string, string>).empty ?? dict.common.not_found}
             </div>
         )
     }
 
     return (
-        <CountryFaqView
+        <CountryFinesView
             countryName={data.name_en}
             localizedName={localizedName}
             countryIso2={data.iso2}
             lang={params.lang}
             headerImages={data.header_images}
             lastVerified={data.last_verified}
-            faqEntries={faqEntries}
+            finesData={finesData}
             sourceEntries={data.source_entries ?? []}
-            labels={dict.faq_page as Record<string, string>}
+            labels={dict.fines_page as Record<string, string>}
+            sourceLabels={dict.sources_page as Record<string, string>}
             navLabels={dict.country_nav as Record<string, string>}
-            hasFines={Boolean(data.traffic_fines)}
         />
     )
 }

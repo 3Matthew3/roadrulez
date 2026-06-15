@@ -78,6 +78,313 @@
             "amount": "from €110"
         }
     ],
+    "traffic_fines": {
+        "relatedSourceIds": ["at-bmi-police", "at-ris-stvo", "at-oesterreich-driving"],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Strict enforcement on motorways, rural roads, and in cities. Section control and mobile units are common.",
+                "summary_de": "Strenge Kontrollen auf Autobahnen, Landstraßen und in Städten. Strecken- und mobile Messungen sind üblich.",
+                "maxConsequence": "License suspension & vehicle confiscation",
+                "maxConsequence_de": "Führerscheinentzug & Fahrzeugverfall"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Mobile phone while driving",
+                "title_de": "Handy am Steuer",
+                "summary": "Handheld phone use is prohibited. Hands-free systems are permitted when used correctly.",
+                "summary_de": "Handygebrauch am Steuer ist verboten. Freisprechanlagen sind bei korrekter Nutzung erlaubt.",
+                "maxConsequence": "€50 fine; points on repeat offences",
+                "maxConsequence_de": "€50 Bußgeld; Punkte bei Wiederholung"
+            },
+            {
+                "id": "red-light",
+                "icon": "red_light",
+                "title": "Red light violation",
+                "title_de": "Rotlichtverstoß",
+                "summary": "Running a red light is treated seriously, especially when pedestrians or cyclists are endangered.",
+                "summary_de": "Rotlichtverstöße werden streng geahndet, besonders wenn Fußgänger oder Radfahrer gefährdet werden.",
+                "maxConsequence": "High fines, points & possible suspension",
+                "maxConsequence_de": "Hohe Strafen, Punkte & Entzug möglich"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol offenses",
+                "title_de": "Alkohol am Steuer",
+                "summary": "General limit 0.5‰ for experienced drivers. Lower limits apply to novice and professional drivers.",
+                "summary_de": "Allgemein 0,5‰ für erfahrene Fahrer. Niedrigere Grenzen für Fahranfänger und Berufsfahrer.",
+                "maxConsequence": "Court, suspension & vehicle impound",
+                "maxConsequence_de": "Gericht, Entzug & Fahrzeugabnahme"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeitsüberschreitung",
+                "description": "Typical penalties for exceeding the limit outside built-up areas. Urban and motorway cases can differ; signs always prevail.",
+                "description_de": "Typische Strafen außerhalb geschlossener Ortschaften. Innerorts und auf Autobahnen können Abweichungen gelten; Schilder haben Vorrang.",
+                "rows": [
+                    {
+                        "id": "speed-10",
+                        "speedOver": "+10 km/h",
+                        "consequences": { "fine": "from €30", "fine_de": "ab €30" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-20",
+                        "speedOver": "+20 km/h",
+                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-30",
+                        "speedOver": "+30 km/h",
+                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-50",
+                        "speedOver": "+50 km/h",
+                        "severe": true,
+                        "consequences": {
+                            "fine": "from €300",
+                            "fine_de": "ab €300",
+                            "points": "2",
+                            "licenseSuspension": "up to 1 month",
+                            "licenseSuspension_de": "bis 1 Monat",
+                            "vehicleConfiscation": true
+                        },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-100",
+                        "speedOver": "+100 km/h",
+                        "severe": true,
+                        "consequences": {
+                            "fine": "from €800",
+                            "fine_de": "ab €800",
+                            "points": "4",
+                            "licenseSuspension": "several months",
+                            "licenseSuspension_de": "mehrere Monate",
+                            "vehicleImpound": true,
+                            "vehicleConfiscation": true,
+                            "court": true
+                        },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "alcohol_drugs",
+                "title": "Alcohol & Drugs",
+                "title_de": "Alkohol & Drogen",
+                "description": "Penalties increase sharply above the legal limit. Drug-impaired driving is treated as a criminal offence.",
+                "description_de": "Strafen steigen deutlich über der Grenze. Fahren unter Drogeneinfluss gilt als Straftat.",
+                "rows": [
+                    {
+                        "id": "alcohol-05",
+                        "label": "0.5–0.79‰ (experienced drivers)",
+                        "label_de": "0,5–0,79‰ (erfahrene Fahrer)",
+                        "consequences": { "fine": "from €300", "fine_de": "ab €300", "points": "2", "licenseSuspension": "up to 1 month", "licenseSuspension_de": "bis 1 Monat" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "alcohol-08",
+                        "label": "0.8‰ and above",
+                        "label_de": "0,8‰ und mehr",
+                        "severe": true,
+                        "consequences": { "fine": "from €800", "fine_de": "ab €800", "points": "4", "licenseSuspension": "several months", "licenseSuspension_de": "mehrere Monate", "vehicleImpound": true, "court": true },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "drugs",
+                        "label": "Driving under influence of drugs",
+                        "label_de": "Fahren unter Drogeneinfluss",
+                        "severe": true,
+                        "consequences": { "fine": "criminal proceedings", "fine_de": "Strafverfahren", "licenseSuspension": "mandatory", "licenseSuspension_de": "Pflichtentzug", "vehicleImpound": true, "court": true },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    }
+                ]
+            },
+            {
+                "id": "mobile_phone",
+                "title": "Mobile Phone Usage",
+                "title_de": "Handynutzung",
+                "rows": [
+                    {
+                        "id": "phone-handheld",
+                        "label": "Handheld phone use while driving",
+                        "label_de": "Handy am Steuer (in der Hand)",
+                        "consequences": { "fine": "€50", "fine_de": "€50" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "phone-repeat",
+                        "label": "Repeated offence within 12 months",
+                        "label_de": "Wiederholung innerhalb 12 Monaten",
+                        "consequences": { "fine": "€100", "fine_de": "€100", "points": "1" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    }
+                ]
+            },
+            {
+                "id": "seat_belts",
+                "title": "Seat Belts & Child Restraints",
+                "title_de": "Gurt & Kindersitz",
+                "rows": [
+                    {
+                        "id": "seatbelt-driver",
+                        "label": "Driver without seatbelt",
+                        "label_de": "Fahrer ohne Gurt",
+                        "consequences": { "fine": "€35", "fine_de": "€35" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "seatbelt-passenger",
+                        "label": "Passenger without seatbelt",
+                        "label_de": "Mitfahrer ohne Gurt",
+                        "consequences": { "fine": "€35", "fine_de": "€35" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "child-seat",
+                        "label": "Child without proper restraint",
+                        "label_de": "Kind ohne korrekten Kindersitz",
+                        "consequences": { "fine": "from €100", "fine_de": "ab €100", "points": "1" },
+                        "appliesTo": ["car"]
+                    }
+                ]
+            },
+            {
+                "id": "parking",
+                "title": "Parking Violations",
+                "title_de": "Parkverstöße",
+                "rows": [
+                    {
+                        "id": "parking-zone",
+                        "label": "Invalid or expired parking ticket",
+                        "label_de": "Ungültiges oder abgelaufenes Parkticket",
+                        "consequences": { "fine": "from €25", "fine_de": "ab €25" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "parking-disabled",
+                        "label": "Parking in disabled bay without permit",
+                        "label_de": "Parken im Behindertenparkplatz ohne Berechtigung",
+                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "parking-vienna",
+                        "label": "Short-stay zone violation (e.g. Vienna)",
+                        "label_de": "Kurzparkzone (z. B. Wien)",
+                        "consequences": { "fine": "from €30", "fine_de": "ab €30" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "red_light",
+                "title": "Red Light Violations",
+                "title_de": "Rotlichtverstöße",
+                "rows": [
+                    {
+                        "id": "red-light-simple",
+                        "label": "Red light (no endangerment)",
+                        "label_de": "Rotlicht (ohne Gefährdung)",
+                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "red-light-danger",
+                        "label": "Red light with endangerment",
+                        "label_de": "Rotlicht mit Gefährdung",
+                        "severe": true,
+                        "consequences": { "fine": "from €200", "fine_de": "ab €200", "points": "2", "licenseSuspension": "possible", "licenseSuspension_de": "möglich" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    }
+                ]
+            },
+            {
+                "id": "motorcycle",
+                "title": "Motorcycle Violations",
+                "title_de": "Motorradverstöße",
+                "rows": [
+                    {
+                        "id": "helmet-motorcycle",
+                        "label": "Riding without approved helmet",
+                        "label_de": "Fahren ohne genehmigten Helm",
+                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
+                        "appliesTo": ["motorcycle"]
+                    },
+                    {
+                        "id": "lane-splitting",
+                        "label": "Forbidden overtaking between lanes",
+                        "label_de": "Verbotenes Überholen zwischen Spuren",
+                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
+                        "appliesTo": ["motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "moped",
+                "title": "Moped Violations",
+                "title_de": "Mopedverstöße",
+                "rows": [
+                    {
+                        "id": "helmet-moped",
+                        "label": "Riding without helmet (where required)",
+                        "label_de": "Fahren ohne Helm (wo Pflicht)",
+                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
+                        "appliesTo": ["moped"]
+                    },
+                    {
+                        "id": "moped-passenger",
+                        "label": "Unauthorised passenger on moped",
+                        "label_de": "Unbefugter Beifahrer auf dem Moped",
+                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
+                        "appliesTo": ["moped"]
+                    }
+                ]
+            },
+            {
+                "id": "special_local",
+                "title": "Special Local Rules",
+                "title_de": "Besondere lokale Regeln",
+                "description": "Additional penalties beyond the standard vignette. Alpine routes and historic city centres often have separate enforcement.",
+                "description_de": "Zusätzliche Strafen neben der Standard-Vignette. Alpenstrecken und historische Stadtzentren haben oft eigene Kontrollen.",
+                "rows": [
+                    {
+                        "id": "no-vignette",
+                        "label": "No vignette on motorway/expressway",
+                        "label_de": "Keine Vignette auf Autobahn/Schnellstraße",
+                        "consequences": { "fine": "from €110", "fine_de": "ab €110" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "env-zone",
+                        "label": "Environmental zone violation (e.g. Vienna)",
+                        "label_de": "Umweltzonen-Verstoß (z. B. Wien)",
+                        "consequences": { "fine": "from €100", "fine_de": "ab €100" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "winter-equipment",
+                        "label": "Missing winter tyres/chains where required",
+                        "label_de": "Fehlende Winterreifen/Ketten wo Pflicht",
+                        "consequences": { "fine": "from €35", "fine_de": "ab €35" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            }
+        ]
+    },
     "faq": [
         {
             "id": "vignette-required",

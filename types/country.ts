@@ -91,6 +91,8 @@ export interface CountryData {
     quick_answer_bullets?: string[]
     /** Top fines shown on dashboard-style country pages. */
     top_fines?: CountryFineEntry[]
+    /** Structured fines page content for country sub-pages. */
+    traffic_fines?: CountryTrafficFinesData
     /** FAQ entries shown on dashboard-style country pages. */
     faq?: CountryFaqEntry[]
     common_traps: string[]
@@ -120,6 +122,78 @@ export interface RoadSign {
 export interface CountryFineEntry {
     title: string
     amount: string
+}
+
+export type FineVehicleApplicability = "car" | "motorcycle" | "moped"
+
+export type FineConsequenceId =
+    | "fine"
+    | "points"
+    | "license_suspension"
+    | "vehicle_impound"
+    | "vehicle_confiscation"
+    | "court"
+
+export type FineCategoryId =
+    | "speeding"
+    | "alcohol_drugs"
+    | "mobile_phone"
+    | "seat_belts"
+    | "parking"
+    | "red_light"
+    | "motorcycle"
+    | "moped"
+    | "special_local"
+
+export interface CountryFineConsequence {
+    fine?: string
+    fine_de?: string
+    points?: string | number | null
+    licenseSuspension?: string | null
+    licenseSuspension_de?: string | null
+    vehicleImpound?: boolean
+    vehicleConfiscation?: boolean
+    court?: boolean
+}
+
+export interface CountryFineRow {
+    id: string
+    /** Speed-over label, e.g. "+10 km/h" */
+    speedOver?: string
+    speedOver_de?: string
+    label?: string
+    label_de?: string
+    description?: string
+    description_de?: string
+    consequences: CountryFineConsequence
+    appliesTo: FineVehicleApplicability[]
+    severe?: boolean
+}
+
+export interface CountryFineCategory {
+    id: FineCategoryId
+    title?: string
+    title_de?: string
+    description?: string
+    description_de?: string
+    rows: CountryFineRow[]
+}
+
+export interface CountryFineSummary {
+    id: string
+    title: string
+    title_de?: string
+    summary: string
+    summary_de?: string
+    maxConsequence: string
+    maxConsequence_de?: string
+    icon?: "speed" | "phone" | "red_light" | "alcohol"
+}
+
+export interface CountryTrafficFinesData {
+    summaries: CountryFineSummary[]
+    categories: CountryFineCategory[]
+    relatedSourceIds?: string[]
 }
 
 export type FaqCategoryId =

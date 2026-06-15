@@ -11,18 +11,22 @@ interface VehicleSwitcherProps {
         motorcycle: string
         moped: string
     }
-    variant?: "default" | "austria"
+    variant?: "default" | "austria" | "premium"
+    fill?: string
+    fillText?: string
 }
 
 export default function VehicleSwitcher({
     currentVehicle,
     labels,
     variant = "default",
+    fill = "#2563EB",
+    fillText = "#FFFFFF",
 }: VehicleSwitcherProps) {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const isAustria = variant === "austria"
+    const isPremium = variant === "premium" || variant === "austria"
 
     const handleSwitch = (vehicle: string) => {
         const params = new URLSearchParams(searchParams.toString())
@@ -34,15 +38,17 @@ export default function VehicleSwitcher({
         router.replace(`${pathname}?${params.toString()}`)
     }
 
-    const shellClass = isAustria
+    const shellClass = isPremium
         ? "flex w-fit rounded-xl border border-[#E2E8F0] bg-white/90 p-1 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/80"
         : "flex w-fit rounded-lg border border-slate-700 bg-slate-800/50 p-1"
 
-    const activeClass = isAustria
-        ? "bg-[#DC2626] text-white shadow-sm"
-        : "bg-blue-600 text-white shadow-sm"
+    const activeClass = isPremium ? "shadow-sm" : "bg-blue-600 text-white shadow-sm"
 
-    const inactiveClass = isAustria
+    const activeStyle = isPremium
+        ? { backgroundColor: fill, color: fillText }
+        : undefined
+
+    const inactiveClass = isPremium
         ? "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
         : "text-slate-400 hover:text-slate-200"
 
@@ -62,6 +68,7 @@ export default function VehicleSwitcher({
                         "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all",
                         currentVehicle === id ? activeClass : inactiveClass
                     )}
+                    style={currentVehicle === id ? activeStyle : undefined}
                 >
                     <Icon className={cn("h-4 w-4", scale && "scale-75")} />
                     {label}

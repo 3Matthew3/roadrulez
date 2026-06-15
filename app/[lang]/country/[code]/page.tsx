@@ -9,7 +9,8 @@ import { Triangle } from "lucide-react"
 import { CountryViewTracker } from "@/components/country-view-tracker"
 import { canInlineEditCountry } from "@/lib/inline-edit/country-fields"
 import { getStaffRoleFromCookies } from "@/lib/staff-session"
-import AustriaDashboard from "@/components/country/austria-dashboard"
+import { usesPremiumCountryLayout } from "@/lib/country-theme"
+import CountryPremiumDashboard from "@/components/country/country-premium-dashboard"
 
 // Modular Components
 import CountryHero from "@/components/country/modular/CountryHero"
@@ -71,9 +72,9 @@ export default async function CountryPage({ params, searchParams }: PageProps) {
         }
     }
 
-    if (data.iso2 === "AT") {
+    if (usesPremiumCountryLayout(data.iso2)) {
         return (
-            <AustriaDashboard
+            <CountryPremiumDashboard
                 data={data}
                 localizedName={localizedName}
                 dict={dict}

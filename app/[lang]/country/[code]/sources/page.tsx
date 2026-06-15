@@ -23,6 +23,8 @@ export default async function CountrySourcesPage({ params }: PageProps) {
 
     const entries = data.source_entries ?? []
     const pageLabels = dict.sources_page as Record<string, string>
+    const localizedName =
+        params.lang === "de" ? data.name_local || data.name_en : data.name_en
 
     return (
         <CountrySourcesView
@@ -32,6 +34,12 @@ export default async function CountrySourcesPage({ params }: PageProps) {
             lastVerified={data.last_verified}
             sources={entries}
             labels={pageLabels}
+            localizedName={localizedName}
+            headerImages={data.header_images}
+            navLabels={dict.country_nav as Record<string, string>}
+            hasFaq={Boolean(data.faq?.length)}
+            hasFines={Boolean(data.traffic_fines)}
+            heroLabels={dict.faq_page as Record<string, string>}
         />
     )
 }

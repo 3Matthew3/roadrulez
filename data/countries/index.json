@@ -67,6 +67,17 @@
     },
     {
         "names": {
+            "en": "United Kingdom",
+            "de": "Vereinigtes Königreich",
+            "es": "Reino Unido",
+            "ja": "イギリス"
+        },
+        "name": "United Kingdom",
+        "iso2": "GB",
+        "flag": "🇬🇧"
+    },
+    {
+        "names": {
             "en": "Spain",
             "de": "Spanien",
             "es": "España",

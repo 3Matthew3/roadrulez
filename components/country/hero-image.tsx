@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { cn } from "@/lib/utils"
 
 interface HeroImageProps {
     images?: string[]
@@ -14,17 +14,14 @@ export default function HeroImage({ images, name }: HeroImageProps) {
 
     useEffect(() => {
         if (images && images.length > 0) {
-            // Check sessionStorage for last shown image to prevent back-to-back duplicates
-            const storageKey = `roadrulez_last_hero_v2_${name.replace(/\s+/g, '_').toLowerCase()}`
+            const storageKey = `roadrulez_last_hero_v2_${name.replace(/\s+/g, "_").toLowerCase()}`
             const lastImage = sessionStorage.getItem(storageKey)
 
-            // Filter out the last image if we have more than 1 option
             let candidates = images
             if (images.length > 1 && lastImage) {
-                candidates = images.filter(img => img !== lastImage)
+                candidates = images.filter((img) => img !== lastImage)
             }
 
-            // Select random from candidates
             const randomIndex = Math.floor(Math.random() * candidates.length)
             const selected = candidates[randomIndex]
 
@@ -35,30 +32,31 @@ export default function HeroImage({ images, name }: HeroImageProps) {
     }, [images, name])
 
     if (!isLoaded) {
-        return <div className="absolute inset-0 bg-[#0a0e17]" />
+        return <div className="absolute inset-0 bg-[#0a0e17]" aria-hidden="true" />
     }
 
     if (!currentImage) {
-        // Fallback to the default texture
         return (
-            <div className="absolute inset-0 opacity-40 bg-[url('/hero-globe.png')] bg-cover bg-center" />
+            <div
+                className="absolute inset-0 bg-[url('/hero-globe.png')] bg-cover bg-center opacity-40"
+                aria-hidden="true"
+            />
         )
     }
 
     return (
-        <AnimatePresence mode="wait">
-            <motion.div
-                key={currentImage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="absolute inset-0"
-            >
-                <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-                    style={{ backgroundImage: `url('${currentImage}')` }}
-                />
-            </motion.div>
-        </AnimatePresence>
+        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                src={currentImage}
+                alt=""
+                draggable={false}
+                className={cn(
+                    "pointer-events-none absolute inset-0 h-full w-full select-none object-cover",
+                    "transition-opacity duration-700",
+                    isLoaded ? "opacity-100" : "opacity-0"
+                )}
+            />
+        </div>
     )
 }

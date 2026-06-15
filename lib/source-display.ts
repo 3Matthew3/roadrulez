@@ -165,18 +165,18 @@ export function getTrustDisplay(source: CountrySourceEntry): SourceTrustDisplay 
 }
 
 const SOURCE_TYPE_BADGE_CLASS: Record<SourceTypeValue, string> = {
-    GOVERNMENT: "border-blue-500/30 bg-blue-500/10 text-blue-200",
-    POLICE: "border-cyan-500/30 bg-cyan-500/10 text-cyan-200",
-    MINISTRY: "border-indigo-500/30 bg-indigo-500/10 text-indigo-200",
-    AUTOMOBILE_ASSOCIATION: "border-violet-500/30 bg-violet-500/10 text-violet-200",
-    LEGAL_DATABASE: "border-slate-600/80 bg-slate-800/50 text-slate-300",
-    SECONDARY: "border-slate-700 bg-slate-800/40 text-slate-400",
+    GOVERNMENT: "border-blue-500/30 bg-blue-500/10 text-blue-700 dark:text-blue-200",
+    POLICE: "border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-200",
+    MINISTRY: "border-indigo-500/30 bg-indigo-500/10 text-indigo-700 dark:text-indigo-200",
+    AUTOMOBILE_ASSOCIATION: "border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-200",
+    LEGAL_DATABASE: "border-[#CBD5E1] bg-[#F1F5F9] text-[#475569] dark:border-slate-600/80 dark:bg-slate-800/50 dark:text-slate-300",
+    SECONDARY: "border-[#CBD5E1] bg-[#F1F5F9] text-[#64748B] dark:border-slate-700 dark:bg-slate-800/40 dark:text-slate-400",
 }
 
 const TRUST_BADGE_CLASS: Record<TrustLevelValue, string> = {
-    PRIMARY: "border-blue-500/35 bg-blue-500/12 text-blue-100",
-    TRUSTED_SECONDARY: "border-violet-500/30 bg-violet-500/10 text-violet-200",
-    UNVERIFIED: "border-slate-600 bg-slate-800/50 text-slate-400",
+    PRIMARY: "border-blue-500/35 bg-blue-500/12 text-blue-700 dark:text-blue-100",
+    TRUSTED_SECONDARY: "border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-200",
+    UNVERIFIED: "border-[#CBD5E1] bg-[#F1F5F9] text-[#64748B] dark:border-slate-600 dark:bg-slate-800/50 dark:text-slate-400",
 }
 
 export function getSourceTypeBadgeClass(sourceType: SourceTypeValue): string {

@@ -72,47 +72,109 @@ export function SpeedLimitIllustration({ scene, className }: SpeedLimitIllustrat
 
     return (
         <svg viewBox="0 0 160 48" fill="none" aria-hidden="true" className={shared}>
+            {/* Green verges */}
             <path
-                d="M0 30 L160 30"
-                stroke="currentColor"
-                strokeWidth="1"
-                opacity="0.15"
+                d="M0 48 L52 18 L0 18 Z"
+                fill="#86EFAC"
+                opacity="0.22"
+                className="dark:fill-emerald-600 dark:opacity-15"
             />
             <path
-                d="M0 38 L160 38"
-                stroke="currentColor"
-                strokeWidth="1"
-                opacity="0.15"
+                d="M160 48 L108 18 L160 18 Z"
+                fill="#86EFAC"
+                opacity="0.22"
+                className="dark:fill-emerald-600 dark:opacity-15"
             />
-            <rect x="0" y="30" width="160" height="8" fill="currentColor" opacity="0.06" />
+
+            {/* Road surface in perspective */}
             <path
-                d="M0 34 L160 34"
-                stroke="#DC2626"
-                className="dark:stroke-[#F87171]"
-                strokeWidth="1.5"
-                strokeDasharray="8 6"
-                opacity="0.75"
+                d="M24 48 L58 20 L102 20 L136 48 Z"
+                fill="currentColor"
+                opacity="0.22"
+                className="dark:opacity-30"
             />
-            <path d="M0 30 L160 30" stroke="currentColor" strokeWidth="2" opacity="0.35" />
-            <path d="M0 38 L160 38" stroke="currentColor" strokeWidth="2" opacity="0.35" />
-            <rect x="52" y="31" width="56" height="6" rx="1" fill="currentColor" opacity="0.12" />
             <path
-                d="M68 34 L76 34 M84 34 L92 34"
-                stroke="currentColor"
-                strokeWidth="1"
+                d="M24 48 L58 20 L102 20 L136 48 Z"
+                fill="#64748B"
+                opacity="0.35"
+                className="dark:fill-slate-500 dark:opacity-45"
+            />
+
+            {/* Guardrails / road edges */}
+            <path
+                d="M30 48 L60 22"
+                stroke="#F8FAFC"
+                strokeWidth="2.5"
                 strokeLinecap="round"
-                opacity="0.2"
+                className="dark:stroke-slate-200"
             />
             <path
-                d="M20 32 L28 36 L20 40 Z"
+                d="M130 48 L100 22"
+                stroke="#F8FAFC"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                className="dark:stroke-slate-200"
+            />
+
+            {/* Centre line */}
+            <path
+                d="M80 48 L80 21"
+                stroke="#DC2626"
+                strokeWidth="1.75"
+                strokeDasharray="7 5"
+                strokeLinecap="round"
+                className="dark:stroke-red-400"
+            />
+
+            {/* Overhead gantry — typical motorway cue */}
+            <path
+                d="M54 20 L106 20"
+                stroke="currentColor"
+                strokeWidth="2"
+                opacity="0.45"
+                className="dark:opacity-55"
+            />
+            <path d="M58 20 V14" stroke="currentColor" strokeWidth="2" opacity="0.45" className="dark:opacity-55" />
+            <path d="M102 20 V14" stroke="currentColor" strokeWidth="2" opacity="0.45" className="dark:opacity-55" />
+            <rect
+                x="62"
+                y="10"
+                width="36"
+                height="5"
+                rx="1"
                 fill="currentColor"
-                opacity="0.2"
+                opacity="0.3"
+                className="dark:opacity-40"
+            />
+
+            {/* Direction chevrons on the road */}
+            <path
+                d="M74 38 L80 32 L86 38"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.25"
             />
             <path
-                d="M132 32 L140 36 L132 40 Z"
-                fill="currentColor"
-                opacity="0.2"
+                d="M74 42 L80 36 L86 42"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.18"
             />
+        </svg>
+    )
+}
+
+/** Standard EU/DE motorway pictogram (Autobahn symbol) — uses currentColor like Lucide icons. */
+export function MotorwayPictogramIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+            <rect x="4" y="4.25" width="16" height="2.75" rx="0.45" />
+            <path d="M6.25 19.75 L9.25 8.75 H10.85 L9.85 19.75 Z" />
+            <path d="M17.75 19.75 L14.75 8.75 H13.15 L14.15 19.75 Z" />
         </svg>
     )
 }

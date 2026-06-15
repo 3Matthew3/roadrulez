@@ -5,6 +5,20 @@
     "iso3": "DEU",
     "continent": "Europe",
     "flag": "🇩🇪",
+    "header_images": [
+        "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1511527661048-7fe58d5e7140?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1587330979470-3593a077a37d?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1587330979470-b5cce958ee2b?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Rechts vor Links at unmarked intersections",
+        "Speed cameras are widespread and strict",
+        "Autobahns are toll-free for passenger cars",
+        "Environmental zones require a valid sticker in many cities"
+    ],
     "drive_side": "right",
     "rules": {
         "speed_limits": {
@@ -48,25 +62,628 @@
         "Running out of gas on the Autobahn is illegal.",
         "Right before Left priority violations."
     ],
+    "top_fines": [
+        {
+            "title": "Speeding +21 km/h in town",
+            "amount": "from €80"
+        },
+        {
+            "title": "Using phone while driving",
+            "amount": "€100"
+        },
+        {
+            "title": "Tailgating (Drängeln)",
+            "amount": "from €80"
+        }
+    ],
+    "traffic_fines": {
+        "relatedSourceIds": ["de-bmi-police", "de-ris-stvo", "de-adac"],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Strict enforcement on Autobahns, rural roads, and in cities. Fixed cameras, mobile units, and section control are widespread.",
+                "summary_de": "Strenge Kontrollen auf Autobahnen, Landstraßen und in Städten. Blitzer, mobile Messungen und Streckenradar sind weit verbreitet.",
+                "maxConsequence": "License suspension, points & criminal proceedings",
+                "maxConsequence_de": "Führerscheinentzug, Punkte & Strafverfahren"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Mobile phone while driving",
+                "title_de": "Handy am Steuer",
+                "summary": "Handheld phone use is prohibited. The engine must be off to touch the phone—Start-Stop systems do not count.",
+                "summary_de": "Handygebrauch am Steuer ist verboten. Der Motor muss aus sein, um das Handy zu benutzen—Start-Stopp-Systeme zählen nicht.",
+                "maxConsequence": "€100 fine & 1 point",
+                "maxConsequence_de": "€100 Bußgeld & 1 Punkt"
+            },
+            {
+                "id": "red-light",
+                "icon": "red_light",
+                "title": "Red light violation",
+                "title_de": "Rotlichtverstoß",
+                "summary": "Running a red light is treated seriously, especially when pedestrians or cyclists are endangered.",
+                "summary_de": "Rotlichtverstöße werden streng geahndet, besonders wenn Fußgänger oder Radfahrer gefährdet werden.",
+                "maxConsequence": "High fines, points & possible suspension",
+                "maxConsequence_de": "Hohe Strafen, Punkte & Entzug möglich"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol offenses",
+                "title_de": "Alkohol am Steuer",
+                "summary": "General limit 0.5‰ for experienced drivers. Zero tolerance for novices and drivers under 21.",
+                "summary_de": "Allgemein 0,5‰ für erfahrene Fahrer. Nulltoleranz für Fahranfänger und Fahrer unter 21.",
+                "maxConsequence": "Court, suspension & vehicle impound",
+                "maxConsequence_de": "Gericht, Entzug & Fahrzeugabnahme"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeitsüberschreitung",
+                "description": "Typical penalties for exceeding the limit outside built-up areas. Urban and Autobahn cases can differ; posted signs always prevail.",
+                "description_de": "Typische Strafen außerhalb geschlossener Ortschaften. Innerorts und auf Autobahnen können Abweichungen gelten; Schilder haben Vorrang.",
+                "rows": [
+                    {
+                        "id": "speed-10",
+                        "speedOver": "+10 km/h",
+                        "consequences": { "fine": "from €20", "fine_de": "ab €20" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-20",
+                        "speedOver": "+20 km/h",
+                        "consequences": { "fine": "from €60", "fine_de": "ab €60" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-30",
+                        "speedOver": "+30 km/h",
+                        "consequences": { "fine": "from €100", "fine_de": "ab €100", "points": "1" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-50",
+                        "speedOver": "+50 km/h",
+                        "severe": true,
+                        "consequences": {
+                            "fine": "from €400",
+                            "fine_de": "ab €400",
+                            "points": "2",
+                            "licenseSuspension": "1 month",
+                            "licenseSuspension_de": "1 Monat"
+                        },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-100",
+                        "speedOver": "+100 km/h",
+                        "severe": true,
+                        "consequences": {
+                            "fine": "from €600",
+                            "fine_de": "ab €600",
+                            "points": "2",
+                            "licenseSuspension": "several months",
+                            "licenseSuspension_de": "mehrere Monate",
+                            "vehicleImpound": true,
+                            "court": true
+                        },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "alcohol_drugs",
+                "title": "Alcohol & Drugs",
+                "title_de": "Alkohol & Drogen",
+                "description": "Penalties increase sharply above the legal limit. Drug-impaired driving is treated as a criminal offence.",
+                "description_de": "Strafen steigen deutlich über der Grenze. Fahren unter Drogeneinfluss gilt als Straftat.",
+                "rows": [
+                    {
+                        "id": "alcohol-05",
+                        "label": "0.5–1.09‰ (experienced drivers)",
+                        "label_de": "0,5–1,09‰ (erfahrene Fahrer)",
+                        "consequences": { "fine": "from €500", "fine_de": "ab €500", "points": "1", "licenseSuspension": "1 month", "licenseSuspension_de": "1 Monat" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "alcohol-11",
+                        "label": "1.1‰ and above",
+                        "label_de": "1,1‰ und mehr",
+                        "severe": true,
+                        "consequences": { "fine": "criminal proceedings", "fine_de": "Strafverfahren", "points": "3", "licenseSuspension": "mandatory", "licenseSuspension_de": "Pflichtentzug", "vehicleImpound": true, "court": true },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "alcohol-novice",
+                        "label": "Any alcohol (novice / under 21)",
+                        "label_de": "Jeder Alkohol (Fahranfänger / unter 21)",
+                        "severe": true,
+                        "consequences": { "fine": "from €250", "fine_de": "ab €250", "points": "1", "licenseSuspension": "possible", "licenseSuspension_de": "möglich" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "drugs",
+                        "label": "Driving under influence of drugs",
+                        "label_de": "Fahren unter Drogeneinfluss",
+                        "severe": true,
+                        "consequences": { "fine": "criminal proceedings", "fine_de": "Strafverfahren", "licenseSuspension": "mandatory", "licenseSuspension_de": "Pflichtentzug", "vehicleImpound": true, "court": true },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    }
+                ]
+            },
+            {
+                "id": "mobile_phone",
+                "title": "Mobile Phone Usage",
+                "title_de": "Handynutzung",
+                "rows": [
+                    {
+                        "id": "phone-handheld",
+                        "label": "Handheld phone use while driving",
+                        "label_de": "Handy am Steuer (in der Hand)",
+                        "consequences": { "fine": "€100", "fine_de": "€100", "points": "1" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "phone-engine-on",
+                        "label": "Touching phone with engine running (including Start-Stop)",
+                        "label_de": "Handy bei laufendem Motor (auch Start-Stopp)",
+                        "consequences": { "fine": "€100", "fine_de": "€100", "points": "1" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "phone-danger",
+                        "label": "Phone use causing danger",
+                        "label_de": "Handygebrauch mit Gefährdung",
+                        "severe": true,
+                        "consequences": { "fine": "from €200", "fine_de": "ab €200", "points": "2", "licenseSuspension": "possible", "licenseSuspension_de": "möglich" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    }
+                ]
+            },
+            {
+                "id": "seat_belts",
+                "title": "Seat Belts & Child Restraints",
+                "title_de": "Gurt & Kindersitz",
+                "rows": [
+                    {
+                        "id": "seatbelt-driver",
+                        "label": "Driver without seatbelt",
+                        "label_de": "Fahrer ohne Gurt",
+                        "consequences": { "fine": "€30", "fine_de": "€30" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "seatbelt-passenger",
+                        "label": "Passenger without seatbelt",
+                        "label_de": "Mitfahrer ohne Gurt",
+                        "consequences": { "fine": "€30", "fine_de": "€30" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "child-seat",
+                        "label": "Child without proper restraint",
+                        "label_de": "Kind ohne korrekten Kindersitz",
+                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
+                        "appliesTo": ["car"]
+                    }
+                ]
+            },
+            {
+                "id": "parking",
+                "title": "Parking Violations",
+                "title_de": "Parkverstöße",
+                "rows": [
+                    {
+                        "id": "parking-disc",
+                        "label": "Blue zone without valid parking disc",
+                        "label_de": "Blaue Zone ohne gültige Parkscheibe",
+                        "consequences": { "fine": "from €20", "fine_de": "ab €20" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "parking-wrong-direction",
+                        "label": "Parking against traffic flow",
+                        "label_de": "Parken gegen die Fahrtrichtung",
+                        "consequences": { "fine": "from €20", "fine_de": "ab €20" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "parking-disabled",
+                        "label": "Parking in disabled bay without permit",
+                        "label_de": "Parken im Behindertenparkplatz ohne Berechtigung",
+                        "consequences": { "fine": "from €55", "fine_de": "ab €55" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "parking-berlin",
+                        "label": "Illegal parking in Berlin residential zones",
+                        "label_de": "Illegales Parken in Berliner Anwohnerzonen",
+                        "consequences": { "fine": "from €35", "fine_de": "ab €35" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "red_light",
+                "title": "Red Light Violations",
+                "title_de": "Rotlichtverstöße",
+                "rows": [
+                    {
+                        "id": "red-light-simple",
+                        "label": "Red light (no endangerment)",
+                        "label_de": "Rotlicht (ohne Gefährdung)",
+                        "consequences": { "fine": "from €90", "fine_de": "ab €90", "points": "1" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "red-light-danger",
+                        "label": "Red light with endangerment",
+                        "label_de": "Rotlicht mit Gefährdung",
+                        "severe": true,
+                        "consequences": { "fine": "from €200", "fine_de": "ab €200", "points": "2", "licenseSuspension": "1 month", "licenseSuspension_de": "1 Monat" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "red-light-pedestrian",
+                        "label": "Red light with pedestrian/cyclist endangerment",
+                        "label_de": "Rotlicht mit Fußgänger-/Radfahrergefährdung",
+                        "severe": true,
+                        "consequences": { "fine": "from €360", "fine_de": "ab €360", "points": "2", "licenseSuspension": "1 month", "licenseSuspension_de": "1 Monat", "court": true },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    }
+                ]
+            },
+            {
+                "id": "motorcycle",
+                "title": "Motorcycle Violations",
+                "title_de": "Motorradverstöße",
+                "rows": [
+                    {
+                        "id": "helmet-motorcycle",
+                        "label": "Riding without approved helmet",
+                        "label_de": "Fahren ohne genehmigten Helm",
+                        "consequences": { "fine": "from €15", "fine_de": "ab €15" },
+                        "appliesTo": ["motorcycle"]
+                    },
+                    {
+                        "id": "lane-splitting",
+                        "label": "Forbidden overtaking between lanes",
+                        "label_de": "Verbotenes Überholen zwischen Spuren",
+                        "consequences": { "fine": "from €100", "fine_de": "ab €100", "points": "1" },
+                        "appliesTo": ["motorcycle"]
+                    },
+                    {
+                        "id": "motorcycle-passenger-no-helmet",
+                        "label": "Passenger without helmet",
+                        "label_de": "Beifahrer ohne Helm",
+                        "consequences": { "fine": "from €15", "fine_de": "ab €15" },
+                        "appliesTo": ["motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "moped",
+                "title": "Moped Violations",
+                "title_de": "Mopedverstöße",
+                "rows": [
+                    {
+                        "id": "helmet-moped",
+                        "label": "Riding without helmet (where required)",
+                        "label_de": "Fahren ohne Helm (wo Pflicht)",
+                        "consequences": { "fine": "from €15", "fine_de": "ab €15" },
+                        "appliesTo": ["moped"]
+                    },
+                    {
+                        "id": "moped-passenger",
+                        "label": "Unauthorised passenger on moped",
+                        "label_de": "Unbefugter Beifahrer auf dem Moped",
+                        "consequences": { "fine": "from €25", "fine_de": "ab €25" },
+                        "appliesTo": ["moped"]
+                    },
+                    {
+                        "id": "moped-speed",
+                        "label": "Exceeding moped speed limit",
+                        "label_de": "Überschreitung der Moped-Höchstgeschwindigkeit",
+                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
+                        "appliesTo": ["moped"]
+                    }
+                ]
+            },
+            {
+                "id": "special_local",
+                "title": "Special Local Rules",
+                "title_de": "Besondere lokale Regeln",
+                "description": "Germany-specific offences including environmental zones, tailgating, and Autobahn breakdown rules.",
+                "description_de": "Deutschland-spezifische Verstöße wie Umweltzonen, Drängeln und Autobahn-Pannenregeln.",
+                "rows": [
+                    {
+                        "id": "env-zone-berlin",
+                        "label": "Environmental zone violation (e.g. Berlin without green sticker)",
+                        "label_de": "Umweltzonen-Verstoß (z. B. Berlin ohne grüne Plakette)",
+                        "consequences": { "fine": "€80", "fine_de": "€80" },
+                        "appliesTo": ["car"]
+                    },
+                    {
+                        "id": "tailgating",
+                        "label": "Tailgating (Drängeln) — too close",
+                        "label_de": "Drängeln — zu geringer Abstand",
+                        "consequences": { "fine": "from €80", "fine_de": "ab €80", "points": "1" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "tailgating-danger",
+                        "label": "Tailgating with endangerment",
+                        "label_de": "Drängeln mit Gefährdung",
+                        "severe": true,
+                        "consequences": { "fine": "criminal proceedings", "fine_de": "Strafverfahren", "points": "2", "licenseSuspension": "possible", "licenseSuspension_de": "möglich", "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "autobahn-fuel",
+                        "label": "Running out of fuel on the Autobahn",
+                        "label_de": "Benzinmangel auf der Autobahn",
+                        "consequences": { "fine": "€80", "fine_de": "€80" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "winter-equipment",
+                        "label": "Missing winter tyres in winter conditions",
+                        "label_de": "Fehlende Winterreifen bei winterlichen Verhältnissen",
+                        "consequences": { "fine": "from €60", "fine_de": "ab €60", "points": "1" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            }
+        ]
+    },
+    "faq": [
+        {
+            "id": "rechts-vor-links",
+            "category": "documents",
+            "question": "What does 'Rechts vor Links' mean in Germany?",
+            "question_de": "Was bedeutet 'Rechts vor Links' in Deutschland?",
+            "answer": "At unmarked intersections, traffic coming from your right has priority. This applies widely in residential areas and side streets. Priority roads are marked with a yellow diamond sign—then you have right of way on that road.",
+            "answer_de": "An unbeschilderten Kreuzungen hat der Verkehr von rechts Vorfahrt. Das gilt häufig in Wohngebieten und Nebenstraßen. Vorfahrtstraßen sind mit dem gelben Rautenschild gekennzeichnet—dann hast du auf dieser Straße Vorfahrt.",
+            "relatedRules": [{ "label": "Priority rules", "label_de": "Vorfahrtsregeln", "href": "/country/de" }],
+            "relatedSourceIds": ["de-ris-stvo", "de-adac"]
+        },
+        {
+            "id": "autobahn-speed",
+            "category": "speed_limits",
+            "question": "Is there a speed limit on German Autobahns?",
+            "question_de": "Gibt es ein Tempolimit auf deutschen Autobahnen?",
+            "answer": "Many Autobahn sections have no fixed limit, but 130 km/h is the recommended speed (Richtgeschwindigkeit). Limits apply wherever signed, including construction zones, urban stretches, and advisory zones. Drive on the right and pass on the left.",
+            "answer_de": "Viele Autobahnabschnitte haben kein festes Limit, aber 130 km/h ist die Richtgeschwindigkeit. Limits gelten, wo ausgeschildert—Baustellen, Stadtautobahnen und empfohlene Bereiche. Rechts fahren, links überholen.",
+            "relatedRules": [{ "label": "Speed limits overview", "label_de": "Tempolimits-Übersicht", "href": "/country/de" }],
+            "relatedSourceIds": ["de-bmdv", "de-ris-stvo"]
+        },
+        {
+            "id": "umweltplakette-berlin",
+            "category": "vignette_tolls",
+            "question": "Do I need an environmental sticker (Umweltplakette) for Berlin?",
+            "question_de": "Brauche ich eine Umweltplakette für Berlin?",
+            "answer": "Yes. Berlin's Umweltzone requires at least a green Feinstaubplakette for most cars. Order online or buy from authorised outlets before driving in. Driving without a valid sticker can result in an €80 fine.",
+            "answer_de": "Ja. Berlins Umweltzone erfordert mindestens eine grüne Feinstaubplakette für die meisten Autos. Online bestellen oder bei autorisierten Stellen kaufen, bevor du hineinfährst. Ohne gültige Plakette drohen €80 Bußgeld.",
+            "relatedFines": [{ "label": "Environmental zone violation", "label_de": "Umweltzonen-Verstoß", "href": "/country/de" }],
+            "relatedSourceIds": ["de-kba", "de-bmdv"]
+        },
+        {
+            "id": "eu-licence",
+            "category": "documents",
+            "question": "Can I use my EU driving licence in Germany?",
+            "question_de": "Kann ich meinen EU-Führerschein in Deutschland nutzen?",
+            "answer": "EU and EEA driving licences are generally accepted for tourists. Carry your physical licence and passport or ID. Long-term residents may need to exchange their licence under German rules.",
+            "answer_de": "EU- und EWR-Führerscheine werden für Touristen in der Regel akzeptiert. Führerschein und Ausweis mitführen. Langzeitaufenthalter müssen ggf. umschreiben.",
+            "relatedRules": [{ "label": "Before you drive", "label_de": "Vor der Fahrt", "href": "/country/de" }],
+            "relatedSourceIds": ["de-kba", "de-adac"]
+        },
+        {
+            "id": "phone-engine",
+            "category": "fines",
+            "question": "Can I use my phone when the engine is in Start-Stop mode?",
+            "question_de": "Darf ich mein Handy nutzen, wenn der Motor im Start-Stopp-Modus ist?",
+            "answer": "No. Germany treats Start-Stop as engine running. You may only touch your phone when the engine is fully off. Handheld use while driving carries a €100 fine and 1 point in Flensburg.",
+            "answer_de": "Nein. Start-Stopp gilt als laufender Motor. Du darfst das Handy nur bei ausgeschaltetem Motor benutzen. Handy am Steuer kostet €100 Bußgeld und 1 Punkt in Flensburg.",
+            "relatedFines": [{ "label": "Using phone while driving", "label_de": "Handy am Steuer", "href": "/country/de" }],
+            "relatedRules": [{ "label": "Phone use rules", "label_de": "Handyregeln", "href": "/country/de" }],
+            "relatedSourceIds": ["de-bmi-police", "de-ris-stvo"]
+        },
+        {
+            "id": "winter-tyres",
+            "category": "winter",
+            "question": "Are winter tyres required in Germany?",
+            "question_de": "Sind Winterreifen in Deutschland Pflicht?",
+            "answer": "In winter road conditions (ice, snow, slush), tyres with the Alpine symbol (three-peak mountain snowflake) or M+S marking are mandatory. All-season tyres must meet the Alpine symbol requirement. Fines apply if you cause a hazard without suitable tyres.",
+            "answer_de": "Bei winterlichen Straßenverhältnissen (Eis, Schnee, Matsch) sind Reifen mit Alpinsymbol (drei Gipfel mit Schneeflocke) oder M+S-Kennzeichnung Pflicht. Ganzjahresreifen brauchen das Alpinsymbol. Bußgelder bei Gefährdung ohne passende Reifen.",
+            "relatedRules": [{ "label": "Winter equipment rules", "label_de": "Winterausrüstung", "href": "/country/de" }],
+            "relatedSourceIds": ["de-bmdv", "de-adac"]
+        },
+        {
+            "id": "red-light",
+            "category": "fines",
+            "question": "What is the fine for running a red light in Germany?",
+            "question_de": "Welches Bußgeld droht bei Rotlicht in Deutschland?",
+            "answer": "A simple red-light violation typically costs from €90 plus 1 point. If pedestrians or cyclists are endangered, fines rise to €200–€360 with 2 points and possible driving ban. Cameras are common at urban intersections.",
+            "answer_de": "Ein einfacher Rotlichtverstoß kostet typischerweise ab €90 plus 1 Punkt. Bei Gefährdung von Fußgängern oder Radfahrern steigen die Strafen auf €200–€360 mit 2 Punkten und Fahrverbot. Kameras sind in Städten verbreitet.",
+            "relatedFines": [{ "label": "Red light violation", "label_de": "Rotlichtverstoß", "href": "/country/de" }],
+            "relatedSourceIds": ["de-bmi-police", "de-ris-stvo"]
+        },
+        {
+            "id": "parking-disc",
+            "category": "documents",
+            "question": "How does the parking disc (Parkscheibe) work in Germany?",
+            "question_de": "Wie funktioniert die Parkscheibe in Deutschland?",
+            "answer": "In blue parking zones, display a Parkscheibe showing your arrival time rounded up to the next half hour. Maximum stay is shown on signs—often 1–3 hours. Fines apply for missing or incorrect discs.",
+            "answer_de": "In blauen Parkzonen Parkscheibe mit Ankunftszeit anzeigen, auf die nächste halbe Stunde aufgerundet. Höchstparkdauer steht auf Schildern—oft 1–3 Stunden. Bußgelder bei fehlender oder falscher Scheibe.",
+            "relatedRules": [{ "label": "Parking rules", "label_de": "Parkregeln", "href": "/country/de" }],
+            "relatedSourceIds": ["de-adac", "de-ris-stvo"]
+        },
+        {
+            "id": "tailgating",
+            "category": "fines",
+            "question": "How serious is tailgating (Drängeln) in Germany?",
+            "question_de": "Wie schwerwiegend ist Drängeln in Deutschland?",
+            "answer": "Tailgating is heavily enforced. Driving too close typically costs from €80 and 1 point. If you endanger others, it can become a criminal offence with higher penalties and possible licence suspension.",
+            "answer_de": "Drängeln wird streng geahndet. Zu geringer Abstand kostet typischerweise ab €80 und 1 Punkt. Bei Gefährdung kann es eine Straftat mit höheren Strafen und Führerscheinentzug werden.",
+            "relatedFines": [{ "label": "Tailgating (Drängeln)", "label_de": "Drängeln", "href": "/country/de" }],
+            "relatedSourceIds": ["de-bmi-police", "de-ris-stvo"]
+        },
+        {
+            "id": "rental-car",
+            "category": "rental",
+            "question": "What should I know when renting a car in Germany?",
+            "question_de": "Was sollte ich beim Mietwagen in Deutschland beachten?",
+            "answer": "Confirm mandatory equipment (triangle, first-aid kit, vest), environmental sticker needs for your route, and cross-border policies. Non-EU drivers should verify IDP requirements. Check winter tyre policy in cold months.",
+            "answer_de": "Pflichtausstattung (Dreieck, Verbandskasten, Weste), Umweltplakette für deine Route und Grenzübertrittsregeln klären. Nicht-EU-Fahrer sollten IDP-Anforderungen prüfen. Winterreifen-Regelung in kalten Monaten checken.",
+            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/de" }],
+            "relatedSourceIds": ["de-adac", "de-kba"]
+        },
+        {
+            "id": "autobahn-fuel",
+            "category": "fines",
+            "question": "Is it illegal to run out of fuel on the Autobahn?",
+            "question_de": "Ist es verboten, auf der Autobahn ohne Benzin liegenzubleiben?",
+            "answer": "Yes. Stopping on the Autobahn due to avoidable fuel shortage is an administrative offence, typically fined €80. Plan fuel stops—service areas can be far apart on some routes.",
+            "answer_de": "Ja. Ein vermeidbarer Benzinstopp auf der Autobahn ist eine Ordnungswidrigkeit, typischerweise €80 Bußgeld. Tankstopps planen—Raststätten können auf manchen Strecken weit auseinanderliegen.",
+            "relatedFines": [{ "label": "Running out of fuel on Autobahn", "label_de": "Benzinmangel auf der Autobahn", "href": "/country/de" }],
+            "relatedSourceIds": ["de-ris-stvo", "de-adac"]
+        }
+    ],
     "rental_and_idp_notes": "Valid domestic license usually accepted. IDP recommended for non-EU/EEA licenses.",
     "regional_variations": [
         {
             "region_type": "city",
             "region_name": "Berlin",
+            "region_code": "DE-BE",
             "differences": {},
-            "notes": "Environmental Zone (Umweltzone) requires Green Sticker for entry. Heavy traffic and scarce parking."
+            "notes": "Environmental Zone (Umweltzone) requires Green Sticker for entry. Heavy traffic and scarce parking.",
+            "highlights": [
+                {
+                    "title": "Environmental zone (Umweltzone)",
+                    "description": "Most of Berlin requires a green Feinstaubplakette. Order before arrival—driving without one risks an €80 fine.",
+                    "icon": "environment"
+                },
+                {
+                    "title": "Residential parking zones",
+                    "description": "Anwohnerparken applies in many districts. Visitors need short-term permits or use Park-and-Ride options.",
+                    "icon": "parking"
+                },
+                {
+                    "title": "Dense urban traffic",
+                    "description": "Expect congestion on the Ring and major arterials. Public transport and park-and-ride are practical alternatives.",
+                    "icon": "parking"
+                }
+            ]
         },
         {
-            "region_type": "city",
-            "region_name": "Munich",
+            "region_type": "state",
+            "region_name": "Munich / Bavaria",
+            "region_code": "DE-BY",
             "differences": {},
-            "notes": "Very strict parking enforcement. Mittlerer Ring often congested."
+            "notes": "Very strict parking enforcement. Mittlerer Ring often congested. Alpine routes may require winter equipment.",
+            "highlights": [
+                {
+                    "title": "Strict parking enforcement",
+                    "description": "Munich enforces parking rules quickly, especially in the city centre and residential zones. Use official garages or Park-and-Ride.",
+                    "icon": "parking"
+                },
+                {
+                    "title": "Environmental zones",
+                    "description": "Munich and other Bavarian cities operate Umweltzonen. Check sticker requirements before entering city centres.",
+                    "icon": "environment"
+                },
+                {
+                    "title": "Alpine winter conditions",
+                    "description": "Routes toward the Alps can require winter tyres or chains in cold months. Check conditions before mountain drives.",
+                    "icon": "winter"
+                }
+            ]
         }
     ],
-    "last_verified": "2026-01-11",
+    "last_verified": "2026-06-14",
     "status": "verified",
+    "data_coverage": "high",
     "sources": [
-        "ADAC",
-        "BMDV (Ministry of Transport)"
+        "https://www.bmdv.bund.de/",
+        "https://www.adac.de/",
+        "https://www.gesetze-im-internet.de/stvo_2013/",
+        "https://www.kba.de/"
+    ],
+    "source_entries": [
+        {
+            "id": "de-bmdv",
+            "title": "Federal Ministry for Digital and Transport",
+            "url": "https://www.bmdv.bund.de/",
+            "publisher": "Bundesministerium für Digitales und Verkehr",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "tolls"],
+            "notes": "Official federal ministry for transport policy, road infrastructure, and mobility regulations.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-14T10:00:00.000Z"
+        },
+        {
+            "id": "de-adac",
+            "title": "ADAC driving information for Germany",
+            "url": "https://www.adac.de/",
+            "publisher": "ADAC",
+            "publishedDate": null,
+            "sourceType": "AUTOMOBILE_ASSOCIATION",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "requirements",
+            "usageModuleKeys": ["requirements", "mandatory_equipment", "winter_rules"],
+            "notes": "Automobile club guidance for practical road-trip preparation and fine overviews.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-14T10:00:00.000Z"
+        },
+        {
+            "id": "de-bmi-police",
+            "title": "Federal Ministry of the Interior - Road traffic enforcement",
+            "url": "https://www.bmi.bund.de/",
+            "publisher": "Bundesministerium des Innern und für Heimat",
+            "publishedDate": null,
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits"],
+            "notes": "Federal authority reference for traffic enforcement and road safety policy.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-10T10:00:00.000Z"
+        },
+        {
+            "id": "de-ris-stvo",
+            "title": "German road traffic regulations (StVO)",
+            "url": "https://www.gesetze-im-internet.de/stvo_2013/index.html",
+            "publisher": "German Federal Ministry of Justice",
+            "publishedDate": null,
+            "sourceType": "LEGAL_DATABASE",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits", "alcohol_limit"],
+            "notes": "Official legal text of the Straßenverkehrs-Ordnung (StVO) and related provisions.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-08T10:00:00.000Z"
+        },
+        {
+            "id": "de-kba",
+            "title": "Kraftfahrt-Bundesamt - Vehicle registration and environmental zones",
+            "url": "https://www.kba.de/",
+            "publisher": "Kraftfahrt-Bundesamt",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "requirements",
+            "usageModuleKeys": ["requirements"],
+            "notes": "Official authority for vehicle registration, environmental stickers (Feinstaubplakette), and licence matters.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-12T10:00:00.000Z"
+        }
     ]
 }

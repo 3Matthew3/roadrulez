@@ -5,6 +5,19 @@
     "iso3": "ITA",
     "continent": "Europe",
     "flag": "🇮🇹",
+    "header_images": [
+        "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1516483638263-f4ee964a3a33?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "ZTL cameras fine historic-centre entries automatically",
+        "Autostrada tolls: take ticket, pay at exit",
+        "Dipped headlights mandatory on dual carriageways",
+        "Winter tyres or chains required in many Alpine regions Nov–Apr"
+    ],
     "drive_side": "right",
     "rules": {
         "speed_limits": {
@@ -48,24 +61,412 @@
         "Bus lanes usage is strictly fined.",
         "Aggressive tailgating is common."
     ],
+    "top_fines": [
+        {
+            "title": "ZTL entry without permit",
+            "amount": "from €83"
+        },
+        {
+            "title": "Speeding +10 km/h in town",
+            "amount": "from €42"
+        },
+        {
+            "title": "Using phone while driving",
+            "amount": "from €165"
+        }
+    ],
+    "traffic_fines": {
+        "relatedSourceIds": ["it-codice-strada", "it-mit", "it-aci", "it-polizia"],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Fixed cameras (Autovelox) and average-speed Tutor systems are widespread on Autostrade and urban arterials.",
+                "summary_de": "Feste Blitzer (Autovelox) und Tutor-Streckenradar sind auf Autostrade und Stadtstraßen weit verbreitet.",
+                "maxConsequence": "License suspension & vehicle impound",
+                "maxConsequence_de": "Führerscheinentzug & Fahrzeugabnahme"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Mobile phone while driving",
+                "title_de": "Handy am Steuer",
+                "summary": "Handheld phone use is prohibited. Hands-free is allowed only when it does not distract.",
+                "summary_de": "Handygebrauch am Steuer ist verboten. Freisprechanlagen sind nur erlaubt, wenn sie nicht ablenken.",
+                "maxConsequence": "€165–€646 fine & licence points",
+                "maxConsequence_de": "€165–€646 Bußgeld & Punkte"
+            },
+            {
+                "id": "red-light",
+                "icon": "red_light",
+                "title": "Red light violation",
+                "title_de": "Rotlichtverstoß",
+                "summary": "Red-light cameras are common in cities. Penalties rise sharply when pedestrians are endangered.",
+                "summary_de": "Rotlichtkameras sind in Städten üblich. Strafen steigen deutlich bei Fußgängergefährdung.",
+                "maxConsequence": "High fines, points & suspension",
+                "maxConsequence_de": "Hohe Strafen, Punkte & Entzug"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol offenses",
+                "title_de": "Alkohol am Steuer",
+                "summary": "General limit 0.5 g/l for experienced drivers. Zero tolerance for novices (<3 years) and professional drivers.",
+                "summary_de": "Allgemein 0,5 g/l für erfahrene Fahrer. Nulltoleranz für Fahranfänger (<3 Jahre) und Berufsfahrer.",
+                "maxConsequence": "Court, suspension & vehicle seizure",
+                "maxConsequence_de": "Gericht, Entzug & Fahrzeugbeschlagnahme"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeitsüberschreitung",
+                "description": "Typical administrative penalties. Posted limits and Tutor sections always prevail.",
+                "description_de": "Typische Verwaltungsstrafen. Ausgeschilderte Limits und Tutor-Abschnitte haben Vorrang.",
+                "rows": [
+                    {
+                        "id": "speed-10-urban",
+                        "speedOver": "+10 km/h (urban)",
+                        "consequences": { "fine": "from €42", "fine_de": "ab €42" },
+                        "appliesTo": ["car", "motorcycle", "moped"]
+                    },
+                    {
+                        "id": "speed-20-urban",
+                        "speedOver": "+20 km/h (urban)",
+                        "consequences": { "fine": "from €173", "fine_de": "ab €173", "points": "3" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "speed-40",
+                        "speedOver": "+40 km/h",
+                        "severe": true,
+                        "consequences": { "fine": "from €543", "fine_de": "ab €543", "points": "10", "licenseSuspension": "1–3 months", "licenseSuspension_de": "1–3 Monate" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "alcohol_drugs",
+                "title": "Alcohol & Drugs",
+                "title_de": "Alkohol & Drogen",
+                "rows": [
+                    {
+                        "id": "alcohol-05",
+                        "label": "0.5–0.8 g/l (experienced drivers)",
+                        "label_de": "0,5–0,8 g/l (erfahrene Fahrer)",
+                        "consequences": { "fine": "from €527", "fine_de": "ab €527", "points": "5", "licenseSuspension": "3–6 months", "licenseSuspension_de": "3–6 Monate" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "alcohol-08",
+                        "label": "0.8 g/l and above",
+                        "label_de": "0,8 g/l und mehr",
+                        "severe": true,
+                        "consequences": { "fine": "criminal proceedings", "fine_de": "Strafverfahren", "licenseSuspension": "mandatory", "licenseSuspension_de": "Pflichtentzug", "vehicleImpound": true, "court": true },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "alcohol-novice",
+                        "label": "Any alcohol (novice / professional)",
+                        "label_de": "Jeder Alkohol (Fahranfänger / Berufsfahrer)",
+                        "severe": true,
+                        "consequences": { "fine": "from €155", "fine_de": "ab €155", "points": "5" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "mobile_phone",
+                "title": "Mobile Phone Usage",
+                "title_de": "Handynutzung",
+                "rows": [
+                    {
+                        "id": "phone-handheld",
+                        "label": "Handheld phone use while driving",
+                        "label_de": "Handy am Steuer (in der Hand)",
+                        "consequences": { "fine": "from €165", "fine_de": "ab €165", "points": "5" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "phone-danger",
+                        "label": "Phone use causing danger",
+                        "label_de": "Handygebrauch mit Gefährdung",
+                        "severe": true,
+                        "consequences": { "fine": "from €646", "fine_de": "ab €646", "points": "10", "licenseSuspension": "possible", "licenseSuspension_de": "möglich" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            },
+            {
+                "id": "special_local",
+                "title": "ZTL & Local Rules",
+                "title_de": "ZTL & lokale Regeln",
+                "description": "Italy-specific offences including ZTL zones, bus lanes, and Autostrada toll violations.",
+                "description_de": "Italien-spezifische Verstöße wie ZTL-Zonen, Busspuren und Autostrada-Maut.",
+                "rows": [
+                    {
+                        "id": "ztl-entry",
+                        "label": "ZTL entry without permit",
+                        "label_de": "ZTL-Einfahrt ohne Berechtigung",
+                        "consequences": { "fine": "from €83", "fine_de": "ab €83" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "bus-lane",
+                        "label": "Driving in bus/taxi lane",
+                        "label_de": "Fahren in Bus-/Taxispur",
+                        "consequences": { "fine": "from €80", "fine_de": "ab €80" },
+                        "appliesTo": ["car", "motorcycle"]
+                    },
+                    {
+                        "id": "toll-evasion",
+                        "label": "Autostrada toll evasion",
+                        "label_de": "Autostrada-Mauthinterziehung",
+                        "consequences": { "fine": "from €85", "fine_de": "ab €85" },
+                        "appliesTo": ["car", "motorcycle"]
+                    }
+                ]
+            }
+        ]
+    },
+    "faq": [
+        {
+            "id": "ztl-what",
+            "category": "fines",
+            "question": "What is a ZTL in Italy?",
+            "question_de": "Was ist eine ZTL in Italien?",
+            "answer": "ZTL (Zona Traffico Limitato) is a limited-traffic zone, usually in historic city centres. Cameras record licence plates; fines arrive by post even if no police stop you. Check hotel/resident permits and official maps before entering Rome, Florence, Milan, and other cities.",
+            "answer_de": "ZTL (Zona Traffico Limitato) ist eine verkehrsbeschränkte Zone, meist in historischen Stadtzentren. Kameras erfassen Kennzeichen; Bußgelder kommen per Post, auch ohne Polizeikontrolle. Hotel-/Anwohnergenehmigungen und offizielle Karten vor Einfahrt in Rom, Florenz, Mailand und andere Städte prüfen.",
+            "relatedFines": [{ "label": "ZTL entry without permit", "label_de": "ZTL-Einfahrt ohne Berechtigung", "href": "/country/it" }],
+            "relatedSourceIds": ["it-mit", "it-aci"]
+        },
+        {
+            "id": "autostrada-tolls",
+            "category": "vignette_tolls",
+            "question": "How do Autostrada tolls work in Italy?",
+            "question_de": "Wie funktionieren Autostrada-Mauten in Italien?",
+            "answer": "On green-signed Autostrade, take a ticket at entry and pay at the exit booth (cash/card). Telepass lanes are for subscribers only—do not enter them. Missing a ticket or evading tolls triggers fines and can complicate rental-car returns.",
+            "answer_de": "Auf grün ausgeschilderten Autostrade am Eingang Ticket ziehen und an der Mautstelle bezahlen (Bar/Karte). Telepass-Spuren sind nur für Abonnenten—nicht einfahren. Fehlendes Ticket oder Mauthinterziehung führt zu Bußgeldern und Problemen bei Mietwagenrückgabe.",
+            "relatedRules": [{ "label": "Toll rules", "label_de": "Mautregeln", "href": "/country/it" }],
+            "relatedSourceIds": ["it-autostrade", "it-mit"]
+        },
+        {
+            "id": "headlights-highway",
+            "category": "speed_limits",
+            "question": "Do I need headlights on Italian highways during the day?",
+            "question_de": "Muss ich tagsüber auf italienischen Autobahnen Licht einschalten?",
+            "answer": "Yes. Dipped headlights are mandatory on motorways and dual carriageways outside built-up areas, even in daylight. On Autostrade the limit drops to 110 km/h when it rains.",
+            "answer_de": "Ja. Abblendlicht ist auf Autobahnen und Schnellstraßen außerhalb geschlossener Ortschaften auch tagsüber Pflicht. Auf Autostrade gilt bei Regen 110 km/h.",
+            "relatedRules": [{ "label": "Headlights rules", "label_de": "Lichtregeln", "href": "/country/it" }],
+            "relatedSourceIds": ["it-codice-strada", "it-aci"]
+        },
+        {
+            "id": "eu-licence",
+            "category": "documents",
+            "question": "Can I drive in Italy with an EU licence?",
+            "question_de": "Kann ich in Italien mit EU-Führerschein fahren?",
+            "answer": "EU and EEA licences are accepted for tourists. Carry your physical licence and ID. Non-EU holders legally need an International Driving Permit (IDP)—rental desks rarely ask, but police can.",
+            "answer_de": "EU- und EWR-Führerscheine werden für Touristen akzeptiert. Führerschein und Ausweis mitführen. Nicht-EU-Inhaber brauchen gesetzlich einen Internationalen Führerschein (IDP)—Mietwagenfirmen fragen selten, die Polizei kann.",
+            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/it" }],
+            "relatedSourceIds": ["it-mit", "it-aci"]
+        },
+        {
+            "id": "parking-colors",
+            "category": "documents",
+            "question": "What do blue, white, and yellow parking lines mean?",
+            "question_de": "Was bedeuten blaue, weiße und gelbe Parkmarkierungen?",
+            "answer": "Blue lines usually mean paid parking (pay at meter or app). White lines may be free but often have time limits—read signs. Yellow is for residents or disabled permit holders only.",
+            "answer_de": "Blaue Markierungen bedeuten meist kostenpflichtiges Parken (Automat/App). Weiße können kostenlos sein, oft mit Zeitlimit—Schilder lesen. Gelb ist nur für Anwohner oder Behindertenausweis.",
+            "relatedRules": [{ "label": "Parking rules", "label_de": "Parkregeln", "href": "/country/it" }],
+            "relatedSourceIds": ["it-aci", "it-codice-strada"]
+        },
+        {
+            "id": "winter-tyres",
+            "category": "winter",
+            "question": "Are winter tyres required in Italy?",
+            "question_de": "Sind Winterreifen in Italien Pflicht?",
+            "answer": "Many northern and Alpine provinces require winter tyres or chains on board from 15 November to 15 April. Signs can mandate chains on specific passes. Check your route—Dolomites and northern Autostrade are strictly enforced.",
+            "answer_de": "Viele nördliche und alpine Provinzen verlangen Winterreifen oder Schneeketten an Bord vom 15. November bis 15. April. Schilder können Ketten auf bestimmten Pässen vorschreiben. Route prüfen—Dolomiten und nördliche Autostrade werden streng kontrolliert.",
+            "relatedRules": [{ "label": "Winter rules", "label_de": "Winterregeln", "href": "/country/it" }],
+            "relatedSourceIds": ["it-mit", "it-aci"]
+        },
+        {
+            "id": "rome-ztl",
+            "category": "fines",
+            "question": "How do I avoid ZTL fines in Rome?",
+            "question_de": "Wie vermeide ich ZTL-Bußgelder in Rom?",
+            "answer": "Rome has multiple ZTL zones (Centro Storico, Tridente, etc.) active on varying hours. Use official Roma Mobilità maps, park outside the centre, or confirm your hotel registers your plate. Sat-nav 'avoid restricted zones' is not always reliable.",
+            "answer_de": "Rom hat mehrere ZTL-Zonen (Centro Storico, Tridente usw.) mit unterschiedlichen Zeiten. Offizielle Roma-Mobilità-Karten nutzen, außerhalb parken oder Hotel-Registrierung des Kennzeichens bestätigen. Navi 'Sperrzonen meiden' ist nicht immer zuverlässig.",
+            "relatedFines": [{ "label": "ZTL entry", "label_de": "ZTL-Einfahrt", "href": "/country/it" }],
+            "relatedSourceIds": ["it-mit", "it-aci"]
+        },
+        {
+            "id": "milan-area-c",
+            "category": "vignette_tolls",
+            "question": "What is Milan Area C?",
+            "question_de": "Was ist Mailand Area C?",
+            "answer": "Area C is Milan's congestion-charge zone (Mon–Fri daytime). Most non-electric cars pay an access fee; Area B restricts older diesel/petrol vehicles in a wider ring. Buy passes online before driving in.",
+            "answer_de": "Area C ist Mailands City-Mautzone (Mo–Fr tagsüber). Die meisten Nicht-Elektroautos zahlen Zugangsgebühr; Area B schränkt ältere Diesel/Benziner in einem weiteren Ring ein. Pässe online vor der Einfahrt kaufen.",
+            "relatedRules": [{ "label": "Milan regional rules", "label_de": "Mailand regionale Regeln", "href": "/country/it" }],
+            "relatedSourceIds": ["it-mit", "it-aci"]
+        },
+        {
+            "id": "speed-cameras",
+            "category": "fines",
+            "question": "How common are speed cameras in Italy?",
+            "question_de": "Wie verbreitet sind Blitzer in Italien?",
+            "answer": "Very common. Fixed Autovelox cameras and Tutor average-speed systems operate on Autostrade and major roads. Urban limits are often 50 km/h with little warning—watch signage and navigation alerts.",
+            "answer_de": "Sehr verbreitet. Feste Autovelox-Blitzer und Tutor-Streckenradar auf Autostrade und Hauptstraßen. Stadtlimits oft 50 km/h mit wenig Vorwarnung—Schilder und Navi-Warnungen beachten.",
+            "relatedFines": [{ "label": "Speeding", "label_de": "Geschwindigkeit", "href": "/country/it" }],
+            "relatedSourceIds": ["it-polizia", "it-codice-strada"]
+        },
+        {
+            "id": "rental-car",
+            "category": "rental",
+            "question": "What should I know when renting a car in Italy?",
+            "question_de": "Was sollte ich beim Mietwagen in Italien beachten?",
+            "answer": "Confirm ZTL/congestion pass policies, Telepass availability, and cross-border rules. Inspect for mandatory triangle and vest. Non-EU drivers should carry an IDP. Automatic transmissions are less common—book early.",
+            "answer_de": "ZTL-/City-Maut-Regeln, Telepass-Verfügbarkeit und Grenzübertrittsregeln klären. Warndreieck und Weste prüfen. Nicht-EU-Fahrer sollten IDP mitführen. Automatik ist seltener—früh buchen.",
+            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/it" }],
+            "relatedSourceIds": ["it-aci", "it-mit"]
+        }
+    ],
     "rental_and_idp_notes": "IDP strictly required for non-EU license holders by law (rarely asked, but legally needed).",
     "regional_variations": [
         {
             "region_type": "city",
             "region_name": "Rome",
+            "region_code": "IT-62",
+            "coat_of_arms_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Coat_of_arms_of_Lazio.svg/120px-Coat_of_arms_of_Lazio.svg.png",
             "differences": {},
-            "notes": "Chaotic traffic. Scooters everywhere. Do not enter ZTL Trident or Centro Storico."
+            "notes": "Chaotic traffic. Scooters everywhere. Do not enter ZTL Trident or Centro Storico.",
+            "highlights": [
+                {
+                    "title": "ZTL historic centre",
+                    "description": "Multiple ZTL zones with camera enforcement. Centro Storico and Tridente restrictions apply on varying schedules—check Roma Mobilità before driving in.",
+                    "icon": "environment"
+                },
+                {
+                    "title": "Scooter traffic",
+                    "description": "Expect scooters filtering between lanes. Stay alert at intersections and when opening doors.",
+                    "icon": "parking"
+                },
+                {
+                    "title": "Limited central parking",
+                    "description": "Street parking in the centre is scarce. Use official garages or park-and-ride (e.g. metro-linked lots).",
+                    "icon": "parking"
+                }
+            ]
         },
         {
             "region_type": "city",
             "region_name": "Milan",
+            "region_code": "IT-25",
+            "coat_of_arms_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Coat_of_arms_of_Lombardy.svg/120px-Coat_of_arms_of_Lombardy.svg.png",
             "differences": {},
-            "notes": "Area C congestion charge zone. Area B pollution zone."
+            "notes": "Area C congestion charge zone. Area B pollution zone.",
+            "highlights": [
+                {
+                    "title": "Area C congestion charge",
+                    "description": "Weekday access fee for most vehicles entering the inner city. Register and pay online—cameras enforce entry.",
+                    "icon": "toll"
+                },
+                {
+                    "title": "Area B low-emission zone",
+                    "description": "Wider ring restricting older petrol and diesel cars. Check your Euro standard before driving in.",
+                    "icon": "environment"
+                },
+                {
+                    "title": "ZTL in historic districts",
+                    "description": "Additional limited-traffic zones around the Duomo and Brera. Sat-nav alone may not prevent ZTL entries.",
+                    "icon": "parking"
+                }
+            ]
         }
     ],
-    "last_verified": "2026-01-11",
+    "last_verified": "2026-05-27",
     "status": "verified",
+    "data_coverage": "high",
     "sources": [
-        "ACI (Automobile Club d'Italia)"
+        "https://www.mit.gov.it/",
+        "https://www.aci.it/",
+        "https://www.autostrade.it/",
+        "https://www.poliziadistato.it/",
+        "https://www.normattiva.it/"
+    ],
+    "source_entries": [
+        {
+            "id": "it-mit",
+            "title": "Ministry of Infrastructure and Transport",
+            "url": "https://www.mit.gov.it/",
+            "publisher": "Ministero delle Infrastrutture e dei Trasporti",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "tolls"],
+            "notes": "Official federal ministry for transport policy and road regulations.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "it-codice-strada",
+            "title": "Codice della Strada (Highway Code)",
+            "url": "https://www.normattiva.it/",
+            "publisher": "Italian Government",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits", "alcohol_limit"],
+            "notes": "Official legal database for the Italian Highway Code and traffic law.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "it-aci",
+            "title": "ACI - Automobile Club d'Italia",
+            "url": "https://www.aci.it/",
+            "publisher": "Automobile Club d'Italia",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "requirements",
+            "usageModuleKeys": ["requirements", "mandatory_equipment", "winter_rules"],
+            "notes": "National automobile club with practical driving guidance and fine overviews.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "it-autostrade",
+            "title": "Autostrade per l'Italia - Toll information",
+            "url": "https://www.autostrade.it/",
+            "publisher": "Autostrade per l'Italia",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": ["tolls"],
+            "notes": "Official motorway operator for toll routes, fees, and Telepass lanes.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "it-polizia",
+            "title": "Polizia di Stato - Road safety",
+            "url": "https://www.poliziadistato.it/",
+            "publisher": "Polizia di Stato",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": ["driving_basics", "speed_limits"],
+            "notes": "National police authority for traffic enforcement and road safety campaigns.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
+        }
     ]
 }
