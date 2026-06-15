@@ -21,6 +21,7 @@ import esLocale from "i18n-iso-countries/langs/es.json"
 import jaLocale from "i18n-iso-countries/langs/ja.json"
 import { CountryData, CountryIndexItem, TrafficRules, RegionalVariation } from "@/types/country"
 import type { CountrySourceEntry } from "@/types/source"
+import { mergeCountryLocale } from "@/lib/country-locale-merge"
 import { getCountrySeed, mergeCountryWithSeed, getCatalogIndexEntries } from "@/lib/country-seeds/merge"
 
 const dataDirectory = path.join(process.cwd(), "data/countries")
@@ -284,7 +285,18 @@ function mergeTrafficRules(
     }
 }
 
-// ─── JSON fallback helpers (unchanged from original) ─────────────────────────
+// ─── JSON fallback helpers ────────────────────────────────────────────────────
+
+async function readCountryJsonFile(fileName: string): Promise<CountryData | null> {
+    const filePath = path.join(dataDirectory, fileName)
+    try {
+        await fs.promises.access(filePath)
+        const content = await fs.promises.readFile(filePath, "utf8")
+        return JSON.parse(content) as CountryData
+    } catch {
+        return null
+    }
+}
 
 async function getJsonCountryData(
     iso2: string,
@@ -292,31 +304,25 @@ async function getJsonCountryData(
 ): Promise<CountryData | null> {
     try {
         const code = iso2.toLowerCase().replace(/[^a-z0-9]/g, "")
+        const seed = getCountrySeed(iso2)
+        const base = await readCountryJsonFile(`${code}.json`)
+
+        let data: CountryData | null = base
 
         if (locale !== "en") {
-            const localFilePath = path.join(dataDirectory, `${code}.${locale}.json`)
-            try {
-                await fs.promises.access(localFilePath)
-                const content = await fs.promises.readFile(localFilePath, "utf8")
-                const parsed = JSON.parse(content) as CountryData
-                const seed = getCountrySeed(iso2)
-                return mergeCountryWithSeed(parsed, seed)
-            } catch {
-                // fall through to English
+            const localeOverlay = await readCountryJsonFile(`${code}.${locale}.json`)
+            if (base && localeOverlay) {
+                data = mergeCountryLocale(base, localeOverlay)
+            } else if (!base && localeOverlay) {
+                data = localeOverlay
             }
         }
 
-        const filePath = path.join(dataDirectory, `${code}.json`)
-        try {
-            await fs.promises.access(filePath)
-            const content = await fs.promises.readFile(filePath, "utf8")
-            const parsed = JSON.parse(content) as CountryData
-            const seed = getCountrySeed(iso2)
-            return mergeCountryWithSeed(parsed, seed)
-        } catch {
-            const seed = getCountrySeed(iso2)
-            return seed ? (seed as CountryData) : null
+        if (!data) {
+            return seed ? mergeCountryWithSeed(null, seed) : null
         }
+
+        return mergeCountryWithSeed(data, seed)
     } catch (error) {
         console.error(`[countries] JSON fallback failed for ${iso2}:`, error)
         return null

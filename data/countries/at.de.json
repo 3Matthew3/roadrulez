@@ -1,0 +1,458 @@
+{
+    "iso2": "AT",
+    "faq": [
+        {
+            "id": "vignette-required",
+            "category": "vignette_tolls",
+            "question": "Brauche ich eine Vignette in Österreich?",
+            "answer": "Ja. Autobahnen und Schnellstraßen erfordern eine gültige Vignette oder digitale Mautregistrierung, bevor du sie benutzt. Fahren ohne Vignette wird geahndet und kann Mietwagen betreffen.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Autobahn-Vignette"
+                }
+            ],
+            "relatedFines": [
+                {
+                    "href": "/country/at",
+                    "label": "Keine Vignette auf der Autobahn"
+                }
+            ]
+        },
+        {
+            "id": "digital-vignette",
+            "category": "vignette_tolls",
+            "question": "Kann ich eine digitale Vignette statt eines Klebevignettes kaufen?",
+            "answer": "Ja. Österreich bietet digitale Vignetten, die über ASFINAG mit dem Kennzeichen verknüpft werden. Kaufe sie vor der Nutzung mautpflichtiger Straßen und prüfe das Kennzeichen.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Mautarten"
+                }
+            ]
+        },
+        {
+            "id": "extra-tolls",
+            "category": "vignette_tolls",
+            "question": "Gibt es Mautstraßen zusätzlich zur Standard-Vignette?",
+            "answer": "Ja. Einige Alpentunnel und Sonderstrecken erfordern zusätzliche Maut neben der Vignette—besonders in Tirol und Salzburg. Route vorab prüfen.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Regionale Alpenregeln"
+                }
+            ]
+        },
+        {
+            "id": "eu-licence",
+            "category": "documents",
+            "question": "Kann ich meinen EU-Führerschein in Österreich nutzen?",
+            "answer": "EU- und EWR-Führerscheine werden für Touristen in der Regel akzeptiert. Führerschein und Ausweis mitführen. Langzeitaufenthalter müssen ggf. umschreiben.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Vor der Fahrt"
+                }
+            ]
+        },
+        {
+            "id": "idp-requirement",
+            "category": "documents",
+            "question": "Brauche ich einen internationalen Führerschein (IDP)?",
+            "answer": "Nicht-EU-Führerscheine können je nach Herkunftsland und Mietwagenanbieter einen IDP erfordern. IDP vor der Reise im Heimatland besorgen.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Mietwagen & IDP"
+                }
+            ]
+        },
+        {
+            "id": "mandatory-equipment",
+            "category": "documents",
+            "question": "Welche Ausrüstung muss im Auto mitgeführt werden?",
+            "answer": "Pflichtausstattung umfasst typischerweise Warndreieck, Warnweste und Verbandskasten. Offizielle Liste vor der Fahrt prüfen, besonders bei Mietwagen.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Pflichtausstattung"
+                }
+            ]
+        },
+        {
+            "id": "speed-limits",
+            "category": "speed_limits",
+            "question": "Welche Tempolimits gelten in Österreich?",
+            "answer": "Typische Limits: 50 km/h innerorts, 100 km/h außerorts, 130 km/h auf Autobahnen—sofern nicht anders ausgeschildert. Schilder haben Vorrang.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Tempolimits-Übersicht"
+                }
+            ]
+        },
+        {
+            "id": "speed-enforcement",
+            "category": "fines",
+            "question": "Wie streng wird Tempo in Österreich kontrolliert?",
+            "answer": "Tempokontrollen sind streng und weit verbreitet—stationär, mobil und Streckenmessung. Schon kleine Überschreitungen außerorts können Bußgelder nach sich ziehen.",
+            "relatedFines": [
+                {
+                    "href": "/country/at",
+                    "label": "Tempo +10 km/h außerorts"
+                }
+            ]
+        },
+        {
+            "id": "phone-while-driving",
+            "category": "fines",
+            "question": "Welches Bußgeld droht für Handy am Steuer?",
+            "answer": "Handygebrauch am Steuer ist verboten. Bußgelder werden vor Ort oder per Post verhängt. Freisprechanlage nur nutzen, wenn erlaubt.",
+            "relatedFines": [
+                {
+                    "href": "/country/at",
+                    "label": "Handy am Steuer"
+                }
+            ],
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Handyregeln"
+                }
+            ]
+        },
+        {
+            "id": "alcohol-limit",
+            "category": "fines",
+            "question": "Wie hoch ist die Promillegrenze in Österreich?",
+            "answer": "Für erfahrene Fahrer gilt in der Regel 0,5‰. Für Fahranfänger und Berufsfahrer gelten niedrigere Grenzen. Strafen steigen schnell bei Überschreitung.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Alkoholgrenze"
+                }
+            ],
+            "relatedFines": [
+                {
+                    "href": "/country/at",
+                    "label": "Alkohol am Steuer"
+                }
+            ]
+        },
+        {
+            "id": "winter-tyres",
+            "category": "winter",
+            "question": "Sind Winterreifen in Österreich Pflicht?",
+            "answer": "Vom 1. November bis 15. April sind Winterreifen bei winterlichen Straßenverhältnissen Pflicht—notfalls auch ohne sichtbaren Schnee. Ganzjahresreifen brauchen M+S-Kennzeichnung.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Winterausrüstung"
+                }
+            ]
+        },
+        {
+            "id": "snow-chains",
+            "category": "winter",
+            "question": "Wann sind Schneeketten Pflicht?",
+            "answer": "Schneeketten können auf ausgeschilderten Alpenstrecken bei Winterbedingungen Pflicht sein—auch mit Winterreifen. Ketten mitführen, besonders in Tirol.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Tiroler Regionalregeln"
+                }
+            ]
+        },
+        {
+            "id": "motorcycle-helmet",
+            "category": "motorcycles",
+            "question": "Welche Regeln gelten für Motorrad und Moped?",
+            "answer": "Helmpflicht für Fahrer und Beifahrer. Motorräder unterliegen meist denselben Tempo- und Alkoholregeln wie Autos. Überholen zwischen Spuren ist nicht erlaubt.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Motorradregeln"
+                }
+            ]
+        },
+        {
+            "id": "rental-car",
+            "category": "rental",
+            "question": "Was sollte ich beim Mietwagen in Österreich beachten?",
+            "answer": "Vignettenstatus, Pflichtausstattung und Grenzübertrittsregeln mit dem Vermieter klären. Nicht-EU-Fahrer sollten IDP-Anforderungen vor Abholung prüfen.",
+            "relatedRules": [
+                {
+                    "href": "/country/at",
+                    "label": "Mietwagen & IDP"
+                }
+            ]
+        }
+    ],
+    "traffic_fines": {
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Geschwindigkeit",
+                "summary": "Strenge Kontrollen auf Autobahnen, Landstraßen und in Städten. Strecken- und mobile Messungen sind üblich.",
+                "maxConsequence": "Führerscheinentzug & Fahrzeugverfall"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Handy am Steuer",
+                "summary": "Handygebrauch am Steuer ist verboten. Freisprechanlagen sind bei korrekter Nutzung erlaubt.",
+                "maxConsequence": "€50 Bußgeld; Punkte bei Wiederholung"
+            },
+            {
+                "id": "red-light",
+                "icon": "red_light",
+                "title": "Rotlichtverstoß",
+                "summary": "Rotlichtverstöße werden streng geahndet, besonders wenn Fußgänger oder Radfahrer gefährdet werden.",
+                "maxConsequence": "Hohe Strafen, Punkte & Entzug möglich"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alkohol am Steuer",
+                "summary": "Allgemein 0,5‰ für erfahrene Fahrer. Niedrigere Grenzen für Fahranfänger und Berufsfahrer.",
+                "maxConsequence": "Gericht, Entzug & Fahrzeugabnahme"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Geschwindigkeitsüberschreitung",
+                "description": "Typische Strafen außerhalb geschlossener Ortschaften. Innerorts und auf Autobahnen können Abweichungen gelten; Schilder haben Vorrang.",
+                "rows": [
+                    {
+                        "id": "speed-10",
+                        "consequences": {
+                            "fine": "ab €30"
+                        }
+                    },
+                    {
+                        "id": "speed-20",
+                        "consequences": {
+                            "fine": "ab €50"
+                        }
+                    },
+                    {
+                        "id": "speed-30",
+                        "consequences": {
+                            "fine": "ab €70"
+                        }
+                    },
+                    {
+                        "id": "speed-50",
+                        "consequences": {
+                            "fine": "ab €300",
+                            "licenseSuspension": "bis 1 Monat"
+                        }
+                    },
+                    {
+                        "id": "speed-100",
+                        "consequences": {
+                            "fine": "ab €800",
+                            "licenseSuspension": "mehrere Monate"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "alcohol_drugs",
+                "title": "Alkohol & Drogen",
+                "description": "Strafen steigen deutlich über der Grenze. Fahren unter Drogeneinfluss gilt als Straftat.",
+                "rows": [
+                    {
+                        "id": "alcohol-05",
+                        "label": "0,5–0,79‰ (erfahrene Fahrer)",
+                        "consequences": {
+                            "fine": "ab €300",
+                            "licenseSuspension": "bis 1 Monat"
+                        }
+                    },
+                    {
+                        "id": "alcohol-08",
+                        "label": "0,8‰ und mehr",
+                        "consequences": {
+                            "fine": "ab €800",
+                            "licenseSuspension": "mehrere Monate"
+                        }
+                    },
+                    {
+                        "id": "drugs",
+                        "label": "Fahren unter Drogeneinfluss",
+                        "consequences": {
+                            "fine": "Strafverfahren",
+                            "licenseSuspension": "Pflichtentzug"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mobile_phone",
+                "title": "Handynutzung",
+                "rows": [
+                    {
+                        "id": "phone-handheld",
+                        "label": "Handy am Steuer (in der Hand)",
+                        "consequences": {
+                            "fine": "€50"
+                        }
+                    },
+                    {
+                        "id": "phone-repeat",
+                        "label": "Wiederholung innerhalb 12 Monaten",
+                        "consequences": {
+                            "fine": "€100"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "seat_belts",
+                "title": "Gurt & Kindersitz",
+                "rows": [
+                    {
+                        "id": "seatbelt-driver",
+                        "label": "Fahrer ohne Gurt",
+                        "consequences": {
+                            "fine": "€35"
+                        }
+                    },
+                    {
+                        "id": "seatbelt-passenger",
+                        "label": "Mitfahrer ohne Gurt",
+                        "consequences": {
+                            "fine": "€35"
+                        }
+                    },
+                    {
+                        "id": "child-seat",
+                        "label": "Kind ohne korrekten Kindersitz",
+                        "consequences": {
+                            "fine": "ab €100"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "parking",
+                "title": "Parkverstöße",
+                "rows": [
+                    {
+                        "id": "parking-zone",
+                        "label": "Ungültiges oder abgelaufenes Parkticket",
+                        "consequences": {
+                            "fine": "ab €25"
+                        }
+                    },
+                    {
+                        "id": "parking-disabled",
+                        "label": "Parken im Behindertenparkplatz ohne Berechtigung",
+                        "consequences": {
+                            "fine": "ab €50"
+                        }
+                    },
+                    {
+                        "id": "parking-vienna",
+                        "label": "Kurzparkzone (z. B. Wien)",
+                        "consequences": {
+                            "fine": "ab €30"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "red_light",
+                "title": "Rotlichtverstöße",
+                "rows": [
+                    {
+                        "id": "red-light-simple",
+                        "label": "Rotlicht (ohne Gefährdung)",
+                        "consequences": {
+                            "fine": "ab €70"
+                        }
+                    },
+                    {
+                        "id": "red-light-danger",
+                        "label": "Rotlicht mit Gefährdung",
+                        "consequences": {
+                            "fine": "ab €200",
+                            "licenseSuspension": "möglich"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "motorcycle",
+                "title": "Motorradverstöße",
+                "rows": [
+                    {
+                        "id": "helmet-motorcycle",
+                        "label": "Fahren ohne genehmigten Helm",
+                        "consequences": {
+                            "fine": "ab €50"
+                        }
+                    },
+                    {
+                        "id": "lane-splitting",
+                        "label": "Verbotenes Überholen zwischen Spuren",
+                        "consequences": {
+                            "fine": "ab €70"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "moped",
+                "title": "Mopedverstöße",
+                "rows": [
+                    {
+                        "id": "helmet-moped",
+                        "label": "Fahren ohne Helm (wo Pflicht)",
+                        "consequences": {
+                            "fine": "ab €50"
+                        }
+                    },
+                    {
+                        "id": "moped-passenger",
+                        "label": "Unbefugter Beifahrer auf dem Moped",
+                        "consequences": {
+                            "fine": "ab €50"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "special_local",
+                "title": "Besondere lokale Regeln",
+                "description": "Zusätzliche Strafen neben der Standard-Vignette. Alpenstrecken und historische Stadtzentren haben oft eigene Kontrollen.",
+                "rows": [
+                    {
+                        "id": "no-vignette",
+                        "label": "Keine Vignette auf Autobahn/Schnellstraße",
+                        "consequences": {
+                            "fine": "ab €110"
+                        }
+                    },
+                    {
+                        "id": "env-zone",
+                        "label": "Umweltzonen-Verstoß (z. B. Wien)",
+                        "consequences": {
+                            "fine": "ab €100"
+                        }
+                    },
+                    {
+                        "id": "winter-equipment",
+                        "label": "Fehlende Winterreifen/Ketten wo Pflicht",
+                        "consequences": {
+                            "fine": "ab €35"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
