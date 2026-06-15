@@ -1,156 +1,640 @@
 [
     {
+        "name": "Albania",
+        "names": {
+            "en": "Albania",
+            "de": "Shqipëria",
+            "es": "Albania",
+            "ja": "Albania"
+        },
+        "iso2": "AL",
+        "flag": "🇦🇱"
+    },
+    {
+        "name": "Andorra",
+        "names": {
+            "en": "Andorra",
+            "de": "Andorra",
+            "es": "Andorra",
+            "ja": "Andorra"
+        },
+        "iso2": "AD",
+        "flag": "🇦🇩"
+    },
+    {
+        "name": "Argentina",
+        "names": {
+            "en": "Argentina",
+            "de": "Argentina",
+            "es": "Argentina",
+            "ja": "Argentina"
+        },
+        "iso2": "AR",
+        "flag": "🇦🇷"
+    },
+    {
+        "name": "Australia",
+        "names": {
+            "en": "Australia",
+            "de": "Australia",
+            "es": "Australia",
+            "ja": "Australia"
+        },
+        "iso2": "AU",
+        "flag": "🇦🇺"
+    },
+    {
+        "name": "Austria",
+        "names": {
+            "en": "Austria",
+            "de": "Österreich",
+            "es": "Austria",
+            "ja": "Austria"
+        },
+        "iso2": "AT",
+        "flag": "🇦🇹"
+    },
+    {
+        "name": "Belarus",
+        "names": {
+            "en": "Belarus",
+            "de": "Беларусь",
+            "es": "Belarus",
+            "ja": "Belarus"
+        },
+        "iso2": "BY",
+        "flag": "🇧🇾"
+    },
+    {
+        "name": "Belgium",
+        "names": {
+            "en": "Belgium",
+            "de": "België",
+            "es": "Belgium",
+            "ja": "Belgium"
+        },
+        "iso2": "BE",
+        "flag": "🇧🇪"
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "names": {
+            "en": "Bosnia and Herzegovina",
+            "de": "Bosna i Hercegovina",
+            "es": "Bosnia and Herzegovina",
+            "ja": "Bosnia and Herzegovina"
+        },
+        "iso2": "BA",
+        "flag": "🇧🇦"
+    },
+    {
+        "name": "Brazil",
+        "names": {
+            "en": "Brazil",
+            "de": "Brasil",
+            "es": "Brazil",
+            "ja": "Brazil"
+        },
+        "iso2": "BR",
+        "flag": "🇧🇷"
+    },
+    {
+        "name": "Bulgaria",
+        "names": {
+            "en": "Bulgaria",
+            "de": "България",
+            "es": "Bulgaria",
+            "ja": "Bulgaria"
+        },
+        "iso2": "BG",
+        "flag": "🇧🇬"
+    },
+    {
+        "name": "Canada",
+        "names": {
+            "en": "Canada",
+            "de": "Canada",
+            "es": "Canada",
+            "ja": "Canada"
+        },
+        "iso2": "CA",
+        "flag": "🇨🇦"
+    },
+    {
+        "name": "China",
+        "names": {
+            "en": "China",
+            "de": "China",
+            "es": "China",
+            "ja": "中国"
+        },
+        "iso2": "CN",
+        "flag": "🇨🇳"
+    },
+    {
+        "name": "Croatia",
+        "names": {
+            "en": "Croatia",
+            "de": "Hrvatska",
+            "es": "Croatia",
+            "ja": "Croatia"
+        },
+        "iso2": "HR",
+        "flag": "🇭🇷"
+    },
+    {
+        "name": "Cyprus",
+        "names": {
+            "en": "Cyprus",
+            "de": "Κύπρος",
+            "es": "Cyprus",
+            "ja": "Cyprus"
+        },
+        "iso2": "CY",
+        "flag": "🇨🇾"
+    },
+    {
+        "name": "Czechia",
+        "names": {
+            "en": "Czechia",
+            "de": "Česko",
+            "es": "Czechia",
+            "ja": "Czechia"
+        },
+        "iso2": "CZ",
+        "flag": "🇨🇿"
+    },
+    {
+        "name": "Denmark",
+        "names": {
+            "en": "Denmark",
+            "de": "Danmark",
+            "es": "Denmark",
+            "ja": "Denmark"
+        },
+        "iso2": "DK",
+        "flag": "🇩🇰"
+    },
+    {
+        "name": "Estonia",
+        "names": {
+            "en": "Estonia",
+            "de": "Eesti",
+            "es": "Estonia",
+            "ja": "Estonia"
+        },
+        "iso2": "EE",
+        "flag": "🇪🇪"
+    },
+    {
+        "name": "Finland",
+        "names": {
+            "en": "Finland",
+            "de": "Suomi",
+            "es": "Finland",
+            "ja": "Finland"
+        },
+        "iso2": "FI",
+        "flag": "🇫🇮"
+    },
+    {
+        "name": "France",
+        "names": {
+            "en": "France",
+            "de": "France",
+            "es": "France",
+            "ja": "France"
+        },
+        "iso2": "FR",
+        "flag": "🇫🇷"
+    },
+    {
+        "name": "Germany",
+        "names": {
+            "en": "Germany",
+            "de": "Deutschland",
+            "es": "Germany",
+            "ja": "Germany"
+        },
+        "iso2": "DE",
+        "flag": "🇩🇪"
+    },
+    {
+        "name": "Greece",
+        "names": {
+            "en": "Greece",
+            "de": "Ελλάδα",
+            "es": "Greece",
+            "ja": "Greece"
+        },
+        "iso2": "GR",
+        "flag": "🇬🇷"
+    },
+    {
+        "name": "Hungary",
+        "names": {
+            "en": "Hungary",
+            "de": "Magyarország",
+            "es": "Hungary",
+            "ja": "Hungary"
+        },
+        "iso2": "HU",
+        "flag": "🇭🇺"
+    },
+    {
+        "name": "Iceland",
+        "names": {
+            "en": "Iceland",
+            "de": "Ísland",
+            "es": "Iceland",
+            "ja": "Iceland"
+        },
+        "iso2": "IS",
+        "flag": "🇮🇸"
+    },
+    {
+        "name": "India",
+        "names": {
+            "en": "India",
+            "de": "India",
+            "es": "India",
+            "ja": "India"
+        },
+        "iso2": "IN",
+        "flag": "🇮🇳"
+    },
+    {
+        "name": "Indonesia",
+        "names": {
+            "en": "Indonesia",
+            "de": "Indonesia",
+            "es": "Indonesia",
+            "ja": "Indonesia"
+        },
+        "iso2": "ID",
+        "flag": "🇮🇩"
+    },
+    {
+        "name": "Ireland",
+        "names": {
+            "en": "Ireland",
+            "de": "Éire",
+            "es": "Ireland",
+            "ja": "Ireland"
+        },
+        "iso2": "IE",
+        "flag": "🇮🇪"
+    },
+    {
+        "name": "Italy",
+        "names": {
+            "en": "Italy",
+            "de": "Italia",
+            "es": "Italy",
+            "ja": "Italy"
+        },
+        "iso2": "IT",
+        "flag": "🇮🇹"
+    },
+    {
+        "name": "Japan",
         "names": {
             "en": "Japan",
             "de": "Japan",
             "es": "Japón",
             "ja": "日本"
         },
-        "name": "Japan",
         "iso2": "JP",
         "flag": "🇯🇵"
     },
     {
+        "name": "Kosovo",
         "names": {
-            "en": "Austria",
-            "de": "Österreich",
-            "es": "Austria",
-            "ja": "オーストリア"
+            "en": "Kosovo",
+            "de": "Kosova",
+            "es": "Kosovo",
+            "ja": "Kosovo"
         },
-        "name": "Austria",
-        "iso2": "AT",
-        "flag": "🇦🇹"
+        "iso2": "XK",
+        "flag": "🇽🇰"
     },
     {
+        "name": "Latvia",
         "names": {
-            "en": "Germany",
-            "de": "Deutschland",
-            "es": "Alemania",
-            "ja": "ドイツ"
+            "en": "Latvia",
+            "de": "Latvija",
+            "es": "Latvia",
+            "ja": "Latvia"
         },
-        "name": "Germany",
-        "iso2": "DE",
-        "flag": "🇩🇪"
+        "iso2": "LV",
+        "flag": "🇱🇻"
     },
     {
+        "name": "Liechtenstein",
         "names": {
-            "en": "France",
-            "de": "Frankreich",
-            "es": "Francia",
-            "ja": "フランス"
+            "en": "Liechtenstein",
+            "de": "Liechtenstein",
+            "es": "Liechtenstein",
+            "ja": "Liechtenstein"
         },
-        "name": "France",
-        "iso2": "FR",
-        "flag": "🇫🇷"
+        "iso2": "LI",
+        "flag": "🇱🇮"
     },
     {
+        "name": "Lithuania",
         "names": {
-            "en": "United States",
-            "de": "Vereinigte Staaten",
-            "es": "Estados Unidos",
-            "ja": "アメリカ合衆国"
+            "en": "Lithuania",
+            "de": "Lietuva",
+            "es": "Lithuania",
+            "ja": "Lithuania"
         },
-        "name": "United States",
-        "iso2": "US",
-        "flag": "🇺🇸"
+        "iso2": "LT",
+        "flag": "🇱🇹"
     },
     {
+        "name": "Luxembourg",
         "names": {
-            "en": "Italy",
-            "de": "Italien",
-            "es": "Italia",
-            "ja": "イタリア"
+            "en": "Luxembourg",
+            "de": "Luxembourg",
+            "es": "Luxembourg",
+            "ja": "Luxembourg"
         },
-        "name": "Italy",
-        "iso2": "IT",
-        "flag": "🇮🇹"
+        "iso2": "LU",
+        "flag": "🇱🇺"
     },
     {
+        "name": "Malta",
         "names": {
-            "en": "United Kingdom",
-            "de": "Vereinigtes Königreich",
-            "es": "Reino Unido",
-            "ja": "イギリス"
+            "en": "Malta",
+            "de": "Malta",
+            "es": "Malta",
+            "ja": "Malta"
         },
-        "name": "United Kingdom",
-        "iso2": "GB",
-        "flag": "🇬🇧"
+        "iso2": "MT",
+        "flag": "🇲🇹"
     },
     {
+        "name": "Mexico",
         "names": {
-            "en": "Spain",
-            "de": "Spanien",
-            "es": "España",
-            "ja": "スペイン"
+            "en": "Mexico",
+            "de": "México",
+            "es": "Mexico",
+            "ja": "Mexico"
         },
-        "name": "Spain",
-        "iso2": "ES",
-        "flag": "🇪🇸"
+        "iso2": "MX",
+        "flag": "🇲🇽"
     },
     {
+        "name": "Moldova",
         "names": {
-            "en": "Thailand",
-            "de": "Thailand",
-            "es": "Tailandia",
-            "ja": "タイ"
+            "en": "Moldova",
+            "de": "Moldova",
+            "es": "Moldova",
+            "ja": "Moldova"
         },
-        "name": "Thailand",
-        "iso2": "TH",
-        "flag": "🇹🇭"
+        "iso2": "MD",
+        "flag": "🇲🇩"
     },
     {
+        "name": "Monaco",
         "names": {
-            "en": "South Korea",
-            "de": "Südkorea",
-            "es": "Corea del Sur",
-            "ja": "韓国"
+            "en": "Monaco",
+            "de": "Monaco",
+            "es": "Monaco",
+            "ja": "Monaco"
         },
-        "name": "South Korea",
-        "iso2": "KR",
-        "flag": "🇰🇷"
+        "iso2": "MC",
+        "flag": "🇲🇨"
     },
     {
+        "name": "Montenegro",
         "names": {
-            "en": "Canada",
-            "de": "Kanada",
-            "es": "Canadá",
-            "ja": "カナダ"
+            "en": "Montenegro",
+            "de": "Crna Gora",
+            "es": "Montenegro",
+            "ja": "Montenegro"
         },
-        "name": "Canada",
-        "iso2": "CA",
-        "flag": "🇨🇦"
+        "iso2": "ME",
+        "flag": "🇲🇪"
     },
     {
+        "name": "Netherlands",
         "names": {
-            "en": "Australia",
-            "de": "Australien",
-            "es": "Australia",
-            "ja": "オーストラリア"
+            "en": "Netherlands",
+            "de": "Nederland",
+            "es": "Netherlands",
+            "ja": "Netherlands"
         },
-        "name": "Australia",
-        "iso2": "AU",
-        "flag": "🇦🇺"
+        "iso2": "NL",
+        "flag": "🇳🇱"
     },
     {
+        "name": "North Macedonia",
         "names": {
-            "en": "United Arab Emirates",
-            "de": "Vereinigte Arabische Emirate",
-            "es": "Emiratos Árabes Unidos",
-            "ja": "アラブ首長国連邦"
+            "en": "North Macedonia",
+            "de": "Северна Македонија",
+            "es": "North Macedonia",
+            "ja": "North Macedonia"
         },
-        "name": "United Arab Emirates",
-        "iso2": "AE",
-        "flag": "🇦🇪"
+        "iso2": "MK",
+        "flag": "🇲🇰"
     },
     {
+        "name": "Norway",
+        "names": {
+            "en": "Norway",
+            "de": "Norge",
+            "es": "Norway",
+            "ja": "Norway"
+        },
+        "iso2": "NO",
+        "flag": "🇳🇴"
+    },
+    {
+        "name": "Poland",
+        "names": {
+            "en": "Poland",
+            "de": "Polska",
+            "es": "Poland",
+            "ja": "Poland"
+        },
+        "iso2": "PL",
+        "flag": "🇵🇱"
+    },
+    {
+        "name": "Portugal",
+        "names": {
+            "en": "Portugal",
+            "de": "Portugal",
+            "es": "Portugal",
+            "ja": "Portugal"
+        },
+        "iso2": "PT",
+        "flag": "🇵🇹"
+    },
+    {
+        "name": "Romania",
+        "names": {
+            "en": "Romania",
+            "de": "România",
+            "es": "Romania",
+            "ja": "Romania"
+        },
+        "iso2": "RO",
+        "flag": "🇷🇴"
+    },
+    {
+        "name": "Serbia",
+        "names": {
+            "en": "Serbia",
+            "de": "Srbija",
+            "es": "Serbia",
+            "ja": "Serbia"
+        },
+        "iso2": "RS",
+        "flag": "🇷🇸"
+    },
+    {
+        "name": "Slovakia",
+        "names": {
+            "en": "Slovakia",
+            "de": "Slovensko",
+            "es": "Slovakia",
+            "ja": "Slovakia"
+        },
+        "iso2": "SK",
+        "flag": "🇸🇰"
+    },
+    {
+        "name": "Slovenia",
+        "names": {
+            "en": "Slovenia",
+            "de": "Slovenija",
+            "es": "Slovenia",
+            "ja": "Slovenia"
+        },
+        "iso2": "SI",
+        "flag": "🇸🇮"
+    },
+    {
+        "name": "South Africa",
         "names": {
             "en": "South Africa",
             "de": "Südafrika",
             "es": "Sudáfrica",
             "ja": "南アフリカ"
         },
-        "name": "South Africa",
         "iso2": "ZA",
         "flag": "🇿🇦"
+    },
+    {
+        "name": "South Korea",
+        "names": {
+            "en": "South Korea",
+            "de": "Südkorea",
+            "es": "Corea del Sur",
+            "ja": "韓国"
+        },
+        "iso2": "KR",
+        "flag": "🇰🇷"
+    },
+    {
+        "name": "Spain",
+        "names": {
+            "en": "Spain",
+            "de": "España",
+            "es": "Spain",
+            "ja": "Spain"
+        },
+        "iso2": "ES",
+        "flag": "🇪🇸"
+    },
+    {
+        "name": "Sweden",
+        "names": {
+            "en": "Sweden",
+            "de": "Sverige",
+            "es": "Sweden",
+            "ja": "Sweden"
+        },
+        "iso2": "SE",
+        "flag": "🇸🇪"
+    },
+    {
+        "name": "Switzerland",
+        "names": {
+            "en": "Switzerland",
+            "de": "Schweiz",
+            "es": "Switzerland",
+            "ja": "Switzerland"
+        },
+        "iso2": "CH",
+        "flag": "🇨🇭"
+    },
+    {
+        "name": "Taiwan",
+        "names": {
+            "en": "Taiwan",
+            "de": "Taiwan",
+            "es": "Taiwán",
+            "ja": "台湾"
+        },
+        "iso2": "TW",
+        "flag": "🇹🇼"
+    },
+    {
+        "name": "Thailand",
+        "names": {
+            "en": "Thailand",
+            "de": "ประเทศไทย",
+            "es": "Thailand",
+            "ja": "Thailand"
+        },
+        "iso2": "TH",
+        "flag": "🇹🇭"
+    },
+    {
+        "name": "Ukraine",
+        "names": {
+            "en": "Ukraine",
+            "de": "Україна",
+            "es": "Ukraine",
+            "ja": "Ukraine"
+        },
+        "iso2": "UA",
+        "flag": "🇺🇦"
+    },
+    {
+        "name": "United Arab Emirates",
+        "names": {
+            "en": "United Arab Emirates",
+            "de": "Vereinigte Arabische Emirate",
+            "es": "Emiratos Árabes Unidos",
+            "ja": "アラブ首長国連邦"
+        },
+        "iso2": "AE",
+        "flag": "🇦🇪"
+    },
+    {
+        "name": "United Kingdom",
+        "names": {
+            "en": "United Kingdom",
+            "de": "United Kingdom",
+            "es": "United Kingdom",
+            "ja": "United Kingdom"
+        },
+        "iso2": "GB",
+        "flag": "🇬🇧"
+    },
+    {
+        "name": "United States",
+        "names": {
+            "en": "United States",
+            "de": "United States",
+            "es": "United States",
+            "ja": "United States"
+        },
+        "iso2": "US",
+        "flag": "🇺🇸"
     }
 ]

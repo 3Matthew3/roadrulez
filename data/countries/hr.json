@@ -1,0 +1,136 @@
+{
+    "iso2": "HR",
+    "iso3": "HRV",
+    "name_en": "Croatia",
+    "name_local": "Hrvatska",
+    "continent": "Europe",
+    "flag": "🇭🇷",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1772824953680-4c96be92e88b?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Tolls on motorways",
+        "Summer coastal congestion",
+        "Vignette/toll for highways",
+        "Watch for tourists on roads"
+    ],
+    "top_fines": [
+        {
+            "title": "Toll evasion",
+            "amount": "from €50"
+        },
+        {
+            "title": "Speeding",
+            "amount": "from €65"
+        }
+    ],
+    "faq": [
+        {
+            "id": "coast-hr",
+            "category": "speed_limits",
+            "question": "Driving the Croatian coast in summer?",
+            "question_de": "Kroatische Küste im Sommer?",
+            "answer": "Expect heavy A1 traffic. Fuel before islands.",
+            "answer_de": "Starker A1-Verkehr. Vor Inseln tanken.",
+            "relatedSourceIds": [
+                "hr-hac"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "hr-hac",
+            "title": "HAC Motorways",
+            "url": "https://www.hac.hr/",
+            "publisher": "HAC",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "hr-mup",
+            "title": "Ministry of Interior",
+            "url": "https://mup.gov.hr/",
+            "publisher": "MUP",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "MUP"
+    ],
+    "summary": "Croatia's coastal roads are scenic but busy in summer. Motorways are mostly tolled.",
+    "common_traps": [
+        "Tolls on motorways",
+        "Summer coastal congestion",
+        "Vignette/toll for highways",
+        "Watch for tourists on roads"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": true,
+            "type": "toll booth",
+            "notes": "Most A roads tolled. Summer A1 congestion."
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "hr-mup"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Summer mobile controls.",
+                "summary_de": "Mobile Kontrollen im Sommer.",
+                "maxConsequence": "€500+",
+                "maxConsequence_de": "€500+"
+            }
+        ],
+        "categories": []
+    }
+}

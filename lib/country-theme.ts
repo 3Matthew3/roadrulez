@@ -1,3 +1,5 @@
+import { FLAG_THEMES } from "@/lib/country-flag-themes"
+
 export type TrafficLightVariant = "at" | "de" | "us"
 
 /** Länder-Akzente – AT: Rot (Flagge), DE: Schwarz-Rot-Gold (Bundesflagge) */
@@ -83,11 +85,11 @@ const DEFAULT_THEME: CountryTheme = {
 }
 
 export function getCountryTheme(iso2: string): CountryTheme {
-    return THEMES[iso2.toUpperCase()] ?? DEFAULT_THEME
+    const code = iso2.toUpperCase()
+    return THEMES[code] ?? FLAG_THEMES[code] ?? DEFAULT_THEME
 }
 
-const PREMIUM_COUNTRIES = new Set(["AT", "DE", "IT", "US", "GB"])
-
-export function usesPremiumCountryLayout(iso2: string): boolean {
-    return PREMIUM_COUNTRIES.has(iso2.toUpperCase())
+/** Premium dashboard is the standard layout for all countries with data. */
+export function usesPremiumCountryLayout(_iso2: string): boolean {
+    return true
 }

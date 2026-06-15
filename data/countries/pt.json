@@ -1,0 +1,157 @@
+{
+    "iso2": "PT",
+    "iso3": "PRT",
+    "name_en": "Portugal",
+    "name_local": "Portugal",
+    "continent": "Europe",
+    "flag": "🇵🇹",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Electronic tolls on many motorways",
+        "Register rental for tolls",
+        "Coastal wind on bridges",
+        "Strict drink-drive limits"
+    ],
+    "top_fines": [
+        {
+            "title": "Electronic toll evasion",
+            "amount": "from €25/passage"
+        },
+        {
+            "title": "Speeding +20 km/h",
+            "amount": "from €120"
+        },
+        {
+            "title": "Phone while driving",
+            "amount": "from €120"
+        }
+    ],
+    "faq": [
+        {
+            "id": "tolls-pt",
+            "category": "vignette_tolls",
+            "question": "How do Portuguese electronic tolls work?",
+            "question_de": "Wie funktionieren portugiesische Mauten?",
+            "answer": "Plate cameras bill passages. Register at border or via rental transponder.",
+            "answer_de": "Kennzeichen-Kameras. An Grenze registrieren oder Mietwagen-Tag.",
+            "relatedSourceIds": [
+                "pt-portugal-tolls"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "pt-imt",
+            "title": "IMT — Institute of Mobility",
+            "url": "https://www.imt-ip.pt/",
+            "publisher": "IMT",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "pt-ansr",
+            "title": "ANSR — Road safety",
+            "url": "https://www.ansr.pt/",
+            "publisher": "ANSR",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines",
+                "alcohol_limit"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "pt-portugal-tolls",
+            "title": "Portugal Tolls",
+            "url": "https://www.portugaltolls.com/",
+            "publisher": "Portugal Tolls",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "IMT",
+        "ANSR",
+        "portugaltolls.com"
+    ],
+    "summary": "Register rental plates for electronic toll motorways or face post-trip fines.",
+    "common_traps": [
+        "Electronic tolls on many motorways",
+        "Register rental for tolls",
+        "Coastal wind on bridges",
+        "Strict drink-drive limits"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": true,
+            "type": "electronic",
+            "notes": "Gantry tolls on ex-SCN motorways. EasyToll at border or Via Verde."
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "pt-ansr"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "ANSR enforcement.",
+                "summary_de": "ANSR-Kontrollen.",
+                "maxConsequence": "Suspension",
+                "maxConsequence_de": "Entzug"
+            }
+        ],
+        "categories": []
+    }
+}

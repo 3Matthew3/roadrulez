@@ -1,0 +1,132 @@
+{
+    "iso2": "LV",
+    "iso3": "LVA",
+    "name_en": "Latvia",
+    "name_local": "Latvija",
+    "continent": "Europe",
+    "flag": "🇱🇻",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Road vignette required",
+        "Winter driving conditions",
+        "Strict speed enforcement",
+        "Riga congestion"
+    ],
+    "top_fines": [
+        {
+            "title": "Speeding in built-up areas",
+            "amount": "from €50"
+        },
+        {
+            "title": "Using phone while driving",
+            "amount": "€100+"
+        },
+        {
+            "title": "Parking violations",
+            "amount": "from €25"
+        }
+    ],
+    "faq": [
+        {
+            "id": "licence",
+            "category": "documents",
+            "question": "Can I drive in Latvia with my foreign licence?",
+            "question_de": "Kann ich in Latvija mit meinem ausländischen Führerschein fahren?",
+            "answer": "Many visitors can drive with a valid national licence for short stays, but rental companies and police may require an International Driving Permit (IDP). Always confirm before you travel.",
+            "answer_de": "Viele Besucher dürfen mit gültigem nationalen Führerschein kurzzeitig fahren, Mietwagenfirmen und Polizei verlangen aber oft einen Internationalen Führerschein (IDP). Vor der Reise klären.",
+            "relatedRules": [
+                "documents"
+            ]
+        },
+        {
+            "id": "speed",
+            "category": "speed_limits",
+            "question": "What are the default speed limits in Latvia?",
+            "question_de": "Welche Standard-Tempolimits gelten in Latvija?",
+            "answer": "Default limits depend on road type, but posted signs always override general defaults. Check urban, rural, and motorway limits on the country guide above.",
+            "answer_de": "Standardlimits hängen vom Straßentyp ab, ausgeschilderte Limits haben immer Vorrang. Urban-, Land- und Autobahn-Limits findest du oben im Länderguide.",
+            "relatedRules": [
+                "speed_limits"
+            ]
+        },
+        {
+            "id": "sources",
+            "category": "documents",
+            "question": "Where can I verify the latest rules for Latvia?",
+            "question_de": "Wo kann ich die aktuellen Regeln für Latvija prüfen?",
+            "answer": "Use the official sources listed on this site and re-check with government transport or police authorities before driving.",
+            "answer_de": "Nutze die offiziellen Quellen auf dieser Seite und prüfe vor der Fahrt erneut bei Behörden für Verkehr oder Polizei.",
+            "relatedRules": [
+                "documents"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "lv-csdd",
+            "title": "Road Traffic Safety Directorate",
+            "url": "https://www.csdd.lv/",
+            "publisher": "CSDD",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits",
+                "alcohol_limit",
+                "tolls",
+                "priority_rules"
+            ]
+        }
+    ],
+    "sources": [
+        "CSDD"
+    ],
+    "summary": "Latvia requires vignettes on national roads and has harsh winters.",
+    "common_traps": [
+        "Road vignette required",
+        "Winter driving conditions",
+        "Strict speed enforcement",
+        "Riga congestion"
+    ],
+    "last_verified": "2026-05-01",
+    "status": "verified",
+    "data_coverage": "medium",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": false,
+            "type": "none",
+            "notes": ""
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    }
+}

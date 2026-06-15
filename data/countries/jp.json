@@ -1,18 +1,202 @@
 {
-    "name_en": "Japan",
-    "name_local": "Nihon",
     "iso2": "JP",
     "iso3": "JPN",
+    "name_en": "Japan",
+    "name_local": "Nihon",
     "continent": "Asia",
     "flag": "🇯🇵",
+    "indexNames": {
+        "en": "Japan",
+        "de": "Japan",
+        "es": "Japón",
+        "ja": "日本"
+    },
+    "drive_side": "left",
     "header_images": [
         "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1920&q=80"
     ],
-    "drive_side": "left",
+    "quick_answer_bullets": [
+        "Drive on the left",
+        "Stop at railway crossings",
+        "No turn on red",
+        "Expressway tolls common"
+    ],
+    "top_fines": [
+        {
+            "title": "Speeding +30 km/h",
+            "amount": "¥18,000–¥35,000"
+        },
+        {
+            "title": "Phone while driving",
+            "amount": "¥25,000"
+        },
+        {
+            "title": "Railway crossing violation",
+            "amount": "¥70,000"
+        }
+    ],
+    "faq": [
+        {
+            "id": "idp-jp",
+            "category": "documents",
+            "question": "Do I need an IDP to drive in Japan?",
+            "question_de": "Brauche ich in Japan einen IDP?",
+            "answer": "Yes for most foreign licences. Japan accepts IDPs under the 1949 Geneva Convention only—not 1968 Vienna. Some countries (Germany, Switzerland, France, etc.) need a Japanese translation instead. Check JAF before travel.",
+            "answer_de": "Ja für die meisten ausländischen Führerscheine. Japan akzeptiert IDP nur nach Genfer Konvention 1949—nicht Wien 1968. Manche Länder brauchen japanische Übersetzung. JAF vor Reise prüfen.",
+            "relatedSourceIds": [
+                "jp-jaf",
+                "jp-npd"
+            ]
+        },
+        {
+            "id": "railway-crossing",
+            "category": "priority_rules",
+            "question": "Must I stop at railway crossings in Japan?",
+            "question_de": "Muss ich in Japan an Bahnübergängen anhalten?",
+            "answer": "Yes. You must stop completely before crossing, even if no train is visible. Violations carry heavy fines (¥70,000+) and licence points.",
+            "answer_de": "Ja. Vollständig anhalten vor Übergang, auch ohne sichtbaren Zug. Hohe Strafen (¥70.000+) und Punkte.",
+            "relatedSourceIds": [
+                "jp-npd"
+            ]
+        },
+        {
+            "id": "no-red-turn",
+            "category": "priority_rules",
+            "question": "Can I turn right on red in Japan?",
+            "question_de": "Darf ich in Japan bei Rot rechts abbiegen?",
+            "answer": "No. Turning on red is not permitted unless a green arrow specifically allows it. Japan drives on the left—'easy' right turns still require full signal compliance.",
+            "answer_de": "Nein. Abbiegen bei Rot nicht erlaubt, außer grüner Pfeil erlaubt es. Linksverkehr—auch 'einfache' Rechtsabbieger brauchen grünes Signal.",
+            "relatedSourceIds": [
+                "jp-npd"
+            ]
+        },
+        {
+            "id": "etc-tolls",
+            "category": "vignette_tolls",
+            "question": "How do expressway tolls work in Japan?",
+            "question_de": "Wie funktionieren Autobahn-Mauten in Japan?",
+            "answer": "Most expressways (kosoku-doro) are tolled. Take ticket at entry, pay at exit. ETC card speeds payment—rentals often include ETC. NEXCO operates most routes.",
+            "answer_de": "Die meisten Schnellstraßen sind mautpflichtig. Ticket bei Einfahrt, Bezahlung bei Ausfahrt. ETC-Karte beschleunigt Zahlung—Mietwagen oft mit ETC.",
+            "relatedSourceIds": [
+                "jp-nexco",
+                "jp-mlit"
+            ]
+        },
+        {
+            "id": "alcohol-jp",
+            "category": "alcohol_limit",
+            "question": "What is the alcohol limit in Japan?",
+            "question_de": "Alkoholgrenze in Japan?",
+            "answer": "Legal limit 0.03% BAC (0.15 mg/L breath). Penalties are severe; passengers who supplied alcohol to a drunk driver can also be fined. Zero tolerance culturally—do not drink and drive.",
+            "answer_de": "Gesetzlich 0,03 % BAC. Strenge Strafen; Mitfahrer die Alkohol bereitstellen können auch bestraft werden. Kulturell null Toleranz.",
+            "relatedSourceIds": [
+                "jp-npd"
+            ]
+        },
+        {
+            "id": "stop-sign-jp",
+            "category": "priority_rules",
+            "question": "What does the Japanese stop sign mean?",
+            "question_de": "Was bedeutet das japanische Stoppschild?",
+            "answer": "Red inverted triangle with 止まれ (tomare). Full stop required—rolling stops are fined. More common than in Europe.",
+            "answer_de": "Rotes Dreieck mit 止まれ (tomare). Vollständiger Stopp Pflicht—Rollstopps werden geahndet.",
+            "relatedSourceIds": [
+                "jp-npd"
+            ]
+        },
+        {
+            "id": "winter-hokkaido",
+            "category": "winter",
+            "question": "Winter driving in Hokkaido?",
+            "question_de": "Winterfahren in Hokkaido?",
+            "answer": "Winter tyres mandatory Oct–Apr. Black ice common. Deer on roads at night. Lower speed limits on many Hokkaido expressways (80 km/h).",
+            "answer_de": "Winterreifen Okt–Apr Pflicht. Glatteis häufig. Hirsche nachts. Niedrigere Limits auf Hokkaido-Autobahnen.",
+            "relatedSourceIds": [
+                "jp-mlit",
+                "jp-jaf"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "jp-npd",
+            "title": "National Police Agency",
+            "url": "https://www.npa.go.jp/",
+            "publisher": "NPA",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines",
+                "alcohol_limit"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "jp-mlit",
+            "title": "MLIT — Road Bureau",
+            "url": "https://www.mlit.go.jp/road/",
+            "publisher": "MLIT",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits",
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "jp-jaf",
+            "title": "JAF — Japan Automobile Federation",
+            "url": "https://english.jaf.or.jp/",
+            "publisher": "JAF",
+            "sourceType": "AUTOMOBILE_ASSOCIATION",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "documents",
+            "usageModuleKeys": [
+                "documents",
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "jp-nexco",
+            "title": "NEXCO — Expressway tolls",
+            "url": "https://www.driveplaza.com/",
+            "publisher": "NEXCO",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "NPA",
+        "MLIT",
+        "JAF",
+        "NEXCO"
+    ],
+    "summary": "Drive on the Left. Right turns feel 'easy', left turns need attention. Speed limits are generally lower than many countries and strictly enforced. Expect toll roads on established expressways. Keep an eye out for railway crossings (must stop before crossing) and pedestrian priority.",
+    "common_traps": [
+        "Stop completely before railway crossings.",
+        "No turn on red.",
+        "Cycling laws are strict; watch for cyclists.",
+        "zero tolerance for alcohol."
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
     "rules": {
         "speed_limits": {
             "urban": 40,
@@ -72,13 +256,6 @@
             "licensing_notes": "Car license usually includes 50cc moped privileges."
         }
     },
-    "summary": "Drive on the Left. Right turns feel 'easy', left turns need attention. Speed limits are generally lower than many countries and strictly enforced. Expect toll roads on established expressways. Keep an eye out for railway crossings (must stop before crossing) and pedestrian priority.",
-    "common_traps": [
-        "Stop completely before railway crossings.",
-        "No turn on red.",
-        "Cycling laws are strict; watch for cyclists.",
-        "zero tolerance for alcohol."
-    ],
     "rental_and_idp_notes": "International Driving Permit (1949 Convention) required. Some licenses (Swiss, German, French, etc.) need a translation.",
     "regional_variations": [
         {
@@ -108,9 +285,6 @@
             "notes": "Roads are wider and straighter. Watch for wildlife (deer/foxes). severe winter conditions."
         }
     ],
-    "last_verified": "2026-01-11",
-    "status": "sample",
-    "data_coverage": "high",
     "road_signs": [
         {
             "title": "Stop",
@@ -128,8 +302,88 @@
             "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Japan_road_sign_329-A.svg"
         }
     ],
-    "sources": [
-        "JAF (Japan Automobile Federation)",
-        "MoFA Japan"
-    ]
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "jp-npd",
+            "jp-mlit"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Lower limits than Europe; strict enforcement with cameras.",
+                "summary_de": "Niedrigere Limits als Europa; strenge Kamera-Kontrolle.",
+                "maxConsequence": "¥35,000+ & points",
+                "maxConsequence_de": "¥35.000+ & Punkte"
+            },
+            {
+                "id": "railway",
+                "icon": "red_light",
+                "title": "Railway crossings",
+                "title_de": "Bahnübergänge",
+                "summary": "Full stop mandatory before every crossing.",
+                "summary_de": "Vollständiger Stopp vor jedem Übergang Pflicht.",
+                "maxConsequence": "¥70,000",
+                "maxConsequence_de": "¥70.000"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "rows": [
+                    {
+                        "id": "speed-30",
+                        "speedOver": "+30 km/h",
+                        "consequences": {
+                            "fine": "¥18,000–¥35,000",
+                            "fine_de": "¥18.000–¥35.000"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "railway",
+                "title": "Railway crossing",
+                "title_de": "Bahnübergang",
+                "rows": [
+                    {
+                        "id": "crossing",
+                        "description": "Failure to stop at crossing",
+                        "description_de": "Kein Stopp am Bahnübergang",
+                        "consequences": {
+                            "fine": "¥70,000",
+                            "fine_de": "¥70.000"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "phone",
+                "title": "Phone",
+                "title_de": "Handy",
+                "rows": [
+                    {
+                        "id": "phone-jp",
+                        "consequences": {
+                            "fine": "¥25,000",
+                            "fine_de": "¥25.000"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 }

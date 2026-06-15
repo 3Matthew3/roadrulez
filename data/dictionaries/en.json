@@ -18,6 +18,26 @@
         "yes": "Yes",
         "no": "No"
     },
+    "countries_page": {
+        "page_title": "Countries & Driving Rules",
+        "page_subtitle": "Find driving rules, speed limits, fines and road regulations worldwide.",
+        "search_placeholder": "Search for a country...",
+        "popular_title": "Popular Countries",
+        "browse_title": "Browse by Region",
+        "drive_on": "Drive on",
+        "top_speed": "Top speed",
+        "alcohol_limit": "Alcohol limit",
+        "available": "Available",
+        "coming_soon": "Coming soon",
+        "view_guide": "View guide",
+        "guide_in_progress": "Guide in progress",
+        "stats_available": "{count} Countries available",
+        "stats_available_sub": "Detailed driving guides",
+        "stats_planned": "{count}+ Countries planned",
+        "stats_planned_sub": "More coming soon",
+        "stats_verified": "Verified",
+        "stats_verified_sub": "Information checked against official government sources"
+    },
     "home": {
         "hero_title_1": "Driving rules,",
         "search_placeholder": "Search a country...",
@@ -232,15 +252,27 @@
             "other": "Other"
         },
         "footer": {
+            "tagline": "Driving rules for travelers, worldwide.",
+            "explore_heading": "Explore",
+            "countries": "Countries",
+            "search": "Search",
+            "map": "Map",
+            "roadrulez_heading": "RoadRulez",
             "about": "About",
-            "sources": "Sources",
-            "contact": "Contact",
-            "legal": "Legal Notice / Impressum",
+            "data_verification": "How Data Is Verified",
+            "legal_heading": "Legal",
+            "impressum": "Impressum",
             "privacy": "Privacy Policy",
-            "terms": "Terms of Service",
+            "disclaimer": "Disclaimer",
             "last_update": "Last update: May 2026",
             "data_source": "Data sources: Official authorities",
             "feedback_welcome": "Feedback welcome"
+        },
+        "legal_pages": {
+            "about_body": "RoadRulez helps travelers understand driving rules around the world. This page will soon include more about our mission and team.",
+            "privacy_body": "This privacy policy is being prepared. It will describe how RoadRulez handles analytics, feedback, and personal data.",
+            "disclaimer_body": "RoadRulez provides general information only. Always confirm current rules with official authorities before driving.",
+            "data_verification_body": "RoadRulez prioritizes official government sources, documents changes, and reviews updates regularly. Full verification details will be published here soon."
         }
     }
 }

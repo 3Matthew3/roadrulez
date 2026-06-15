@@ -29,6 +29,7 @@ import { formatSpeedWithConversion, type SpeedUnit } from "@/lib/speed-display"
 import RegionalRulesAccordion from "@/components/country/regional-rules-accordion"
 import AustriaSpeedLimitsSection from "@/components/country/austria-speed-limits-section"
 import { resolveFaqText } from "@/lib/faq-display"
+import { defaultFaq } from "@/lib/country-seeds/helpers"
 import { getPublicSourceBadgeClass, getPublicSourceBadgeLabel } from "@/lib/source-display"
 import { COUNTRY_PREMIUM as S } from "@/lib/country-premium-styles"
 
@@ -179,19 +180,20 @@ export default function CountryPremiumDashboard({
 
     const quickBullets =
         data.quick_answer_bullets ??
-        (isGerman
-            ? [
-                  "Vignette auf Autobahnen Pflicht",
-                  "Strenge Geschwindigkeitskontrollen",
-                  "Winterausrüstungsregeln beachten",
-                  "Parkbußgelder häufig",
-              ]
-            : [
-                  "Vignette required on motorways",
-                  "Strict speed enforcement",
-                  "Winter equipment rules apply",
-                  "Parking fines are common",
-              ])
+        (data.common_traps?.slice(0, 4) ??
+            (isGerman
+                ? [
+                      "Offizielle Schilder haben Vorrang",
+                      "Tempokontrollen sind häufig",
+                      "Handy am Steuer ist verboten",
+                      "Prüfe Maut/Vignette vor Autobahnfahrt",
+                  ]
+                : [
+                      "Posted signs override defaults",
+                      "Speed enforcement is common",
+                      "Handheld phone use is banned",
+                      "Check toll/vignette before motorways",
+                  ]))
 
     const speedSummary = [rules.speed_limits.urban, rules.speed_limits.rural, rules.speed_limits.motorway]
         .map((v) => formatSpeedWithConversion(v, speedUnit).primary)
@@ -218,47 +220,17 @@ export default function CountryPremiumDashboard({
         data.top_fines ??
         (isGerman
             ? [
-                  { title: "Tempo +10 km/h außerorts", amount: "ab €30" },
-                  { title: "Handy am Steuer", amount: "€50" },
-                  { title: "Keine Vignette auf Autobahn", amount: "ab €110" },
+                  { title: "Geschwindigkeitsüberschreitung", amount: "ab €50" },
+                  { title: "Handy am Steuer", amount: "€100+" },
+                  { title: "Parkverstoß", amount: "ab €25" },
               ]
             : [
-                  { title: "Speeding +10 km/h outside town limits", amount: "from €30" },
-                  { title: "Using phone while driving", amount: "€50" },
-                  { title: "No vignette on motorway", amount: "from €110" },
+                  { title: "Speeding", amount: "from €50" },
+                  { title: "Using phone while driving", amount: "€100+" },
+                  { title: "Parking violation", amount: "from €25" },
               ])
 
-    const faqEntries =
-        data.faq ??
-        (isGerman
-            ? [
-                  {
-                      question: "Brauche ich eine Vignette in Österreich?",
-                      answer: "Ja. Autobahnen und Schnellstraßen erfordern eine gültige Vignette oder digitale Maut, bevor du sie benutzt.",
-                  },
-                  {
-                      question: "Sind Winterreifen Pflicht?",
-                      answer: "Vom 1. November bis 15. April sind Winterreifen bei winterlichen Straßenverhältnissen Pflicht. Schneeketten können ausgeschildert sein.",
-                  },
-                  {
-                      question: "Kann ich meinen EU-Führerschein nutzen?",
-                      answer: "EU- und EWR-Führerscheine werden in der Regel akzeptiert. Nicht-EU-Fahrer sollten Mietwagen-Anforderungen prüfen.",
-                  },
-              ]
-            : [
-                  {
-                      question: "Do I need a vignette in Austria?",
-                      answer: "Yes. Motorways and expressways require a valid vignette or digital toll before you drive on them.",
-                  },
-                  {
-                      question: "Are winter tyres required?",
-                      answer: "From 1 November to 15 April, winter tyres are required whenever winter road conditions apply.",
-                  },
-                  {
-                      question: "Can I use my EU driving licence?",
-                      answer: "EU and EEA licences are generally accepted. Non-EU drivers should confirm rental requirements.",
-                  },
-              ])
+    const faqEntries = data.faq ?? defaultFaq(localizedName, localizedName)
 
     const fineIcons = [Gauge, Smartphone, CreditCard]
     const sourceEntries = data.source_entries ?? []

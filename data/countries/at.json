@@ -1,10 +1,11 @@
 {
-    "name_en": "Austria",
-    "name_local": "Österreich",
     "iso2": "AT",
     "iso3": "AUT",
+    "name_en": "Austria",
+    "name_local": "Österreich",
     "continent": "Europe",
     "flag": "🇦🇹",
+    "drive_side": "right",
     "header_images": [
         "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1582832172472-c1ce8ec9c3fb?auto=format&fit=crop&w=1920&q=80",
@@ -19,7 +20,436 @@
         "Winter equipment rules apply",
         "Parking fines are common"
     ],
-    "drive_side": "right",
+    "top_fines": [
+        {
+            "title": "Speeding +10 km/h outside town limits",
+            "amount": "from €30"
+        },
+        {
+            "title": "Using phone while driving",
+            "amount": "€50"
+        },
+        {
+            "title": "No vignette on motorway",
+            "amount": "from €110"
+        }
+    ],
+    "faq": [
+        {
+            "id": "vignette-required",
+            "category": "vignette_tolls",
+            "question": "Do I need a vignette in Austria?",
+            "question_de": "Brauche ich eine Vignette in Österreich?",
+            "answer": "Yes. Motorways (Autobahn) and expressways (Schnellstraße) require a valid vignette or digital toll registration before you drive on them. Driving without one is enforced with fines and can affect rental vehicles.",
+            "answer_de": "Ja. Autobahnen und Schnellstraßen erfordern eine gültige Vignette oder digitale Mautregistrierung, bevor du sie benutzt. Fahren ohne Vignette wird geahndet und kann Mietwagen betreffen.",
+            "relatedRules": [
+                {
+                    "label": "Motorway vignette",
+                    "label_de": "Autobahn-Vignette",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedFines": [
+                {
+                    "label": "No vignette on motorway",
+                    "label_de": "Keine Vignette auf der Autobahn",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-asfinag-vignette",
+                "at-oesterreich-driving"
+            ]
+        },
+        {
+            "id": "digital-vignette",
+            "category": "vignette_tolls",
+            "question": "Can I buy a digital vignette instead of a sticker?",
+            "question_de": "Kann ich eine digitale Vignette statt eines Klebevignettes kaufen?",
+            "answer": "Yes. Austria offers digital vignettes linked to your licence plate through ASFINAG. Buy before entering tolled roads. Keep proof of purchase and confirm the plate number is correct.",
+            "answer_de": "Ja. Österreich bietet digitale Vignetten, die über ASFINAG mit dem Kennzeichen verknüpft werden. Kaufe sie vor der Nutzung mautpflichtiger Straßen und prüfe das Kennzeichen.",
+            "relatedRules": [
+                {
+                    "label": "Toll types",
+                    "label_de": "Mautarten",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-asfinag-vignette"
+            ]
+        },
+        {
+            "id": "extra-tolls",
+            "category": "vignette_tolls",
+            "question": "Are there toll roads beyond the standard vignette?",
+            "question_de": "Gibt es Mautstraßen zusätzlich zur Standard-Vignette?",
+            "answer": "Yes. Some Alpine tunnels and special routes require separate tolls in addition to the vignette. Tyrol and Salzburg routes are common examples—check your route before you travel.",
+            "answer_de": "Ja. Einige Alpentunnel und Sonderstrecken erfordern zusätzliche Maut neben der Vignette—besonders in Tirol und Salzburg. Route vorab prüfen.",
+            "relatedRules": [
+                {
+                    "label": "Regional Alpine rules",
+                    "label_de": "Regionale Alpenregeln",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-asfinag-vignette",
+                "at-oeamtc-rules"
+            ]
+        },
+        {
+            "id": "eu-licence",
+            "category": "documents",
+            "question": "Can I use my EU driving licence in Austria?",
+            "question_de": "Kann ich meinen EU-Führerschein in Österreich nutzen?",
+            "answer": "EU and EEA driving licences are generally accepted for tourists. Carry your physical licence and passport or ID. Long-term residents may need to exchange their licence under Austrian rules.",
+            "answer_de": "EU- und EWR-Führerscheine werden für Touristen in der Regel akzeptiert. Führerschein und Ausweis mitführen. Langzeitaufenthalter müssen ggf. umschreiben.",
+            "relatedRules": [
+                {
+                    "label": "Before you drive",
+                    "label_de": "Vor der Fahrt",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-oesterreich-driving",
+                "at-oeamtc-rules"
+            ]
+        },
+        {
+            "id": "idp-requirement",
+            "category": "documents",
+            "question": "Do I need an International Driving Permit (IDP)?",
+            "question_de": "Brauche ich einen internationalen Führerschein (IDP)?",
+            "answer": "Non-EU licences may require an IDP depending on your country of issue and rental company policy. Obtain the IDP in your home country before travel—it cannot be issued in Austria.",
+            "answer_de": "Nicht-EU-Führerscheine können je nach Herkunftsland und Mietwagenanbieter einen IDP erfordern. IDP vor der Reise im Heimatland besorgen.",
+            "relatedRules": [
+                {
+                    "label": "Rental & IDP notes",
+                    "label_de": "Mietwagen & IDP",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-oesterreich-driving",
+                "at-oeamtc-rules"
+            ]
+        },
+        {
+            "id": "mandatory-equipment",
+            "category": "documents",
+            "question": "What equipment must I carry in the car?",
+            "question_de": "Welche Ausrüstung muss im Auto mitgeführt werden?",
+            "answer": "Required items typically include a warning triangle, high-visibility vest, and first-aid kit. Check the latest official list before driving, especially in a rental car.",
+            "answer_de": "Pflichtausstattung umfasst typischerweise Warndreieck, Warnweste und Verbandskasten. Offizielle Liste vor der Fahrt prüfen, besonders bei Mietwagen.",
+            "relatedRules": [
+                {
+                    "label": "Mandatory equipment",
+                    "label_de": "Pflichtausstattung",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmk-transport",
+                "at-oeamtc-rules"
+            ]
+        },
+        {
+            "id": "speed-limits",
+            "category": "speed_limits",
+            "question": "What are the standard speed limits in Austria?",
+            "question_de": "Welche Tempolimits gelten in Österreich?",
+            "answer": "Unless signed otherwise, typical limits are 50 km/h in urban areas, 100 km/h on rural roads, and 130 km/h on motorways. Always follow posted signs—they override general limits.",
+            "answer_de": "Typische Limits: 50 km/h innerorts, 100 km/h außerorts, 130 km/h auf Autobahnen—sofern nicht anders ausgeschildert. Schilder haben Vorrang.",
+            "relatedRules": [
+                {
+                    "label": "Speed limits overview",
+                    "label_de": "Tempolimits-Übersicht",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmi-police",
+                "at-ris-stvo"
+            ]
+        },
+        {
+            "id": "speed-enforcement",
+            "category": "fines",
+            "question": "How strict is speed enforcement in Austria?",
+            "question_de": "Wie streng wird Tempo in Österreich kontrolliert?",
+            "answer": "Speed enforcement is strict and widespread, including fixed cameras, mobile units, and section control. Even small excesses outside urban areas can result in fines.",
+            "answer_de": "Tempokontrollen sind streng und weit verbreitet—stationär, mobil und Streckenmessung. Schon kleine Überschreitungen außerorts können Bußgelder nach sich ziehen.",
+            "relatedFines": [
+                {
+                    "label": "Speeding +10 km/h outside town",
+                    "label_de": "Tempo +10 km/h außerorts",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmi-police",
+                "at-ris-stvo"
+            ]
+        },
+        {
+            "id": "phone-while-driving",
+            "category": "fines",
+            "question": "What is the fine for using a phone while driving?",
+            "question_de": "Welches Bußgeld droht für Handy am Steuer?",
+            "answer": "Using a handheld phone while driving is prohibited. Fines apply on the spot or by mail. Use hands-free systems only when permitted and keep full attention on the road.",
+            "answer_de": "Handygebrauch am Steuer ist verboten. Bußgelder werden vor Ort oder per Post verhängt. Freisprechanlage nur nutzen, wenn erlaubt.",
+            "relatedFines": [
+                {
+                    "label": "Using phone while driving",
+                    "label_de": "Handy am Steuer",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedRules": [
+                {
+                    "label": "Phone use rules",
+                    "label_de": "Handyregeln",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmi-police",
+                "at-ris-stvo"
+            ]
+        },
+        {
+            "id": "alcohol-limit",
+            "category": "fines",
+            "question": "What is the alcohol limit for drivers in Austria?",
+            "question_de": "Wie hoch ist die Promillegrenze in Österreich?",
+            "answer": "The general limit for experienced drivers is 0.5‰ blood alcohol. Lower limits apply to novice and professional drivers. Penalties increase quickly above the limit.",
+            "answer_de": "Für erfahrene Fahrer gilt in der Regel 0,5‰. Für Fahranfänger und Berufsfahrer gelten niedrigere Grenzen. Strafen steigen schnell bei Überschreitung.",
+            "relatedRules": [
+                {
+                    "label": "Alcohol limit",
+                    "label_de": "Alkoholgrenze",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedFines": [
+                {
+                    "label": "Drink-driving penalties",
+                    "label_de": "Alkohol am Steuer",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-ris-stvo",
+                "at-bmi-police"
+            ]
+        },
+        {
+            "id": "winter-tyres",
+            "category": "winter",
+            "question": "Are winter tyres required in Austria?",
+            "question_de": "Sind Winterreifen in Österreich Pflicht?",
+            "answer": "From 1 November to 15 April, winter tyres are required whenever winter road conditions apply—not only when snow is visible. All-season tyres must meet the M+S marking requirements.",
+            "answer_de": "Vom 1. November bis 15. April sind Winterreifen bei winterlichen Straßenverhältnissen Pflicht—notfalls auch ohne sichtbaren Schnee. Ganzjahresreifen brauchen M+S-Kennzeichnung.",
+            "relatedRules": [
+                {
+                    "label": "Winter equipment rules",
+                    "label_de": "Winterausrüstung",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmk-transport",
+                "at-oeamtc-rules"
+            ]
+        },
+        {
+            "id": "snow-chains",
+            "category": "winter",
+            "question": "When are snow chains required?",
+            "question_de": "Wann sind Schneeketten Pflicht?",
+            "answer": "Snow chains may be mandatory on signed Alpine routes during winter conditions, even if winter tyres are fitted. Carry chains when driving mountain passes, especially in Tyrol.",
+            "answer_de": "Schneeketten können auf ausgeschilderten Alpenstrecken bei Winterbedingungen Pflicht sein—auch mit Winterreifen. Ketten mitführen, besonders in Tirol.",
+            "relatedRules": [
+                {
+                    "label": "Tyrol regional rules",
+                    "label_de": "Tiroler Regionalregeln",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmk-transport",
+                "at-oeamtc-rules"
+            ]
+        },
+        {
+            "id": "motorcycle-helmet",
+            "category": "motorcycles",
+            "question": "What rules apply to motorcycles and mopeds?",
+            "question_de": "Welche Regeln gelten für Motorrad und Moped?",
+            "answer": "Helmets are mandatory for riders and passengers. Motorcycles follow the same speed and alcohol rules as cars on most roads. Lane splitting is not permitted. Check vehicle-specific tabs on the country guide.",
+            "answer_de": "Helmpflicht für Fahrer und Beifahrer. Motorräder unterliegen meist denselben Tempo- und Alkoholregeln wie Autos. Überholen zwischen Spuren ist nicht erlaubt.",
+            "relatedRules": [
+                {
+                    "label": "Motorcycle rules",
+                    "label_de": "Motorradregeln",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-bmi-police",
+                "at-ris-stvo"
+            ]
+        },
+        {
+            "id": "rental-car",
+            "category": "rental",
+            "question": "What should I know when renting a car in Austria?",
+            "question_de": "Was sollte ich beim Mietwagen in Österreich beachten?",
+            "answer": "Confirm vignette status with the rental company, inspect mandatory equipment, and understand cross-border policies. Non-EU drivers should verify IDP requirements before pickup.",
+            "answer_de": "Vignettenstatus, Pflichtausstattung und Grenzübertrittsregeln mit dem Vermieter klären. Nicht-EU-Fahrer sollten IDP-Anforderungen vor Abholung prüfen.",
+            "relatedRules": [
+                {
+                    "label": "Rental & IDP",
+                    "label_de": "Mietwagen & IDP",
+                    "href": "/country/at"
+                }
+            ],
+            "relatedSourceIds": [
+                "at-oeamtc-rules",
+                "at-arboe-rules"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "at-oesterreich-driving",
+            "title": "Official Austria portal - Mobility and motor vehicles",
+            "url": "https://www.oesterreich.gv.at/",
+            "publisher": "Republic of Austria",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics"
+            ],
+            "notes": "Official government portal used for baseline driving and vehicle obligations.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-02T10:00:00.000Z"
+        },
+        {
+            "id": "at-asfinag-vignette",
+            "title": "Vignette and toll information",
+            "url": "https://www.asfinag.at/en/toll/vignette/",
+            "publisher": "ASFINAG",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "notes": "Official motorway and expressway toll information.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-06-02T10:00:00.000Z"
+        },
+        {
+            "id": "at-bmi-police",
+            "title": "Federal Ministry of the Interior - Road traffic",
+            "url": "https://www.bmi.gv.at/",
+            "publisher": "Federal Ministry of the Interior",
+            "publishedDate": null,
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics",
+                "speed_limits"
+            ],
+            "notes": "Federal authority reference for traffic enforcement and road safety rules.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-28T10:00:00.000Z"
+        },
+        {
+            "id": "at-bmk-transport",
+            "title": "Federal Ministry for Climate Action - Transport",
+            "url": "https://www.bmk.gv.at/",
+            "publisher": "Federal Ministry for Climate Action, Environment, Energy, Mobility, Innovation and Technology",
+            "publishedDate": null,
+            "sourceType": "MINISTRY",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "winter_rules",
+            "usageModuleKeys": [
+                "winter_rules",
+                "mandatory_equipment"
+            ],
+            "notes": "Ministry guidance on mobility policy, winter equipment, and transport regulations.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-31T10:00:00.000Z"
+        },
+        {
+            "id": "at-oeamtc-rules",
+            "title": "Driving information for Austria",
+            "url": "https://www.oeamtc.at/",
+            "publisher": "ÖAMTC",
+            "publishedDate": null,
+            "sourceType": "AUTOMOBILE_ASSOCIATION",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "requirements",
+            "usageModuleKeys": [
+                "requirements",
+                "mandatory_equipment"
+            ],
+            "notes": "Automobile club guidance for practical road-trip preparation.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-30T10:00:00.000Z"
+        },
+        {
+            "id": "at-arboe-rules",
+            "title": "ARBÖ driving guidance for Austria",
+            "url": "https://www.arboe.at/",
+            "publisher": "ARBÖ",
+            "publishedDate": null,
+            "sourceType": "AUTOMOBILE_ASSOCIATION",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "requirements",
+            "notes": "Supplementary automobile club reference for travellers and rental drivers.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-29T10:00:00.000Z"
+        },
+        {
+            "id": "at-ris-stvo",
+            "title": "Austrian road traffic regulations (StVO)",
+            "url": "https://www.ris.bka.gv.at/",
+            "publisher": "Austrian Legal Information System (RIS)",
+            "publishedDate": null,
+            "sourceType": "LEGAL_DATABASE",
+            "trustLevel": "TRUSTED_SECONDARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics",
+                "speed_limits",
+                "alcohol_limit"
+            ],
+            "notes": "Legal database reference for the national road traffic act and related provisions.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "https://www.oesterreich.gv.at/",
+        "https://www.asfinag.at/en/toll/vignette/",
+        "https://www.oeamtc.at/"
+    ],
+    "summary": "Austria is generally straightforward for road trips, but motorways require a vignette and mountain weather can change driving conditions quickly. Expect strict speed, parking, and winter-equipment enforcement, especially around cities and Alpine routes.",
+    "common_traps": [
+        "Driving on motorways or expressways without a valid vignette or digital toll.",
+        "Special toll roads in Alpine tunnels and passes are separate from the normal vignette.",
+        "Winter tyres are required in winter road conditions from 1 November to 15 April.",
+        "City parking zones can be confusing and are enforced quickly."
+    ],
+    "last_verified": "2026-05-31",
+    "status": "sample",
+    "data_coverage": "medium",
     "rules": {
         "speed_limits": {
             "urban": 50,
@@ -57,29 +487,12 @@
             "122 (Fire brigade)"
         ]
     },
-    "summary": "Austria is generally straightforward for road trips, but motorways require a vignette and mountain weather can change driving conditions quickly. Expect strict speed, parking, and winter-equipment enforcement, especially around cities and Alpine routes.",
-    "common_traps": [
-        "Driving on motorways or expressways without a valid vignette or digital toll.",
-        "Special toll roads in Alpine tunnels and passes are separate from the normal vignette.",
-        "Winter tyres are required in winter road conditions from 1 November to 15 April.",
-        "City parking zones can be confusing and are enforced quickly."
-    ],
-    "top_fines": [
-        {
-            "title": "Speeding +10 km/h outside town limits",
-            "amount": "from €30"
-        },
-        {
-            "title": "Using phone while driving",
-            "amount": "€50"
-        },
-        {
-            "title": "No vignette on motorway",
-            "amount": "from €110"
-        }
-    ],
     "traffic_fines": {
-        "relatedSourceIds": ["at-bmi-police", "at-ris-stvo", "at-oesterreich-driving"],
+        "relatedSourceIds": [
+            "at-bmi-police",
+            "at-ris-stvo",
+            "at-oesterreich-driving"
+        ],
         "summaries": [
             {
                 "id": "speeding",
@@ -133,20 +546,42 @@
                     {
                         "id": "speed-10",
                         "speedOver": "+10 km/h",
-                        "consequences": { "fine": "from €30", "fine_de": "ab €30" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €30",
+                            "fine_de": "ab €30"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "speed-20",
                         "speedOver": "+20 km/h",
-                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €50",
+                            "fine_de": "ab €50"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "speed-30",
                         "speedOver": "+30 km/h",
-                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €70",
+                            "fine_de": "ab €70",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "speed-50",
@@ -160,7 +595,11 @@
                             "licenseSuspension_de": "bis 1 Monat",
                             "vehicleConfiscation": true
                         },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "speed-100",
@@ -176,7 +615,10 @@
                             "vehicleConfiscation": true,
                             "court": true
                         },
-                        "appliesTo": ["car", "motorcycle"]
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     }
                 ]
             },
@@ -191,24 +633,57 @@
                         "id": "alcohol-05",
                         "label": "0.5–0.79‰ (experienced drivers)",
                         "label_de": "0,5–0,79‰ (erfahrene Fahrer)",
-                        "consequences": { "fine": "from €300", "fine_de": "ab €300", "points": "2", "licenseSuspension": "up to 1 month", "licenseSuspension_de": "bis 1 Monat" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €300",
+                            "fine_de": "ab €300",
+                            "points": "2",
+                            "licenseSuspension": "up to 1 month",
+                            "licenseSuspension_de": "bis 1 Monat"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "alcohol-08",
                         "label": "0.8‰ and above",
                         "label_de": "0,8‰ und mehr",
                         "severe": true,
-                        "consequences": { "fine": "from €800", "fine_de": "ab €800", "points": "4", "licenseSuspension": "several months", "licenseSuspension_de": "mehrere Monate", "vehicleImpound": true, "court": true },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €800",
+                            "fine_de": "ab €800",
+                            "points": "4",
+                            "licenseSuspension": "several months",
+                            "licenseSuspension_de": "mehrere Monate",
+                            "vehicleImpound": true,
+                            "court": true
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "drugs",
                         "label": "Driving under influence of drugs",
                         "label_de": "Fahren unter Drogeneinfluss",
                         "severe": true,
-                        "consequences": { "fine": "criminal proceedings", "fine_de": "Strafverfahren", "licenseSuspension": "mandatory", "licenseSuspension_de": "Pflichtentzug", "vehicleImpound": true, "court": true },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "criminal proceedings",
+                            "fine_de": "Strafverfahren",
+                            "licenseSuspension": "mandatory",
+                            "licenseSuspension_de": "Pflichtentzug",
+                            "vehicleImpound": true,
+                            "court": true
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     }
                 ]
             },
@@ -221,15 +696,30 @@
                         "id": "phone-handheld",
                         "label": "Handheld phone use while driving",
                         "label_de": "Handy am Steuer (in der Hand)",
-                        "consequences": { "fine": "€50", "fine_de": "€50" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "€50",
+                            "fine_de": "€50"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "phone-repeat",
                         "label": "Repeated offence within 12 months",
                         "label_de": "Wiederholung innerhalb 12 Monaten",
-                        "consequences": { "fine": "€100", "fine_de": "€100", "points": "1" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "€100",
+                            "fine_de": "€100",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     }
                 ]
             },
@@ -242,22 +732,38 @@
                         "id": "seatbelt-driver",
                         "label": "Driver without seatbelt",
                         "label_de": "Fahrer ohne Gurt",
-                        "consequences": { "fine": "€35", "fine_de": "€35" },
-                        "appliesTo": ["car"]
+                        "consequences": {
+                            "fine": "€35",
+                            "fine_de": "€35"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
                     },
                     {
                         "id": "seatbelt-passenger",
                         "label": "Passenger without seatbelt",
                         "label_de": "Mitfahrer ohne Gurt",
-                        "consequences": { "fine": "€35", "fine_de": "€35" },
-                        "appliesTo": ["car"]
+                        "consequences": {
+                            "fine": "€35",
+                            "fine_de": "€35"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
                     },
                     {
                         "id": "child-seat",
                         "label": "Child without proper restraint",
                         "label_de": "Kind ohne korrekten Kindersitz",
-                        "consequences": { "fine": "from €100", "fine_de": "ab €100", "points": "1" },
-                        "appliesTo": ["car"]
+                        "consequences": {
+                            "fine": "from €100",
+                            "fine_de": "ab €100",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
                     }
                 ]
             },
@@ -270,22 +776,39 @@
                         "id": "parking-zone",
                         "label": "Invalid or expired parking ticket",
                         "label_de": "Ungültiges oder abgelaufenes Parkticket",
-                        "consequences": { "fine": "from €25", "fine_de": "ab €25" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from €25",
+                            "fine_de": "ab €25"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "parking-disabled",
                         "label": "Parking in disabled bay without permit",
                         "label_de": "Parken im Behindertenparkplatz ohne Berechtigung",
-                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
-                        "appliesTo": ["car"]
+                        "consequences": {
+                            "fine": "from €50",
+                            "fine_de": "ab €50"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
                     },
                     {
                         "id": "parking-vienna",
                         "label": "Short-stay zone violation (e.g. Vienna)",
                         "label_de": "Kurzparkzone (z. B. Wien)",
-                        "consequences": { "fine": "from €30", "fine_de": "ab €30" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from €30",
+                            "fine_de": "ab €30"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     }
                 ]
             },
@@ -298,16 +821,34 @@
                         "id": "red-light-simple",
                         "label": "Red light (no endangerment)",
                         "label_de": "Rotlicht (ohne Gefährdung)",
-                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €70",
+                            "fine_de": "ab €70",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     },
                     {
                         "id": "red-light-danger",
                         "label": "Red light with endangerment",
                         "label_de": "Rotlicht mit Gefährdung",
                         "severe": true,
-                        "consequences": { "fine": "from €200", "fine_de": "ab €200", "points": "2", "licenseSuspension": "possible", "licenseSuspension_de": "möglich" },
-                        "appliesTo": ["car", "motorcycle", "moped"]
+                        "consequences": {
+                            "fine": "from €200",
+                            "fine_de": "ab €200",
+                            "points": "2",
+                            "licenseSuspension": "possible",
+                            "licenseSuspension_de": "möglich"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
                     }
                 ]
             },
@@ -320,15 +861,26 @@
                         "id": "helmet-motorcycle",
                         "label": "Riding without approved helmet",
                         "label_de": "Fahren ohne genehmigten Helm",
-                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
-                        "appliesTo": ["motorcycle"]
+                        "consequences": {
+                            "fine": "from €50",
+                            "fine_de": "ab €50"
+                        },
+                        "appliesTo": [
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "lane-splitting",
                         "label": "Forbidden overtaking between lanes",
                         "label_de": "Verbotenes Überholen zwischen Spuren",
-                        "consequences": { "fine": "from €70", "fine_de": "ab €70", "points": "1" },
-                        "appliesTo": ["motorcycle"]
+                        "consequences": {
+                            "fine": "from €70",
+                            "fine_de": "ab €70",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "motorcycle"
+                        ]
                     }
                 ]
             },
@@ -341,15 +893,25 @@
                         "id": "helmet-moped",
                         "label": "Riding without helmet (where required)",
                         "label_de": "Fahren ohne Helm (wo Pflicht)",
-                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
-                        "appliesTo": ["moped"]
+                        "consequences": {
+                            "fine": "from €50",
+                            "fine_de": "ab €50"
+                        },
+                        "appliesTo": [
+                            "moped"
+                        ]
                     },
                     {
                         "id": "moped-passenger",
                         "label": "Unauthorised passenger on moped",
                         "label_de": "Unbefugter Beifahrer auf dem Moped",
-                        "consequences": { "fine": "from €50", "fine_de": "ab €50" },
-                        "appliesTo": ["moped"]
+                        "consequences": {
+                            "fine": "from €50",
+                            "fine_de": "ab €50"
+                        },
+                        "appliesTo": [
+                            "moped"
+                        ]
                     }
                 ]
             },
@@ -364,172 +926,44 @@
                         "id": "no-vignette",
                         "label": "No vignette on motorway/expressway",
                         "label_de": "Keine Vignette auf Autobahn/Schnellstraße",
-                        "consequences": { "fine": "from €110", "fine_de": "ab €110" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from €110",
+                            "fine_de": "ab €110"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "env-zone",
                         "label": "Environmental zone violation (e.g. Vienna)",
                         "label_de": "Umweltzonen-Verstoß (z. B. Wien)",
-                        "consequences": { "fine": "from €100", "fine_de": "ab €100" },
-                        "appliesTo": ["car"]
+                        "consequences": {
+                            "fine": "from €100",
+                            "fine_de": "ab €100"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
                     },
                     {
                         "id": "winter-equipment",
                         "label": "Missing winter tyres/chains where required",
                         "label_de": "Fehlende Winterreifen/Ketten wo Pflicht",
-                        "consequences": { "fine": "from €35", "fine_de": "ab €35" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from €35",
+                            "fine_de": "ab €35"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     }
                 ]
             }
         ]
     },
-    "faq": [
-        {
-            "id": "vignette-required",
-            "category": "vignette_tolls",
-            "question": "Do I need a vignette in Austria?",
-            "question_de": "Brauche ich eine Vignette in Österreich?",
-            "answer": "Yes. Motorways (Autobahn) and expressways (Schnellstraße) require a valid vignette or digital toll registration before you drive on them. Driving without one is enforced with fines and can affect rental vehicles.",
-            "answer_de": "Ja. Autobahnen und Schnellstraßen erfordern eine gültige Vignette oder digitale Mautregistrierung, bevor du sie benutzt. Fahren ohne Vignette wird geahndet und kann Mietwagen betreffen.",
-            "relatedRules": [{ "label": "Motorway vignette", "label_de": "Autobahn-Vignette", "href": "/country/at" }],
-            "relatedFines": [{ "label": "No vignette on motorway", "label_de": "Keine Vignette auf der Autobahn", "href": "/country/at" }],
-            "relatedSourceIds": ["at-asfinag-vignette", "at-oesterreich-driving"]
-        },
-        {
-            "id": "digital-vignette",
-            "category": "vignette_tolls",
-            "question": "Can I buy a digital vignette instead of a sticker?",
-            "question_de": "Kann ich eine digitale Vignette statt eines Klebevignettes kaufen?",
-            "answer": "Yes. Austria offers digital vignettes linked to your licence plate through ASFINAG. Buy before entering tolled roads. Keep proof of purchase and confirm the plate number is correct.",
-            "answer_de": "Ja. Österreich bietet digitale Vignetten, die über ASFINAG mit dem Kennzeichen verknüpft werden. Kaufe sie vor der Nutzung mautpflichtiger Straßen und prüfe das Kennzeichen.",
-            "relatedRules": [{ "label": "Toll types", "label_de": "Mautarten", "href": "/country/at" }],
-            "relatedSourceIds": ["at-asfinag-vignette"]
-        },
-        {
-            "id": "extra-tolls",
-            "category": "vignette_tolls",
-            "question": "Are there toll roads beyond the standard vignette?",
-            "question_de": "Gibt es Mautstraßen zusätzlich zur Standard-Vignette?",
-            "answer": "Yes. Some Alpine tunnels and special routes require separate tolls in addition to the vignette. Tyrol and Salzburg routes are common examples—check your route before you travel.",
-            "answer_de": "Ja. Einige Alpentunnel und Sonderstrecken erfordern zusätzliche Maut neben der Vignette—besonders in Tirol und Salzburg. Route vorab prüfen.",
-            "relatedRules": [{ "label": "Regional Alpine rules", "label_de": "Regionale Alpenregeln", "href": "/country/at" }],
-            "relatedSourceIds": ["at-asfinag-vignette", "at-oeamtc-rules"]
-        },
-        {
-            "id": "eu-licence",
-            "category": "documents",
-            "question": "Can I use my EU driving licence in Austria?",
-            "question_de": "Kann ich meinen EU-Führerschein in Österreich nutzen?",
-            "answer": "EU and EEA driving licences are generally accepted for tourists. Carry your physical licence and passport or ID. Long-term residents may need to exchange their licence under Austrian rules.",
-            "answer_de": "EU- und EWR-Führerscheine werden für Touristen in der Regel akzeptiert. Führerschein und Ausweis mitführen. Langzeitaufenthalter müssen ggf. umschreiben.",
-            "relatedRules": [{ "label": "Before you drive", "label_de": "Vor der Fahrt", "href": "/country/at" }],
-            "relatedSourceIds": ["at-oesterreich-driving", "at-oeamtc-rules"]
-        },
-        {
-            "id": "idp-requirement",
-            "category": "documents",
-            "question": "Do I need an International Driving Permit (IDP)?",
-            "question_de": "Brauche ich einen internationalen Führerschein (IDP)?",
-            "answer": "Non-EU licences may require an IDP depending on your country of issue and rental company policy. Obtain the IDP in your home country before travel—it cannot be issued in Austria.",
-            "answer_de": "Nicht-EU-Führerscheine können je nach Herkunftsland und Mietwagenanbieter einen IDP erfordern. IDP vor der Reise im Heimatland besorgen.",
-            "relatedRules": [{ "label": "Rental & IDP notes", "label_de": "Mietwagen & IDP", "href": "/country/at" }],
-            "relatedSourceIds": ["at-oesterreich-driving", "at-oeamtc-rules"]
-        },
-        {
-            "id": "mandatory-equipment",
-            "category": "documents",
-            "question": "What equipment must I carry in the car?",
-            "question_de": "Welche Ausrüstung muss im Auto mitgeführt werden?",
-            "answer": "Required items typically include a warning triangle, high-visibility vest, and first-aid kit. Check the latest official list before driving, especially in a rental car.",
-            "answer_de": "Pflichtausstattung umfasst typischerweise Warndreieck, Warnweste und Verbandskasten. Offizielle Liste vor der Fahrt prüfen, besonders bei Mietwagen.",
-            "relatedRules": [{ "label": "Mandatory equipment", "label_de": "Pflichtausstattung", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmk-transport", "at-oeamtc-rules"]
-        },
-        {
-            "id": "speed-limits",
-            "category": "speed_limits",
-            "question": "What are the standard speed limits in Austria?",
-            "question_de": "Welche Tempolimits gelten in Österreich?",
-            "answer": "Unless signed otherwise, typical limits are 50 km/h in urban areas, 100 km/h on rural roads, and 130 km/h on motorways. Always follow posted signs—they override general limits.",
-            "answer_de": "Typische Limits: 50 km/h innerorts, 100 km/h außerorts, 130 km/h auf Autobahnen—sofern nicht anders ausgeschildert. Schilder haben Vorrang.",
-            "relatedRules": [{ "label": "Speed limits overview", "label_de": "Tempolimits-Übersicht", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmi-police", "at-ris-stvo"]
-        },
-        {
-            "id": "speed-enforcement",
-            "category": "fines",
-            "question": "How strict is speed enforcement in Austria?",
-            "question_de": "Wie streng wird Tempo in Österreich kontrolliert?",
-            "answer": "Speed enforcement is strict and widespread, including fixed cameras, mobile units, and section control. Even small excesses outside urban areas can result in fines.",
-            "answer_de": "Tempokontrollen sind streng und weit verbreitet—stationär, mobil und Streckenmessung. Schon kleine Überschreitungen außerorts können Bußgelder nach sich ziehen.",
-            "relatedFines": [{ "label": "Speeding +10 km/h outside town", "label_de": "Tempo +10 km/h außerorts", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmi-police", "at-ris-stvo"]
-        },
-        {
-            "id": "phone-while-driving",
-            "category": "fines",
-            "question": "What is the fine for using a phone while driving?",
-            "question_de": "Welches Bußgeld droht für Handy am Steuer?",
-            "answer": "Using a handheld phone while driving is prohibited. Fines apply on the spot or by mail. Use hands-free systems only when permitted and keep full attention on the road.",
-            "answer_de": "Handygebrauch am Steuer ist verboten. Bußgelder werden vor Ort oder per Post verhängt. Freisprechanlage nur nutzen, wenn erlaubt.",
-            "relatedFines": [{ "label": "Using phone while driving", "label_de": "Handy am Steuer", "href": "/country/at" }],
-            "relatedRules": [{ "label": "Phone use rules", "label_de": "Handyregeln", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmi-police", "at-ris-stvo"]
-        },
-        {
-            "id": "alcohol-limit",
-            "category": "fines",
-            "question": "What is the alcohol limit for drivers in Austria?",
-            "question_de": "Wie hoch ist die Promillegrenze in Österreich?",
-            "answer": "The general limit for experienced drivers is 0.5‰ blood alcohol. Lower limits apply to novice and professional drivers. Penalties increase quickly above the limit.",
-            "answer_de": "Für erfahrene Fahrer gilt in der Regel 0,5‰. Für Fahranfänger und Berufsfahrer gelten niedrigere Grenzen. Strafen steigen schnell bei Überschreitung.",
-            "relatedRules": [{ "label": "Alcohol limit", "label_de": "Alkoholgrenze", "href": "/country/at" }],
-            "relatedFines": [{ "label": "Drink-driving penalties", "label_de": "Alkohol am Steuer", "href": "/country/at" }],
-            "relatedSourceIds": ["at-ris-stvo", "at-bmi-police"]
-        },
-        {
-            "id": "winter-tyres",
-            "category": "winter",
-            "question": "Are winter tyres required in Austria?",
-            "question_de": "Sind Winterreifen in Österreich Pflicht?",
-            "answer": "From 1 November to 15 April, winter tyres are required whenever winter road conditions apply—not only when snow is visible. All-season tyres must meet the M+S marking requirements.",
-            "answer_de": "Vom 1. November bis 15. April sind Winterreifen bei winterlichen Straßenverhältnissen Pflicht—notfalls auch ohne sichtbaren Schnee. Ganzjahresreifen brauchen M+S-Kennzeichnung.",
-            "relatedRules": [{ "label": "Winter equipment rules", "label_de": "Winterausrüstung", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmk-transport", "at-oeamtc-rules"]
-        },
-        {
-            "id": "snow-chains",
-            "category": "winter",
-            "question": "When are snow chains required?",
-            "question_de": "Wann sind Schneeketten Pflicht?",
-            "answer": "Snow chains may be mandatory on signed Alpine routes during winter conditions, even if winter tyres are fitted. Carry chains when driving mountain passes, especially in Tyrol.",
-            "answer_de": "Schneeketten können auf ausgeschilderten Alpenstrecken bei Winterbedingungen Pflicht sein—auch mit Winterreifen. Ketten mitführen, besonders in Tirol.",
-            "relatedRules": [{ "label": "Tyrol regional rules", "label_de": "Tiroler Regionalregeln", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmk-transport", "at-oeamtc-rules"]
-        },
-        {
-            "id": "motorcycle-helmet",
-            "category": "motorcycles",
-            "question": "What rules apply to motorcycles and mopeds?",
-            "question_de": "Welche Regeln gelten für Motorrad und Moped?",
-            "answer": "Helmets are mandatory for riders and passengers. Motorcycles follow the same speed and alcohol rules as cars on most roads. Lane splitting is not permitted. Check vehicle-specific tabs on the country guide.",
-            "answer_de": "Helmpflicht für Fahrer und Beifahrer. Motorräder unterliegen meist denselben Tempo- und Alkoholregeln wie Autos. Überholen zwischen Spuren ist nicht erlaubt.",
-            "relatedRules": [{ "label": "Motorcycle rules", "label_de": "Motorradregeln", "href": "/country/at" }],
-            "relatedSourceIds": ["at-bmi-police", "at-ris-stvo"]
-        },
-        {
-            "id": "rental-car",
-            "category": "rental",
-            "question": "What should I know when renting a car in Austria?",
-            "question_de": "Was sollte ich beim Mietwagen in Österreich beachten?",
-            "answer": "Confirm vignette status with the rental company, inspect mandatory equipment, and understand cross-border policies. Non-EU drivers should verify IDP requirements before pickup.",
-            "answer_de": "Vignettenstatus, Pflichtausstattung und Grenzübertrittsregeln mit dem Vermieter klären. Nicht-EU-Fahrer sollten IDP-Anforderungen vor Abholung prüfen.",
-            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/at" }],
-            "relatedSourceIds": ["at-oeamtc-rules", "at-arboe-rules"]
-        }
-    ],
     "rental_and_idp_notes": "EU/EEA licences are generally accepted. Non-EU drivers should check rental-company requirements; an International Driving Permit is recommended and may be required depending on the licence.",
     "regional_variations": [
         {
@@ -588,112 +1022,6 @@
                     "icon": "parking"
                 }
             ]
-        }
-    ],
-    "last_verified": "2026-05-31",
-    "status": "sample",
-    "data_coverage": "medium",
-    "sources": [
-        "https://www.oesterreich.gv.at/",
-        "https://www.asfinag.at/en/toll/vignette/",
-        "https://www.oeamtc.at/"
-    ],
-    "source_entries": [
-        {
-            "id": "at-oesterreich-driving",
-            "title": "Official Austria portal - Mobility and motor vehicles",
-            "url": "https://www.oesterreich.gv.at/",
-            "publisher": "Republic of Austria",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics"],
-            "notes": "Official government portal used for baseline driving and vehicle obligations.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-06-02T10:00:00.000Z"
-        },
-        {
-            "id": "at-asfinag-vignette",
-            "title": "Vignette and toll information",
-            "url": "https://www.asfinag.at/en/toll/vignette/",
-            "publisher": "ASFINAG",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "tolls",
-            "notes": "Official motorway and expressway toll information.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-06-02T10:00:00.000Z"
-        },
-        {
-            "id": "at-bmi-police",
-            "title": "Federal Ministry of the Interior - Road traffic",
-            "url": "https://www.bmi.gv.at/",
-            "publisher": "Federal Ministry of the Interior",
-            "publishedDate": null,
-            "sourceType": "POLICE",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics", "speed_limits"],
-            "notes": "Federal authority reference for traffic enforcement and road safety rules.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-28T10:00:00.000Z"
-        },
-        {
-            "id": "at-bmk-transport",
-            "title": "Federal Ministry for Climate Action - Transport",
-            "url": "https://www.bmk.gv.at/",
-            "publisher": "Federal Ministry for Climate Action, Environment, Energy, Mobility, Innovation and Technology",
-            "publishedDate": null,
-            "sourceType": "MINISTRY",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "winter_rules",
-            "usageModuleKeys": ["winter_rules", "mandatory_equipment"],
-            "notes": "Ministry guidance on mobility policy, winter equipment, and transport regulations.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-31T10:00:00.000Z"
-        },
-        {
-            "id": "at-oeamtc-rules",
-            "title": "Driving information for Austria",
-            "url": "https://www.oeamtc.at/",
-            "publisher": "ÖAMTC",
-            "publishedDate": null,
-            "sourceType": "AUTOMOBILE_ASSOCIATION",
-            "trustLevel": "TRUSTED_SECONDARY",
-            "moduleKey": "requirements",
-            "usageModuleKeys": ["requirements", "mandatory_equipment"],
-            "notes": "Automobile club guidance for practical road-trip preparation.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-30T10:00:00.000Z"
-        },
-        {
-            "id": "at-arboe-rules",
-            "title": "ARBÖ driving guidance for Austria",
-            "url": "https://www.arboe.at/",
-            "publisher": "ARBÖ",
-            "publishedDate": null,
-            "sourceType": "AUTOMOBILE_ASSOCIATION",
-            "trustLevel": "TRUSTED_SECONDARY",
-            "moduleKey": "requirements",
-            "notes": "Supplementary automobile club reference for travellers and rental drivers.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-29T10:00:00.000Z"
-        },
-        {
-            "id": "at-ris-stvo",
-            "title": "Austrian road traffic regulations (StVO)",
-            "url": "https://www.ris.bka.gv.at/",
-            "publisher": "Austrian Legal Information System (RIS)",
-            "publishedDate": null,
-            "sourceType": "LEGAL_DATABASE",
-            "trustLevel": "TRUSTED_SECONDARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics", "speed_limits", "alcohol_limit"],
-            "notes": "Legal database reference for the national road traffic act and related provisions.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
         }
     ]
 }

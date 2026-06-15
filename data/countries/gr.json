@@ -1,0 +1,136 @@
+{
+    "iso2": "GR",
+    "iso3": "GRC",
+    "name_en": "Greece",
+    "name_local": "Ελλάδα",
+    "continent": "Europe",
+    "flag": "🇬🇷",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Ferry planning for islands",
+        "Tight urban streets",
+        "Motorcycle traffic common",
+        "Summer tourist congestion"
+    ],
+    "top_fines": [
+        {
+            "title": "Phone while driving",
+            "amount": "€100"
+        },
+        {
+            "title": "Illegal parking Athens",
+            "amount": "from €40"
+        }
+    ],
+    "faq": [
+        {
+            "id": "ferry-gr",
+            "category": "documents",
+            "question": "Rental car on Greek ferries?",
+            "question_de": "Mietwagen auf Fähren?",
+            "answer": "Check rental contract—ferry use often restricted.",
+            "answer_de": "Mietvertrag prüfen—Fähren oft eingeschränkt.",
+            "relatedSourceIds": [
+                "gr-ypme"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "gr-ypme",
+            "title": "Ministry of Transport",
+            "url": "https://www.ypme.gov.gr/",
+            "publisher": "YME",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "gr-police",
+            "title": "Hellenic Police",
+            "url": "https://www.astynomia.gr/",
+            "publisher": "Hellenic Police",
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "YPME"
+    ],
+    "summary": "Greece has many islands accessible by ferry; urban driving can be tight.",
+    "common_traps": [
+        "Ferry planning for islands",
+        "Tight urban streets",
+        "Motorcycle traffic common",
+        "Summer tourist congestion"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": false,
+            "type": "none",
+            "notes": ""
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "gr-police"
+        ],
+        "summaries": [
+            {
+                "id": "parking",
+                "icon": "parking",
+                "title": "Parking",
+                "title_de": "Parken",
+                "summary": "Athens towing common.",
+                "summary_de": "Abschleppen in Athen.",
+                "maxConsequence": "€150",
+                "maxConsequence_de": "€150"
+            }
+        ],
+        "categories": []
+    }
+}

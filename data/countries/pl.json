@@ -1,0 +1,136 @@
+{
+    "iso2": "PL",
+    "iso3": "POL",
+    "name_en": "Poland",
+    "name_local": "Polska",
+    "continent": "Europe",
+    "flag": "🇵🇱",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Motorway e-vignette required",
+        "Strict speed cameras",
+        "Winter tyres in season",
+        "Truck traffic on main roads"
+    ],
+    "top_fines": [
+        {
+            "title": "Missing e-vignette",
+            "amount": "from PLN 500"
+        },
+        {
+            "title": "Phone while driving",
+            "amount": "from PLN 500"
+        }
+    ],
+    "faq": [
+        {
+            "id": "vignette-pl",
+            "category": "vignette_tolls",
+            "question": "Polish e-vignette?",
+            "question_de": "Polnische E-Vignette?",
+            "answer": "Required on listed motorways. Buy online before travel.",
+            "answer_de": "Auf gelisteten Autobahnen Pflicht. Online vor Reise kaufen.",
+            "relatedSourceIds": [
+                "pl-gddkia"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "pl-gddkia",
+            "title": "GDDKiA",
+            "url": "https://www.gov.pl/web/gddkia",
+            "publisher": "GDDKiA",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "pl-policja",
+            "title": "Policja",
+            "url": "https://policja.pl/",
+            "publisher": "Policja",
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "Gov.pl"
+    ],
+    "summary": "Poland requires motorway vignettes and has strict speed enforcement.",
+    "common_traps": [
+        "Motorway e-vignette required",
+        "Strict speed cameras",
+        "Winter tyres in season",
+        "Truck traffic on main roads"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 140,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": true,
+            "type": "vignette",
+            "notes": "E-vignette on A/S roads via e-TOLL."
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "pl-policja"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Section cameras on A1/A2/A4.",
+                "summary_de": "Streckenradar A1/A2/A4.",
+                "maxConsequence": "Points",
+                "maxConsequence_de": "Punkte"
+            }
+        ],
+        "categories": []
+    }
+}

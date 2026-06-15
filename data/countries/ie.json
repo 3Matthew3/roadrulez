@@ -1,0 +1,168 @@
+{
+    "iso2": "IE",
+    "iso3": "IRL",
+    "name_en": "Ireland",
+    "name_local": "Éire",
+    "continent": "Europe",
+    "flag": "🇮🇪",
+    "drive_side": "left",
+    "header_images": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Drive on the left",
+        "Narrow rural roads",
+        "Tolls on some motorways",
+        "Strict drink-drive limits"
+    ],
+    "top_fines": [
+        {
+            "title": "Phone while driving",
+            "amount": "€120 + 3 points"
+        },
+        {
+            "title": "Speeding +10 km/h",
+            "amount": "from €80"
+        }
+    ],
+    "faq": [
+        {
+            "id": "left-ie",
+            "category": "priority_rules",
+            "question": "Tips for driving on the left in Ireland?",
+            "question_de": "Linksverkehr in Irland?",
+            "answer": "Roundabouts clockwise. Use passing bays on narrow roads.",
+            "answer_de": "Kreisverkehre im Uhrzeigersinn. Ausweichbuchten nutzen.",
+            "relatedSourceIds": [
+                "ie-rsa"
+            ]
+        },
+        {
+            "id": "points-ie",
+            "category": "fines",
+            "question": "Penalty points in Ireland?",
+            "question_de": "Punktesystem Irland?",
+            "answer": "12 points in 3 years = 6-month ban.",
+            "answer_de": "12 Punkte in 3 Jahren = 6 Monate Sperre.",
+            "relatedSourceIds": [
+                "ie-rsa"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "ie-rsa",
+            "title": "Road Safety Authority",
+            "url": "https://www.rsa.ie/",
+            "publisher": "RSA",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits",
+                "alcohol_limit"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "ie-garda",
+            "title": "An Garda Síochána",
+            "url": "https://www.garda.ie/",
+            "publisher": "Garda",
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "RSA"
+    ],
+    "summary": "Ireland drives on the left with many narrow rural roads.",
+    "common_traps": [
+        "Drive on the left",
+        "Narrow rural roads",
+        "Tolls on some motorways",
+        "Strict drink-drive limits"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 120,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "0.02% for learner/novice."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": false,
+            "type": "none",
+            "notes": ""
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ],
+        "drive_side": "left"
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "ie-garda"
+        ],
+        "summaries": [
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Phone",
+                "title_de": "Handy",
+                "summary": "€120, 3 points.",
+                "summary_de": "€120, 3 Punkte.",
+                "maxConsequence": "Disqualification",
+                "maxConsequence_de": "Fahrverbot"
+            }
+        ],
+        "categories": [
+            {
+                "id": "phone",
+                "title": "Phone",
+                "title_de": "Handy",
+                "rows": [
+                    {
+                        "id": "phone",
+                        "consequences": {
+                            "fine": "€120",
+                            "fine_de": "€120",
+                            "points": "3"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,136 @@
+{
+    "iso2": "CZ",
+    "iso3": "CZE",
+    "name_en": "Czechia",
+    "name_local": "Česko",
+    "continent": "Europe",
+    "flag": "🇨🇿",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Motorway vignette required",
+        "Zero alcohol for novices",
+        "Strict speed cameras",
+        "Winter tyres when required"
+    ],
+    "top_fines": [
+        {
+            "title": "Missing e-vignette",
+            "amount": "from CZK 5,000"
+        },
+        {
+            "title": "Phone while driving",
+            "amount": "from CZK 1,000"
+        }
+    ],
+    "faq": [
+        {
+            "id": "vignette-cz",
+            "category": "vignette_tolls",
+            "question": "Czech e-vignette?",
+            "question_de": "Tschechische E-Vignette?",
+            "answer": "Mandatory on marked motorways. Link plate at edalnice.cz.",
+            "answer_de": "Pflicht auf Autobahnen. Kennzeichen auf edalnice.cz verknüpfen.",
+            "relatedSourceIds": [
+                "cz-edalnice"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "cz-edalnice",
+            "title": "Electronic vignette",
+            "url": "https://edalnice.cz/en/index.html",
+            "publisher": "Czech Toll",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "cz-mdcr",
+            "title": "Ministry of Transport",
+            "url": "https://www.mdcr.cz/",
+            "publisher": "MDCR",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "MDCR"
+    ],
+    "summary": "Czechia requires motorway vignettes and enforces zero alcohol for new drivers.",
+    "common_traps": [
+        "Motorway vignette required",
+        "Zero alcohol for novices",
+        "Strict speed cameras",
+        "Winter tyres when required"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": true,
+            "type": "vignette",
+            "notes": "Buy at edalnice.cz before motorways."
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "cz-edalnice"
+        ],
+        "summaries": [
+            {
+                "id": "tolls",
+                "icon": "toll",
+                "title": "Vignette",
+                "title_de": "Vignette",
+                "summary": "E-vignette required.",
+                "summary_de": "E-Vignette Pflicht.",
+                "maxConsequence": "CZK 5,000",
+                "maxConsequence_de": "CZK 5.000"
+            }
+        ],
+        "categories": []
+    }
+}

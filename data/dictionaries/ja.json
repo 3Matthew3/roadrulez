@@ -18,6 +18,26 @@
         "yes": "はい",
         "no": "いいえ"
     },
+    "countries_page": {
+        "page_title": "国・地域と運転ルール",
+        "page_subtitle": "世界中の運転ルール、速度制限、罰金、交通規則を検索。",
+        "search_placeholder": "国を検索...",
+        "popular_title": "人気の国・地域",
+        "browse_title": "地域別に見る",
+        "drive_on": "通行",
+        "top_speed": "最高速度",
+        "alcohol_limit": "アルコール限度",
+        "available": "利用可能",
+        "coming_soon": "近日公開",
+        "view_guide": "ガイドを見る",
+        "guide_in_progress": "ガイド準備中",
+        "stats_available": "{count} か国が利用可能",
+        "stats_available_sub": "詳細な運転ガイド",
+        "stats_planned": "{count}+ か国を予定",
+        "stats_planned_sub": "順次追加予定",
+        "stats_verified": "検証済み",
+        "stats_verified_sub": "政府の公式情報源に基づく"
+    },
     "home": {
         "hero_title_1": "交通ルールを、",
         "search_placeholder": "国を検索...",
@@ -232,15 +252,27 @@
             "other": "その他"
         },
         "footer": {
+            "tagline": "旅行者のための世界中の運転ルール。",
+            "explore_heading": "探索",
+            "countries": "国・地域",
+            "search": "検索",
+            "map": "地図",
+            "roadrulez_heading": "RoadRulez",
             "about": "概要",
-            "sources": "情報源",
-            "contact": "お問い合わせ",
-            "legal": "法的表示 / Impressum",
+            "data_verification": "データの検証方法",
+            "legal_heading": "法的情報",
+            "impressum": "運営者情報",
             "privacy": "プライバシー",
-            "terms": "利用規約",
+            "disclaimer": "免責事項",
             "last_update": "最終更新: 2026年5月",
             "data_source": "データソース: 公式機関",
             "feedback_welcome": "フィードバック歓迎"
+        },
+        "legal_pages": {
+            "about_body": "RoadRulezは、世界中の運転ルールを旅行者が理解しやすくするサービスです。ミッションやチームについての詳細は近日公開します。",
+            "privacy_body": "プライバシーポリシーは現在作成中です。分析、フィードバック、個人データの取り扱いについて説明します。",
+            "disclaimer_body": "RoadRulezは一般的な情報を提供します。運転前には必ず公式機関で最新のルールを確認してください。",
+            "data_verification_body": "RoadRulezは公式の政府ソースを優先し、変更を記録し、定期的に更新を確認します。詳細は近日公開します。"
         }
     }
 }

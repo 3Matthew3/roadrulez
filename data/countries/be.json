@@ -1,0 +1,140 @@
+{
+    "iso2": "BE",
+    "iso3": "BEL",
+    "name_en": "Belgium",
+    "name_local": "België",
+    "continent": "Europe",
+    "flag": "🇧🇪",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Strict speed enforcement",
+        "Low-emission zones in cities",
+        "Priority to the right at unsigned junctions",
+        "Emergency corridor rule on motorways"
+    ],
+    "top_fines": [
+        {
+            "title": "LEZ Brussels violation",
+            "amount": "from €350"
+        },
+        {
+            "title": "Phone while driving",
+            "amount": "€116"
+        },
+        {
+            "title": "Speeding",
+            "amount": "from €53"
+        }
+    ],
+    "faq": [
+        {
+            "id": "priority-be",
+            "category": "priority_rules",
+            "question": "Priority to the right in Belgium?",
+            "question_de": "Rechts vor links in Belgien?",
+            "answer": "Yes at unsigned junctions. Yellow diamond = priority road.",
+            "answer_de": "Ja ohne Schilder. Gelbe Raute = Vorfahrtstraße.",
+            "relatedSourceIds": [
+                "be-mobility"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "be-mobility",
+            "title": "SPF Mobility Belgium",
+            "url": "https://mobilit.belgium.be/en",
+            "publisher": "SPF Mobilité",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "be-violation",
+            "title": "Traffic fines portal",
+            "url": "https://www.violation.be/",
+            "publisher": "Federal Mobility",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "mobilit.belgium.be"
+    ],
+    "summary": "Belgium enforces speed limits strictly, especially in Brussels and Antwerp.",
+    "common_traps": [
+        "Strict speed enforcement",
+        "Low-emission zones in cities",
+        "Priority to the right at unsigned junctions",
+        "Emergency corridor rule on motorways"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": false,
+            "type": "none",
+            "notes": ""
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "be-violation"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Camera enforcement.",
+                "summary_de": "Blitzer.",
+                "maxConsequence": "Ban",
+                "maxConsequence_de": "Verbot"
+            }
+        ],
+        "categories": []
+    }
+}

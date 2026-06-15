@@ -21,6 +21,7 @@ import esLocale from "i18n-iso-countries/langs/es.json"
 import jaLocale from "i18n-iso-countries/langs/ja.json"
 import { CountryData, CountryIndexItem, TrafficRules, RegionalVariation } from "@/types/country"
 import type { CountrySourceEntry } from "@/types/source"
+import { getCountrySeed, mergeCountryWithSeed, getCatalogIndexEntries } from "@/lib/country-seeds/merge"
 
 const dataDirectory = path.join(process.cwd(), "data/countries")
 const searchLocales = {
@@ -297,7 +298,9 @@ async function getJsonCountryData(
             try {
                 await fs.promises.access(localFilePath)
                 const content = await fs.promises.readFile(localFilePath, "utf8")
-                return JSON.parse(content)
+                const parsed = JSON.parse(content) as CountryData
+                const seed = getCountrySeed(iso2)
+                return mergeCountryWithSeed(parsed, seed)
             } catch {
                 // fall through to English
             }
@@ -306,11 +309,14 @@ async function getJsonCountryData(
         const filePath = path.join(dataDirectory, `${code}.json`)
         try {
             await fs.promises.access(filePath)
+            const content = await fs.promises.readFile(filePath, "utf8")
+            const parsed = JSON.parse(content) as CountryData
+            const seed = getCountrySeed(iso2)
+            return mergeCountryWithSeed(parsed, seed)
         } catch {
-            return null
+            const seed = getCountrySeed(iso2)
+            return seed ? (seed as CountryData) : null
         }
-        const content = await fs.promises.readFile(filePath, "utf8")
-        return JSON.parse(content)
     } catch (error) {
         console.error(`[countries] JSON fallback failed for ${iso2}:`, error)
         return null
@@ -435,7 +441,7 @@ export async function getAllCountries(): Promise<CountryIndexItem[]> {
         }
     }
 
-    return jsonIndex
+    return mergeCountryIndexes(getCatalogIndexEntries(), jsonIndex)
 }
 
 /**
@@ -455,7 +461,10 @@ export async function getSearchCountries(): Promise<CountryIndexItem[]> {
     searchCountriesPromise = (async () => {
         const contentCountries = await getAllCountries()
         const worldwideCountries = getWorldwideCountryIndex()
-        const mergedCountries = mergeCountryIndexes(worldwideCountries, contentCountries)
+        const mergedCountries = mergeCountryIndexes(
+            worldwideCountries,
+            mergeCountryIndexes(contentCountries, getCatalogIndexEntries())
+        )
 
         searchCountriesCache = {
             expiresAt: Date.now() + SEARCH_COUNTRIES_CACHE_MS,
@@ -495,14 +504,19 @@ export async function getCountryData(
 
             if (country) {
                 const jsonFallback = await getJsonCountryData(iso2, locale)
-                return dbToCountryData(country, locale, jsonFallback)
+                const seed = getCountrySeed(iso2)
+                const mergedFallback = jsonFallback ?? (seed ? (seed as CountryData) : null)
+                return dbToCountryData(country, locale, mergedFallback)
             }
         } catch (e) {
             console.warn(`[countries] DB query failed for ${iso2}, falling back to JSON:`, e)
         }
     }
 
-    return getJsonCountryData(iso2, locale)
+    return getJsonCountryData(iso2, locale) ?? (() => {
+        const seed = getCountrySeed(iso2)
+        return seed ? (seed as CountryData) : null
+    })()
 }
 
 /**

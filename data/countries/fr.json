@@ -1,11 +1,242 @@
 {
-    "name_en": "France",
-    "name_local": "France",
     "iso2": "FR",
     "iso3": "FRA",
+    "name_en": "France",
+    "name_local": "France",
     "continent": "Europe",
     "flag": "🇫🇷",
     "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Priorité à droite in towns",
+        "Many toll autoroutes",
+        "Crit'Air stickers in cities",
+        "Strict speed cameras"
+    ],
+    "top_fines": [
+        {
+            "title": "Phone in hand while driving",
+            "amount": "€135 + 3 points"
+        },
+        {
+            "title": "Speeding +20 km/h in town (≤50 zone)",
+            "amount": "€135"
+        },
+        {
+            "title": "Radar detector use",
+            "amount": "up to €1,500"
+        }
+    ],
+    "faq": [
+        {
+            "id": "priorite-a-droite",
+            "category": "priority_rules",
+            "question": "What is 'Priorité à droite' in France?",
+            "question_de": "Was bedeutet 'Priorité à droite' in Frankreich?",
+            "answer": "At unsigned intersections, traffic from your right has priority—even if your road looks like the main route. A yellow diamond sign marks a priority road where you keep right of way until the diamond ends with a strike-through.",
+            "answer_de": "An unbeschilderten Kreuzungen hat der Verkehr von rechts Vorfahrt—auch wenn deine Straße wie die Hauptstraße aussieht. Ein gelber Rautenschild kennzeichnet eine Vorfahrtstraße, bis das durchgestrichene Rautenschild endet.",
+            "relatedSourceIds": [
+                "fr-securite-routiere",
+                "fr-service-public-speed"
+            ]
+        },
+        {
+            "id": "critair-paris",
+            "category": "vignette_tolls",
+            "question": "Do I need a Crit'Air sticker for Paris?",
+            "question_de": "Brauche ich einen Crit'Air-Sticker für Paris?",
+            "answer": "Yes, for low-emission zones (ZFE) in Paris and many cities. Order the vignette online before driving in. Driving without a valid Crit'Air class when required can result in a €68 fine (3rd class).",
+            "answer_de": "Ja, für Umweltzonen (ZFE) in Paris und vielen Städten. Vignette online bestellen vor der Einfahrt. Ohne gültige Crit'Air-Klasse drohen €68 Bußgeld (3. Klasse).",
+            "relatedSourceIds": [
+                "fr-service-public-critair"
+            ]
+        },
+        {
+            "id": "autoroute-tolls",
+            "category": "vignette_tolls",
+            "question": "How do French autoroute tolls (péage) work?",
+            "question_de": "Wie funktionieren französische Autobahn-Maut (péage)?",
+            "answer": "Blue 'Autoroute' signs mark toll motorways. Take a ticket at entry, pay at exit by card, cash, or télépéage tag. Keep your ticket until you leave the network.",
+            "answer_de": "Blaue 'Autoroute'-Schilder kennzeichnen Mautstraßen. Ticket bei Einfahrt, Bezahlung bei Ausfahrt per Karte, Bar oder télépéage. Ticket bis zur Netz-Ausfahrt aufbewahren.",
+            "relatedSourceIds": [
+                "fr-securite-routiere"
+            ]
+        },
+        {
+            "id": "speed-rain",
+            "category": "speed_limits",
+            "question": "Are speed limits lower in rain in France?",
+            "question_de": "Gelten in Frankreich bei Regen niedrigere Tempolimits?",
+            "answer": "Yes. On dry motorways the default is 130 km/h; in rain it drops to 110 km/h. On dry rural roads 80 km/h applies (formerly 90). Posted signs always prevail.",
+            "answer_de": "Ja. Auf trockenen Autobahnen standardmäßig 130 km/h, bei Regen 110 km/h. Auf Landstraßen trocken 80 km/h. Ausgeschilderte Limits haben Vorrang.",
+            "relatedSourceIds": [
+                "fr-service-public-speed",
+                "fr-securite-routiere"
+            ]
+        },
+        {
+            "id": "phone-france",
+            "category": "fines",
+            "question": "What is the fine for using a phone while driving in France?",
+            "question_de": "Welches Bußgeld droht für Handy am Steuer in Frankreich?",
+            "answer": "Holding or using a handheld phone while driving is a 4th-class offence: €135 fine and 3 licence points. Combined with another offence (e.g. speeding), police may suspend your licence on the spot.",
+            "answer_de": "Handy in der Hand oder Benutzung am Steuer ist Verstoß 4. Klasse: €135 Bußgeld und 3 Punkte. Zusammen mit einem weiteren Verstoß kann die Polizei den Führerschein sofort einziehen.",
+            "relatedSourceIds": [
+                "fr-service-public-speed",
+                "fr-service-public-fines"
+            ]
+        },
+        {
+            "id": "radar-detector",
+            "category": "fines",
+            "question": "Are radar detectors legal in France?",
+            "question_de": "Sind Radarwarner in Frankreich erlaubt?",
+            "answer": "No. Radar detectors and apps that warn of fixed cameras are illegal. Fines up to €1,500, device confiscation, and possible vehicle immobilisation. Disable camera alerts in navigation apps.",
+            "answer_de": "Nein. Radarwarner und Apps mit Blitzwarnung sind illegal. Bußgelder bis €1.500, Beschlagnahme, Fahrzeug kann stillgelegt werden. Kamerawarnungen in Navi-Apps deaktivieren.",
+            "relatedSourceIds": [
+                "fr-securite-routiere"
+            ]
+        },
+        {
+            "id": "alcohol-france",
+            "category": "alcohol_limit",
+            "question": "What is the drink-drive limit in France?",
+            "question_de": "Wie hoch ist die Promillegrenze in Frankreich?",
+            "answer": "0.05% BAC (0.5 g/l) for experienced drivers. 0.02% for bus/coach drivers and novice drivers (≤3 years). Exceeding the limit is a 4th-class offence (€135) with points; higher levels lead to criminal prosecution.",
+            "answer_de": "0,05 % BAC (0,5 g/l) für erfahrene Fahrer. 0,02 % für Busfahrer und Fahranfänger (≤3 Jahre). Überschreitung ist Verstoß 4. Klasse (€135) mit Punkten; höhere Werte können strafrechtliche Folgen haben.",
+            "relatedSourceIds": [
+                "fr-securite-routiere",
+                "fr-service-public-speed"
+            ]
+        },
+        {
+            "id": "speed-50-delit",
+            "category": "speed_limits",
+            "question": "When is speeding a criminal offence in France?",
+            "question_de": "Wann ist zu schnelles Fahren in Frankreich eine Straftat?",
+            "answer": "Since 29 December 2025, exceeding the limit by 50 km/h or more is a criminal offence (délit), not just a ticket. A fixed penalty of €250–€300 may apply; refusal can lead to court, up to €3,750 fine, 3 months imprisonment, and licence suspension.",
+            "answer_de": "Seit 29. Dezember 2025 ist ein Überschreiten um 50 km/h oder mehr eine Straftat (délit). Feste Strafe €250–€300 möglich; bei Ablehnung Gericht, bis €3.750, 3 Monate Haft und Führerscheinentzug.",
+            "relatedSourceIds": [
+                "fr-service-public-speed"
+            ]
+        },
+        {
+            "id": "eu-licence-fr",
+            "category": "documents",
+            "question": "Can I drive in France with an EU licence?",
+            "question_de": "Kann ich in Frankreich mit EU-Führerschein fahren?",
+            "answer": "EU/EEA licences are accepted for tourist stays. Carry your physical licence and ID. Non-EU visitors should carry an IDP if your licence is not in French or English script.",
+            "answer_de": "EU/EWR-Führerscheine werden für Touristen akzeptiert. Führerschein und Ausweis mitführen. Nicht-EU-Besucher sollten einen IDP mitführen, wenn der Führerschein nicht in lateinischer Schrift ist.",
+            "relatedSourceIds": [
+                "fr-securite-routiere"
+            ]
+        },
+        {
+            "id": "winter-mountain-law",
+            "category": "winter",
+            "question": "When are winter tyres required in France?",
+            "question_de": "Wann sind Winterreifen in Frankreich Pflicht?",
+            "answer": "In designated mountain zones (Loi Montagne), winter tyres or snow chains are mandatory 1 November–31 March when B26 signs apply. Check local prefecture orders for Alps and Pyrenees routes.",
+            "answer_de": "In Bergzonen (Loi Montagne) sind Winterreifen oder Schneeketten vom 1. November bis 31. März Pflicht, wenn B26-Schilder gelten. Lokale Anordnungen für Alpen und Pyrenäen prüfen.",
+            "relatedSourceIds": [
+                "fr-securite-routiere"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "fr-securite-routiere",
+            "title": "Sécurité Routière — Road safety portal",
+            "url": "https://www.securite-routiere.gouv.fr/",
+            "publisher": "Sécurité Routière",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits",
+                "alcohol_limit",
+                "priority_rules"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "fr-service-public-speed",
+            "title": "Speed limits and penalties (Service-Public.fr)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F19460",
+            "publisher": "Service-Public.fr",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "notes": "Official overview of French speeding classes, points and fines.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "fr-service-public-fines",
+            "title": "Traffic fine payment (Service-Public.fr)",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F18509",
+            "publisher": "Service-Public.fr",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "notes": "Fine classes (1st–5th), payment deadlines via amendes.gouv.fr.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "fr-service-public-critair",
+            "title": "Crit'Air clean-air sticker",
+            "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33375",
+            "publisher": "Service-Public.fr",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls",
+                "parking_rules"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "fr-amendes",
+            "title": "Pay a traffic fine online",
+            "url": "https://www.amendes.gouv.fr/",
+            "publisher": "Ministère de l'Intérieur",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "Sécurité Routière",
+        "Service-Public.fr",
+        "amendes.gouv.fr"
+    ],
+    "summary": "France has an extensive toll network. Watch out for 'Priorité à droite' in rural towns—traffic from the right has priority even if you are on the main-looking road unless you see a 'Priority Road' sign.",
+    "common_traps": [
+        "Priorité à droite (Right of way) - biggest cause of accidents for tourists.",
+        "Speed cameras hidden in unmarked cars.",
+        "Radar detectors are illegal (huge fines).",
+        "Crit'Air sticker needed for Paris/Lyon."
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
     "rules": {
         "speed_limits": {
             "urban": 50,
@@ -41,13 +272,6 @@
             "17 (Police)"
         ]
     },
-    "summary": "France has an extensive toll network. Watch out for 'Priorité à droite' in rural towns—traffic from the right has priority even if you are on the main-looking road unless you see a 'Priority Road' sign.",
-    "common_traps": [
-        "Priorité à droite (Right of way) - biggest cause of accidents for tourists.",
-        "Speed cameras hidden in unmarked cars.",
-        "Radar detectors are illegal (huge fines).",
-        "Crit'Air sticker needed for Paris/Lyon."
-    ],
     "rental_and_idp_notes": "US licenses generally valid for short stays. IDP recommended.",
     "regional_variations": [
         {
@@ -59,16 +283,181 @@
                     "rural": 70,
                     "motorway": 70,
                     "units": "km/h",
-                    "notes": "City-wide 30 km/h limit. Peripherique (Ring Road) is 70 km/h."
+                    "notes": "City-wide 30 km/h limit on most streets. Périphérique ring road 70 km/h."
                 }
             },
-            "notes": "Crit'Air sticker mandatory. Don't drive in Paris if you can avoid it. Gridlock is standard."
+            "notes": "Crit'Air ZFE mandatory. Avoid driving in central Paris if possible.",
+            "highlights": [
+                {
+                    "icon": "zone",
+                    "title": "Crit'Air ZFE",
+                    "title_de": "Crit'Air Umweltzone",
+                    "description": "Low-emission zone covers Paris and inner suburbs. Order Crit'Air sticker before entry.",
+                    "description_de": "Umweltzone umfasst Paris und Innenstadt-Vororte. Crit'Air-Vignette vor Einfahrt bestellen."
+                }
+            ]
+        },
+        {
+            "region_type": "city",
+            "region_name": "Lyon",
+            "notes": "Crit'Air ZFE in place. Tunnel and riverside routes can be congested.",
+            "highlights": [
+                {
+                    "icon": "zone",
+                    "title": "Crit'Air required",
+                    "title_de": "Crit'Air erforderlich",
+                    "description": "Check your vehicle's Crit'Air class before entering the metropolitan low-emission zone.",
+                    "description_de": "Crit'Air-Klasse vor Einfahrt in die Metropol-Umweltzone prüfen."
+                }
+            ]
         }
     ],
-    "last_verified": "2026-01-11",
-    "status": "verified",
-    "sources": [
-        "Securite Routiere",
-        "Service-Public.fr"
-    ]
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "fr-service-public-speed",
+            "fr-service-public-fines",
+            "fr-securite-routiere"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "France uses a points-based licence (permis à points). Fixed and mobile cameras are widespread; unmarked radar cars operate nationally.",
+                "summary_de": "Frankreich nutzt ein Punktesystem (permis à points). Feste und mobile Kameras sind weit verbreitet; unmarkierte Radarwagen sind im Einsatz.",
+                "maxConsequence": "Criminal offence from +50 km/h; licence suspension",
+                "maxConsequence_de": "Straftat ab +50 km/h; Führerscheinentzug"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Mobile phone while driving",
+                "title_de": "Handy am Steuer",
+                "summary": "Handheld use, including holding the phone, is a 4th-class contravention.",
+                "summary_de": "Handygebrauch, auch in der Hand halten, ist Verstoß 4. Klasse.",
+                "maxConsequence": "€135 fine & 3 points",
+                "maxConsequence_de": "€135 Bußgeld & 3 Punkte"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol offenses",
+                "title_de": "Alkohol am Steuer",
+                "summary": "Limit 0.05% BAC (0.02% for novices and professional drivers).",
+                "summary_de": "Grenze 0,05 % BAC (0,02 % für Fahranfänger und Berufsfahrer).",
+                "maxConsequence": "Criminal prosecution at high levels",
+                "maxConsequence_de": "Strafverfahren bei hohen Werten"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeitsüberschreitung",
+                "description": "Typical fixed fines (amende forfaitaire). Reduced amount if paid within 15 days where applicable. Source: Service-Public.fr F19460.",
+                "description_de": "Typische Pauschalstrafen. Ermäßigung bei Zahlung innerhalb 15 Tagen wo zutreffend. Quelle: Service-Public.fr F19460.",
+                "rows": [
+                    {
+                        "id": "speed-under-20-outside",
+                        "speedOver": "+5 to +20 km/h (limit >50 km/h)",
+                        "consequences": {
+                            "fine": "€68",
+                            "fine_de": "€68",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
+                    },
+                    {
+                        "id": "speed-under-20-urban",
+                        "speedOver": "+5 to +20 km/h (limit ≤50 km/h)",
+                        "consequences": {
+                            "fine": "€135",
+                            "fine_de": "€135",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
+                    },
+                    {
+                        "id": "speed-20-30-urban",
+                        "speedOver": "+20 to +30 km/h (limit ≤50 km/h)",
+                        "consequences": {
+                            "fine": "€135",
+                            "fine_de": "€135",
+                            "points": "2"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
+                    },
+                    {
+                        "id": "speed-50-plus",
+                        "speedOver": "+50 km/h or more",
+                        "severe": true,
+                        "consequences": {
+                            "fine": "€250–€3,750",
+                            "fine_de": "€250–€3.750",
+                            "points": "6",
+                            "licenseSuspension": "possible",
+                            "licenseSuspension_de": "möglich"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "phone",
+                "title": "Phone use",
+                "title_de": "Handynutzung",
+                "rows": [
+                    {
+                        "id": "phone-handheld",
+                        "description": "Handheld phone use while driving",
+                        "description_de": "Handy in der Hand am Steuer",
+                        "consequences": {
+                            "fine": "€135",
+                            "fine_de": "€135",
+                            "points": "3"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle",
+                            "moped"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "alcohol",
+                "title": "Alcohol",
+                "title_de": "Alkohol",
+                "rows": [
+                    {
+                        "id": "alcohol-over-limit",
+                        "description": "Over 0.05% BAC (experienced drivers)",
+                        "description_de": "Über 0,05 % BAC (erfahrene Fahrer)",
+                        "consequences": {
+                            "fine": "€135",
+                            "fine_de": "€135",
+                            "points": "6"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 }

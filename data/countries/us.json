@@ -1,10 +1,11 @@
 {
-    "name_en": "United States",
-    "name_local": "United States",
     "iso2": "US",
     "iso3": "USA",
+    "name_en": "United States",
+    "name_local": "United States",
     "continent": "North America",
     "flag": "🇺🇸",
+    "drive_side": "right",
     "header_images": [
         "https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80",
@@ -18,7 +19,313 @@
         "Right on red is common—except NYC unless signed",
         "Hands-free phone laws differ; check each state"
     ],
-    "drive_side": "right",
+    "top_fines": [
+        {
+            "title": "Passing stopped school bus",
+            "amount": "from $250"
+        },
+        {
+            "title": "Speeding +15 mph in school zone",
+            "amount": "from $200"
+        },
+        {
+            "title": "Handheld phone (e.g. California)",
+            "amount": "from $162"
+        }
+    ],
+    "faq": [
+        {
+            "id": "school-bus",
+            "category": "fines",
+            "question": "When must I stop for a school bus in the US?",
+            "question_de": "Wann muss ich in den USA für einen Schulbus anhalten?",
+            "answer": "When a school bus stops and extends its stop sign with red lights flashing, traffic in both directions must stop (unless a physical median divides the road). Passing is a serious offence—fines, licence points, and even jail apply in many states.",
+            "answer_de": "Wenn ein Schulbus anhält, Stoppschild ausfährt und rote Lichter blinkt, muss der Verkehr in beide Richtungen anhalten (außer bei physischer Mittelinsel). Überholen ist schwerwiegend—Bußgelder, Punkte und sogar Haft in vielen Bundesstaaten.",
+            "relatedFines": [
+                {
+                    "label": "Passing stopped school bus",
+                    "label_de": "Schulbus überholen",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-nhtsa",
+                "us-fl-dmv"
+            ]
+        },
+        {
+            "id": "right-on-red",
+            "category": "speed_limits",
+            "question": "Can I turn right on red in the United States?",
+            "question_de": "Darf ich in den USA bei Rot rechts abbiegen?",
+            "answer": "In most states, right turns on red are allowed after a complete stop unless a sign prohibits it. New York City is a major exception—right on red is illegal unless a sign explicitly permits it. Always stop fully and yield to pedestrians.",
+            "answer_de": "In den meisten Bundesstaaten ist Rechtsabbiegen bei Rot nach vollständigem Stopp erlaubt, sofern kein Verbotsschild steht. New York City ist eine wichtige Ausnahme—Rechts bei Rot ist verboten, außer ein Schild erlaubt es. Immer voll anhalten und Fußgängern Vorfahrt geben.",
+            "relatedRules": [
+                {
+                    "label": "Priority rules",
+                    "label_de": "Vorfahrtsregeln",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-nhtsa",
+                "us-dot"
+            ]
+        },
+        {
+            "id": "mph-limits",
+            "category": "speed_limits",
+            "question": "How do speed limits work in the US?",
+            "question_de": "Wie funktionieren Tempolimits in den USA?",
+            "answer": "Speed limits are posted in mph, not km/h. Typical defaults are 25 mph in cities, 55 mph on rural two-lane roads, and 65–70 mph on interstates—but Texas and Utah allow up to 80–85 mph on some routes. Always follow posted signs.",
+            "answer_de": "Tempolimits sind in mph, nicht km/h. Typisch 25 mph in Städten, 55 mph auf Landstraßen und 65–70 mph auf Interstates—Texas und Utah erlauben bis 80–85 mph auf manchen Strecken. Immer Schilder befolgen.",
+            "relatedRules": [
+                {
+                    "label": "Speed limits",
+                    "label_de": "Tempolimits",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-nhtsa",
+                "us-ca-dmv"
+            ]
+        },
+        {
+            "id": "state-variation",
+            "category": "documents",
+            "question": "Do driving rules vary by state?",
+            "question_de": "Unterscheiden sich Fahrregeln nach Bundesstaat?",
+            "answer": "Yes. While basics are similar, phone laws, child-seat ages, turn-on-red rules, and fine amounts differ. California requires hands-free phone mounting; Florida requires headlights when wipers are on. Check the state DMV for your route.",
+            "answer_de": "Ja. Grundlagen sind ähnlich, aber Handygesetze, Kindersitzalter, Abbiegeregeln und Bußgelder unterscheiden sich. Kalifornien verlangt Freisprech-Montage; Florida Licht bei Scheibenwischern. DMV des Bundesstaats für deine Route prüfen.",
+            "relatedRules": [
+                {
+                    "label": "Regional variations",
+                    "label_de": "Regionale Unterschiede",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-ca-dmv",
+                "us-fl-dmv"
+            ]
+        },
+        {
+            "id": "four-way-stop",
+            "category": "documents",
+            "question": "How does a four-way stop work?",
+            "question_de": "Wie funktioniert ein Vier-Wege-Stop?",
+            "answer": "At a four-way stop, the first vehicle to come to a complete stop goes first. If two arrive together, yield to the vehicle on your right. Stop means full stop—rolling stops are ticketed.",
+            "answer_de": "Am Vier-Wege-Stop fährt zuerst, wer zuerst vollständig anhält. Bei gleichzeitiger Ankunft Vorfahrt dem Fahrzeug von rechts. Stopp heißt vollständig anhalten—Rollstopps werden geahndet.",
+            "relatedRules": [
+                {
+                    "label": "Priority rules",
+                    "label_de": "Vorfahrtsregeln",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-nhtsa"
+            ]
+        },
+        {
+            "id": "move-over",
+            "category": "fines",
+            "question": "What is the Move Over Law?",
+            "question_de": "Was ist das Move-Over-Gesetz?",
+            "answer": "Most states require you to change lanes away from stopped emergency, tow, or service vehicles with flashing lights. If you cannot move over safely, slow down significantly. Violations carry fines and points.",
+            "answer_de": "Die meisten Bundesstaaten verlangen, bei haltenden Einsatz-, Abschlepp- oder Servicefahrzeugen mit Blaulicht auszuweichen. Wenn das nicht sicher geht, deutlich langsamer fahren. Verstöße bringen Bußgelder und Punkte.",
+            "relatedFines": [
+                {
+                    "label": "Move Over violation",
+                    "label_de": "Move-Over-Verstoß",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-nhtsa",
+                "us-fl-dmv"
+            ]
+        },
+        {
+            "id": "california-phone",
+            "category": "fines",
+            "question": "What are California's phone laws while driving?",
+            "question_de": "Was sind Kaliforniens Handyregeln am Steuer?",
+            "answer": "California bans holding a phone while driving. Mount the device and use single-swipe hands-free commands. Texting and handheld calls are ticketed; fines increase on repeat offences within 36 months.",
+            "answer_de": "Kalifornien verbietet Handy in der Hand am Steuer. Gerät montieren und Freisprech-Befehle mit einem Wisch nutzen. SMS und Handanrufe werden geahndet; Wiederholung innerhalb 36 Monate erhöht die Strafe.",
+            "relatedFines": [
+                {
+                    "label": "Handheld phone (California)",
+                    "label_de": "Handy in der Hand (Kalifornien)",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-ca-dmv"
+            ]
+        },
+        {
+            "id": "florida-rain",
+            "category": "documents",
+            "question": "Must I use headlights in the rain in Florida?",
+            "question_de": "Muss ich bei Regen in Florida Licht einschalten?",
+            "answer": "Yes. Florida law requires headlights when wipers are in continuous use due to rain, fog, or smoke. This improves visibility and is enforced during storms.",
+            "answer_de": "Ja. Floridas Gesetz verlangt Licht, wenn Scheibenwischer wegen Regen, Nebel oder Rauch dauerhaft laufen. Verbessert Sichtbarkeit und wird bei Stürmen kontrolliert.",
+            "relatedRules": [
+                {
+                    "label": "Headlights rules",
+                    "label_de": "Lichtregeln",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-fl-dmv"
+            ]
+        },
+        {
+            "id": "nyc-driving",
+            "category": "documents",
+            "question": "Should I drive in New York City?",
+            "question_de": "Sollte ich in New York City Auto fahren?",
+            "answer": "Manhattan driving is stressful and expensive—bridge/tunnel tolls, scarce street parking, and aggressive ticketing. No right on red unless signed. Many visitors use transit, taxis, or park in outer boroughs.",
+            "answer_de": "Manhattan-Fahren ist stressig und teuer—Brücken-/Tunnelmaut, wenig Straßenparken, aggressive Ticketierung. Kein Rechts bei Rot ohne Schild. Viele Besucher nutzen ÖPNV, Taxi oder parken in äußeren Bezirken.",
+            "relatedRules": [
+                {
+                    "label": "NYC regional rules",
+                    "label_de": "NYC regionale Regeln",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-dot",
+                "us-nhtsa"
+            ]
+        },
+        {
+            "id": "rental-car",
+            "category": "rental",
+            "question": "What should I know when renting a car in the US?",
+            "question_de": "Was sollte ich beim Mietwagen in den USA beachten?",
+            "answer": "Credit card usually required; under-25 surcharge common. Confirm toll transponder (E-ZPass) policy and cross-state rules. Non-English licences benefit from an IDP. Inspect insurance coverage for liability limits.",
+            "answer_de": "Kreditkarte meist nötig; Zuschlag unter 25 üblich. Maut-Transponder (E-ZPass) und bundesstaatübergreifende Regeln klären. Nicht-englische Führerscheine profitieren von IDP. Versicherungsschutz prüfen.",
+            "relatedRules": [
+                {
+                    "label": "Rental & IDP",
+                    "label_de": "Mietwagen & IDP",
+                    "href": "/country/us"
+                }
+            ],
+            "relatedSourceIds": [
+                "us-nhtsa",
+                "us-ca-dmv"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "us-nhtsa",
+            "title": "National Highway Traffic Safety Administration",
+            "url": "https://www.nhtsa.gov/",
+            "publisher": "U.S. Department of Transportation",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics",
+                "speed_limits"
+            ],
+            "notes": "Federal authority for road safety standards, school bus rules, and national guidance.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "us-dot",
+            "title": "U.S. Department of Transportation",
+            "url": "https://www.transportation.gov/",
+            "publisher": "U.S. Department of Transportation",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics",
+                "tolls"
+            ],
+            "notes": "Federal transport department with policy and safety resources.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
+        },
+        {
+            "id": "us-ca-dmv",
+            "title": "California DMV - Driver handbook",
+            "url": "https://www.dmv.ca.gov/",
+            "publisher": "California Department of Motor Vehicles",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics",
+                "speed_limits",
+                "alcohol_limit"
+            ],
+            "notes": "Official California driver handbook and state-specific rules including phone laws.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
+        },
+        {
+            "id": "us-fl-dmv",
+            "title": "Florida Highway Safety and Motor Vehicles",
+            "url": "https://www.flhsmv.gov/",
+            "publisher": "Florida DHSMV",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics"
+            ],
+            "notes": "Official Florida driver licensing and traffic law reference.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
+        },
+        {
+            "id": "us-ghsa",
+            "title": "Governors Highway Safety Association",
+            "url": "https://www.ghsa.org/",
+            "publisher": "GHSA",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "driving_basics",
+            "usageModuleKeys": [
+                "driving_basics",
+                "speed_limits"
+            ],
+            "notes": "State-by-state summaries of traffic laws including phone, seat belt, and DUI policies.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-25T10:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "https://www.nhtsa.gov/",
+        "https://www.transportation.gov/",
+        "https://www.dmv.ca.gov/",
+        "https://www.flhsmv.gov/",
+        "https://www.ghsa.org/"
+    ],
+    "summary": "Rules are state-based but generally consistent. 'Right on Red' is standard (stop first) unless signed otherwise. Stop signs are meant literally. Do not pass stopped school buses.",
+    "common_traps": [
+        "Passing a school bus with lights flashing (Critical offense).",
+        "Move Over Law: You must change lanes for stopped emergency/service vehicles.",
+        "Speed traps in small towns.",
+        "Jaywalking (illegal crossing) in cities."
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
     "rules": {
         "speed_limits": {
             "urban": 25,
@@ -43,35 +350,22 @@
             "notes": "Turnpikes in East/Midwest. Bridges/Tunnels in NYC/SF. Plate readers or E-ZPass often used."
         },
         "parking_rules": "Red curb = Fire lane. Colored curbs mean restrictions. Park in direction of travel.",
-        "mandatory_equipment": [],
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
         "winter_rules": "Tire chains required in Rockies/Sierra Nevada passes during storms.",
         "emergency_numbers": [
             "911"
         ]
     },
-    "summary": "Rules are state-based but generally consistent. 'Right on Red' is standard (stop first) unless signed otherwise. Stop signs are meant literally. Do not pass stopped school buses.",
-    "common_traps": [
-        "Passing a school bus with lights flashing (Critical offense).",
-        "Move Over Law: You must change lanes for stopped emergency/service vehicles.",
-        "Speed traps in small towns.",
-        "Jaywalking (illegal crossing) in cities."
-    ],
-    "top_fines": [
-        {
-            "title": "Passing stopped school bus",
-            "amount": "from $250"
-        },
-        {
-            "title": "Speeding +15 mph in school zone",
-            "amount": "from $200"
-        },
-        {
-            "title": "Handheld phone (e.g. California)",
-            "amount": "from $162"
-        }
-    ],
     "traffic_fines": {
-        "relatedSourceIds": ["us-nhtsa", "us-dot", "us-ca-dmv", "us-fl-dmv"],
+        "relatedSourceIds": [
+            "us-nhtsa",
+            "us-dot",
+            "us-ca-dmv",
+            "us-fl-dmv"
+        ],
         "summaries": [
             {
                 "id": "speeding",
@@ -125,21 +419,41 @@
                     {
                         "id": "speed-10",
                         "speedOver": "+10 mph",
-                        "consequences": { "fine": "from $50", "fine_de": "ab $50" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $50",
+                            "fine_de": "ab $50"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "speed-20",
                         "speedOver": "+20 mph",
-                        "consequences": { "fine": "from $150", "fine_de": "ab $150" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $150",
+                            "fine_de": "ab $150"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "speed-school",
                         "speedOver": "+15 mph (school zone)",
                         "severe": true,
-                        "consequences": { "fine": "from $200", "fine_de": "ab $200", "licenseSuspension": "possible", "licenseSuspension_de": "möglich" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $200",
+                            "fine_de": "ab $200",
+                            "licenseSuspension": "possible",
+                            "licenseSuspension_de": "möglich"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     }
                 ]
             },
@@ -153,22 +467,44 @@
                         "label": "0.08% BAC and above (DUI)",
                         "label_de": "0,08 % BAC und mehr (DUI)",
                         "severe": true,
-                        "consequences": { "fine": "from $390", "fine_de": "ab $390", "licenseSuspension": "6 months+", "licenseSuspension_de": "6 Monate+", "court": true },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $390",
+                            "fine_de": "ab $390",
+                            "licenseSuspension": "6 months+",
+                            "licenseSuspension_de": "6 Monate+",
+                            "court": true
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "dui-under-21",
                         "label": "Any alcohol under 21 (zero tolerance)",
                         "label_de": "Jeder Alkohol unter 21 (Nulltoleranz)",
-                        "consequences": { "fine": "from $250", "fine_de": "ab $250", "licenseSuspension": "1 year", "licenseSuspension_de": "1 Jahr" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $250",
+                            "fine_de": "ab $250",
+                            "licenseSuspension": "1 year",
+                            "licenseSuspension_de": "1 Jahr"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "open-container",
                         "label": "Open container in passenger area",
                         "label_de": "Offener Behälter im Fahrgastraum",
-                        "consequences": { "fine": "from $100", "fine_de": "ab $100" },
-                        "appliesTo": ["car"]
+                        "consequences": {
+                            "fine": "from $100",
+                            "fine_de": "ab $100"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
                     }
                 ]
             },
@@ -181,23 +517,42 @@
                         "id": "texting",
                         "label": "Texting while driving",
                         "label_de": "SMS am Steuer",
-                        "consequences": { "fine": "from $50", "fine_de": "ab $50" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $50",
+                            "fine_de": "ab $50"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "handheld-ca",
                         "label": "Handheld phone (California)",
                         "label_de": "Handy in der Hand (Kalifornien)",
-                        "consequences": { "fine": "from $162", "fine_de": "ab $162" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $162",
+                            "fine_de": "ab $162"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "handheld-repeat",
                         "label": "Repeat handheld violation (within 36 months)",
                         "label_de": "Wiederholter Handheld-Verstoß (innerhalb 36 Monate)",
                         "severe": true,
-                        "consequences": { "fine": "from $285", "fine_de": "ab $285", "points": "1" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $285",
+                            "fine_de": "ab $285",
+                            "points": "1"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     }
                 ]
             },
@@ -213,122 +568,35 @@
                         "label": "Passing stopped school bus (red lights flashing)",
                         "label_de": "Überholen eines haltenden Schulbusses (rote Lichter)",
                         "severe": true,
-                        "consequences": { "fine": "from $250", "fine_de": "ab $250", "licenseSuspension": "possible", "licenseSuspension_de": "möglich", "court": true },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $250",
+                            "fine_de": "ab $250",
+                            "licenseSuspension": "possible",
+                            "licenseSuspension_de": "möglich",
+                            "court": true
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     },
                     {
                         "id": "move-over",
                         "label": "Move Over Law violation (emergency vehicle)",
                         "label_de": "Move-Over-Gesetz-Verstoß (Einsatzfahrzeug)",
-                        "consequences": { "fine": "from $100", "fine_de": "ab $100" },
-                        "appliesTo": ["car", "motorcycle"]
+                        "consequences": {
+                            "fine": "from $100",
+                            "fine_de": "ab $100"
+                        },
+                        "appliesTo": [
+                            "car",
+                            "motorcycle"
+                        ]
                     }
                 ]
             }
         ]
     },
-    "faq": [
-        {
-            "id": "school-bus",
-            "category": "fines",
-            "question": "When must I stop for a school bus in the US?",
-            "question_de": "Wann muss ich in den USA für einen Schulbus anhalten?",
-            "answer": "When a school bus stops and extends its stop sign with red lights flashing, traffic in both directions must stop (unless a physical median divides the road). Passing is a serious offence—fines, licence points, and even jail apply in many states.",
-            "answer_de": "Wenn ein Schulbus anhält, Stoppschild ausfährt und rote Lichter blinkt, muss der Verkehr in beide Richtungen anhalten (außer bei physischer Mittelinsel). Überholen ist schwerwiegend—Bußgelder, Punkte und sogar Haft in vielen Bundesstaaten.",
-            "relatedFines": [{ "label": "Passing stopped school bus", "label_de": "Schulbus überholen", "href": "/country/us" }],
-            "relatedSourceIds": ["us-nhtsa", "us-fl-dmv"]
-        },
-        {
-            "id": "right-on-red",
-            "category": "speed_limits",
-            "question": "Can I turn right on red in the United States?",
-            "question_de": "Darf ich in den USA bei Rot rechts abbiegen?",
-            "answer": "In most states, right turns on red are allowed after a complete stop unless a sign prohibits it. New York City is a major exception—right on red is illegal unless a sign explicitly permits it. Always stop fully and yield to pedestrians.",
-            "answer_de": "In den meisten Bundesstaaten ist Rechtsabbiegen bei Rot nach vollständigem Stopp erlaubt, sofern kein Verbotsschild steht. New York City ist eine wichtige Ausnahme—Rechts bei Rot ist verboten, außer ein Schild erlaubt es. Immer voll anhalten und Fußgängern Vorfahrt geben.",
-            "relatedRules": [{ "label": "Priority rules", "label_de": "Vorfahrtsregeln", "href": "/country/us" }],
-            "relatedSourceIds": ["us-nhtsa", "us-dot"]
-        },
-        {
-            "id": "mph-limits",
-            "category": "speed_limits",
-            "question": "How do speed limits work in the US?",
-            "question_de": "Wie funktionieren Tempolimits in den USA?",
-            "answer": "Speed limits are posted in mph, not km/h. Typical defaults are 25 mph in cities, 55 mph on rural two-lane roads, and 65–70 mph on interstates—but Texas and Utah allow up to 80–85 mph on some routes. Always follow posted signs.",
-            "answer_de": "Tempolimits sind in mph, nicht km/h. Typisch 25 mph in Städten, 55 mph auf Landstraßen und 65–70 mph auf Interstates—Texas und Utah erlauben bis 80–85 mph auf manchen Strecken. Immer Schilder befolgen.",
-            "relatedRules": [{ "label": "Speed limits", "label_de": "Tempolimits", "href": "/country/us" }],
-            "relatedSourceIds": ["us-nhtsa", "us-ca-dmv"]
-        },
-        {
-            "id": "state-variation",
-            "category": "documents",
-            "question": "Do driving rules vary by state?",
-            "question_de": "Unterscheiden sich Fahrregeln nach Bundesstaat?",
-            "answer": "Yes. While basics are similar, phone laws, child-seat ages, turn-on-red rules, and fine amounts differ. California requires hands-free phone mounting; Florida requires headlights when wipers are on. Check the state DMV for your route.",
-            "answer_de": "Ja. Grundlagen sind ähnlich, aber Handygesetze, Kindersitzalter, Abbiegeregeln und Bußgelder unterscheiden sich. Kalifornien verlangt Freisprech-Montage; Florida Licht bei Scheibenwischern. DMV des Bundesstaats für deine Route prüfen.",
-            "relatedRules": [{ "label": "Regional variations", "label_de": "Regionale Unterschiede", "href": "/country/us" }],
-            "relatedSourceIds": ["us-ca-dmv", "us-fl-dmv"]
-        },
-        {
-            "id": "four-way-stop",
-            "category": "documents",
-            "question": "How does a four-way stop work?",
-            "question_de": "Wie funktioniert ein Vier-Wege-Stop?",
-            "answer": "At a four-way stop, the first vehicle to come to a complete stop goes first. If two arrive together, yield to the vehicle on your right. Stop means full stop—rolling stops are ticketed.",
-            "answer_de": "Am Vier-Wege-Stop fährt zuerst, wer zuerst vollständig anhält. Bei gleichzeitiger Ankunft Vorfahrt dem Fahrzeug von rechts. Stopp heißt vollständig anhalten—Rollstopps werden geahndet.",
-            "relatedRules": [{ "label": "Priority rules", "label_de": "Vorfahrtsregeln", "href": "/country/us" }],
-            "relatedSourceIds": ["us-nhtsa"]
-        },
-        {
-            "id": "move-over",
-            "category": "fines",
-            "question": "What is the Move Over Law?",
-            "question_de": "Was ist das Move-Over-Gesetz?",
-            "answer": "Most states require you to change lanes away from stopped emergency, tow, or service vehicles with flashing lights. If you cannot move over safely, slow down significantly. Violations carry fines and points.",
-            "answer_de": "Die meisten Bundesstaaten verlangen, bei haltenden Einsatz-, Abschlepp- oder Servicefahrzeugen mit Blaulicht auszuweichen. Wenn das nicht sicher geht, deutlich langsamer fahren. Verstöße bringen Bußgelder und Punkte.",
-            "relatedFines": [{ "label": "Move Over violation", "label_de": "Move-Over-Verstoß", "href": "/country/us" }],
-            "relatedSourceIds": ["us-nhtsa", "us-fl-dmv"]
-        },
-        {
-            "id": "california-phone",
-            "category": "fines",
-            "question": "What are California's phone laws while driving?",
-            "question_de": "Was sind Kaliforniens Handyregeln am Steuer?",
-            "answer": "California bans holding a phone while driving. Mount the device and use single-swipe hands-free commands. Texting and handheld calls are ticketed; fines increase on repeat offences within 36 months.",
-            "answer_de": "Kalifornien verbietet Handy in der Hand am Steuer. Gerät montieren und Freisprech-Befehle mit einem Wisch nutzen. SMS und Handanrufe werden geahndet; Wiederholung innerhalb 36 Monate erhöht die Strafe.",
-            "relatedFines": [{ "label": "Handheld phone (California)", "label_de": "Handy in der Hand (Kalifornien)", "href": "/country/us" }],
-            "relatedSourceIds": ["us-ca-dmv"]
-        },
-        {
-            "id": "florida-rain",
-            "category": "documents",
-            "question": "Must I use headlights in the rain in Florida?",
-            "question_de": "Muss ich bei Regen in Florida Licht einschalten?",
-            "answer": "Yes. Florida law requires headlights when wipers are in continuous use due to rain, fog, or smoke. This improves visibility and is enforced during storms.",
-            "answer_de": "Ja. Floridas Gesetz verlangt Licht, wenn Scheibenwischer wegen Regen, Nebel oder Rauch dauerhaft laufen. Verbessert Sichtbarkeit und wird bei Stürmen kontrolliert.",
-            "relatedRules": [{ "label": "Headlights rules", "label_de": "Lichtregeln", "href": "/country/us" }],
-            "relatedSourceIds": ["us-fl-dmv"]
-        },
-        {
-            "id": "nyc-driving",
-            "category": "documents",
-            "question": "Should I drive in New York City?",
-            "question_de": "Sollte ich in New York City Auto fahren?",
-            "answer": "Manhattan driving is stressful and expensive—bridge/tunnel tolls, scarce street parking, and aggressive ticketing. No right on red unless signed. Many visitors use transit, taxis, or park in outer boroughs.",
-            "answer_de": "Manhattan-Fahren ist stressig und teuer—Brücken-/Tunnelmaut, wenig Straßenparken, aggressive Ticketierung. Kein Rechts bei Rot ohne Schild. Viele Besucher nutzen ÖPNV, Taxi oder parken in äußeren Bezirken.",
-            "relatedRules": [{ "label": "NYC regional rules", "label_de": "NYC regionale Regeln", "href": "/country/us" }],
-            "relatedSourceIds": ["us-dot", "us-nhtsa"]
-        },
-        {
-            "id": "rental-car",
-            "category": "rental",
-            "question": "What should I know when renting a car in the US?",
-            "question_de": "Was sollte ich beim Mietwagen in den USA beachten?",
-            "answer": "Credit card usually required; under-25 surcharge common. Confirm toll transponder (E-ZPass) policy and cross-state rules. Non-English licences benefit from an IDP. Inspect insurance coverage for liability limits.",
-            "answer_de": "Kreditkarte meist nötig; Zuschlag unter 25 üblich. Maut-Transponder (E-ZPass) und bundesstaatübergreifende Regeln klären. Nicht-englische Führerscheine profitieren von IDP. Versicherungsschutz prüfen.",
-            "relatedRules": [{ "label": "Rental & IDP", "label_de": "Mietwagen & IDP", "href": "/country/us" }],
-            "relatedSourceIds": ["us-nhtsa", "us-ca-dmv"]
-        }
-    ],
     "rental_and_idp_notes": "Credit card usually mandatory. Under 25 fee applies. IDP recommended for non-English licenses.",
     "regional_variations": [
         {
@@ -409,88 +677,6 @@
                     "icon": "toll"
                 }
             ]
-        }
-    ],
-    "last_verified": "2026-05-27",
-    "status": "verified",
-    "data_coverage": "high",
-    "sources": [
-        "https://www.nhtsa.gov/",
-        "https://www.transportation.gov/",
-        "https://www.dmv.ca.gov/",
-        "https://www.flhsmv.gov/",
-        "https://www.ghsa.org/"
-    ],
-    "source_entries": [
-        {
-            "id": "us-nhtsa",
-            "title": "National Highway Traffic Safety Administration",
-            "url": "https://www.nhtsa.gov/",
-            "publisher": "U.S. Department of Transportation",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics", "speed_limits"],
-            "notes": "Federal authority for road safety standards, school bus rules, and national guidance.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
-        },
-        {
-            "id": "us-dot",
-            "title": "U.S. Department of Transportation",
-            "url": "https://www.transportation.gov/",
-            "publisher": "U.S. Department of Transportation",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics", "tolls"],
-            "notes": "Federal transport department with policy and safety resources.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-27T10:00:00.000Z"
-        },
-        {
-            "id": "us-ca-dmv",
-            "title": "California DMV - Driver handbook",
-            "url": "https://www.dmv.ca.gov/",
-            "publisher": "California Department of Motor Vehicles",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics", "speed_limits", "alcohol_limit"],
-            "notes": "Official California driver handbook and state-specific rules including phone laws.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
-        },
-        {
-            "id": "us-fl-dmv",
-            "title": "Florida Highway Safety and Motor Vehicles",
-            "url": "https://www.flhsmv.gov/",
-            "publisher": "Florida DHSMV",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics"],
-            "notes": "Official Florida driver licensing and traffic law reference.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-26T10:00:00.000Z"
-        },
-        {
-            "id": "us-ghsa",
-            "title": "Governors Highway Safety Association",
-            "url": "https://www.ghsa.org/",
-            "publisher": "GHSA",
-            "publishedDate": null,
-            "sourceType": "GOVERNMENT",
-            "trustLevel": "PRIMARY",
-            "moduleKey": "driving_basics",
-            "usageModuleKeys": ["driving_basics", "speed_limits"],
-            "notes": "State-by-state summaries of traffic laws including phone, seat belt, and DUI policies.",
-            "checkStatus": "OK",
-            "lastCheckedAt": "2026-05-25T10:00:00.000Z"
         }
     ]
 }

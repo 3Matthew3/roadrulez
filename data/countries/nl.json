@@ -1,0 +1,159 @@
+{
+    "iso2": "NL",
+    "iso3": "NLD",
+    "name_en": "Netherlands",
+    "name_local": "Nederland",
+    "continent": "Europe",
+    "flag": "🇳🇱",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Watch for cyclists everywhere",
+        "Strict speed cameras",
+        "Many environmental zones",
+        "Congestion on A-roads"
+    ],
+    "top_fines": [
+        {
+            "title": "Phone while driving",
+            "amount": "€240"
+        },
+        {
+            "title": "Speeding +10 km/h",
+            "amount": "from €30"
+        },
+        {
+            "title": "Cyclist priority violation",
+            "amount": "from €95"
+        }
+    ],
+    "faq": [
+        {
+            "id": "phone-nl",
+            "category": "fines",
+            "question": "Phone fine in the Netherlands?",
+            "question_de": "Handy-Bußgeld NL?",
+            "answer": "€240 for handheld use, including at red lights.",
+            "answer_de": "€240 für Handy in der Hand, auch an Ampeln.",
+            "relatedSourceIds": [
+                "nl-cjib"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "nl-rijksoverheid-verkeer",
+            "title": "Traffic safety — Government.nl",
+            "url": "https://www.rijksoverheid.nl/onderwerpen/verkeersveiligheid",
+            "publisher": "Rijksoverheid",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "nl-cjib",
+            "title": "CJIB — Fine collection",
+            "url": "https://www.cjib.nl/",
+            "publisher": "CJIB",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "Rijksoverheid",
+        "CJIB"
+    ],
+    "summary": "The Netherlands prioritises cyclists; expect strict traffic enforcement.",
+    "common_traps": [
+        "Watch for cyclists everywhere",
+        "Strict speed cameras",
+        "Many environmental zones",
+        "Congestion on A-roads"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "30 km/h default in many cities."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "Lower limits may apply to novice or professional drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone €240 fine since 2024.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": false,
+            "type": "none",
+            "notes": ""
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "nl-cjib"
+        ],
+        "summaries": [
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Phone",
+                "title_de": "Handy",
+                "summary": "€240.",
+                "summary_de": "€240.",
+                "maxConsequence": "€240",
+                "maxConsequence_de": "€240"
+            }
+        ],
+        "categories": [
+            {
+                "id": "phone",
+                "title": "Phone",
+                "title_de": "Handy",
+                "rows": [
+                    {
+                        "id": "phone",
+                        "consequences": {
+                            "fine": "€240",
+                            "fine_de": "€240"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

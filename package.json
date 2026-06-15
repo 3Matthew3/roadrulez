@@ -13,6 +13,7 @@
     "db:migrate:deploy": "prisma migrate deploy",
     "db:seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts",
     "db:studio": "prisma studio",
+    "sync-countries": "tsx scripts/sync-country-catalog.ts",
     "test": "jest"
   },
   "prisma": {

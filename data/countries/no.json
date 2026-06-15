@@ -1,0 +1,162 @@
+{
+    "iso2": "NO",
+    "iso3": "NOR",
+    "name_en": "Norway",
+    "name_local": "Norge",
+    "continent": "Europe",
+    "flag": "🇳🇴",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "AutoPASS tolls common",
+        "Long tunnels",
+        "Winter tyres required in season",
+        "Elk on rural roads"
+    ],
+    "top_fines": [
+        {
+            "title": "Phone while driving",
+            "amount": "from NOK 8,500"
+        },
+        {
+            "title": "Speeding +10 km/h",
+            "amount": "from NOK 950"
+        }
+    ],
+    "faq": [
+        {
+            "id": "tolls-no",
+            "category": "vignette_tolls",
+            "question": "Norwegian tolls?",
+            "question_de": "Norwegische Maut?",
+            "answer": "Plate-based AutoPASS on roads, bridges, tunnels.",
+            "answer_de": "Kennzeichenbasiertes AutoPASS.",
+            "relatedSourceIds": [
+                "no-autopass"
+            ]
+        },
+        {
+            "id": "alcohol-no",
+            "category": "alcohol_limit",
+            "question": "Norway alcohol limit?",
+            "question_de": "Alkoholgrenze Norwegen?",
+            "answer": "0.02% BAC—among strictest in Europe.",
+            "answer_de": "0,02 % BAC—sehr streng.",
+            "relatedSourceIds": [
+                "no-politi"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "no-vegvesen",
+            "title": "Statens vegvesen",
+            "url": "https://www.vegvesen.no/",
+            "publisher": "Statens vegvesen",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits",
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "no-autopass",
+            "title": "AutoPASS tolls",
+            "url": "https://www.autopass.no/",
+            "publisher": "AutoPASS",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "no-politi",
+            "title": "Norwegian Police",
+            "url": "https://www.politi.no/",
+            "publisher": "Politiet",
+            "sourceType": "POLICE",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "Statens vegvesen"
+    ],
+    "summary": "Norway has toll roads, tunnels, and severe winter driving conditions.",
+    "common_traps": [
+        "AutoPASS tolls common",
+        "Long tunnels",
+        "Winter tyres required in season",
+        "Elk on rural roads"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 130,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.02,
+            "unit": "BAC",
+            "notes": "Very strict 0.02% limit."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": true,
+            "type": "electronic",
+            "notes": "AutoPASS plate tolling nationwide."
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "no-politi"
+        ],
+        "summaries": [
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol",
+                "title_de": "Alkohol",
+                "summary": "0.02% limit.",
+                "summary_de": "0,02-Limit.",
+                "maxConsequence": "Prison",
+                "maxConsequence_de": "Haft"
+            }
+        ],
+        "categories": []
+    }
+}

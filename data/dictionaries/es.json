@@ -18,6 +18,26 @@
         "yes": "Sí",
         "no": "No"
     },
+    "countries_page": {
+        "page_title": "Países y normas de conducción",
+        "page_subtitle": "Encuentra normas de conducción, límites de velocidad, multas y regulaciones viales en todo el mundo.",
+        "search_placeholder": "Buscar un país...",
+        "popular_title": "Países populares",
+        "browse_title": "Explorar por región",
+        "drive_on": "Conducir por",
+        "top_speed": "Velocidad máxima",
+        "alcohol_limit": "Límite de alcohol",
+        "available": "Disponible",
+        "coming_soon": "Próximamente",
+        "view_guide": "Ver guía",
+        "guide_in_progress": "Guía en preparación",
+        "stats_available": "{count} países disponibles",
+        "stats_available_sub": "Guías de conducción detalladas",
+        "stats_planned": "{count}+ países planificados",
+        "stats_planned_sub": "Más próximamente",
+        "stats_verified": "Verificado",
+        "stats_verified_sub": "Información contrastada con fuentes oficiales"
+    },
     "home": {
         "hero_title_1": "Normas de tráfico,",
         "search_placeholder": "Buscar un país...",
@@ -232,15 +252,27 @@
             "other": "Otro"
         },
         "footer": {
+            "tagline": "Normas de conducción para viajeros en todo el mundo.",
+            "explore_heading": "Explorar",
+            "countries": "Países",
+            "search": "Buscar",
+            "map": "Mapa",
+            "roadrulez_heading": "RoadRulez",
             "about": "Acerca de",
-            "sources": "Fuentes",
-            "contact": "Contacto",
-            "legal": "Aviso legal / Impressum",
+            "data_verification": "Cómo verificamos los datos",
+            "legal_heading": "Legal",
+            "impressum": "Aviso legal",
             "privacy": "Privacidad",
-            "terms": "Términos del servicio",
+            "disclaimer": "Descargo de responsabilidad",
             "last_update": "Última actualización: mayo de 2026",
             "data_source": "Fuente de datos: autoridades oficiales",
             "feedback_welcome": "Comentarios bienvenidos"
+        },
+        "legal_pages": {
+            "about_body": "RoadRulez ayuda a los viajeros a entender las normas de conducción en todo el mundo. Pronto publicaremos más información sobre nuestra misión y nuestro equipo.",
+            "privacy_body": "La política de privacidad está en preparación. Describirá cómo RoadRulez gestiona analíticas, comentarios y datos personales.",
+            "disclaimer_body": "RoadRulez ofrece información general. Confirma siempre las normas vigentes con las autoridades oficiales antes de conducir.",
+            "data_verification_body": "RoadRulez prioriza fuentes gubernamentales oficiales, documenta cambios y revisa las actualizaciones con regularidad. Publicaremos aquí más detalles pronto."
         }
     }
 }

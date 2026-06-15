@@ -18,6 +18,26 @@
         "yes": "Ja",
         "no": "Nein"
     },
+    "countries_page": {
+        "page_title": "Länder & Verkehrsregeln",
+        "page_subtitle": "Finde Fahrregeln, Tempolimits, Bußgelder und Straßenverkehrsvorschriften weltweit.",
+        "search_placeholder": "Land suchen...",
+        "popular_title": "Beliebte Länder",
+        "browse_title": "Nach Region",
+        "drive_on": "Fahrtrichtung",
+        "top_speed": "Höchsttempo",
+        "alcohol_limit": "Alkoholgrenze",
+        "available": "Verfügbar",
+        "coming_soon": "Demnächst",
+        "view_guide": "Guide ansehen",
+        "guide_in_progress": "Guide in Arbeit",
+        "stats_available": "{count} Länder verfügbar",
+        "stats_available_sub": "Detaillierte Fahrguides",
+        "stats_planned": "{count}+ Länder geplant",
+        "stats_planned_sub": "Weitere folgen",
+        "stats_verified": "Verifiziert",
+        "stats_verified_sub": "Informationen anhand offizieller Behördenquellen"
+    },
     "home": {
         "hero_title_1": "Verkehrsregeln,",
         "hero_title_2": "überall auf der Welt.",
@@ -232,15 +252,27 @@
             "other": "Sonstiges"
         },
         "footer": {
+            "tagline": "Verkehrsregeln für Reisende weltweit.",
+            "explore_heading": "Entdecken",
+            "countries": "Länder",
+            "search": "Suche",
+            "map": "Karte",
+            "roadrulez_heading": "RoadRulez",
             "about": "Über uns",
-            "sources": "Quellen",
-            "contact": "Kontakt",
-            "legal": "Impressum",
+            "data_verification": "So prüfen wir Daten",
+            "legal_heading": "Rechtliches",
+            "impressum": "Impressum",
             "privacy": "Datenschutz",
-            "terms": "AGB",
+            "disclaimer": "Haftungsausschluss",
             "last_update": "Letztes Update: Mai 2026",
             "data_source": "Datenquelle: Offizielle Behörden",
             "feedback_welcome": "Feedback willkommen"
+        },
+        "legal_pages": {
+            "about_body": "RoadRulez hilft Reisenden, Verkehrsregeln weltweit zu verstehen. Hier folgen bald mehr Informationen über unsere Mission und unser Team.",
+            "privacy_body": "Die Datenschutzerklärung wird derzeit erstellt. Sie beschreibt künftig, wie RoadRulez Analytics, Feedback und personenbezogene Daten verarbeitet.",
+            "disclaimer_body": "RoadRulez stellt allgemeine Informationen bereit. Prüfe aktuelle Regeln immer bei offiziellen Stellen, bevor du fährst.",
+            "data_verification_body": "RoadRulez bevorzugt offizielle Behördenquellen, dokumentiert Änderungen und prüft Updates regelmäßig. Ausführliche Details folgen hier in Kürze."
         }
     }
 }

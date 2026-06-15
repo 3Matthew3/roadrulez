@@ -1,11 +1,105 @@
 {
-    "name_en": "United Arab Emirates",
-    "name_local": "Al-Imarat",
     "iso2": "AE",
     "iso3": "ARE",
+    "name_en": "United Arab Emirates",
+    "name_local": "Al-Imarat",
     "continent": "Asia",
     "flag": "🇦🇪",
+    "indexNames": {
+        "en": "United Arab Emirates",
+        "de": "Vereinigte Arabische Emirate",
+        "es": "Emiratos Árabes Unidos",
+        "ja": "アラブ首長国連邦"
+    },
     "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Zero alcohol tolerance",
+        "Strict speed cameras on highways",
+        "Salik toll gates in Dubai",
+        "Sandstorms reduce visibility"
+    ],
+    "top_fines": [
+        {
+            "title": "Speeding in built-up areas",
+            "amount": "from €50"
+        },
+        {
+            "title": "Using phone while driving",
+            "amount": "€100+"
+        },
+        {
+            "title": "Parking violations",
+            "amount": "from €25"
+        }
+    ],
+    "faq": [
+        {
+            "id": "licence",
+            "category": "documents",
+            "question": "Can I drive in United Arab Emirates with my foreign licence?",
+            "question_de": "Kann ich in Vereinigte Arabische Emirate mit meinem ausländischen Führerschein fahren?",
+            "answer": "Many visitors can drive with a valid national licence for short stays, but rental companies and police may require an International Driving Permit (IDP). Always confirm before you travel.",
+            "answer_de": "Viele Besucher dürfen mit gültigem nationalen Führerschein kurzzeitig fahren, Mietwagenfirmen und Polizei verlangen aber oft einen Internationalen Führerschein (IDP). Vor der Reise klären.",
+            "relatedRules": [
+                "documents"
+            ]
+        },
+        {
+            "id": "speed",
+            "category": "speed_limits",
+            "question": "What are the default speed limits in United Arab Emirates?",
+            "question_de": "Welche Standard-Tempolimits gelten in Vereinigte Arabische Emirate?",
+            "answer": "Default limits depend on road type, but posted signs always override general defaults. Check urban, rural, and motorway limits on the country guide above.",
+            "answer_de": "Standardlimits hängen vom Straßentyp ab, ausgeschilderte Limits haben immer Vorrang. Urban-, Land- und Autobahn-Limits findest du oben im Länderguide.",
+            "relatedRules": [
+                "speed_limits"
+            ]
+        },
+        {
+            "id": "sources",
+            "category": "documents",
+            "question": "Where can I verify the latest rules for United Arab Emirates?",
+            "question_de": "Wo kann ich die aktuellen Regeln für Vereinigte Arabische Emirate prüfen?",
+            "answer": "Use the official sources listed on this site and re-check with government transport or police authorities before driving.",
+            "answer_de": "Nutze die offiziellen Quellen auf dieser Seite und prüfe vor der Fahrt erneut bei Behörden für Verkehr oder Polizei.",
+            "relatedRules": [
+                "documents"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "ae-moi",
+            "title": "Ministry of Interior — Traffic",
+            "url": "https://www.moi.gov.ae/",
+            "publisher": "MOI UAE",
+            "publishedDate": null,
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits",
+                "alcohol_limit",
+                "tolls",
+                "priority_rules"
+            ]
+        }
+    ],
+    "sources": [
+        "MOI UAE"
+    ],
+    "summary": "Modern highways, very high speeds. Aggressive driving is common. Be aware of the strict zero alcohol tolerance.",
+    "common_traps": [
+        "Speed cameras are everywhere.",
+        "Abu Dhabi speed limits are absolute (no buffer).",
+        "Flash floods in wadis during rain."
+    ],
+    "last_verified": "2024-01",
+    "status": "verified",
+    "data_coverage": "medium",
     "rules": {
         "speed_limits": {
             "urban": 60,
@@ -15,7 +109,7 @@
             "notes": "Buffer speed limits exist in Dubai (usually +20km/h grace), but NOT in Abu Dhabi (strict limit)."
         },
         "alcohol_limit": {
-            "value": 0.0,
+            "value": 0,
             "unit": "BAC",
             "notes": "Zero tolerance."
         },
@@ -46,15 +140,5 @@
             "motorway_access": "Allowed but risky due to high speeds."
         }
     },
-    "summary": "Modern highways, very high speeds. Aggressive driving is common. Be aware of the strict zero alcohol tolerance.",
-    "common_traps": [
-        "Speed cameras are everywhere.",
-        "Abu Dhabi speed limits are absolute (no buffer).",
-        "Flash floods in wadis during rain."
-    ],
-    "rental_and_idp_notes": "IDP required for many nationalities.",
-    "last_verified": "2024-01",
-    "status": "verified",
-    "data_coverage": "medium",
-    "sources": []
+    "rental_and_idp_notes": "IDP required for many nationalities."
 }

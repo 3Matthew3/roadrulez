@@ -1,0 +1,175 @@
+{
+    "iso2": "CH",
+    "iso3": "CHE",
+    "name_en": "Switzerland",
+    "name_local": "Schweiz",
+    "continent": "Europe",
+    "flag": "🇨🇭",
+    "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Vignette required on motorways",
+        "High fines for speeding",
+        "Winter tyres/chains in Alps",
+        "Tunnel speed limits"
+    ],
+    "top_fines": [
+        {
+            "title": "Speeding +16 km/h in town",
+            "amount": "from CHF 250"
+        },
+        {
+            "title": "Motorway vignette missing",
+            "amount": "CHF 200 + vignette"
+        },
+        {
+            "title": "Phone while driving",
+            "amount": "from CHF 100"
+        }
+    ],
+    "faq": [
+        {
+            "id": "vignette-ch",
+            "category": "vignette_tolls",
+            "question": "Do I need a Swiss motorway vignette?",
+            "question_de": "Brauche ich eine Schweizer Vignette?",
+            "answer": "Yes on all motorways. Buy e-vignette online before entry.",
+            "answer_de": "Ja auf allen Autobahnen. E-Vignette vor Einfahrt online kaufen.",
+            "relatedSourceIds": [
+                "ch-astra-vignette"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "ch-astra-vignette",
+            "title": "ASTRA — Motorway vignette",
+            "url": "https://www.astra.admin.ch/astra/en/home/management/contributions-fees/vignette.html",
+            "publisher": "ASTRA",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "tolls",
+            "usageModuleKeys": [
+                "tolls"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "ch-astra-traffic",
+            "title": "ASTRA — Road traffic rules",
+            "url": "https://www.astra.admin.ch/astra/en/home.html",
+            "publisher": "ASTRA",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "ch-fedpol",
+            "title": "Fedpol — Traffic enforcement",
+            "url": "https://www.fedpol.admin.ch/",
+            "publisher": "Fedpol",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "ASTRA",
+        "Fedpol"
+    ],
+    "summary": "Switzerland enforces traffic rules strictly with high CHF fines. Motorway vignette mandatory.",
+    "common_traps": [
+        "Vignette required on motorways",
+        "High fines for speeding",
+        "Winter tyres/chains in Alps",
+        "Tunnel speed limits"
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
+    "rules": {
+        "speed_limits": {
+            "urban": 50,
+            "rural": 90,
+            "motorway": 120,
+            "units": "km/h",
+            "notes": "Posted signs override default limits."
+        },
+        "alcohol_limit": {
+            "value": 0.05,
+            "unit": "BAC",
+            "notes": "0.01% for professional/novice drivers."
+        },
+        "seatbelt_rules": "Mandatory for all occupants.",
+        "child_seat_rules": "Approved child restraint required for children below local height/age limits.",
+        "phone_usage_rules": "Handheld phone use while driving is prohibited.",
+        "headlights_rules": "Use headlights at night, in tunnels, and in poor visibility.",
+        "priority_rules": "Follow posted signs and local right-of-way rules at intersections.",
+        "tolls": {
+            "required": true,
+            "type": "vignette",
+            "notes": "Annual e-vignette required. Fine CHF 200 if missing."
+        },
+        "parking_rules": "Check local parking signs and paid zones in cities.",
+        "mandatory_equipment": [
+            "Warning triangle",
+            "Reflective vest"
+        ],
+        "winter_rules": "Winter tyres or chains may be required in mountain or snow regions when signed.",
+        "emergency_numbers": [
+            "112"
+        ]
+    },
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "ch-fedpol"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "High CHF fines.",
+                "summary_de": "Hohe CHF-Strafen.",
+                "maxConsequence": "Ban",
+                "maxConsequence_de": "Verbot"
+            }
+        ],
+        "categories": [
+            {
+                "id": "speeding",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "rows": [
+                    {
+                        "id": "vignette",
+                        "description": "No vignette",
+                        "description_de": "Keine Vignette",
+                        "consequences": {
+                            "fine": "CHF 200",
+                            "fine_de": "CHF 200"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

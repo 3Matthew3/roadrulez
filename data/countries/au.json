@@ -1,11 +1,179 @@
 {
-    "name_en": "Australia",
-    "name_local": "Australia",
     "iso2": "AU",
     "iso3": "AUS",
+    "name_en": "Australia",
+    "name_local": "Australia",
     "continent": "Oceania",
     "flag": "🇦🇺",
     "drive_side": "left",
+    "header_images": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Drive on the left",
+        "Long outback distances",
+        "Wildlife on roads at dawn/dusk",
+        "Rules vary slightly by state"
+    ],
+    "top_fines": [
+        {
+            "title": "Mobile phone while driving (NSW)",
+            "amount": "A$410 + 5 points"
+        },
+        {
+            "title": "Speeding +10 km/h (school zone)",
+            "amount": "from A$200"
+        },
+        {
+            "title": "Unpaid toll (Sydney)",
+            "amount": "A$25+ admin fees"
+        }
+    ],
+    "faq": [
+        {
+            "id": "left-au",
+            "category": "priority_rules",
+            "question": "Driving on the left in Australia?",
+            "question_de": "Linksverkehr in Australien?",
+            "answer": "Keep left. Roundabouts: give way to vehicles already circulating. On multi-lane roads, keep left unless overtaking.",
+            "answer_de": "Links fahren. Kreisverkehr: Vorfahrt für bereits Einfahrende. Rechts fahren außer beim Überholen.",
+            "relatedSourceIds": [
+                "au-nsw-rms"
+            ]
+        },
+        {
+            "id": "hook-turn",
+            "category": "priority_rules",
+            "question": "What is a hook turn in Melbourne?",
+            "question_de": "Was ist ein Hook Turn in Melbourne?",
+            "answer": "At signed intersections, to turn right you pull left into the hook-turn box, wait, then turn when the signal changes. Unique to Melbourne.",
+            "answer_de": "An gekennzeichneten Kreuzungen für Rechtsabbieger nach links: erst links in Box, warten, dann abbiegen wenn Signal wechselt.",
+            "relatedSourceIds": [
+                "au-vicroads"
+            ]
+        },
+        {
+            "id": "phone-au",
+            "category": "fines",
+            "question": "Mobile phone fines in Australia?",
+            "question_de": "Handy-Bußgelder Australien?",
+            "answer": "Holding or touching a phone while driving is illegal in all states. AI detection cameras operate in NSW, VIC, QLD. Fines often A$400+ with demerit points.",
+            "answer_de": "Handy halten oder berühren am Steuer in allen Bundesstaaten illegal. KI-Kameras in NSW, VIC, QLD. Oft A$400+ mit Punkten.",
+            "relatedSourceIds": [
+                "au-nsw-rms"
+            ]
+        },
+        {
+            "id": "wildlife-au",
+            "category": "speed_limits",
+            "question": "Wildlife on Australian roads?",
+            "question_de": "Wildtiere auf australischen Straßen?",
+            "answer": "Kangaroos and wombats are active at dawn and dusk. Reduce speed on rural roads. Never swerve sharply—brake in a straight line.",
+            "answer_de": "Kängurus und Wombats in der Dämmerung aktiv. Auf Landstraßen langsamer. Nicht scharf ausweichen.",
+            "relatedSourceIds": [
+                "au-qld-tmr"
+            ]
+        },
+        {
+            "id": "tolls-au",
+            "category": "vignette_tolls",
+            "question": "How do toll roads work in Australia?",
+            "question_de": "Wie funktionieren Mautstraßen?",
+            "answer": "Cashless tolling (Sydney, Melbourne, Brisbane). Pay online within 3 days or use a tag. Unpaid tolls incur admin fees and registration holds.",
+            "answer_de": "Bargeldlose Maut (Sydney, Melbourne, Brisbane). Online innerhalb 3 Tage zahlen oder Tag. Unbezahlt = Gebühren und Sperre.",
+            "relatedSourceIds": [
+                "au-nsw-rms"
+            ]
+        },
+        {
+            "id": "alcohol-au",
+            "category": "alcohol_limit",
+            "question": "Drink-drive limits in Australia?",
+            "question_de": "Promillegrenze Australien?",
+            "answer": "0.05% BAC for full licence holders. Zero for learner and provisional (P-plate) drivers in all states.",
+            "answer_de": "0,05 % BAC für Vollführerschein. Null für Lern- und P-Führerschein in allen Bundesstaaten.",
+            "relatedSourceIds": [
+                "au-nsw-rms"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "au-infrastructure",
+            "title": "Department of Infrastructure",
+            "url": "https://www.infrastructure.gov.au/",
+            "publisher": "Infrastructure AU",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "au-nsw-rms",
+            "title": "Transport for NSW — Road rules",
+            "url": "https://www.nsw.gov.au/driving-boating-and-transport",
+            "publisher": "Transport for NSW",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines",
+                "speed_limits",
+                "alcohol_limit"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "au-vicroads",
+            "title": "VicRoads — Road rules",
+            "url": "https://www.vicroads.vic.gov.au/",
+            "publisher": "VicRoads",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "priority_rules",
+            "usageModuleKeys": [
+                "priority_rules",
+                "speed_limits"
+            ],
+            "notes": "Hook turns unique to Melbourne.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "au-qld-tmr",
+            "title": "Queensland Transport",
+            "url": "https://www.qld.gov.au/transport",
+            "publisher": "TMR QLD",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "Transport for NSW",
+        "VicRoads",
+        "infrastructure.gov.au"
+    ],
+    "summary": "Vast distances. Watch for wildlife (kangaroos) at dawn/dusk. Strict speed enforcement.",
+    "common_traps": [
+        "Hook turns in Melbourne.",
+        "School zone speed limits.",
+        "Mobile phone detection cameras."
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
     "rules": {
         "speed_limits": {
             "urban": 50,
@@ -45,17 +213,102 @@
             "motorway_access": "Allowed."
         }
     },
-    "summary": "Vast distances. Watch for wildlife (kangaroos) at dawn/dusk. Strict speed enforcement.",
-    "common_traps": [
-        "Hook turns in Melbourne.",
-        "School zone speed limits.",
-        "Mobile phone detection cameras."
-    ],
     "rental_and_idp_notes": "English license accepted. Others need translation/IDP.",
-    "last_verified": "2024-01",
-    "status": "verified",
-    "data_coverage": "high",
-    "sources": [
-        "State Government Transport Departs"
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "au-nsw-rms",
+            "au-vicroads"
+        ],
+        "summaries": [
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Mobile phone",
+                "title_de": "Handy",
+                "summary": "AI cameras detect illegal phone use.",
+                "summary_de": "KI-Kameras erkennen Handygebrauch.",
+                "maxConsequence": "A$410+ & 5 points (NSW)",
+                "maxConsequence_de": "A$410+ & 5 Punkte (NSW)"
+            },
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Double demerits on holidays in many states.",
+                "summary_de": "Doppelte Punkte an Feiertagen in vielen Bundesstaaten.",
+                "maxConsequence": "Licence suspension",
+                "maxConsequence_de": "Entzug"
+            }
+        ],
+        "categories": [
+            {
+                "id": "phone",
+                "title": "Mobile phone (NSW)",
+                "title_de": "Handy (NSW)",
+                "rows": [
+                    {
+                        "id": "phone-nsw",
+                        "consequences": {
+                            "fine": "A$410",
+                            "fine_de": "A$410",
+                            "points": "5"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "speed-school",
+                "title": "School zone",
+                "title_de": "Schulzone",
+                "rows": [
+                    {
+                        "id": "speed-10-school",
+                        "speedOver": "+10 km/h in school zone",
+                        "consequences": {
+                            "fine": "from A$200",
+                            "fine_de": "ab A$200",
+                            "points": "2"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "regional_variations": [
+        {
+            "region_type": "state",
+            "region_name": "Victoria",
+            "notes": "Hook turns in Melbourne CBD. Speed cameras widespread.",
+            "highlights": [
+                {
+                    "icon": "turn",
+                    "title": "Hook turns",
+                    "title_de": "Hook Turns",
+                    "description": "Follow hook-turn signage at marked intersections.",
+                    "description_de": "Hook-Turn-Schildern folgen."
+                }
+            ]
+        },
+        {
+            "region_type": "state",
+            "region_name": "New South Wales",
+            "notes": "Mobile phone detection cameras. Harbour Bridge toll (cashless).",
+            "highlights": [
+                {
+                    "icon": "phone",
+                    "title": "Phone cameras",
+                    "title_de": "Handy-Kameras",
+                    "description": "Fixed and mobile AI enforcement.",
+                    "description_de": "Feste und mobile KI-Kontrolle."
+                }
+            ]
+        }
     ]
 }

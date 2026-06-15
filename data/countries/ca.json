@@ -1,11 +1,195 @@
 {
-    "name_en": "Canada",
-    "name_local": "Canada",
     "iso2": "CA",
     "iso3": "CAN",
+    "name_en": "Canada",
+    "name_local": "Canada",
     "continent": "North America",
     "flag": "🇨🇦",
     "drive_side": "right",
+    "header_images": [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "quick_answer_bullets": [
+        "Metric speed limits",
+        "Winter tyres in many provinces",
+        "School bus stop rules",
+        "Wildlife on highways"
+    ],
+    "top_fines": [
+        {
+            "title": "School bus lights flashing (both directions)",
+            "amount": "from C$400"
+        },
+        {
+            "title": "Distracted driving (phone)",
+            "amount": "from C$615 (ON)"
+        },
+        {
+            "title": "Speeding +20 km/h in community safety zone",
+            "amount": "from C$180"
+        }
+    ],
+    "faq": [
+        {
+            "id": "school-bus-ca",
+            "category": "priority_rules",
+            "question": "Must I stop for a school bus in Canada?",
+            "question_de": "Muss ich in Kanada für Schulbusse anhalten?",
+            "answer": "When red lights flash and the stop arm is out, traffic in BOTH directions must stop (except on divided highways in some provinces). Fines are heavy—often C$400–C$2,000 plus demerit points.",
+            "answer_de": "Bei roten Blinklichtern und Stoppschild müssen BEIDE Richtungen anhalten (außer geteilte Straßen in manchen Provinzen). Hohe Bußgelder—oft C$400–C$2.000 plus Punkte.",
+            "relatedSourceIds": [
+                "ca-ontario-mto",
+                "ca-tc"
+            ]
+        },
+        {
+            "id": "montreal-red",
+            "category": "priority_rules",
+            "question": "Can I turn right on red in Montreal?",
+            "question_de": "Darf ich in Montreal bei Rot rechts abbiegen?",
+            "answer": "No. Right turn on red is prohibited on the entire Island of Montreal unless a specific sign permits it. This differs from most of Canada.",
+            "answer_de": "Nein. Rechtsabbiegen bei Rot ist auf der ganzen Insel Montreal verboten, außer ausdrücklich erlaubt. Anders als in most of Kanada.",
+            "relatedSourceIds": [
+                "ca-quebec-saaq"
+            ]
+        },
+        {
+            "id": "winter-tires-ca",
+            "category": "winter",
+            "question": "Are winter tires mandatory in Canada?",
+            "question_de": "Sind Winterreifen in Kanada Pflicht?",
+            "answer": "Mandatory in Quebec (Dec 1–Mar 15) and on some BC mountain routes. Strongly recommended elsewhere. All-season tires are not winter tires.",
+            "answer_de": "Pflicht in Quebec (1. Dez–15. März) und auf manchen BC-Bergstraßen. Sonst empfohlen. Allwetterreifen sind keine Winterreifen.",
+            "relatedSourceIds": [
+                "ca-quebec-saaq",
+                "ca-bc-icbc"
+            ]
+        },
+        {
+            "id": "407-etr",
+            "category": "vignette_tolls",
+            "question": "How does Highway 407 ETR work in Ontario?",
+            "question_de": "Wie funktioniert Highway 407 ETR?",
+            "answer": "407 ETR is fully electronic—no booths. Cameras bill your plate. Rental cars may charge admin fees; register plate or use a transponder.",
+            "answer_de": "407 ETR ist rein elektronisch—keine Schranken. Kameras berechnen Kennzeichen. Mietwagen verlangen oft Gebühren.",
+            "relatedSourceIds": [
+                "ca-ontario-mto"
+            ]
+        },
+        {
+            "id": "alcohol-ca",
+            "category": "alcohol_limit",
+            "question": "What is the drink-drive limit in Canada?",
+            "question_de": "Promillegrenze in Kanada?",
+            "answer": "0.08% BAC is the criminal limit nationwide. Many provinces impose penalties from 0.05% (warn range/suspension). Zero for novice drivers in most provinces.",
+            "answer_de": "0,08 % BAC ist strafrechtliche Grenze bundesweit. Viele Provinzen ahnden ab 0,05 %. Null für Fahranfänger.",
+            "relatedSourceIds": [
+                "ca-bc-icbc",
+                "ca-ontario-mto"
+            ]
+        },
+        {
+            "id": "move-over-ca",
+            "category": "priority_rules",
+            "question": "What is Canada's Move Over law?",
+            "question_de": "Was ist das Move-Over-Gesetz?",
+            "answer": "Slow down and move over a lane when passing stopped emergency vehicles, tow trucks, or roadside workers with flashing lights. Fines vary by province.",
+            "answer_de": "Langsamer fahren und Spur wechseln bei Einsatzfahrzeugen, Abschleppern oder Straßenarbeitern mit Blinklicht.",
+            "relatedSourceIds": [
+                "ca-tc"
+            ]
+        },
+        {
+            "id": "idp-ca",
+            "category": "documents",
+            "question": "Do I need an IDP to drive in Canada?",
+            "question_de": "Brauche ich einen IDP in Kanada?",
+            "answer": "Valid licences from many countries are accepted for short visits. IDP recommended if licence is not in English or French. Carry passport.",
+            "answer_de": "Gültige Führerscheine vieler Länder für Kurzbesuche OK. IDP empfohlen wenn nicht Englisch/Französisch. Pass mitführen.",
+            "relatedSourceIds": [
+                "ca-tc"
+            ]
+        }
+    ],
+    "source_entries": [
+        {
+            "id": "ca-tc",
+            "title": "Transport Canada — Road safety",
+            "url": "https://tc.canada.ca/en/road-transportation",
+            "publisher": "Transport Canada",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "speed_limits",
+            "usageModuleKeys": [
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "ca-ontario-mto",
+            "title": "Ontario Ministry of Transportation",
+            "url": "https://www.ontario.ca/page/ministry-transportation",
+            "publisher": "MTO",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "fines",
+            "usageModuleKeys": [
+                "fines",
+                "speed_limits",
+                "alcohol_limit"
+            ],
+            "notes": "Provincial rules vary; Ontario used as reference.",
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "ca-quebec-saaq",
+            "title": "SAAQ — Quebec road safety",
+            "url": "https://saaq.gouv.qc.ca/",
+            "publisher": "SAAQ",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "winter_rules",
+            "usageModuleKeys": [
+                "winter_rules",
+                "speed_limits"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        },
+        {
+            "id": "ca-bc-icbc",
+            "title": "ICBC — BC driver licensing",
+            "url": "https://www.icbc.com/driver-licensing",
+            "publisher": "ICBC",
+            "sourceType": "GOVERNMENT",
+            "trustLevel": "PRIMARY",
+            "moduleKey": "alcohol_limit",
+            "usageModuleKeys": [
+                "alcohol_limit",
+                "fines"
+            ],
+            "checkStatus": "OK",
+            "lastCheckedAt": "2026-05-27T12:00:00.000Z"
+        }
+    ],
+    "sources": [
+        "Transport Canada",
+        "MTO Ontario",
+        "SAAQ",
+        "ICBC"
+    ],
+    "summary": "Driving in Canada is similar to the US, but with metric units (km/h). Winter driving conditions can be severe. Right turn on red allowed unless posted (except Island of Montreal).",
+    "common_traps": [
+        "Right turn on red is prohibited on the entire Island of Montreal.",
+        "School bus flashing lights: traffic both ways must stop.",
+        "Move Over Law: slow down/move over for emergency vehicles."
+    ],
+    "last_verified": "2026-05-27",
+    "status": "verified",
+    "data_coverage": "high",
     "rules": {
         "speed_limits": {
             "urban": 50,
@@ -47,17 +231,118 @@
             "motorway_access": "Allowed."
         }
     },
-    "summary": "Driving in Canada is similar to the US, but with metric units (km/h). Winter driving conditions can be severe. Right turn on red allowed unless posted (except Island of Montreal).",
-    "common_traps": [
-        "Right turn on red is prohibited on the entire Island of Montreal.",
-        "School bus flashing lights: traffic both ways must stop.",
-        "Move Over Law: slow down/move over for emergency vehicles."
-    ],
     "rental_and_idp_notes": "Most licenses accepted for short visits. IDP recommended if not in English/French.",
-    "last_verified": "2024-01",
-    "status": "verified",
-    "data_coverage": "high",
-    "sources": [
-        "Transport Canada"
+    "traffic_fines": {
+        "relatedSourceIds": [
+            "ca-ontario-mto",
+            "ca-quebec-saaq",
+            "ca-bc-icbc"
+        ],
+        "summaries": [
+            {
+                "id": "speeding",
+                "icon": "speed",
+                "title": "Speeding",
+                "title_de": "Geschwindigkeit",
+                "summary": "Limits and fines vary by province. Photo radar common in BC, AB, QC.",
+                "summary_de": "Limits und Strafen je Provinz. Blitzer in BC, AB, QC üblich.",
+                "maxConsequence": "Licence suspension",
+                "maxConsequence_de": "Führerscheinentzug"
+            },
+            {
+                "id": "phone",
+                "icon": "phone",
+                "title": "Distracted driving",
+                "title_de": "Ablenkung",
+                "summary": "Handheld phone use banned in all provinces.",
+                "summary_de": "Handy am Steuer in allen Provinzen verboten.",
+                "maxConsequence": "C$615+ (Ontario)",
+                "maxConsequence_de": "C$615+ (Ontario)"
+            },
+            {
+                "id": "alcohol",
+                "icon": "alcohol",
+                "title": "Alcohol",
+                "title_de": "Alkohol",
+                "summary": "0.08% criminal; 0.05% provincial sanctions.",
+                "summary_de": "0,08 % strafrechtlich; 0,05 % Provinz-Sanktionen.",
+                "maxConsequence": "Criminal charge",
+                "maxConsequence_de": "Strafverfahren"
+            }
+        ],
+        "categories": [
+            {
+                "id": "phone",
+                "title": "Distracted driving",
+                "title_de": "Ablenkung am Steuer",
+                "description": "Ontario reference amounts; other provinces differ.",
+                "description_de": "Ontario-Referenz; andere Provinzen abweichend.",
+                "rows": [
+                    {
+                        "id": "phone-on",
+                        "description": "Handheld phone (Ontario)",
+                        "description_de": "Handy (Ontario)",
+                        "consequences": {
+                            "fine": "from C$615",
+                            "fine_de": "ab C$615",
+                            "points": "3–6"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "school-bus",
+                "title": "School bus",
+                "title_de": "Schulbus",
+                "rows": [
+                    {
+                        "id": "bus-stop",
+                        "description": "Passing stopped school bus",
+                        "description_de": "Schulbus bei Stoppschild überholen",
+                        "consequences": {
+                            "fine": "from C$400",
+                            "fine_de": "ab C$400",
+                            "points": "6"
+                        },
+                        "appliesTo": [
+                            "car"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "regional_variations": [
+        {
+            "region_type": "province",
+            "region_name": "Quebec",
+            "notes": "French traffic signs. No right on red on Montreal Island. Winter tires mandatory Dec–Mar.",
+            "highlights": [
+                {
+                    "icon": "winter",
+                    "title": "Winter tyres",
+                    "title_de": "Winterreifen",
+                    "description": "Mandatory Dec 1–Mar 15 by law.",
+                    "description_de": "Gesetzlich Pflicht 1. Dez–15. März."
+                }
+            ]
+        },
+        {
+            "region_type": "province",
+            "region_name": "British Columbia",
+            "notes": "Lower speed limits in rain. Immediate roadside prohibitions from 0.05% BAC.",
+            "highlights": [
+                {
+                    "icon": "alcohol",
+                    "title": "0.05% warn range",
+                    "title_de": "0,05-Warnbereich",
+                    "description": "BC can suspend at 0.05% without criminal charge.",
+                    "description_de": "BC kann ab 0,05 % sperren ohne Strafverfahren."
+                }
+            ]
+        }
     ]
 }
