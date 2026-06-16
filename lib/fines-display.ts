@@ -49,16 +49,17 @@ export const VEHICLE_LABEL_KEYS: Record<FineVehicleApplicability, string> = {
     moped: "applies_moped",
 }
 
-export function resolveFineText<T extends { [key: string]: unknown }>(
-    entry: T,
+export function resolveFineText(
+    entry: object,
     lang: string,
     field: string
 ): string {
+    const values = entry as Record<string, unknown>
     const deKey = `${field}_de`
-    if (lang === "de" && typeof entry[deKey] === "string" && entry[deKey]) {
-        return entry[deKey] as string
+    if (lang === "de" && typeof values[deKey] === "string" && values[deKey]) {
+        return values[deKey] as string
     }
-    const value = entry[field]
+    const value = values[field]
     return typeof value === "string" ? value : ""
 }
 
