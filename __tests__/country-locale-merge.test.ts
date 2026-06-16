@@ -148,7 +148,9 @@ describe("mergeCountryLocale", () => {
                 summaries: [
                     {
                         id: "speeding",
+                        title: "Speeding",
                         summary: "Deutsche Zusammenfassung",
+                        maxConsequence: "Fine",
                     },
                 ],
                 categories: [
@@ -184,6 +186,10 @@ describe("mergeCountryLocale", () => {
         const merged = mergeCountryLocale(baseCountry, {
             rules: {
                 speed_limits: {
+                    urban: 50,
+                    rural: 100,
+                    motorway: 130,
+                    units: "km/h",
                     notes: "Deutsche Tempo-Hinweise",
                 },
             },
