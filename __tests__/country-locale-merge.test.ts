@@ -185,7 +185,9 @@ describe("mergeCountryLocale", () => {
     it("merges rule notes without dropping other rule fields", () => {
         const merged = mergeCountryLocale(baseCountry, {
             rules: {
+                ...baseCountry.rules,
                 speed_limits: {
+                    ...baseCountry.rules.speed_limits,
                     urban: 50,
                     rural: 100,
                     motorway: 130,
