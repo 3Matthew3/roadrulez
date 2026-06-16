@@ -35,35 +35,51 @@ function TrafficLightDisplay({ state }: { state: LightState }) {
     const yellowOn = state === "yellow" || state === "red-yellow"
     const greenOn = state === "green"
 
+    const socketClass =
+        "flex h-11 w-11 items-center justify-center rounded-full bg-black/30 shadow-[inset_0_2px_8px_rgba(0,0,0,0.55)] ring-1 ring-inset ring-white/15 dark:bg-black/55 dark:ring-slate-400/30"
+
+    const lensClass =
+        "h-8 w-8 rounded-full border border-black/25 transition-all duration-300 dark:border-black/40"
+
     return (
-        <div className="relative shrink-0">
-            <div className="relative flex flex-col gap-3 rounded-[1.35rem] border border-slate-400 bg-gradient-to-b from-slate-500 to-slate-700 px-4 py-5 shadow-md shadow-slate-400/30 dark:border-slate-600 dark:from-slate-700 dark:to-slate-900 dark:shadow-inner dark:shadow-black/50">
-                <span
-                    className={cn(
-                        "h-8 w-8 rounded-full border border-black/20 transition-all duration-300 dark:border-black/30",
-                        redOn
-                            ? "bg-[#EF1A1A] shadow-[0_0_22px_rgba(239,26,26,1),0_0_40px_rgba(200,0,0,0.65)]"
-                            : "bg-red-950/50 dark:bg-red-950/80"
-                    )}
-                />
-                <span
-                    className={cn(
-                        "h-8 w-8 rounded-full border border-black/20 transition-all duration-300 dark:border-black/30",
-                        yellowOn
-                            ? "bg-[#FFCC00] shadow-[0_0_22px_rgba(255,204,0,1),0_0_40px_rgba(230,180,0,0.7)]"
-                            : "bg-yellow-950/50 dark:bg-yellow-950/80"
-                    )}
-                />
-                <span
-                    className={cn(
-                        "h-8 w-8 rounded-full border border-black/20 transition-all duration-300 dark:border-black/30",
-                        blinkGreen
-                            ? "animate-traffic-green-blink"
-                            : greenOn
-                              ? "bg-green-500 shadow-[0_0_22px_rgba(34,197,94,1),0_0_40px_rgba(34,197,94,0.7)]"
-                              : "bg-emerald-950/50 dark:bg-emerald-950/80"
-                    )}
-                />
+        <div className="relative shrink-0 self-center sm:self-start">
+            <div className="rounded-[1.65rem] border-2 border-slate-300 bg-slate-100 p-1 shadow-[0_10px_28px_rgba(15,23,42,0.16)] dark:border-slate-400/75 dark:bg-slate-950/70 dark:shadow-[0_12px_36px_rgba(0,0,0,0.55)]">
+                <div className="rounded-[1.25rem] border border-slate-400/90 bg-gradient-to-b from-slate-500 via-slate-600 to-slate-800 px-4 py-4 dark:border-slate-500/80 dark:from-slate-600 dark:via-slate-700 dark:to-slate-950">
+                    <div className="flex flex-col gap-2.5">
+                        <div className={socketClass}>
+                            <span
+                                className={cn(
+                                    lensClass,
+                                    redOn
+                                        ? "bg-[#EF1A1A] shadow-[0_0_22px_rgba(239,26,26,1),0_0_40px_rgba(200,0,0,0.65)]"
+                                        : "bg-red-950/70 dark:bg-red-950/90"
+                                )}
+                            />
+                        </div>
+                        <div className={socketClass}>
+                            <span
+                                className={cn(
+                                    lensClass,
+                                    yellowOn
+                                        ? "bg-[#FFCC00] shadow-[0_0_22px_rgba(255,204,0,1),0_0_40px_rgba(230,180,0,0.7)]"
+                                        : "bg-yellow-950/70 dark:bg-yellow-950/90"
+                                )}
+                            />
+                        </div>
+                        <div className={socketClass}>
+                            <span
+                                className={cn(
+                                    lensClass,
+                                    blinkGreen
+                                        ? "animate-traffic-green-blink"
+                                        : greenOn
+                                          ? "bg-green-500 shadow-[0_0_22px_rgba(34,197,94,1),0_0_40px_rgba(34,197,94,0.7)]"
+                                          : "bg-emerald-950/70 dark:bg-emerald-950/90"
+                                )}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
