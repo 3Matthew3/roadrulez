@@ -44,7 +44,7 @@ export function defaultFaq(countryName: string, countryNameDe: string): CountryF
             question_de: `Kann ich in ${countryNameDe} mit meinem ausländischen Führerschein fahren?`,
             answer: `Many visitors can drive with a valid national licence for short stays, but rental companies and police may require an International Driving Permit (IDP). Always confirm before you travel.`,
             answer_de: `Viele Besucher dürfen mit gültigem nationalen Führerschein kurzzeitig fahren, Mietwagenfirmen und Polizei verlangen aber oft einen Internationalen Führerschein (IDP). Vor der Reise klären.`,
-            relatedRules: ["documents"],
+            relatedRules: [{ label: "Documents", label_de: "Dokumente" }],
         },
         {
             id: "speed",
@@ -53,7 +53,7 @@ export function defaultFaq(countryName: string, countryNameDe: string): CountryF
             question_de: `Welche Standard-Tempolimits gelten in ${countryNameDe}?`,
             answer: `Default limits depend on road type, but posted signs always override general defaults. Check urban, rural, and motorway limits on the country guide above.`,
             answer_de: `Standardlimits hängen vom Straßentyp ab, ausgeschilderte Limits haben immer Vorrang. Urban-, Land- und Autobahn-Limits findest du oben im Länderguide.`,
-            relatedRules: ["speed_limits"],
+            relatedRules: [{ label: "Speed limits", label_de: "Tempolimits" }],
         },
         {
             id: "sources",
@@ -62,7 +62,7 @@ export function defaultFaq(countryName: string, countryNameDe: string): CountryF
             question_de: `Wo kann ich die aktuellen Regeln für ${countryNameDe} prüfen?`,
             answer: `Use the official sources listed on this site and re-check with government transport or police authorities before driving.`,
             answer_de: `Nutze die offiziellen Quellen auf dieser Seite und prüfe vor der Fahrt erneut bei Behörden für Verkehr oder Polizei.`,
-            relatedRules: ["documents"],
+            relatedRules: [{ label: "Official sources", label_de: "Offizielle Quellen" }],
         },
     ]
 }
