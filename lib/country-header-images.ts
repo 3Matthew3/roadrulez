@@ -53,7 +53,7 @@ const BEACH = img("photo-1507525428034-b723cf961d3e")
 
 export function isVerifiedHeaderImage(url?: string): boolean {
     if (!url) return false
-    return [...VERIFIED_HEADER_IMAGE_IDS].some((id) => url.includes(id))
+    return Array.from(VERIFIED_HEADER_IMAGE_IDS).some((id) => url.includes(id))
 }
 
 export function hasGenericPrimaryHeaderImage(images?: string[]): boolean {
