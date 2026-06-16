@@ -164,18 +164,22 @@ function mergeRegionalVariations(
     base: RegionalVariation[] | undefined,
     override: RegionalVariation[] | undefined
 ): RegionalVariation[] | undefined {
-    return mergeIdArray(base, override, (baseVariation, overrideVariation) => ({
-        ...mergeDefinedRecords(
+    return mergeIdArray(base, override, (baseVariation, overrideVariation) => {
+        const mergedVariation = mergeDefinedRecords(
             baseVariation as unknown as Record<string, unknown>,
             overrideVariation as unknown as Record<string, unknown>
-        ),
-        differences: overrideVariation.differences
-            ? (mergeDefinedRecords(
-                  (baseVariation.differences ?? {}) as Record<string, unknown>,
-                  overrideVariation.differences as Record<string, unknown>
-              ) as RegionalVariation["differences"])
-            : baseVariation.differences,
-    }), getRegionalVariationKey)
+        ) as unknown as RegionalVariation
+
+        return {
+            ...mergedVariation,
+            differences: overrideVariation.differences
+                ? (mergeDefinedRecords(
+                      (baseVariation.differences ?? {}) as Record<string, unknown>,
+                      overrideVariation.differences as Record<string, unknown>
+                  ) as RegionalVariation["differences"])
+                : baseVariation.differences,
+        }
+    }, getRegionalVariationKey)
 }
 
 function mergeVehicles(
