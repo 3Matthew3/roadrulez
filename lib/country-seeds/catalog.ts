@@ -31,6 +31,7 @@ interface BuildSeedOptions {
     speedNotes?: string
     alcoholNotes?: string
     tollNotes?: string
+    rentalAndIdpNotes?: string
     topFinesCurrency?: string
     status?: CountrySeed["status"]
 }
@@ -54,6 +55,9 @@ function buildSeed(o: BuildSeedOptions): CountrySeed {
         sources: o.sources.map((s) => s.publisher ?? s.title),
         summary: o.summary,
         common_traps: o.bullets,
+        rental_and_idp_notes:
+            o.rentalAndIdpNotes ??
+            "Carry your driving licence, vehicle documents, and rental agreement. An International Driving Permit is recommended for non-local licences and may be required by rental companies.",
         last_verified: "2026-05-01",
         status: o.status ?? "verified",
         data_coverage: "medium",
