@@ -7,6 +7,8 @@ import {
     govSource,
 } from "@/lib/country-seeds/helpers"
 
+type SeedSources = NonNullable<CountrySeed["source_entries"]>
+
 interface BuildSeedOptions {
     iso2: string
     iso3: string
@@ -26,7 +28,7 @@ interface BuildSeedOptions {
     emergency: string[]
     summary: string
     bullets: string[]
-    sources: CountrySeed["source_entries"]
+    sources: SeedSources
     indexNames?: Record<string, string>
     speedNotes?: string
     alcoholNotes?: string
@@ -99,7 +101,7 @@ const eu = (
     name_local: string,
     flag: string,
     opts: Partial<BuildSeedOptions> & {
-        sources: BuildSeedOptions["sources"]
+        sources: SeedSources
         summary: string
         bullets: string[]
     }
