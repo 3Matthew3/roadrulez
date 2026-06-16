@@ -43,7 +43,7 @@
         "search_placeholder": "国を検索...",
         "hero_title_2": "世界中どこでも。",
         "hero_subtitle": "旅行前に交通法規、速度制限、道路ルールを確認しましょう。罰金を避け、安全に運転するためのグローバルガイドです。",
-        "cta_map": "世界地図を開く",
+        "cta_map": "国・地域を見る",
         "popular_destinations": "人気の目的地",
         "more_countries": "さらに国を見る",
         "how_it_works": "使い方",
@@ -59,7 +59,19 @@
             "mobile": "モバイル対応",
             "updated": "定期更新",
             "map_preview": "インタラクティブ地図プレビュー"
-        }
+        },
+        "what_you_get": "国ごとに分かること",
+        "categories": {
+            "driving_rules": "交通ルール",
+            "vehicle": "車両・装備",
+            "limits": "制限・禁止事項",
+            "fines_faq": "罰金とFAQ"
+        },
+        "live_example": "例",
+        "preview_top_fine": "代表的な罰金",
+        "preview_faq": "FAQ",
+        "guides_stats": "ガイド {count} か国 · 公式ソース",
+        "browse_all_countries": "すべての国を見る"
     },
     "vehicle": {
         "car": "車",

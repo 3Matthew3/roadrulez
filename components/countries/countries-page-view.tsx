@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useCallback, useRef, useState } from "react"
 import { ChevronRight, Globe, Map, ShieldCheck } from "lucide-react"
 import {
     Accordion,
@@ -19,6 +19,7 @@ interface CountriesPageViewProps {
     lang: string
     data: CountriesPageData
     labels: Record<string, string>
+    initialSearchQuery?: string
 }
 
 const FALLBACK_IMAGE =
@@ -26,6 +27,9 @@ const FALLBACK_IMAGE =
 
 const HERO_IMAGE =
     "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1800&q=80"
+
+/** Sticky site header (~64px) plus a little breathing room */
+const REGION_SCROLL_MARGIN_CLASS = "scroll-mt-20"
 
 function FlagBadge({ iso2, name, muted }: { iso2: string; name: string; muted?: boolean }) {
     return (
@@ -145,7 +149,34 @@ function RegionCountryCard({
     )
 }
 
-export default function CountriesPageView({ lang, data, labels }: CountriesPageViewProps) {
+export default function CountriesPageView({
+    lang,
+    data,
+    labels,
+    initialSearchQuery = "",
+}: CountriesPageViewProps) {
+    const [openRegion, setOpenRegion] = useState<string | undefined>(undefined)
+    const regionRefs = useRef<Record<string, HTMLDivElement | null>>({})
+
+    const scrollToRegion = useCallback((regionId: string) => {
+        const scroll = () => {
+            regionRefs.current[regionId]?.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+        // Let the previously open panel collapse before scrolling to the new header.
+        window.requestAnimationFrame(() => {
+            window.setTimeout(scroll, 200)
+        })
+    }, [])
+
+    const handleRegionChange = (value: string) => {
+        const next = value || undefined
+        const previous = openRegion
+        setOpenRegion(next)
+        if (next && next !== previous) {
+            scrollToRegion(next)
+        }
+    }
+
     return (
         <div className={S.page}>
             <section className="overflow-hidden border-b border-[#E2E8F0] bg-[#F4F7FB] dark:border-slate-800 dark:bg-[#0B1120]">
@@ -159,7 +190,7 @@ export default function CountriesPageView({ lang, data, labels }: CountriesPageV
                         </p>
                         <div className="mt-8 max-w-lg rounded-xl border border-[#E2E8F0] bg-white p-1 shadow-sm dark:border-slate-700 dark:bg-[#1E293B]">
                             <CountrySearch
-                                initialQuery=""
+                                initialQuery={initialSearchQuery}
                                 placeholder={labels.search_placeholder}
                                 inputClassName="h-12 rounded-lg border-0 bg-white text-[#0F172A] placeholder:text-[#94A3B8] dark:bg-[#1E293B] dark:text-white dark:placeholder:text-slate-500"
                                 resultsClassName="mt-2 rounded-lg border border-[#E2E8F0] bg-white dark:border-slate-700 dark:bg-[#1E293B]"
@@ -191,15 +222,28 @@ export default function CountriesPageView({ lang, data, labels }: CountriesPageV
 
             <section className={cn(S.content, "pb-12 md:pb-14")}>
                 <h2 className={cn("text-xl font-semibold sm:text-2xl", S.heading)}>{labels.browse_title}</h2>
-                <Accordion type="single" collapsible className="mt-6 space-y-3">
+                <Accordion
+                    type="single"
+                    collapsible
+                    value={openRegion}
+                    onValueChange={handleRegionChange}
+                    className="mt-6 space-y-3"
+                >
                     {data.regions.map((region) => {
                         const regionLabel = getRegionLabel(region.id, lang)
                         const total = region.available.length + region.comingSoon.length
                         return (
                             <AccordionItem
                                 key={region.id}
+                                ref={(node) => {
+                                    regionRefs.current[region.id] = node
+                                }}
                                 value={region.id}
-                                className={cn("overflow-hidden rounded-2xl border px-1", S.accordionItem)}
+                                className={cn(
+                                    "overflow-hidden rounded-2xl border px-1",
+                                    REGION_SCROLL_MARGIN_CLASS,
+                                    S.accordionItem
+                                )}
                             >
                                 <AccordionTrigger className="px-4 py-4 hover:no-underline sm:px-5">
                                     <div className="flex items-center gap-3 text-left">
@@ -214,7 +258,9 @@ export default function CountriesPageView({ lang, data, labels }: CountriesPageV
                                 </AccordionTrigger>
                                 <AccordionContent className="px-4 pb-5 sm:px-5">
                                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                                        {[...region.available, ...region.comingSoon].map((country) => (
+                                        {[...region.available, ...region.comingSoon]
+                                            .sort((a, b) => a.name.localeCompare(b.name, lang))
+                                            .map((country) => (
                                             <RegionCountryCard
                                                 key={country.iso2}
                                                 lang={lang}

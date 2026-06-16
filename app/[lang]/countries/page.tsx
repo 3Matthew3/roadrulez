@@ -5,6 +5,7 @@ import { getDictionary } from "@/lib/dictionaries"
 
 interface PageProps {
     params: { lang: string }
+    searchParams?: { q?: string }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 }
 
-export default async function CountriesPage({ params }: PageProps) {
+export default async function CountriesPage({ params, searchParams }: PageProps) {
     const [dict, data] = await Promise.all([
         getDictionary(params.lang),
         getCountriesPageData(params.lang),
@@ -28,5 +29,12 @@ export default async function CountriesPage({ params }: PageProps) {
         right: dict.common.right,
     }
 
-    return <CountriesPageView lang={params.lang} data={data} labels={labels} />
+    return (
+        <CountriesPageView
+            lang={params.lang}
+            data={data}
+            labels={labels}
+            initialSearchQuery={searchParams?.q ?? ""}
+        />
+    )
 }

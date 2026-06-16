@@ -43,7 +43,7 @@
         "hero_title_2": "überall auf der Welt.",
         "search_placeholder": "Land suchen...",
         "hero_subtitle": "Prüfe Verkehrsgesetze, Tempolimits und Regeln vor deiner Reise. Vermeide Bußgelder und fahre sicher mit unserem umfassenden globalen Reiseführer.",
-        "cta_map": "Weltkarte öffnen",
+        "cta_map": "Länder entdecken",
         "popular_destinations": "Beliebte Reiseziele",
         "more_countries": "Mehr Länder",
         "how_it_works": "So funktioniert's",
@@ -59,7 +59,19 @@
             "mobile": "Mobiloptimiert",
             "updated": "Regelmäßig aktualisiert",
             "map_preview": "Interaktive Karten-Vorschau"
-        }
+        },
+        "what_you_get": "Was du pro Land findest",
+        "categories": {
+            "driving_rules": "Verkehrsregeln",
+            "vehicle": "Fahrzeug & Ausrüstung",
+            "limits": "Grenzen & Verbote",
+            "fines_faq": "Bußgelder & FAQ"
+        },
+        "live_example": "Beispiel",
+        "preview_top_fine": "Typisches Bußgeld",
+        "preview_faq": "FAQ",
+        "guides_stats": "{count} Länder mit Guide · offizielle Quellen",
+        "browse_all_countries": "Alle Länder durchsuchen"
     },
     "vehicle": {
         "car": "Auto",

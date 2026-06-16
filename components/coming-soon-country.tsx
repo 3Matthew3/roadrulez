@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ArrowLeft, Map } from "lucide-react"
+import { ArrowLeft, Globe } from "lucide-react"
 import { useEffect, useState } from "react"
 import { isValidLocale, type Locale } from "@/lib/constants"
 
@@ -82,7 +82,7 @@ export function ComingSoonCountry({ lang }: ComingSoonCountryProps) {
             ? pathLocale
             : undefined
     const homeHref = locale ? `/${locale}` : "/"
-    const mapHref = locale ? `/${locale}/map` : "/map"
+    const countriesHref = locale ? `/${locale}/countries` : "/en/countries"
 
     return (
         <div className="fixed inset-0 z-[50] flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden font-sans">
@@ -128,9 +128,9 @@ export function ComingSoonCountry({ lang }: ComingSoonCountryProps) {
                     transition={{ delay: 1 }}
                     className="pt-8 flex flex-col sm:flex-row gap-4 w-full justify-center"
                 >
-                    <Link href={mapHref} className="group relative px-8 py-3 bg-cyan-900/20 hover:bg-cyan-900/40 border border-cyan-500/30 rounded-full text-cyan-100 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
-                        <Map className="w-4 h-4" />
-                        <span>Go to Map</span>
+                    <Link href={countriesHref} className="group relative px-8 py-3 bg-cyan-900/20 hover:bg-cyan-900/40 border border-cyan-500/30 rounded-full text-cyan-100 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                        <Globe className="w-4 h-4" />
+                        <span>Browse countries</span>
                     </Link>
 
                     <Link href={homeHref} className="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-zinc-300 uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-white/30 hover:text-white">

@@ -3,20 +3,21 @@ import { Globe, Car, ChevronRight, Info, Shield, Smartphone, Clock, Map as MapIc
 import { Button } from "@/components/ui/button"
 import { getDictionary } from "@/lib/dictionaries"
 import { getAllCountries } from "@/lib/countries"
+import { getPopularCountryCodes } from "@/lib/popular-countries"
 import { HeroSearch } from "@/components/hero-search"
-
-// ISO codes for popular countries
-const POPULAR_ISO_CODES = ["DE", "FR", "IT", "ES", "US", "JP"]
 
 interface RealHomePageProps {
     lang: string
 }
 
 export async function RealHomePage({ lang }: RealHomePageProps) {
-    const dict = await getDictionary(lang)
-    const allCountries = await getAllCountries()
+    const [dict, allCountries, popularCodes] = await Promise.all([
+        getDictionary(lang),
+        getAllCountries(),
+        getPopularCountryCodes(6),
+    ])
 
-    const popularCountries = POPULAR_ISO_CODES.map(code => {
+    const popularCountries = popularCodes.map((code) => {
         const country = allCountries.find(c => c.iso2 === code)
         if (!country) return null
         return {
@@ -55,7 +56,7 @@ export async function RealHomePage({ lang }: RealHomePageProps) {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Link href={`/${lang}/map`}>
+                            <Link href={`/${lang}/countries`}>
                                 <Button
                                     size="lg"
                                     className="h-14 px-8 text-lg bg-blue-600 hover:bg-blue-500 text-white border-0 shadow-lg shadow-blue-900/20 rounded-xl w-full sm:w-auto"
@@ -94,7 +95,7 @@ export async function RealHomePage({ lang }: RealHomePageProps) {
                             </Link>
                         ))}
                         <Link
-                            href={`/${lang}/map`}
+                            href={`/${lang}/countries`}
                             className="col-span-2 md:col-span-2 group flex items-center justify-between p-4 rounded-xl bg-zinc-800/40 border border-zinc-700/50 hover:bg-zinc-800/80 hover:border-blue-500/50 transition-all duration-300 text-zinc-300 hover:text-white"
                         >
                             <span className="font-medium pl-2">{dict.home.more_countries}</span>

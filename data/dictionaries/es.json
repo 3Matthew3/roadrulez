@@ -43,7 +43,7 @@
         "search_placeholder": "Buscar un país...",
         "hero_title_2": "en todo el mundo.",
         "hero_subtitle": "Consulta leyes de tráfico, límites de velocidad y normas de conducción antes de viajar. Evita multas y conduce con seguridad con nuestra guía global.",
-        "cta_map": "Abrir mapa mundial",
+        "cta_map": "Explorar países",
         "popular_destinations": "Destinos populares",
         "more_countries": "Más países",
         "how_it_works": "Cómo funciona",
@@ -59,7 +59,19 @@
             "mobile": "Optimizado para móvil",
             "updated": "Actualizado regularmente",
             "map_preview": "Vista previa del mapa interactivo"
-        }
+        },
+        "what_you_get": "Qué incluye cada país",
+        "categories": {
+            "driving_rules": "Normas de tráfico",
+            "vehicle": "Vehículo y equipamiento",
+            "limits": "Límites y restricciones",
+            "fines_faq": "Multas y FAQ"
+        },
+        "live_example": "Ejemplo",
+        "preview_top_fine": "Multa típica",
+        "preview_faq": "FAQ",
+        "guides_stats": "{count} países con guía · fuentes oficiales",
+        "browse_all_countries": "Ver todos los países"
     },
     "vehicle": {
         "car": "Coche",

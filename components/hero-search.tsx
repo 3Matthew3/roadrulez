@@ -88,7 +88,7 @@ export function HeroSearch({ placeholder }: HeroSearchProps) {
     const handleSubmit = () => {
         const trimmedQuery = query.trim()
         if (trimmedQuery) {
-            router.push(`${getLangPrefix()}/search?q=${encodeURIComponent(trimmedQuery)}`)
+            router.push(`${getLangPrefix()}/countries?q=${encodeURIComponent(trimmedQuery)}`)
         }
     }
 

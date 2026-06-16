@@ -12,9 +12,12 @@ interface MainNavProps {
     }[]
     children?: React.ReactNode
     lang: string
+    navLabels: {
+        countries: string
+    }
 }
 
-export function MainNav({ items, children, lang }: MainNavProps) {
+export function MainNav({ items, children, lang, navLabels }: MainNavProps) {
     return (
         <div className="flex items-center">
             <Link href={`/${lang}`} className="mr-4 md:mr-6 flex items-center space-x-2">
@@ -28,21 +31,12 @@ export function MainNav({ items, children, lang }: MainNavProps) {
             </Link>
             <nav className="flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-zinc-300">
                 <Link
-                    href={`/${lang}/map`}
-                    className={cn(
-                        "transition-colors hover:text-slate-900 dark:hover:text-white",
-                        // pathname === "/docs" ? "text-foreground" : "text-foreground/60"
-                    )}
-                >
-                    Map
-                </Link>
-                <Link
-                    href={`/${lang}/search`}
+                    href={`/${lang}/countries`}
                     className={cn(
                         "transition-colors hover:text-slate-900 dark:hover:text-white",
                     )}
                 >
-                    Search
+                    {navLabels.countries}
                 </Link>
                 {/* <Link
                     href={`/${lang}/rules`}

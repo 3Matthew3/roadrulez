@@ -6,8 +6,6 @@ interface SiteFooterProps {
             footer: {
                 explore_heading: string
                 countries: string
-                search: string
-                map: string
                 roadrulez_heading: string
                 about: string
                 data_verification: string
@@ -75,16 +73,6 @@ export function SiteFooter({ dict, lang }: SiteFooterProps) {
                         <li>
                             <Link href={`/${lang}/countries`} className={linkClass}>
                                 {f.countries}
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href={`/${lang}/search`} className={linkClass}>
-                                {f.search}
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href={`/${lang}/map`} className={linkClass}>
-                                {f.map}
                             </Link>
                         </li>
                     </FooterColumn>

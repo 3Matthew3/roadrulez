@@ -43,7 +43,7 @@
         "search_placeholder": "Search a country...",
         "hero_title_2": "everywhere in the world.",
         "hero_subtitle": "Check traffic laws, speed limits, and road rules before you travel. Avoid fines and drive safely with our comprehensive global guide.",
-        "cta_map": "Open World Map",
+        "cta_map": "Browse countries",
         "popular_destinations": "Popular Destinations",
         "more_countries": "More countries",
         "how_it_works": "How it works",
@@ -59,7 +59,19 @@
             "mobile": "Mobile-friendly",
             "updated": "Regularly updated",
             "map_preview": "Interactive Map Preview"
-        }
+        },
+        "what_you_get": "What you get per country",
+        "categories": {
+            "driving_rules": "Driving Rules",
+            "vehicle": "Vehicle Requirements",
+            "limits": "Limits & Restrictions",
+            "fines_faq": "Fines & FAQ"
+        },
+        "live_example": "Example",
+        "preview_top_fine": "Typical fine",
+        "preview_faq": "FAQ",
+        "guides_stats": "{count} countries with guides · official sources",
+        "browse_all_countries": "Browse all countries"
     },
     "vehicle": {
         "car": "Car",

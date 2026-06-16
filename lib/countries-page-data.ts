@@ -1,5 +1,7 @@
 import { COUNTRY_SEEDS } from "@/lib/country-seeds/catalog"
-import { getAllCountries, getCountryData } from "@/lib/countries"
+import { getAllCountries, getCountryData, getSearchCountries } from "@/lib/countries"
+import { getIso2CodesForRegion } from "@/lib/country-region-map"
+import { getPopularCountryCodes } from "@/lib/popular-countries"
 import type {
     CountriesPageData,
     CountryPreview,
@@ -10,18 +12,6 @@ import { REGION_ORDER } from "@/lib/countries-page-shared"
 import type { CountryData, CountryIndexItem } from "@/types/country"
 
 export type { CountriesPageData, CountryPreview, RegionGroup, RegionName } from "@/lib/countries-page-shared"
-
-export const POPULAR_COUNTRY_CODES = ["AT", "DE", "US", "FR", "IT", "ES"] as const
-
-/** Major destinations shown as “coming soon” when not yet in the catalog. */
-const COMING_SOON_BY_REGION: Record<RegionName, string[]> = {
-    Europe: ["TR", "RU", "GE", "AM"],
-    "North America": ["GT", "CR", "PA", "CU", "DO"],
-    "South America": ["CL", "CO", "PE", "UY", "VE"],
-    Asia: ["MY", "SG", "PH", "VN", "PK", "BD", "LK", "NP"],
-    Oceania: ["NZ", "FJ", "PG", "NC"],
-    Africa: ["EG", "MA", "KE", "NG", "TZ", "MU"],
-}
 
 function localizedName(entry: CountryIndexItem, lang: string) {
     return entry.names?.[lang] || entry.names?.en || entry.name
@@ -72,13 +62,17 @@ function previewComingSoon(iso2: string, entry: CountryIndexItem | undefined, la
 }
 
 export async function getCountriesPageData(lang: string): Promise<CountriesPageData> {
-    const index = await getAllCountries()
-    const indexByIso = new Map(index.map((c) => [c.iso2, c]))
+    const [index, searchIndex] = await Promise.all([getAllCountries(), getSearchCountries()])
+    const indexByIso = new Map(
+        [...index, ...searchIndex].map((country) => [country.iso2, country] as const)
+    )
     const availableIso = new Set(Object.keys(COUNTRY_SEEDS))
+
+    const popularCodes = await getPopularCountryCodes(6)
 
     const popular = (
         await Promise.all(
-            POPULAR_COUNTRY_CODES.map(async (iso2) => {
+            popularCodes.map(async (iso2) => {
                 const data = await getCountryData(iso2, lang)
                 if (!data) return null
                 return previewFromData(data, indexByIso.get(iso2), lang, true)
@@ -86,43 +80,45 @@ export async function getCountriesPageData(lang: string): Promise<CountriesPageD
         )
     ).filter(Boolean) as CountryPreview[]
 
-    const regions: RegionGroup[] = REGION_ORDER.map((regionId) => {
-        const comingSoonCodes = COMING_SOON_BY_REGION[regionId].filter((iso2) => !availableIso.has(iso2))
+    const regions: RegionGroup[] = await Promise.all(
+        REGION_ORDER.map(async (regionId) => {
+            const regionCodes = getIso2CodesForRegion(regionId)
+            const available: CountryPreview[] = []
+            const comingSoon: CountryPreview[] = []
 
-        return {
-            id: regionId,
-            available: [],
-            comingSoon: comingSoonCodes.map((iso2) =>
-                previewComingSoon(iso2, indexByIso.get(iso2), lang)
-            ),
-        }
-    })
+            await Promise.all(
+                regionCodes.map(async (iso2) => {
+                    if (availableIso.has(iso2)) {
+                        const data = await getCountryData(iso2, lang)
+                        if (data) {
+                            available.push(previewFromData(data, indexByIso.get(iso2), lang, true))
+                        }
+                        return
+                    }
 
-    await Promise.all(
-        regions.map(async (region) => {
-            const seeds = Object.values(COUNTRY_SEEDS).filter((s) => s.continent === region.id)
-            region.available = (
-                await Promise.all(
-                    seeds.map(async (seed) => {
-                        const data = await getCountryData(seed.iso2, lang)
-                        if (!data) return null
-                        return previewFromData(data, indexByIso.get(seed.iso2), lang, true)
-                    })
-                )
+                    comingSoon.push(previewComingSoon(iso2, indexByIso.get(iso2), lang))
+                })
             )
-                .filter(Boolean)
-                .sort((a, b) => a!.name.localeCompare(b!.name)) as CountryPreview[]
+
+            const sortByName = (a: CountryPreview, b: CountryPreview) =>
+                a.name.localeCompare(b.name, lang === "de" ? "de" : "en")
+
+            return {
+                id: regionId,
+                available: available.sort(sortByName),
+                comingSoon: comingSoon.sort(sortByName),
+            }
         })
     )
 
-    const filteredRegions = regions.filter((r) => r.available.length > 0 || r.comingSoon.length > 0)
+    const comingSoonTotal = regions.reduce((sum, region) => sum + region.comingSoon.length, 0)
 
     return {
         popular,
-        regions: filteredRegions,
+        regions,
         stats: {
             availableCount: availableIso.size,
-            plannedCount: 120,
+            plannedCount: comingSoonTotal,
         },
     }
 }

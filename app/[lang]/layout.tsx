@@ -31,7 +31,12 @@ export default async function LangLayout({
             </Suspense>
             <PublicSessionProvider>
                 <div className="relative flex min-h-screen flex-col">
-                    <SiteHeader lang={params.lang} />
+                    <SiteHeader
+                        lang={params.lang}
+                        navLabels={{
+                            countries: dict.extra.footer.countries,
+                        }}
+                    />
                     <div className="flex-1">{children}</div>
                     <SiteFooter dict={dict} lang={params.lang} />
                 </div>
