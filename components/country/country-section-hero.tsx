@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 import HeroImage from "@/components/country/hero-image"
 
@@ -154,15 +155,19 @@ export default function CountrySectionHero({
 
                             <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border border-white/20 shadow-md md:h-16 md:w-24">
 
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-
-                                <img
+                                <Image
 
                                     src={`https://flagcdn.com/w320/${countryIso2.toLowerCase()}.png`}
 
                                     alt={`${localizedName} flag`}
 
-                                    className="h-full w-full object-cover"
+                                    fill
+
+                                    sizes="(min-width: 768px) 96px, 80px"
+
+                                    className="object-cover"
+
+                                    unoptimized
 
                                 />
 

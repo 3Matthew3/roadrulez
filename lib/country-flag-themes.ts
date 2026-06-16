@@ -80,5 +80,5 @@ export const FLAG_THEMES: Record<string, CountryTheme> = {
     CN: theme("CN", "#DE2910", "#DE2910", { fill: "#DE2910" }),
     TW: theme("TW", "#FE0000", "#000095", { fill: "#000095" }),
     AE: theme("AE", "#00732F", "#FF0000", { accentBlack: "#000000", fill: "#00732F" }),
-    ZA: theme("ZA", "#007A4D", "#FFB612", { accentDark: "#002395", fill: "#007A4D" }),
+    ZA: theme("ZA", "#007A4D", "#002395", { fill: "#007A4D" }),
 }
