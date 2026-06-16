@@ -32,7 +32,7 @@ export function mergeCountryWithSeed(
     const headerSource = shouldReplaceHeaderImages(json.header_images)
         ? seed.header_images
         : json.header_images
-    const verifiedHeaders = headerSource.filter(isVerifiedHeaderImage)
+    const verifiedHeaders = (headerSource ?? []).filter(isVerifiedHeaderImage)
     const header_images = verifiedHeaders.length ? verifiedHeaders : seed.header_images
 
     return {
