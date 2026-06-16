@@ -6,8 +6,6 @@ import type {
     TrafficRules,
 } from "@/types/country"
 
-type WithOptionalId = { id?: string }
-
 function isPlainObject(value: unknown): value is Record<string, unknown> {
     return value !== null && typeof value === "object" && !Array.isArray(value)
 }
@@ -38,15 +36,18 @@ export function mergeDefinedRecords<T extends Record<string, unknown>>(
     return result
 }
 
-function getItemId(item: WithOptionalId, getKey?: (item: WithOptionalId) => string | undefined): string | undefined {
+function getItemId<T>(item: T, getKey?: (item: T) => string | undefined): string | undefined {
     if (getKey) return getKey(item)
-    return typeof item.id === "string" && item.id.length > 0 ? item.id : undefined
+    if (!isPlainObject(item)) return undefined
+
+    const id = item.id
+    return typeof id === "string" && id.length > 0 ? id : undefined
 }
 
-function shouldMergeArrayById<T extends WithOptionalId>(
+function shouldMergeArrayById<T>(
     base: T[] | undefined,
     override: T[],
-    getKey?: (item: WithOptionalId) => string | undefined
+    getKey?: (item: T) => string | undefined
 ): boolean {
     if (!base?.length) return false
     return (
@@ -59,7 +60,7 @@ function shouldMergeArrayById<T extends WithOptionalId>(
  * Arrays whose items carry stable ids merge entry-by-entry.
  * Arrays without ids (or mixed ids) are replaced entirely when override is present.
  */
-export function mergeIdArray<T extends WithOptionalId>(
+export function mergeIdArray<T>(
     base: T[] | undefined,
     override: T[] | undefined,
     mergeItem: (baseItem: T, overrideItem: T) => T = (baseItem, overrideItem) =>
@@ -67,7 +68,7 @@ export function mergeIdArray<T extends WithOptionalId>(
             baseItem as Record<string, unknown>,
             overrideItem as Record<string, unknown>
         ) as T,
-    getKey?: (item: WithOptionalId) => string | undefined
+    getKey?: (item: T) => string | undefined
 ): T[] | undefined {
     if (override === undefined) return base
     if (override.length === 0) return override
@@ -140,13 +141,17 @@ function mergeFineCategories(
     base: CountryFineCategory[] | undefined,
     override: CountryFineCategory[] | undefined
 ): CountryFineCategory[] | undefined {
-    const mergedCategories = mergeIdArray(base, override, (baseCategory, overrideCategory) => ({
-        ...mergeDefinedRecords(
+    const mergedCategories = mergeIdArray(base, override, (baseCategory, overrideCategory) => {
+        const mergedCategory = mergeDefinedRecords(
             baseCategory as unknown as Record<string, unknown>,
             overrideCategory as unknown as Record<string, unknown>
-        ),
-        rows: mergeIdArray(baseCategory.rows, overrideCategory.rows) ?? baseCategory.rows,
-    }))
+        ) as unknown as CountryFineCategory
+
+        return {
+            ...mergedCategory,
+            rows: mergeIdArray(baseCategory.rows, overrideCategory.rows) ?? baseCategory.rows,
+        }
+    })
 
     return mergedCategories
 }
